@@ -1,234 +1,152 @@
 'use client';
-import React from 'react';
-import {
-  ArrowRight,
-  BadgeCheck,
-  Droplets,
-  Factory,
-  Filter,
-  Gauge,
-  Layers,
-  ShowerHead,
-  ShieldCheck,
-  Sprout,
-  Waves,
-  Wrench
-} from 'lucide-react';
-import Link from 'next/link';
-import { Reveal, SectionLabel } from './Reveal';
 
-const HighlightsPanel: React.FC<{
-  points: Array<{ label: string; icon: any }>;
-  tone: {
-    panel: string;
-    highlights: string;
-    liBox: string;
-  };
-}> = ({ points, tone }) => {
-  return (
-    <div className={`w-full ${tone.panel}`}>
-      <span className={`inline-flex items-center gap-2 text-[11px] font-semibold tracking-wider ${tone.highlights}`}>
-        <span className="w-2 h-2 rounded-full bg-current" />
-        Key Highlights
-      </span>
+import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-      <ul className="space-y-3 mt-3">
-        {points.map((pt) => {
-          const PointIcon = pt.icon;
-          return (
-            <li
-              key={pt.label}
-              className={`group/li relative flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all duration-200 ${tone.liBox}`}
-            >
-              <div className="w-8 h-8 rounded-lg bg-white border border-slate-200/80 flex items-center justify-center shrink-0 shadow-xs">
-                <PointIcon className="w-4 h-4 text-slate-700" />
-              </div>
-              <p className="flex-1 text-xs font-medium text-slate-800 leading-snug">
-                {pt.label}
-              </p>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-};
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
-export const Solutions: React.FC = () => {
-  const divisions = [
-    {
-      tag: 'Agriculture Division',
-      title: 'Micro Irrigation Solutions',
-      description: 'Smart irrigation solutions for every crop and every farmer.',
-      points: [
-        { label: 'Drip Irrigation Systems', image: 'https://kotharigroupindia.com/img/images/Irrigation_products.webp', icon: Droplets },
-        { label: 'Sprinkler Networks', image: 'https://kotharigroupindia.com/img/images/Irrigation_products.webp', icon: ShowerHead },
-        { label: 'Filters & Fertigation', image: 'https://kotharigroupindia.com/img/images/Building_pipe.webp', icon: Filter },
-        { label: 'PMKSY Subsidy Approved', image: 'https://kotharigroupindia.com/img/images/Agri_Pipes.webp', icon: BadgeCheck }
-      ],
-      button: 'Explore Agriculture Division',
-      icon: Sprout,
-      glyph: [Droplets, Wrench],
-      green: true,
-      url:'/agriculture-division'
-    },
-    {
-      tag: 'Pipe Division',
-      title: 'Agri Pipes | Plumbing Pipes & Fittings',
-      description: 'High quality piping solutions for agriculture, plumbing, infrastructure and industries.',
-      points: [
-        { label: 'Agri Pressure Pipes', image: 'https://kotharigroupindia.com/img/images/Agri_Pipes.webp', icon: Gauge },
-        { label: 'CPVC & UPVC Plumbing', image: 'https://kotharigroupindia.com/img/images/Building_pipe.webp', icon: Wrench },
-        { label: 'SWR Drainage & Fittings', image: 'https://kotharigroupindia.com/img/images/Building_pipe.webp', icon: Waves },
-        { label: 'BIS & ISO Certified', image: 'https://kotharigroupindia.com/img/images/Agri_Pipes.webp', icon: ShieldCheck }
-      ],
-      button: 'Explore Pipe Division',
-      icon: Factory,
-      glyph: [Wrench, Droplets],
-      url:'/pipe-division'
+export const Solutions = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const words = textRef.current?.querySelectorAll('.scroll-word');
+
+    if (words && words.length > 0 && sectionRef.current) {
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: '+=120%', // Locks section until 100% of text reveals, then moves next
+            scrub: 0.5,
+            pin: true,
+            anticipatePin: 1,
+            refreshPriority: 1,
+          },
+        });
+
+        tl.fromTo(
+          words,
+          { color: '#E2E8F0', opacity: 0.35 },
+          {
+            color: '#0F172A',
+            opacity: 1,
+            stagger: 0.08,
+            ease: 'none',
+          }
+        );
+      }, sectionRef);
+
+      return () => ctx.revert();
     }
-  ];
+  }, []);
 
   return (
-    <section id="solutions" className="py-20 bg-[#F5FAFF] scroll-mt-20 relative overflow-hidden">
-      <style>
-        {`
-          .flip-card {
-            perspective: 1200px;
-          }
-          .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            transform-style: preserve-3d;
-          }
-          @media (min-width: 768px) {
-            .flip-card:hover .flip-card-inner {
-              transform: rotateY(180deg) rotateX(-6deg);
-            }
-          }
-          .flip-card-front, .flip-card-back {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-          }
-          .flip-card-back {
-            transform: rotateY(180deg);
-            z-index: 20;
-          }
-        `}
-      </style>
+    <section 
+      ref={sectionRef} 
+      /* Clean white background + min-h-screen for full viewport height */
+      className="relative w-full min-h-screen bg-white flex items-center justify-center overflow-hidden"
+    >
+      {/* Subtle Blue Accent Glow */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#1575B3]/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 space-y-12 relative z-10">
-        <Reveal className="text-center max-w-2xl mx-auto space-y-3">
-          <SectionLabel icon={Layers}>Kothari Divisions</SectionLabel>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-[#1575B3]">Choose Your Solution</h2>
-          <p className="text-sm font-light text-[#5F6B7A]">
-            Select the division that best matches your needs.
-          </p>
-        </Reveal>
+      {/* Spacing Added Here: py-16 lg:py-24 adds top & bottom padding */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
+          
+          {/* Left Side: Sharp Square Portrait Card */}
+          <div className="lg:col-span-5 relative w-full">
+            <div className="relative mx-auto max-w-md lg:max-w-none w-full aspect-[4/5] overflow-hidden shadow-2xl bg-slate-900 rounded-none">
+              <Image
+                src="https://kotharigroupindia.com/img/images/kiran-s-kothari.webp" 
+                alt="Kiran S. Kothari - Founder Chairman"
+                fill
+                priority
+                unoptimized
+                className="object-cover object-top scale-105 hover:scale-100 transition-transform duration-700 ease-out"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+              
+              <div className="absolute bottom-6 left-6 right-6 text-white lg:hidden">
+                <h3 className="text-xl font-bold">Kiran S. Kothari</h3>
+                <p className="text-xs text-white/70">Founder Chairman, Kothari Group</p>
+              </div>
+            </div>
+          </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {(() => {
-            const cardImages = [
-              'https://images.pexels.com/photos/11679735/pexels-photo-11679735.jpeg',
-              'https://kotharigroupindia.com/img/images/Building_pipe.webp'
-            ];
+          {/* Right Side: Editorial Kinetic Quote Reveal */}
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-8 lg:pl-4">
+            
+            {/* Top Tagline */}
+            <div className="flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-[#1575B3]" />
+              <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#1575B3]">
+                From The Chairman&apos;s Desk
+              </span>
+            </div>
 
-            return divisions.map((div, idx) => {
-              const IconComp = div.icon;
-              const green = !!div.green;
+            {/* Scroll Color Changing Quote Body */}
+            <div 
+              ref={textRef}
+              className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight leading-[1.35] text-slate-200 select-none"
+            >
+              <span className="scroll-word inline-block">“Empowering</span>{' '}
+              <span className="scroll-word inline-block">our</span>{' '}
+              <span className="scroll-word inline-block">farmers</span>{' '}
+              <span className="scroll-word inline-block">and</span>{' '}
+              <span className="scroll-word inline-block">industries</span>{' '}
+              <span className="scroll-word inline-block">demands</span>{' '}
+              <span className="scroll-word inline-block font-normal text-[#1575B3]">more</span>{' '}
+              <span className="scroll-word inline-block font-normal text-[#1575B3]">than</span>{' '}
+              <span className="scroll-word inline-block font-normal text-[#1575B3]">products</span>{' '}
+              <span className="scroll-word inline-block">—</span>{' '}
+              <span className="scroll-word inline-block">it</span>{' '}
+              <span className="scroll-word inline-block">requires</span>{' '}
+              <span className="scroll-word inline-block">relentless</span>{' '}
+              <span className="scroll-word inline-block">precision,</span>{' '}
+              <span className="scroll-word inline-block">sustainable</span>{' '}
+              <span className="scroll-word inline-block">engineering,</span>{' '}
+              <span className="scroll-word inline-block">and</span>{' '}
+              <span className="scroll-word inline-block">an</span>{' '}
+              <span className="scroll-word inline-block">unyielding</span>{' '}
+              <span className="scroll-word inline-block font-semibold">commitment</span>{' '}
+              <span className="scroll-word inline-block font-semibold">to</span>{' '}
+              <span className="scroll-word inline-block font-semibold text-[#1575B3]">India’s</span>{' '}
+              <span className="scroll-word inline-block font-semibold text-[#1575B3]">growth.”</span>
+            </div>
 
-              const accentColor = green ? 'text-[#1E8E3E]' : 'text-[#1575B3]';
-              const badgeBg = green ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-sky-50 text-sky-700 border-sky-200';
-              const topBorderColor = green ? 'border-t-emerald-600' : 'border-t-[#1575B3]';
-              const btnBg = green ? 'bg-[#1E8E3E] hover:bg-emerald-800' : 'bg-[#1575B3] hover:bg-sky-800';
+            {/* Author Attribution Block */}
+            <div className="pt-4 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+              <div className="hidden lg:block">
+                <h3 className="text-2xl font-bold tracking-tight text-gray-900">
+                  Kiran S. Kothari
+                </h3>
+                <p className="text-sm text-gray-500 font-medium">
+                  Founder Chairman, Kothari Group
+                </p>
+              </div>
 
-              const frontOverlay = green
-                ? 'from-emerald-950/90 via-emerald-900/60 to-emerald-950/80'
-                : 'from-sky-950/90 via-sky-900/60 to-sky-950/80';
+              {/* Square / Sharp CTA Button */}
+              <a
+                href="/about"
+                className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-none border border-gray-900 bg-transparent text-gray-900 text-sm font-semibold hover:bg-[#1575B3] hover:border-[#1575B3] hover:text-white transition-all duration-300 self-start sm:self-auto"
+              >
+                <span>Read Full Message</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </a>
+            </div>
 
-              return (
-                <Reveal key={idx} delay={idx * 150}>
-                  <div className="flip-card relative h-[540px] group/card">
+          </div>
 
-                    <div className="flip-card-inner">
-
-                      <div className="flip-card-front rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-lg transition-shadow duration-500 group-hover/card:shadow-2xl">
-
-                        <Link
-                          href={div.url}
-                          className="absolute inset-0 z-30 block cursor-pointer md:pointer-events-none md:cursor-default"
-                          aria-label={`Navigate to ${div.title}`}
-                        />
-
-                        <div
-                          className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover/card:scale-105"
-                          style={{ backgroundImage: `url(${cardImages[idx]})` }}
-                        />
-
-                        <div className={`absolute inset-0 bg-gradient-to-b ${frontOverlay}`} />
-
-                        <div className="relative z-10 flex flex-col justify-center items-center text-center h-full p-8 space-y-3 pointer-events-none">
-                          <span className={`inline-flex items-center px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider uppercase border backdrop-blur-md shadow-xs ${badgeBg}`}>
-                            Division {idx + 1}
-                          </span>
-                          <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-tight drop-shadow-md max-w-xs">
-                            {div.title}
-                          </h3>
-
-                          <span className="md:hidden text-[11px] font-medium text-white/80 pt-2 flex items-center gap-1">
-                            Tap to view solution
-                            <ArrowRight className="w-3 h-3" />
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className={`flip-card-back rounded-2xl overflow-hidden bg-white border border-slate-200 border-t-4 ${topBorderColor} shadow-xl group-hover/card:shadow-2xl flex flex-col justify-between p-7 z-20`}>
-
-                        <div className="flex items-center gap-3.5 pb-4 border-b border-slate-100 shrink-0">
-                          <div className={`w-11 h-11 rounded-xl border flex items-center justify-center shrink-0 ${badgeBg}`}>
-                            <IconComp className={`w-6 h-6 ${accentColor}`} />
-                          </div>
-                          <div>
-                            <h3 className="text-lg font-bold text-slate-900 tracking-tight">{div.title}</h3>
-                            <p className="text-xs text-slate-500 font-normal mt-0.5">Key Features & Highlights</p>
-                          </div>
-                        </div>
-
-                        <div className="flex-1 my-auto py-4 flex flex-col justify-center">
-                          <HighlightsPanel
-                            points={div.points}
-                            tone={{
-                              panel: 'bg-transparent space-y-3',
-                              highlights: 'text-slate-800 font-semibold text-xs uppercase tracking-wide',
-                              liBox: 'text-slate-700 bg-slate-50 border border-slate-200/80 p-3.5 rounded-xl hover:bg-slate-100/90 transition-colors text-xs font-medium shadow-xs'
-                            }}
-                          />
-                        </div>
-
-                        <div className="pt-4 border-t border-slate-100 shrink-0 relative z-30">
-                          <Link
-                            href={div.url}
-                            className={`group/btn flex items-center justify-center gap-2 w-full text-white ${btnBg} py-3.5 px-5 rounded-xl font-semibold text-xs tracking-wide transition-all shadow-md active:scale-[0.98] cursor-pointer`}
-                          >
-                            <span>{div.button}</span>
-                            <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                          </Link>
-                        </div>
-
-                      </div>
-
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            });
-          })()}
         </div>
       </div>
     </section>

@@ -15,7 +15,7 @@ export default function HomePage() {
       <div className="text-left">
         <Home2Header />
         <Hero />
-        {/* <Solutions /> */}
+        <Solutions />
         <WhyKothari />
         <Impact />
         <News />

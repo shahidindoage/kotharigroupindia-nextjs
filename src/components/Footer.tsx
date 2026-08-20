@@ -49,7 +49,7 @@ export const Footer: React.FC<FooterProps> = ({
               Kothari Technical Bulletin
             </span> */}
             <h3 className="text-xl sm:text-2xl font-medium text-[#1575B3]">
-              Subscribe To Water Management & Drip Irrigation Updates
+             Subscribe To Kothari Group Updates
             </h3>
             <p className="text-xs font-light text-[#5F6B7A]">
               Receive quarterly technical bulletins on Micro Irrigation Drip Spacing, CPVC Plumbing Standards, and Agri Pipe Specifications across India.

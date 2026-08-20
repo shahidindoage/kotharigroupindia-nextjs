@@ -54,14 +54,14 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
 
   const newsCard = green
     ? 'bg-[#F2FBF4] border-[#BFE4CC]'
-    : 'bg-[#F5FAFF] border-[#DCEAF5]';
-  const newsHeading = green ? 'text-[#0F6B2B]' : 'text-[#1575B3]';
+    : 'bg-[#F5F6F8] border-[#DCEAF5]';
+  const newsHeading = green ? 'text-[#0F6B2B]' : 'text-[#0f172b]';
   const newsInput = green
     ? 'border-[#BFE4CC] focus:ring-[#1E8E3E]/30'
     : 'border-[#DCEAF5] focus:ring-[#1575B3]/30';
   const newsBtn = green
     ? 'bg-[#1E8E3E] hover:bg-[#0F6B2B]'
-    : 'bg-[#1575B3] hover:bg-[#0E588A]';
+    : 'bg-[#0f172b] hover:bg-[#1575B3]';
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,7 +78,7 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
 
         {/* Newsletter */}
-        <div className={`rounded-lg border p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xs ${newsCard}`}>
+        <div className={` border p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xs ${newsCard}`}>
           <div className="space-y-1.5 max-w-xl">
             <h3 className={`text-xl sm:text-2xl font-medium ${newsHeading}`}>
               Subscribe To Kothari Group Updates
@@ -95,11 +95,11 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
               placeholder="Enter your email address..."
               value={newsletterEmail}
               onChange={(e) => setNewsletterEmail(e.target.value)}
-              className={`px-4 py-3 bg-[#FFFFFF] border rounded-lg text-xs font-light text-[#111111] placeholder-[#5F6B7A] focus:outline-none focus:ring-2 w-full lg:w-64 ${newsInput}`}
+              className={`px-4 py-3 bg-[#FFFFFF] border  text-xs font-light text-[#111111] placeholder-[#5F6B7A] focus:outline-none focus:ring-2 w-full lg:w-64 ${newsInput}`}
             />
             <button
               type="submit"
-              className={`text-white px-5 py-3 rounded-lg font-medium text-xs shadow-sm transition shrink-0 ${newsBtn}`}
+              className={`text-white px-5 py-3  font-medium text-xs shadow-sm transition shrink-0 ${newsBtn}`}
             >
               {subscribed ? 'Subscribed!' : 'Subscribe'}
             </button>
@@ -137,7 +137,7 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
                     target='_blank'
                     rel='noopener noreferrer'
                     aria-label={s.label}
-                    className={`w-9 h-9 rounded-lg bg-[#F5FAFF] border border-[#DCEAF5] text-[#1575B3] flex items-center justify-center transition-all hover:text-white hover:shadow-md ${s.hover}`}
+                    className={`w-9 h-9  bg-[#F5F6F8] border border-[#DCEAF5] text-[#1575B3] flex items-center justify-center transition-all hover:text-white hover:shadow-md ${s.hover}`}
                   >
                     <Icon className="w-4 h-4" />
                   </a>
@@ -173,7 +173,7 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
                       onClick={() => scrollToId(link.target)}
                       className="flex items-start gap-2 text-left hover:text-[#1575B3] transition group"
                     >
-                      <span className={`mt-0.5 w-6 h-6 rounded-lg flex items-center justify-center shrink-0 ${link.accent}`}>
+                      <span className={`mt-0.5 w-6 h-6  flex items-center justify-center shrink-0 ${link.accent}`}>
                         <Icon className="w-3.5 h-3.5" />
                       </span>
                       <span>

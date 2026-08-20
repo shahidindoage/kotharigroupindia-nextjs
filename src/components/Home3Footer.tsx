@@ -33,7 +33,7 @@ export const Home3Footer: React.FC = () => {
         <div className="bg-[#F2FBF4] rounded-lg border border-[#BFE4CC] p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xs">
           <div className="space-y-1.5 max-w-xl">
             <h3 className="text-xl sm:text-2xl font-medium text-[#0F6B2B]">
-              Subscribe To Water Management & Drip Irrigation Updates
+              Subscribe To Kothari Group Updates
             </h3>
             <p className="text-xs font-light text-[#5F6B7A]">
               Receive quarterly technical bulletins on Micro Irrigation Drip Spacing, CPVC Plumbing Standards, and Agri Pipe Specifications across India.

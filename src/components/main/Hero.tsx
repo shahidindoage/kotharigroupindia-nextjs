@@ -1,396 +1,194 @@
 'use client';
 
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from "next/link";
+import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import gsap from 'gsap';
 
-declare global {
-  interface Window {
-    __heroRevealed?: boolean;
-  }
-}
+const ArrowIcon = () => (
+  <svg 
+    width="16" 
+    height="16" 
+    viewBox="0 0 16 16" 
+    fill="none" 
+    className="ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+  >
+    <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
 
-gsap.registerPlugin(ScrollTrigger);
+const slides = [
+  {
+    bgImage: '/heronew.jpg',
+    cardImage: '/heronew.jpg',
+    headline: <>Engineered for<br />unmatched flow</>,
+    subtext: 'Delivering high-durability plumbing solutions designed for leak-free precision, flawless water delivery, and modern waste management.',
+    ctaText: 'Explore Plumbing Systems',
+    cardTitle: 'Plumbing & Fittings',
+    cardDescription: 'Zero-leak technology engineered for seamless water delivery and long-term security.',
+  },
+  {
+    bgImage: '/heronew2.jpg',
+    cardImage: '/heronew2.jpg',
+    headline: <>Powering India’s<br />green revolution</>,
+    subtext: 'Building heavy-duty agricultural piping systems that optimize every drop, protecting crops and maximizing harvest yields nationwide.',
+    ctaText: 'Discover Agri Solutions',
+    cardTitle: 'Agri Piping Networks',
+    cardDescription: 'Robust field-tested piping crafted for sustainable, high-volume farm irrigation.',
+  },
+  {
+    bgImage: '/heronew3.jpg',
+    cardImage: '/heronew3.jpg',
+    headline: <>Four decades of<br />smart irrigation</>,
+    subtext: 'Empowering millions of farmers with intelligent micro-irrigation systems designed for peak crop vitality and water conservation.',
+    ctaText: 'View Micro Irrigation',
+    cardTitle: 'Micro Irrigation Systems',
+    cardDescription: 'Intelligent drip and micro-flow technology maximizing yield with minimal water wastage.',
+  },
+];
 
-export function Hero() {
-  const containerRef = useRef(null);
-  const svgRef = useRef<SVGSVGElement>(null);
-  const textRef = useRef<SVGTextElement>(null);
-  const video1Ref = useRef<HTMLVideoElement>(null);
-  const video2Ref = useRef<HTMLVideoElement>(null);
-  const content1Ref = useRef<HTMLDivElement>(null);
-  const content2Ref = useRef<HTMLDivElement>(null);
-  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
+const stats = [
+  { value: '35+', label: 'Years of excellence' },
+  { value: '23+', label: 'States served pan-India' },
+  { value: '2L+', label: 'Farmers empowered *' },
+  { value: '800+', label: 'Channel partners *' },
+];
+
+export const Hero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const bgRef = useRef(null);
+  const headlineRef = useRef(null);
+  const subtextRef = useRef(null);
+  const cardImageRef = useRef(null);
+  const cardContentRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const bbox = textRef.current?.getBBox();
-      const originX = bbox ? bbox.x + bbox.width / 2 : 0;
-      const originY = bbox ? bbox.y + bbox.height / 2 : 0;
+    const timer = setInterval(() => {
+      const nextSlide = (currentSlide + 1) % slides.length;
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=180%",
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            const revealTime = tl.labels.revealed ?? 0;
-            const revealFraction = revealTime / tl.duration();
-            const isRevealed = self.progress >= revealFraction;
-
-            if (isRevealed && !window.__heroRevealed) {
-              window.__heroRevealed = true;
-              window.dispatchEvent(new Event("hero:revealed"));
-            } else if (!isRevealed && window.__heroRevealed) {
-              window.__heroRevealed = false;
-              window.dispatchEvent(new Event("hero:hidden"));
-            }
-          },
-        },
-      });
-
-      tl.to(scrollIndicatorRef.current, {
-        opacity: 0,
-        duration: 0.15,
-        ease: "power1.out",
-      })
+      gsap.timeline()
         .to(
-          textRef.current,
+          [bgRef.current, headlineRef.current, subtextRef.current, cardImageRef.current, cardContentRef.current], 
           {
-            scale: 65,
-            svgOrigin: `${originX} ${originY}`,
-            transformOrigin: "50% 50%",
-            ease: "power2.inOut",
-          },
-          "<"
+            opacity: 0.2,
+            duration: 0.4,
+            ease: 'power1.out',
+            onComplete: () => {
+              setCurrentSlide(nextSlide);
+            },
+          }
         )
-        .addLabel("revealed")
         .to(
-          [content1Ref.current, content2Ref.current],
+          [bgRef.current, headlineRef.current, subtextRef.current, cardImageRef.current, cardContentRef.current], 
           {
             opacity: 1,
-            y: 0,
-            duration: 0.35,
-            ease: "power2.out",
-            stagger: 0.08,
-          },
-          ">"
+            duration: 0.6,
+            ease: 'power1.in',
+          }
         );
-    }, containerRef);
+    }, 6000);
 
-    video1Ref.current?.play().catch(() => {});
-    video2Ref.current?.play().catch(() => {});
+    return () => clearInterval(timer);
+  }, [currentSlide]);
 
-    return () => ctx.revert();
-  }, []);
+  const active = slides[currentSlide];
 
   return (
-    <div ref={containerRef} className="kothari-hero">
-      <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@900&family=Montserrat&display=swap"
-        rel="stylesheet"
-      />
-
-      {/* Video 1 (left on desktop, top on mobile) */}
-      <div className="kothari-video-panel kothari-video-1">
-        <video ref={video1Ref} autoPlay loop muted playsInline className="kothari-video">
-          <source src="/hero9.mp4" type="video/mp4" />
-        </video>
+    <div className="relative w-full min-h-screen lg:h-screen bg-black text-white font-sans overflow-hidden">
+      {/* Background Image Container */}
+      <div className="absolute inset-0 z-0">
+        <div ref={bgRef} className="relative w-full h-full">
+          <Image
+            src={active.bgImage}
+            alt="Hero Background"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-top"
+          />
+        </div>
+        
+        {/* Base Dark Overlay */}
+        <div className="absolute inset-0 bg-black/60 pointer-events-none" />
+        
+        {/* Additional Top Gradient Overlay for Header & Text Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/70 pointer-events-none" />
       </div>
 
-      {/* Video 2 (right on desktop, bottom on mobile) */}
-      <div className="kothari-video-panel kothari-video-2">
-        <video ref={video2Ref} autoPlay loop muted playsInline className="kothari-video">
-          <source src="/hero10.mp4" type="video/mp4" />
-        </video>
-      </div>
+      {/* Primary Content Container - Max Width 7XL */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-screen lg:min-h-0 flex flex-col justify-between pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-10">
+        
+        {/* Middle Section (Main Headline, Subtext & CTA) */}
+        <div className="flex-grow flex flex-col lg:flex-row lg:justify-between lg:items-start pt-8 sm:pt-12 lg:pt-16 gap-8 lg:gap-0">
+          
+          {/* Main Headline (Left) */}
+          <div className="w-full lg:w-2/3">
+            <h1 ref={headlineRef} className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.02] lg:leading-[0.95] drop-shadow-sm">
+              {active.headline}
+            </h1>
+          </div>
 
-      {/* SVG Mask Overlay */}
-      <svg
-        ref={svgRef}
-        width="100%"
-        height="100%"
-        viewBox="0 0 1920 1080"
-        preserveAspectRatio="xMidYMid slice"
-        className="kothari-mask-svg"
-      >
-        <defs>
-          <mask id="kothari-mask" x="0" y="0" width="100%" height="100%">
-            <rect width="100%" height="100%" fill="white" />
-            <text
-              ref={textRef}
-              className="kothari-mask-text"
-              x="50%"
-              y="50%"
-              textAnchor="middle"
-              dominantBaseline="central"
-              fill="black"
-              style={{
-                fontWeight: "900",
-                fontFamily: "'Cinzel', 'Montserrat', sans-serif",
-                letterSpacing: "-0.02em",
-              }}
+          {/* Dynamic Subtext and Button (Right) */}
+          <div className="w-full lg:w-1/3 flex flex-col gap-5 sm:gap-6 lg:pl-12">
+            <p ref={subtextRef} className="text-white/90 text-base sm:text-lg leading-relaxed max-w-xl lg:max-w-none">
+              {active.subtext}
+            </p>
+            <a 
+              href="#" 
+              className="group inline-flex items-center self-start lg:self-end bg-white text-black px-6 sm:px-7 py-3.5 sm:py-4 font-semibold text-sm sm:text-base lg:text-lg hover:bg-white/90 transition-colors shrink-0"
             >
-              KOTHARI
-            </text>
-          </mask>
-        </defs>
-        <rect width="100%" height="100%" fill="#005EA8" mask="url(#kothari-mask)" />
-      </svg>
+              {active.ctaText}
+              <ArrowIcon />
+            </a>
+          </div>
+        </div>
 
-      {/* Content: Pipes Division */}
-      <div ref={content1Ref} className="kothari-content kothari-content-1">
-        <h2 className="kothari-heading">Pipes Division</h2>
-        <Link href={"/pipe-division"} style={{
-            padding: "0.9rem 2.2rem",
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: "0.95rem",
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "blue",
-            background: "#fff",
-            border: "2px solid #fff",
-            borderRadius: "10px",
-            cursor: "pointer",
-            transition: "background 0.3s ease, color 0.3s ease",
-          }}>
-          Explore
-        </Link>
+        {/* Bottom Section (Stats Left & Dynamic Callout Card Right) */}
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-end gap-6 sm:gap-8 lg:gap-12 w-full pt-8 lg:pt-0">
+          
+          {/* Left Side: Stats Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-10 border-t border-white/20 pt-6 w-full lg:w-auto">
+            {stats.map((stat, idx) => (
+              <div key={idx} className="flex flex-col">
+                <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white">
+                  {stat.value}
+                </span>
+                <span className="text-xs sm:text-sm text-white/80 leading-snug mt-1">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Right Side: Compact Callout Card */}
+          <div className="w-full lg:w-auto lg:max-w-[340px] shrink-0">
+            <div className="bg-black/40 backdrop-blur-md border border-white/20 p-3.5 sm:p-4 rounded-sm shadow-2xl">
+              <div className="grid grid-cols-[64px_1fr] sm:grid-cols-[72px_1fr] gap-3.5">
+                
+                {/* Dynamic Card Thumbnail */}
+                <div ref={cardImageRef} className="relative aspect-square">
+                  <Image
+                    src={active.cardImage}
+                    alt={active.cardTitle}
+                    fill
+                    className="object-cover rounded-xs"
+                  />
+                </div>
+                
+                {/* Dynamic Card Text */}
+                <div ref={cardContentRef} className="flex flex-col justify-center gap-1">
+                  <p className="font-semibold text-sm text-white leading-snug">{active.cardTitle}</p>
+                  <p className="text-xs text-white/80 leading-relaxed">
+                    {active.cardDescription}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
-
-      {/* Content: Agriculture Division */}
-      <div ref={content2Ref} className="kothari-content kothari-content-2">
-        <h2 className="kothari-heading">Agriculture Division</h2>
-        <Link href={"/agriculture-division"} style={{
-            padding: "0.9rem 2.2rem",
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: "0.95rem",
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "green",
-            background: "#fff",
-            border: "2px solid #fff",
-            borderRadius: "10px",
-            cursor: "pointer",
-            transition: "background 0.3s ease, color 0.3s ease",
-          }}>
-          Explore
-        </Link>
-      </div>
-
-      {/* Scroll down indicator */}
-      <div ref={scrollIndicatorRef} className="kothari-scroll-indicator">
-        <span>Scroll Down</span>
-        <div className="kothari-scroll-line" />
-      </div>
-
-      <style jsx>{`
-        .kothari-hero {
-          position: relative;
-          width: 100%;
-          height: 100vh;
-          background-color: #005ea8;
-          overflow: hidden;
-        }
-
-        /* Video panels — side by side on desktop */
-        .kothari-video-panel {
-          position: absolute;
-          top: 0;
-          width: 50%;
-          height: 100%;
-          overflow: hidden;
-          z-index: 1;
-        }
-        .kothari-video-1 {
-          left: 0;
-        }
-        .kothari-video-2 {
-          left: 50%;
-        }
-        .kothari-video {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .kothari-mask-svg {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: 2;
-          pointer-events: none;
-        }
-        .kothari-mask-text {
-          font-size: 16vw;
-        }
-
-        /* Content panels — side by side on desktop */
-        .kothari-content {
-          position: absolute;
-          top: 0;
-          width: 50%;
-          height: 100%;
-          z-index: 3;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 1.5rem;
-          opacity: 0;
-          transform: translateY(30px);
-          text-align: center;
-          padding: 0 2rem;
-        }
-        .kothari-content-1 {
-          left: 0;
-        }
-        .kothari-content-2 {
-          left: 50%;
-        }
-
-        .kothari-heading {
-          color: #fff;
-          font-family: "Montserrat", sans-serif;
-          font-weight: 700;
-          letter-spacing: 0.02em;
-          margin: 0;
-          text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-          font-size: 2.2rem;
-        }
-
-     
-
-        .kothari-scroll-indicator {
-          position: absolute;
-          bottom: 2rem;
-          left: 50%;
-          transform: translateX(-50%);
-          z-index: 3;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.5rem;
-          pointer-events: none;
-        }
-        .kothari-scroll-indicator span {
-          font-family: "Montserrat", sans-serif;
-          font-size: 0.85rem;
-          font-weight: 500;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          color: rgba(255, 255, 255, 0.85);
-        }
-        .kothari-scroll-line {
-          width: 1px;
-          height: 36px;
-          background: rgba(255, 255, 255, 0.6);
-          animation: scrollBounce 1.8s ease-in-out infinite;
-        }
-
-        @keyframes scrollBounce {
-          0%,
-          100% {
-            transform: translateY(0);
-            opacity: 1;
-          }
-          50% {
-            transform: translateY(10px);
-            opacity: 0.4;
-          }
-        }
-
-        /* Tablets */
-        @media (max-width: 900px) {
-          .kothari-mask-text {
-            font-size: 18vw;
-          }
-          .kothari-heading {
-            font-size: 1.6rem;
-          }
-          .kothari-btn {
-            padding: 0.75rem 1.6rem;
-            font-size: 0.8rem;
-          }
-          .kothari-content {
-            gap: 1rem;
-            padding: 0 1rem;
-          }
-        }
-
-        /* Mobile: stack videos and content vertically */
-        @media (max-width: 640px) {
-          .kothari-video-panel {
-            width: 100%;
-            height: 50%;
-          }
-          .kothari-video-1 {
-            top: 0;
-            left: 0;
-          }
-          .kothari-video-2 {
-            top: 50%;
-            left: 0;
-          }
-
-          .kothari-content {
-            width: 100%;
-            height: 50%;
-            padding: 0 1.25rem;
-            gap: 0.75rem;
-          }
-          .kothari-content-1 {
-            top: 0;
-            left: 0;
-          }
-          .kothari-content-2 {
-            top: 50%;
-            left: 0;
-          }
-
-          .kothari-mask-text {
-            font-size: 22vw;
-            letter-spacing: -0.03em;
-          }
-          .kothari-heading {
-            font-size: 1.3rem;
-            line-height: 1.3;
-          }
-          .kothari-btn {
-            padding: 0.6rem 1.4rem;
-            font-size: 0.75rem;
-          }
-          .kothari-scroll-indicator {
-            bottom: 1rem;
-          }
-          .kothari-scroll-indicator span {
-            font-size: 0.65rem;
-          }
-        }
-
-        /* Very small phones */
-        @media (max-width: 380px) {
-          .kothari-heading {
-            font-size: 1.1rem;
-          }
-          .kothari-btn {
-            padding: 0.5rem 1.1rem;
-            font-size: 0.65rem;
-          }
-        }
-      `}</style>
     </div>
   );
-}
+};
