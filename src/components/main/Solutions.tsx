@@ -49,6 +49,7 @@ export const Solutions = () => {
   return (
     <section 
       ref={sectionRef} 
+      id='why-kothari'
       /* Clean white background + min-h-screen for full viewport height */
       className="relative w-full min-h-screen bg-white flex items-center justify-center overflow-hidden"
     >

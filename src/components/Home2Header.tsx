@@ -7,7 +7,7 @@ import Link from 'next/link';
 const sections = [
   { id: 'home', label: 'Home' },
   { id: 'why-kothari', label: 'About Kothari Group' },
-  { id: 'impact', label: 'Sustainability' }
+  { id: 'impact', label: 'Sustainability' },
 ];
 
 const divisions = [
@@ -238,6 +238,8 @@ export const Home2Header: React.FC = () => {
                   </div>
                 )}
               </div>
+
+              
             </nav>
 
             {/* Get in Touch Button (Triggers Popup Modal) */}
