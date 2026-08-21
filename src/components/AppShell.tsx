@@ -82,7 +82,7 @@ export default function AppShell({ children }: AppShellProps) {
       <div className="min-h-screen bg-[#F5FAFF] text-[#111111] font-['Outfit',sans-serif] flex flex-col antialiased">
 
         {loading && (
-          <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#003F82]">
+          <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#003F82]">
             <div className="flex flex-col items-center gap-6" style={{ animation: 'logoReveal 1s ease-out forwards' }}>
               <img
                 src="https://kotharigroupindia.com/img/kothari-logo.png"
