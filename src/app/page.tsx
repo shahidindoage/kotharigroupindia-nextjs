@@ -8,6 +8,7 @@ import { Solutions } from '@/components/main/Solutions';
 import { WhyKothari } from '@/components/main/WhyKothari';
 import { Impact } from '@/components/main/Impact';
 import { News } from '@/components/main/News';
+import { WhyKothariGroup } from '@/components/main/WhyKothariGroup';
 
 export default function HomePage() {
   return (
@@ -15,9 +16,10 @@ export default function HomePage() {
       <div className="text-left">
         <Home2Header />
         <Hero />
-        <Solutions />
         <WhyKothari />
+        <WhyKothariGroup/>
         <Impact />
+        <Solutions />
         <News />
         <Home2Footer />
       </div>

@@ -28,8 +28,9 @@ const aboutLinks = [
 ];
 
 const divisionLinks = [
-  { label: 'Agriculture Division', sub: 'Micro Irrigation', target: 'solutions', icon: Sprout, accent: 'text-[#1E8E3E] bg-[#EAF8EF]',url:'/agriculture-division' },
-  { label: 'Pipe Division', sub: 'Agri Pipes, Plumbing Pipes & Fittings', target: 'solutions', icon: Factory, accent: 'text-[#1575B3] bg-[#F5FAFF]' ,url:'/pipe-division'}
+  
+  { label: 'Pipe Division', sub: 'Agri Pipes, Plumbing Pipes & Fittings', target: 'solutions', icon: Factory, accent: 'text-[#1575B3] bg-[#F5FAFF]' ,url:'/pipe-division'},
+{ label: 'Irrigation Division', sub: 'Micro Irrigation', target: 'solutions', icon: Sprout, accent: 'text-[#1E8E3E] bg-[#EAF8EF]',url:'/agriculture-division' },
 ];
 
 const supportLinks = [

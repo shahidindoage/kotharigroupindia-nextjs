@@ -111,45 +111,40 @@ export const Hero = () => {
         {/* Base Dark Overlay */}
         <div className="absolute inset-0 bg-black/60 pointer-events-none" />
         
-        {/* Bottom-heavy Gradient Overlay for optimal text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30 pointer-events-none" />
+        {/* Additional Top Gradient Overlay for Header & Text Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/70 pointer-events-none" />
       </div>
 
       {/* Primary Content Container - Max Width 7XL */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-screen lg:min-h-0 flex flex-col justify-end pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-screen lg:min-h-0 flex flex-col justify-between pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-10">
         
-        {/* Headline Section (Positioned near bottom) */}
-        <div className="mt-auto flex flex-col lg:flex-row lg:justify-between lg:items-end mb-6 sm:mb-8 lg:mb-10 gap-6 lg:gap-0">
+        {/* Middle Section (Main Headline, Subtext & CTA) */}
+        <div className="flex-grow flex flex-col lg:flex-row lg:justify-between lg:items-start pt-8 sm:pt-12 lg:pt-16 gap-8 lg:gap-0">
           
           {/* Main Headline (Left) */}
-          <div className="w-full lg:w-3/4">
-            <h1 
-              ref={headlineRef} 
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.02] lg:leading-[0.95] drop-shadow-md"
-            >
+          <div className="w-full lg:w-2/3">
+            <h1 ref={headlineRef} className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.02] lg:leading-[0.95] drop-shadow-sm">
               {active.headline}
             </h1>
           </div>
 
-          {/* Subtext and Button (Optional / Right Side) */}
-          {/* 
-          <div className="w-full lg:w-1/3 flex flex-col gap-5 sm:gap-6 lg:pl-12">
+          {/* Dynamic Subtext and Button (Right) */}
+          {/* <div className="w-full lg:w-1/3 flex flex-col gap-5 sm:gap-6 lg:pl-12">
             <p ref={subtextRef} className="text-white/90 text-base sm:text-lg leading-relaxed max-w-xl lg:max-w-none">
               {active.subtext}
             </p>
             <a 
               href="#" 
-              className="group inline-flex items-center self-start bg-white text-black px-6 sm:px-7 py-3.5 sm:py-4 font-semibold text-sm sm:text-base lg:text-lg hover:bg-white/90 transition-colors shrink-0"
+              className="group inline-flex items-center self-start lg:self-end bg-white text-black px-6 sm:px-7 py-3.5 sm:py-4 font-semibold text-sm sm:text-base lg:text-lg hover:bg-white/90 transition-colors shrink-0"
             >
               {active.ctaText}
               <ArrowIcon />
             </a>
-          </div> 
-          */}
+          </div> */}
         </div>
 
         {/* Bottom Section (Stats Left & Dynamic Callout Card Right) */}
-        <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-end gap-6 sm:gap-8 lg:gap-12 w-full">
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-end gap-6 sm:gap-8 lg:gap-12 w-full pt-8 lg:pt-0">
           
           {/* Left Side: Stats Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-10 border-t border-white/20 pt-6 w-full lg:w-auto">
