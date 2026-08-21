@@ -168,8 +168,8 @@ export const WhyKothari = () => {
           {/* Light Minimalist Tab Switcher */}
           <div className="flex items-center gap-8 border-b border-slate-300/80 md:border-none pb-2 md:pb-0">
             {[
-              { id: 'pipes', label: 'PIPES & CONDUITS' },
-              { id: 'agriculture', label: 'AGRICULTURAL SYSTEMS' },
+              { id: 'pipes', label: 'Pipe' },
+              { id: 'agriculture', label: 'Irrigation' },
             ].map((tab) => (
               <button
                 key={tab.id}
