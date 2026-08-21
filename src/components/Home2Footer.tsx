@@ -78,7 +78,7 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
 
         {/* Newsletter */}
-        <div className={` border p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xs ${newsCard}`}>
+        {/* <div className={` border p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xs ${newsCard}`}>
           <div className="space-y-1.5 max-w-xl">
             <h3 className={`text-xl sm:text-2xl font-medium ${newsHeading}`}>
               Subscribe To Kothari Group Updates
@@ -104,7 +104,7 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
               {subscribed ? 'Subscribed!' : 'Subscribe'}
             </button>
           </form>
-        </div>
+        </div> */}
 
         {/* Main Sitemap Columns */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8">

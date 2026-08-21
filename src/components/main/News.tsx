@@ -69,7 +69,7 @@ export const News: React.FC = () => {
                         const target = e.target as HTMLElement;
                         target.style.opacity = '0.3';
                       }}
-                      className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                      className="w-full h-full object-cover  opacity-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
                     />
 
                     {/* Gradient Overlay */}
@@ -127,9 +127,9 @@ export const News: React.FC = () => {
         <Reveal className="pt-2 flex justify-center">
           <a
             href="#journal"
-            className="group inline-flex items-center gap-3 bg-slate-900 hover:bg-blue-700 text-white px-8 py-3.5 text-xs font-mono tracking-widest uppercase font-semibold transition-all duration-300 shadow-sm"
+            className="group inline-flex items-center gap-3 bg-[#1575B3] hover:bg-[#0E588A] text-white px-8 py-3.5 text-xs font-mono tracking-widest uppercase font-semibold transition-all duration-300 shadow-sm"
           >
-            <span>ACCESS FULL ARCHIVE</span>
+            <span>VIEW MORE</span>
             <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
           </a>
         </Reveal>
