@@ -13,8 +13,8 @@ import {
 } from 'lucide-react';
 
 interface FooterProps {
-  onOpenQuoteModal: () => void;
-  onSelectSection: (id: string) => void;
+  onOpenQuoteModal?: () => void;
+  onSelectSection?: (id: string) => void;
   onOpenContactModal?: () => void;
   onOpenCareerModal?: () => void;
 }
@@ -42,37 +42,7 @@ export const Footer: React.FC<FooterProps> = ({
     <footer className="bg-[#FFFFFF] border-t border-[#DCEAF5] pt-16 pb-8 text-left">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
         
-        {/* Top Newsletter & Technical Bulletin CTA Box */}
-        <div className="bg-[#F5FAFF] rounded-lg border border-[#DCEAF5] p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xs">
-          <div className="space-y-1.5 max-w-xl">
-            {/* <span className="bg-[#1575B3] text-white text-[10px] font-medium uppercase tracking-wider px-2.5 py-0.5 rounded-lg">
-              Kothari Technical Bulletin
-            </span> */}
-            <h3 className="text-xl sm:text-2xl font-medium text-[#1575B3]">
-             Subscribe To Kothari Group Updates
-            </h3>
-            <p className="text-xs font-light text-[#5F6B7A]">
-              Receive quarterly technical bulletins on Micro Irrigation Drip Spacing, CPVC Plumbing Standards, and Agri Pipe Specifications across India.
-            </p>
-          </div>
-
-          <form onSubmit={handleNewsletterSubmit} className="flex w-full lg:w-auto items-center gap-2">
-            <input
-              type="email"
-              required
-              placeholder="Enter your email address..."
-              value={newsletterEmail}
-              onChange={(e) => setNewsletterEmail(e.target.value)}
-              className="px-4 py-3 bg-[#FFFFFF] border border-[#DCEAF5] rounded-lg text-xs font-light text-[#111111] placeholder-[#5F6B7A] focus:outline-none focus:ring-2 focus:ring-[#1575B3]/30 w-full lg:w-64"
-            />
-            <button
-              type="submit"
-              className="bg-[#1575B3] hover:bg-[#0E588A] text-white px-5 py-3 rounded-lg font-medium text-xs shadow-sm transition shrink-0"
-            >
-              {subscribed ? 'Subscribed!' : 'Subscribe'}
-            </button>
-          </form>
-        </div>
+      
 
         {/* Main Footer Sitemap Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
