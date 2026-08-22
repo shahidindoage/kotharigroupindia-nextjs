@@ -91,27 +91,27 @@ export const Footer: React.FC<FooterProps> = ({
             </h4>
             <ul className="space-y-2 font-light text-[#5F6B7A]">
               <li>
-                <button onClick={() => onSelectSection('categories')} className="hover:text-[#1575B3] transition">
+                <button onClick={() => onSelectSection?.('categories')} className="hover:text-[#1575B3] transition">
                   Plumbing Pipes & fittings
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectSection('categories')} className="hover:text-[#1575B3] transition">
+                <button onClick={() => onSelectSection?.('categories')} className="hover:text-[#1575B3] transition">
                   Agri Pipes & fittings
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectSection('categories')} className="hover:text-[#1575B3] transition">
+                <button onClick={() => onSelectSection?.('categories')} className="hover:text-[#1575B3] transition">
                   Micro Irrigation System
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectSection('categories')} className="hover:text-[#1575B3] transition">
+                <button onClick={() => onSelectSection?.('categories')} className="hover:text-[#1575B3] transition">
                   CPVC Hot & Cold Water
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectSection('categories')} className="hover:text-[#1575B3] transition">
+                <button onClick={() => onSelectSection?.('categories')} className="hover:text-[#1575B3] transition">
                   Submersible Column Pipes
                 </button>
               </li>
@@ -125,17 +125,17 @@ export const Footer: React.FC<FooterProps> = ({
             </h4>
             <ul className="space-y-2 font-light text-[#5F6B7A]">
               <li>
-                <button onClick={() => onSelectSection('hero')} className="hover:text-[#1575B3] transition">
+                <button onClick={() => onSelectSection?.('hero')} className="hover:text-[#1575B3] transition">
                   Home
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectSection('why-kothari')} className="hover:text-[#1575B3] transition">
+                <button onClick={() => onSelectSection?.('why-kothari')} className="hover:text-[#1575B3] transition">
                   About Kothari Group
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectSection('knowledge-centre')} className="hover:text-[#1575B3] transition">
+                <button onClick={() => onSelectSection?.('knowledge-centre')} className="hover:text-[#1575B3] transition">
                   Resources & Knowledge Centre
                 </button>
               </li>
@@ -190,7 +190,7 @@ export const Footer: React.FC<FooterProps> = ({
           </p>
 
           <div className="flex items-center gap-6">
-            <button onClick={() => onSelectSection('why-kothari')} className="hover:text-[#1575B3] transition">
+            <button onClick={() => onSelectSection?.('why-kothari')} className="hover:text-[#1575B3] transition">
               Quality Assurance Policy
             </button>
             <button onClick={onOpenQuoteModal} className="text-[#1575B3] font-medium hover:underline">
