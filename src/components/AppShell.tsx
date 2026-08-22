@@ -109,7 +109,7 @@ export default function AppShell({ children }: AppShellProps) {
           </div>
         )}
 
-        {!isStandalone && (
+        {/* {!isStandalone && (
           <Header
             onSelectTab={handleScrollToSection}
             activeSection={activeSection}
@@ -117,18 +117,18 @@ export default function AppShell({ children }: AppShellProps) {
             onOpenContactModal={() => setContactModalOpen(true)}
             onOpenCareerModal={() => setCareerModalOpen(true)}
           />
-        )}
+        )} */}
 
         <main className="flex-1">{children}</main>
 
-        {!isStandalone && (
+        {/* {!isStandalone && (
           <Footer
             onOpenQuoteModal={() => setQuoteModalOpen(true)}
             onSelectSection={handleScrollToSection}
             onOpenContactModal={() => setContactModalOpen(true)}
             onOpenCareerModal={() => setCareerModalOpen(true)}
           />
-        )}
+        )} */}
 
         <QuoteBuilderModal
           isOpen={quoteModalOpen}

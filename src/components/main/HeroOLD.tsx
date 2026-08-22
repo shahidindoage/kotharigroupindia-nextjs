@@ -53,7 +53,7 @@ const stats = [
   { value: '800+', label: 'Channel partners *' },
 ];
 
-export const Hero = () => {
+export const HeroOLD = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   
   const bgRef = useRef(null);
@@ -129,7 +129,7 @@ export const Hero = () => {
           </div>
 
           {/* Dynamic Subtext and Button (Right) */}
-          {/* <div className="w-full lg:w-1/3 flex flex-col gap-5 sm:gap-6 lg:pl-12">
+          <div className="w-full lg:w-1/3 flex flex-col gap-5 sm:gap-6 lg:pl-12">
             <p ref={subtextRef} className="text-white/90 text-base sm:text-lg leading-relaxed max-w-xl lg:max-w-none">
               {active.subtext}
             </p>
@@ -140,7 +140,7 @@ export const Hero = () => {
               {active.ctaText}
               <ArrowIcon />
             </a>
-          </div> */}
+          </div>
         </div>
 
         {/* Bottom Section (Stats Left & Dynamic Callout Card Right) */}
