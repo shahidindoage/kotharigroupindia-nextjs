@@ -109,21 +109,21 @@ export const Hero = () => {
         </div>
         
         {/* Base Dark Overlay */}
-        <div className="absolute inset-0 bg-black/25 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/60 pointer-events-none" />
         
-        {/* Top-Heavy Gradient Overlay for increased top contrast and navbar contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/30 to-black/50 pointer-events-none" />
+        {/* Dark Overlay for Center Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/80 pointer-events-none" />
       </div>
 
       {/* Primary Content Container - Centered without top padding */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-0 flex flex-col justify-center gap-8 sm:gap-10 lg:gap-12">
         
-        {/* Headline Section */}
+        {/* Headline Section (Top padding stripped entirely) */}
         <div className="w-full flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 lg:gap-0 pt-0 mt-0">
           <div className="w-full lg:w-3/4">
             <h1 
               ref={headlineRef} 
-              className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0"
+              className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-lg m-0 p-0"
             >
               {active.headline}
             </h1>
@@ -131,16 +131,16 @@ export const Hero = () => {
         </div>
 
         {/* Stats Grid & Dynamic Callout Card */}
-        <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-center gap-6 sm:gap-8 lg:gap-12 w-full">
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-center gap-6 sm:gap-8 lg:gap-12 w-full pt-6 border-t border-white/20">
           
-          {/* Left Side: Stats Grid (Border strictly isolated here) */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-10 w-full lg:w-auto border-t border-white/20 pt-6">
+          {/* Left Side: Stats Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-10 w-full lg:w-auto">
             {stats.map((stat, idx) => (
               <div key={idx} className="flex flex-col">
-                <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white drop-shadow-md">
+                <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white">
                   {stat.value}
                 </span>
-                <span className="text-xs sm:text-sm text-white/90 leading-snug mt-1 drop-shadow-sm">
+                <span className="text-xs sm:text-sm text-white/80 leading-snug mt-1">
                   {stat.label}
                 </span>
               </div>
