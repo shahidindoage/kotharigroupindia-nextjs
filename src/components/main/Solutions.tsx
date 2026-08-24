@@ -1,62 +1,19 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 export const Solutions = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const words = textRef.current?.querySelectorAll('.scroll-word');
-
-    if (words && words.length > 0 && sectionRef.current) {
-      const ctx = gsap.context(() => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top top',
-            end: '+=120%', // Locks section until 100% of text reveals, then moves next
-            scrub: 0.5,
-            pin: true,
-            anticipatePin: 1,
-            refreshPriority: 1,
-          },
-        });
-
-        tl.fromTo(
-          words,
-          { color: '#E2E8F0', opacity: 0.35 },
-          {
-            color: '#0F172A',
-            opacity: 1,
-            stagger: 0.08,
-            ease: 'none',
-          }
-        );
-      }, sectionRef);
-
-      return () => ctx.revert();
-    }
-  }, []);
-
   return (
     <section 
-      ref={sectionRef} 
-      id='why-kothari'
+      id="why-kothari"
       /* Clean white background + min-h-screen for full viewport height */
       className="relative w-full min-h-screen bg-white flex items-center justify-center overflow-hidden"
     >
       {/* Subtle Blue Accent Glow */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#1575B3]/5 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Spacing Added Here: py-16 lg:py-24 adds top & bottom padding */}
+      {/* Spacing: py-16 lg:py-24 adds top & bottom padding */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
           
@@ -82,7 +39,7 @@ export const Solutions = () => {
             </div>
           </div>
 
-          {/* Right Side: Editorial Kinetic Quote Reveal */}
+          {/* Right Side: Editorial Quote */}
           <div className="lg:col-span-7 flex flex-col justify-center space-y-8 lg:pl-4">
             
             {/* Top Tagline */}
@@ -93,34 +50,33 @@ export const Solutions = () => {
               </span>
             </div>
 
-            {/* Scroll Color Changing Quote Body */}
+            {/* Static All-Dark Quote Body (No Blue Text) */}
             <div 
-              ref={textRef}
-              className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight leading-[1.35] text-slate-200 select-none"
+              className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight leading-[1.35] text-[#0F172A] select-none"
             >
-              <span className="scroll-word inline-block">“Empowering</span>{' '}
-              <span className="scroll-word inline-block">our</span>{' '}
-              <span className="scroll-word inline-block">farmers</span>{' '}
-              <span className="scroll-word inline-block">and</span>{' '}
-              <span className="scroll-word inline-block">industries</span>{' '}
-              <span className="scroll-word inline-block">demands</span>{' '}
-              <span className="scroll-word inline-block font-normal text-[#1575B3]">more</span>{' '}
-              <span className="scroll-word inline-block font-normal text-[#1575B3]">than</span>{' '}
-              <span className="scroll-word inline-block font-normal text-[#1575B3]">products</span>{' '}
-              <span className="scroll-word inline-block">—</span>{' '}
-              <span className="scroll-word inline-block">it</span>{' '}
-              <span className="scroll-word inline-block">requires</span>{' '}
-              <span className="scroll-word inline-block">relentless</span>{' '}
-              <span className="scroll-word inline-block">precision,</span>{' '}
-              <span className="scroll-word inline-block">sustainable</span>{' '}
-              <span className="scroll-word inline-block">engineering,</span>{' '}
-              <span className="scroll-word inline-block">and</span>{' '}
-              <span className="scroll-word inline-block">an</span>{' '}
-              <span className="scroll-word inline-block">unyielding</span>{' '}
-              <span className="scroll-word inline-block font-semibold">commitment</span>{' '}
-              <span className="scroll-word inline-block font-semibold">to</span>{' '}
-              <span className="scroll-word inline-block font-semibold text-[#1575B3]">India’s</span>{' '}
-              <span className="scroll-word inline-block font-semibold text-[#1575B3]">growth.”</span>
+              <span className="inline-block">“Empowering</span>{' '}
+              <span className="inline-block">our</span>{' '}
+              <span className="inline-block">farmers</span>{' '}
+              <span className="inline-block">and</span>{' '}
+              <span className="inline-block">industries</span>{' '}
+              <span className="inline-block">demands</span>{' '}
+              <span className="inline-block font-normal">more</span>{' '}
+              <span className="inline-block font-normal">than</span>{' '}
+              <span className="inline-block font-normal">products</span>{' '}
+              <span className="inline-block">—</span>{' '}
+              <span className="inline-block">it</span>{' '}
+              <span className="inline-block">requires</span>{' '}
+              <span className="inline-block">relentless</span>{' '}
+              <span className="inline-block">precision,</span>{' '}
+              <span className="inline-block">sustainable</span>{' '}
+              <span className="inline-block">engineering,</span>{' '}
+              <span className="inline-block">and</span>{' '}
+              <span className="inline-block">an</span>{' '}
+              <span className="inline-block">unyielding</span>{' '}
+              <span className="inline-block font-semibold">commitment</span>{' '}
+              <span className="inline-block font-semibold">to</span>{' '}
+              <span className="inline-block font-semibold">India’s</span>{' '}
+              <span className="inline-block font-semibold">growth.”</span>
             </div>
 
             {/* Author Attribution Block */}

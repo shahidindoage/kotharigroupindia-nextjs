@@ -161,7 +161,14 @@ export const Home2Header: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center gap-4">
           {/* Brand Logo */}
-          <Link href='/' onClick={() => handleNav('home')} className="flex items-center shrink-0" aria-label="Kothari Group Home">
+          <Link
+            href="/"
+            onClick={() => handleNav('home')}
+            className={`flex items-center shrink-0 transition-all duration-300 px-3 py-1 ${
+              isScrolled || mobileOpen ? 'bg-transparent' : 'bg-white'
+            }`}
+            aria-label="Kothari Group Home"
+          >
             <img
               src="https://kotharigroupindia.com/img/Kothariblue_logo.png"
               alt="Kothari Group Logo"

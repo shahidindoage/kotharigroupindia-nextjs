@@ -94,7 +94,7 @@ export const Hero = () => {
   const active = slides[currentSlide];
 
   return (
-    <div className="relative w-full min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex items-center justify-center">
+    <div className="relative w-full min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <div ref={bgRef} className="relative w-full h-full">
@@ -115,25 +115,28 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/30 to-black/50 pointer-events-none" />
       </div>
 
-      {/* Primary Content Container - Centered without top padding */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-0 flex flex-col justify-center gap-8 sm:gap-10 lg:gap-12">
+      {/* Main Container - Full Height Layout */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full min-h-[100dvh] pt-20 pb-8 sm:pb-12 flex flex-col justify-between">
         
-        {/* Headline Section */}
-        <div className="w-full flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 lg:gap-0 pt-0 mt-0">
+        {/* Top spacer to ensure vertical balance */}
+        <div aria-hidden="true" className="w-full shrink-0 h-4" />
+
+        {/* Headline Section - Centered Vertically */}
+        <div className="w-full flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 lg:gap-0 my-auto">
           <div className="w-full lg:w-3/4">
             <h1 
               ref={headlineRef} 
-              className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0"
             >
               {active.headline}
             </h1>
           </div>
         </div>
 
-        {/* Stats Grid & Dynamic Callout Card */}
-        <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-center gap-6 sm:gap-8 lg:gap-12 w-full">
+        {/* Stats Grid & Dynamic Callout Card - Anchored at Bottom */}
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-end gap-6 sm:gap-8 lg:gap-12 w-full mt-auto">
           
-          {/* Left Side: Stats Grid (Border strictly isolated here) */}
+          {/* Left Side: Stats Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-10 w-full lg:w-auto border-t border-white/20 pt-6">
             {stats.map((stat, idx) => (
               <div key={idx} className="flex flex-col">

@@ -354,14 +354,16 @@ const handleSegmentClick = (segIdx: number) => {
           <Link
             href="/"
             onClick={() => scrollToId('home')}
-            className="flex items-center shrink-0"
+            className={`flex items-center shrink-0 transition-all duration-300 px-3 py-1 ${
+              isScrolled || mobileOpen ? 'bg-transparent' : 'bg-white'
+            }`}
             aria-label="Kothari Group Home"
           >
             <img
               src="https://kotharigroupindia.com/img/Kothariblue_logo.png"
               alt="Kothari Group Logo"
               referrerPolicy="no-referrer"
-              className="h-12 sm:h-14 object-contain max-w-[150px] sm:max-w-[180px] transition-all duration-300"
+              className="h-14 sm:h-16 object-contain max-w-[150px] sm:max-w-[180px] transition-all duration-300"
               onError={(e) => {
                 (e.target as HTMLElement).style.display = 'none';
               }}
