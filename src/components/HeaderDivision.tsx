@@ -437,7 +437,7 @@ const handleSegmentClick = (segIdx: number) => {
             className="grid grid-cols-2 gap-6"
             style={{ animation: 'fadeSlideIn 0.25s ease-out' }}
           >
-            {productsMegaMenu.segments[activeProductSegment].categories[activeProductCategory].products.map((product, idx) => (
+            {productsMegaMenu.segments[activeProductSegment].categories[activeProductCategory].products.map((product: any, idx: number) => (
               <Link
                 key={idx}
                 href={product.url}
@@ -475,7 +475,7 @@ const handleSegmentClick = (segIdx: number) => {
 
     {/* Accordion Segments — 2 in row, click to open */}
  <div className="grid grid-cols-2 gap-3">
-  {productsMegaMenu.segments.map((segment, segIdx) => {
+  {productsMegaMenu.segments.map((segment: any, segIdx: number) => {
     const isOpen = openSegment === segIdx;
     return (
       <div
@@ -513,7 +513,7 @@ const handleSegmentClick = (segIdx: number) => {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="py-1.5 px-1.5">
-            {segment.categories.map((cat, catIdx) => {
+            {segment.categories.map((cat: any, catIdx: number) => {
               const isCatActive = activeProductSegment === segIdx && activeProductCategory === catIdx;
               return (
                 <Link
@@ -862,7 +862,7 @@ const handleSegmentClick = (segIdx: number) => {
   </button>
   {activeDropdown === 'products' && (
     <div className="pl-4 space-y-3 pt-1 pb-2">
-      {productsMegaMenu.segments.map((segment, segIdx) => (
+      {productsMegaMenu.segments.map((segment: any, segIdx: number) => (
         <div key={segIdx}>
           <button
             onClick={() => {
@@ -877,7 +877,7 @@ const handleSegmentClick = (segIdx: number) => {
           </button>
           {activeProductSegment === segIdx && (
             <div className="pl-4 space-y-1.5">
-              {segment.categories.map((cat, catIdx) => (
+              {segment.categories.map((cat: any, catIdx: number) => (
                 <div key={catIdx}>
                   <button
                     onClick={() => setActiveProductCategory(catIdx)}
@@ -889,7 +889,7 @@ const handleSegmentClick = (segIdx: number) => {
                   </button>
                   {activeProductCategory === catIdx && (
                     <div className="pl-4 space-y-0.5">
-                      {cat.products.map((product, pIdx) => (
+                      {cat.products.map((product: any, pIdx: number) => (
                         <Link
                           key={pIdx}
                           href={product.url}
