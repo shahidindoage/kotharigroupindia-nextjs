@@ -81,7 +81,7 @@ function PipeDivisionContent() {
 
 const productsMegaMenu = {
   headline: 'Our Products',
-  description: 'Comprehensive range of piping, irrigation, and agricultural solutions engineered for performance.',
+  description: 'CPVC pipes, fittings and solvent cement for hot and cold water systems.',
   segments: [
     {
       name: 'Plumbing Pipes & Fittings',
@@ -91,7 +91,7 @@ const productsMegaMenu = {
           name: 'CPVC',
           products: [
             { title: 'CPVC Pipes & Fittings – Hot & Cold Water Piping System', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/CPVC-PIPES-FITTINGS.webp' },
-            { title: 'CPVC Solvent Cement', url: '/products/plumbing/cpvc/solvent-cement', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/06/cpvc.webp' },
+            { title: 'CPVC Solvent Cement', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/06/cpvc.webp' },
           
           ],
         },
@@ -108,7 +108,7 @@ const productsMegaMenu = {
     },
     {
       name: 'Sewerage Drainage Pipes and Fittings',
-      desc: 'Durable pipes for irrigation, water transport, and borewell applications in agriculture.',
+      desc: 'Durable SWR, underground and sewerage drainage pipes and fittings for efficient waste and rainwater management',
       categories: [
         {
           name: 'Soil, Waste & Rainwater Pipes and Fittings',
@@ -131,7 +131,7 @@ const productsMegaMenu = {
     },
     {
       name: 'Cable Protection',
-      desc: 'Precision drip, sprinkler, and micro-irrigation systems for maximum water efficiency.',
+      desc: 'Durable DWC and conduit pipes for reliable cable protection systems.',
       categories: [
         {
           name: 'Cable Protection',
@@ -143,29 +143,89 @@ const productsMegaMenu = {
        
       ],
     },
-      {
+     {
       name: 'Agriculture Pipes & Fittings',
-      desc: 'Precision drip, sprinkler, and micro-irrigation systems for maximum water efficiency.',
+      desc: 'Durable PVC, HDPE and MDPE pipes, fittings and valves for agriculture.',
       categories: [
         {
           name: 'UPVC Pressure Pipes & Fittings',
           products: [
-            { title: 'Self Fit PVC Pipe', url: '/products/irrigation/drip/laterals', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PVC-Selffit-pipe.webp' },
-            { title: 'Ring Fit PVC Pipe', url: '/products/irrigation/drip/drippers', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PVC-Ringfit-pipe.webp' },
+            { title: 'Self Fit PVC Pipe', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PVC-Selffit-pipe.webp' },
+            { title: 'Ring Fit PVC Pipe', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PVC-Ringfit-pipe.webp' },
+            { title: 'Agri PVC Moulded Fittings', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/molded-fittings-Product-Page.webp' },
+            { title: 'Fabricated Fittings & Repair Coupler (Rubber Ring)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/Fabricated-Fittings-Repair-Coupler.webp' },
               ],
         },
         {
           name: 'PE Pipes & Fittings',
           products: [
-            { title: 'HDPE Piping', url: '/products/irrigation/drip/laterals', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/HDPE-PIPE-111.webp' },
-            { title: 'HDPE Coils', url: '/products/irrigation/drip/drippers', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/HDPE-Coils.webp' },
+            { title: 'HDPE Piping', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/HDPE-PIPE-111.webp' },
+            { title: 'HDPE Coils', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/HDPE-Coils.webp' },
+            { title: 'HDPE Fittings', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/HDPE-Pipe-Fittings-1.webp' },
+            { title: 'MDPE Pipes', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/08/MDPE-PIPE.webp' },
               ],
         },
         {
           name: 'Valves',
           products: [
-            { title: 'Single & Double Union PVC Ball Valve', url: '/products/irrigation/drip/laterals', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Single-Double-Union-PVC.webp' },
-            { title: 'Double Union PP Ball Valve', url: '/products/irrigation/drip/drippers', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/PP-Union-Ball-Valve.webp' },
+            { title: 'Single & Double Union PVC Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Single-Double-Union-PVC.webp' },
+            { title: 'Double Union PP Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/PP-Union-Ball-Valve.webp' },
+            { title: 'Plain White Blue Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Plain-white-blue-ball-valve.webp' },
+            { title: 'Air Cum Vacuum Relief Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Air-Cum-Vacuum-Relief-Valve.webp' },
+              ],
+        },
+       
+      ],
+    },
+    {
+      name: 'Borewell Solution',
+      desc: 'Reliable column, casing, ribbed and screen pipes for borewell and submersible pump applications.',
+      categories: [
+        {
+          name: 'Column Pipes',
+          products: [
+            { title: 'Column Pipes', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/coloum-pipe.webp' },
+            { title: 'PE Column Pipes For Submersible Pumps', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/coming-soon.webp' },
+              ],
+        },
+        {
+          name: 'Casing Pipes',
+          products: [
+            { title: 'Casing Pipes', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/CASING-PIPE.webp' },
+            { title: 'Ribbed Casing Pipe', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Ribbed-Casing-Pipe.png' },
+            { title: 'Screen Pipe/Slotted Pipe', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Screen-Pipe-Slotted-Pipe-n.webp' },
+            { title: 'Casing SDR Agriculture Pipe', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/sdr-blue-casing-pipes-scaled.webp' },
+              ],
+        },
+       
+      ],
+    },
+     {
+      name: 'Flexible Hose Pipes',
+      desc: 'Flexible suction, garden, braided and high-pressure hose pipes for diverse applications.',
+      categories: [
+        {
+          name: 'PVC Suction Hose Pipes',
+          products: [
+            { title: 'Suction Hose Pipes', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/suction-hose-pipes.webp' },
+              ],
+        },
+        {
+          name: 'PVC Tubing/Garden Pipes',
+          products: [
+            { title: 'Kothari Special', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/05/KOTHARI-SPECIAL-ORANGE-COLOR-2.webp' },
+            { title: 'Mossfree', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/05/MOSSFREE-BLACK-COLOUR-2.webp' },
+            { title: 'Zebra', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/05/ZEBRA.webp' },
+            { title: 'OMD', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/05/OMD-2.webp' },
+              ],
+        },
+        {
+          name: 'PVC Braided Hose Pipe',
+          products: [
+            { title: 'Braided Hose Pipe', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Braided-hose.webp' },
+            { title: 'Industrial Braided Hose Pipe 3 Layer', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/KOTHARI-INDUSTRIAL-BRAIDED-HOSE-PIPE-3-LAYER.webp' },
+            { title: 'Construction Hose Pipe 3 Layer', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/CONSTRUCTION-2.webp' },
+            { title: 'High Pressure Power Spray Hose Pipe (5 Layer)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/Power-Spray.webp' },
               ],
         },
        

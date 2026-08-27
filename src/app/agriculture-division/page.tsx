@@ -101,140 +101,230 @@ function AgricultureDivisionContent() {
   ];
 const productsMegaMenu = {
   headline: 'Our Products',
-  description: 'Comprehensive range of piping, irrigation, and agricultural solutions engineered for performance.',
+  description: 'CPVC pipes, fittings and solvent cement for hot and cold water systems.',
   segments: [
     {
-      name: 'Plumbing Pipes & Fittings',
-      desc: 'Complete hot & cold water piping systems for residential and commercial applications.',
+      name: 'Drip Irrigation System',
+      desc: 'Complete drip irrigation solutions with driplines, drippers, polytubes, fittings, accessories and valves.',
       categories: [
         {
-          name: 'CPVC',
+          name: 'Dripline',
           products: [
-            { title: 'CPVC Pipes & Fittings – Hot & Cold Water System', url: '/products/plumbing/cpvc/pipes-fittings', image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=600&q=80' },
-            { title: 'CPVC Solvent Cement', url: '/products/plumbing/cpvc/solvent-cement', image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80' },
-            { title: 'CPVC Transition Fittings', url: '/products/plumbing/cpvc/transition-fittings', image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80' },
-            { title: 'CPVC Ball Valves', url: '/products/plumbing/cpvc/ball-valves', image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=600&q=80' },
+            { title: 'Dripline K-Gol NPC', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-GOL-NPC.webp' },
+            { title: 'Dripline K-Gol PC', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-GOL-PC-1.webp' },
+            { title: 'Dripline K-Lin NPC', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-LIN-1.webp' },
+            { title: 'Dripline K-Lin PCAS', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-LIN-PCAS-1.webp' },
+          
           ],
         },
         {
-          name: 'UPVC',
+          name: 'Polyfittings & Accessories',
           products: [
-            { title: 'UPVC Pipes & Fittings', url: '/products/plumbing/upvc/pipes-fittings', image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=600&q=80' },
-            { title: 'UPVC Solvent System', url: '/products/plumbing/upvc/solvent-system', image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80' },
-            { title: 'UPVC Elbows & Tees', url: '/products/plumbing/upvc/elbows-tees', image: 'https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?auto=format&fit=crop&w=600&q=80' },
-            { title: 'UPVC End Caps', url: '/products/plumbing/upvc/end-caps', image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80' },
+            { title: 'Drip Poly Fittings', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIP-POLY-FITTINGS.webp' },
+            { title: 'Drip Winder', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/Drip-Winder.webp' },
+           
           ],
         },
         {
-          name: 'SWR',
+          name: 'Drip Tubes (Polytube)',
           products: [
-            { title: 'SWR Pipes & Fittings', url: '/products/plumbing/swr/pipes-fittings', image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80' },
-            { title: 'SWR Ventilation Systems', url: '/products/plumbing/swr/ventilation', image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=600&q=80' },
-            { title: 'SWR Trap Assemblies', url: '/products/plumbing/swr/trap-assemblies', image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=80' },
-            { title: 'SWR Inspection Chambers', url: '/products/plumbing/swr/inspection-chambers', image: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=600&q=80' },
-          ],
-        },
-      ],
-    },
-    {
-      name: 'Agricultural Pipes',
-      desc: 'Durable pipes for irrigation, water transport, and borewell applications in agriculture.',
-      categories: [
-        {
-          name: 'LDPE',
-          products: [
-            { title: 'LDPE Pipes', url: '/products/agri-pipes/ldpe/pipes', image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=600&q=80' },
-            { title: 'LDPE Drippers', url: '/products/agri-pipes/ldpe/drippers', image: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=600&q=80' },
-            { title: 'LDPE Laterals', url: '/products/agri-pipes/ldpe/laterals', image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=600&q=80' },
-            { title: 'LDPE Connectors', url: '/products/agri-pipes/ldpe/connectors', image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=600&q=80' },
+            { title: 'Polytube', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/POLYTUBE.webp' },
+           
           ],
         },
         {
-          name: 'HDPE',
+          name: 'Emitters (Drippers)',
           products: [
-            { title: 'HDPE Pipes', url: '/products/agri-pipes/hdpe/pipes', image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80' },
-            { title: 'HDPE Sprinkler Laterals', url: '/products/agri-pipes/hdpe/sprinkler-laterals', image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80' },
-            { title: 'HDPE Compression Fittings', url: '/products/agri-pipes/hdpe/compression-fittings', image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80' },
-            { title: 'HDPE End Plugs', url: '/products/agri-pipes/hdpe/end-plugs', image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80' },
+            { title: 'Turbo Dripper', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/TURBO-DRIPPER-1.webp' },
+            { title: 'PC Dripper', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PC-DRIPPER.webp' },
+           
           ],
         },
         {
-          name: 'PVC Casing',
+          name: 'Thinwall Drip Line',
           products: [
-            { title: 'PVC Casing Pipes', url: '/products/agri-pipes/casing/pipes', image: 'https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?auto=format&fit=crop&w=600&q=80' },
-            { title: 'PVC Screen Pipes', url: '/products/agri-pipes/casing/screen-pipes', image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80' },
-            { title: 'PVC Shrouds', url: '/products/agri-pipes/casing/shrouds', image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80' },
-            { title: 'PVC Centralizers', url: '/products/agri-pipes/casing/centralizers', image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=600&q=80' },
-          ],
-        },
-      ],
-    },
-    {
-      name: 'Irrigation Systems',
-      desc: 'Precision drip, sprinkler, and micro-irrigation systems for maximum water efficiency.',
-      categories: [
-        {
-          name: 'Drip Irrigation',
-          products: [
-            { title: 'Drip Laterals', url: '/products/irrigation/drip/laterals', image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Drippers & Emitters', url: '/products/irrigation/drip/drippers', image: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Inline Driplines', url: '/products/irrigation/drip/inline-driplines', image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Filter Units', url: '/products/irrigation/drip/filters', image: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=600&q=80' },
-          ],
-        },
-        {
-          name: 'Sprinkler Irrigation',
-          products: [
-            { title: 'Impact Sprinklers', url: '/products/irrigation/sprinkler/impact', image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Pop-up Sprinklers', url: '/products/irrigation/sprinkler/popup', image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Sprinkler Nozzles', url: '/products/irrigation/sprinkler/nozzles', image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Rain Guns', url: '/products/irrigation/sprinkler/rain-guns', image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80' },
-          ],
-        },
-        {
-          name: 'Micro Irrigation',
-          products: [
-            { title: 'Micro Sprinklers', url: '/products/irrigation/micro/sprinklers', image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Foggers & Misters', url: '/products/irrigation/micro/foggers', image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Micro Tubes', url: '/products/irrigation/micro/tubes', image: 'https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Mini Valves', url: '/products/irrigation/micro/mini-valves', image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80' },
-          ],
-        },
-      ],
-    },
-    {
-      name: 'Fittings & Valves',
-      desc: 'Compression, threaded, and specialty fittings along with valves for complete system integration.',
-      categories: [
-        {
-          name: 'Compression Fittings',
-          products: [
-            { title: 'Compression Couplers', url: '/products/fittings/compression/couplers', image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Compression Elbows', url: '/products/fittings/compression/elbows', image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Compression Tees', url: '/products/fittings/compression/tees', image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=80' },
-            { title: 'End Caps & Plugs', url: '/products/fittings/compression/end-caps', image: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=600&q=80' },
-          ],
-        },
-        {
-          name: 'Threaded Fittings',
-          products: [
-            { title: 'Threaded Adapters', url: '/products/fittings/threaded/adapters', image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Threaded Nipples', url: '/products/fittings/threaded/nipples', image: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Threaded Unions', url: '/products/fittings/threaded/unions', image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Threaded Plugs', url: '/products/fittings/threaded/plugs', image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=600&q=80' },
+            { title: 'Thin Wall Dripline K-Super', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-SUPER.webp' },
+            { title: 'Thin Wall Dripline K-Smar', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-SMART.webp' },
+            { title: 'Thin Wall Dripline K-Slim', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-SLIM-ULTRA.webp' },
+            { title: 'Thinwall Dripline K-Slim Ultra', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-SLIM.webp' },
+           
           ],
         },
         {
           name: 'Valves',
           products: [
-            { title: 'Ball Valves', url: '/products/fittings/valves/ball', image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Gate Valves', url: '/products/fittings/valves/gate', image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Non-Return Valves', url: '/products/fittings/valves/non-return', image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80' },
-            { title: 'Butterfly Valves', url: '/products/fittings/valves/butterfly', image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80' },
+            { title: 'Single & Double Union PVC Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Single-Double-Union-PVC.webp' },
+            { title: 'Double Union PP Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/PP-Union-Ball-Valve.webp' },
+            { title: 'Plain White Blue Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Plain-white-blue-ball-valve.webp' },
+            { title: 'Butterfly Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Butterfly-Valve.webp' },
+           
           ],
         },
+       
       ],
     },
+    {
+      name: 'Filters & Injectors',
+      desc: 'Efficient filtration and fertilizer injection solutions with filters, dosing pumps and injectors.',
+      categories: [
+        {
+          name: 'Filters',
+          products: [
+            { title: 'Hydrocyclone Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Hydrocyclone-Filter.webp' },
+            { title: 'Sand Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/SAND-FILTER-1.webp' },
+            { title: 'Screen Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Screen-Filter.webp' },
+            { title: 'Twin Screen Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Twin-Screen-Filter.webp' },
+        ],
+        },
+        {
+          name: 'Dosing pumps & Fertilizer Injectors',
+          products: [
+            { title: 'HDPE Header Manifold', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/HDPE-Header-Manifold.webp' },
+            { title: 'PP Header Assembly', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PP-Header-Assembly.webp' },
+            { title: 'Venturi Injector', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Venturi-Injector.webp' },
+            { title: 'Dosing Pump', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/DOZING-PUMP.webp' },
+          ],
+        }
+      
+      ],
+    },
+    {
+      name: 'Automation System',
+      desc: 'Smart irrigation automation with fertigation machines, controllers, filters and control valves.',
+      categories: [
+        {
+          name: 'Fertigation Machines',
+          products: [
+            { title: 'Nutrijet Fertigation Machines', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/NUTRIJET.webp' },
+              ],
+        },
+        {
+          name: 'Controllers',
+          products: [
+            { title: 'Irribeat Controllers', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/IRRIBEAT.webp' },
+            { title: 'GSI (Galcon Smart Irrigation) Controller', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/GSI-Galcon-Smart-Irrigation.webp' },
+            { title: 'Galpro Controller (AC/DC)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Galpro-AC-DC.webp' },
+              ],
+        },
+        {
+          name: 'Automatic Filters & Accessories',
+          products: [
+            { title: 'Mini Sigma Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Mini-Sigma-Filter.webp' },
+            { title: 'Filtomat Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Filtomat-Filter.webp' },
+            { title: 'Solenoid Control Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Solenoid-Control-Valve.webp' },
+            { title: 'Pressure Reducing Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Pressure-Reducing-Valve.webp' },
+              ],
+        },
+       
+      ],
+    },
+     {
+      name: 'Micro & Mini Sprinklers',
+      desc: 'Efficient micro and mini sprinklers, sprayers, misters and foggers for irrigation applications.',
+      categories: [
+        {
+          name: 'Micro Sprinklers & Assemblies',
+          products: [
+            { title: 'K-Mic Excel', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K-Mic-Excel.webp' },
+            { title: 'K-Mic Micro Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K-Mic-Micro-Sprinkler.webp' },
+            { title: 'K-Tuff Micro Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K-Tuff-Micro-Sprinkler.webp' },
+              ],
+        },
+        {
+          name: 'Mini Sprinklers & Assemblies',
+          products: [
+            { title: 'Mini Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/MINI-SPRINKLER.png' },
+              ],
+        },
+        {
+          name: 'Micro Jets & assemblies',
+          products: [
+            { title: 'Micro Sprayer', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/MICRO-SPRAYER.webp' },
+              ],
+        },
+        {
+          name: 'Misters & Assemblies',
+          products: [
+            { title: 'K-Mist', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K%E2%80%93Fogger-K%E2%80%93Fogger.webp' },
+              ],
+        },
+        {
+          name: 'Foggers & Assemblies',
+          products: [
+            { title: 'K-Fogger', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K%E2%80%93Fogger-K%E2%80%93Fogger.webp' },
+              ],
+        },
+       
+      ],
+    },
+    {
+      name: 'Sprinkler Irrigration system',
+      desc: 'Complete sprinkler irrigation solutions with sprinklers, pipes, connectors, rainguns and accessories.',
+      categories: [
+        {
+          name: 'Metal Sprinklers',
+          products: [
+            { title: 'Metal Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/06/METAL-SPRINKLER.webp' },
+              ],
+        },
+        {
+          name: 'Plastic Sprinklers',
+          products: [
+            { title: 'Mini Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/MINI-SPRINKLER.png' },
+              ],
+        },
+        {
+          name: 'HDPE Sprinklers Pipes (QCPE)',
+          products: [
+            { title: 'Sprinklers Pipes (QCPE)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/QCPE-Spinklar-pipe.webp' },
+              ],
+        },
+        {
+          name: 'Sprinkler Connectors & Accessories',
+          products: [
+            { title: 'HDPE Pipe Sprinkler Set', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/HDPE-Pipe-Sprinkler-Set-1.webp' },
+              ],
+        },
+        {
+          name: 'Raingun & Accessories',
+          products: [
+            { title: 'Raingun and Accessories', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Rainguns.webp' },
+              ],
+        },
+        {
+          name: 'Garden & Landscape Sprinklers',
+          products: [
+            { title: 'Pop-up Spray Heads and Rotors', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Pop-up-spray-heads-rotors.png' },
+            { title: 'Swing Joint', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Swing-joint-1.png' },
+            { title: 'Quick Coupling Valve (QCV)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Quick-Coupling-Valve-QCV.webp' },
+              ],
+        },
+        {
+          name: 'K-Eco Rain Pipes & K- Flex Submain Pipes',
+          products: [
+            { title: 'K-Eco Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/K-Eco-sprinkler.webp' },
+            { title: 'K-Flex Submain Pipes', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Flexsubmain.webp' },
+              ],
+        },
+       
+      ],
+    },
+     {
+      name: 'Turnkey Projects',
+      desc: 'Complete turnkey irrigation projects including PDN and CI solutions for efficient water management.',
+      categories: [
+        {
+          name: 'Turnkey Projects',
+          products: [
+            { title: 'Turnkey Projects (PDN & CI)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/turnkey-projects-scaled.webp' },
+              ],
+        },
+       
+      
+       
+      ],
+    },
+    
   ],
 };
   return (
