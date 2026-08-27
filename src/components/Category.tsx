@@ -142,9 +142,9 @@ const agricultureData: DivisionCategory[] = [
   },
 ];
 
-export const Category = () => {
-  const [activeTab, setActiveTab] = useState<'pipes' | 'agriculture'>('pipes');
-  const [activeCategory, setActiveCategory] = useState<DivisionCategory>(pipesData[0]);
+export const Category = ({tab}:any) => {
+  const [activeTab, setActiveTab] = useState<'pipes' | 'agriculture'>(tab);
+  const [activeCategory, setActiveCategory] = useState<DivisionCategory>(tab==="pipes"?pipesData[0]:agricultureData[0]);
 
   const currentCategories = activeTab === 'pipes' ? pipesData : agricultureData;
 
@@ -158,7 +158,7 @@ export const Category = () => {
             SEGMENTS
           </h2>
           <p className="text-sm text-slate-600 max-w-md md:text-left font-normal leading-relaxed">
-            Complete hot & cold water piping systems for residential and commercial applications.
+           {tab==='pipes' ? ' Complete hot & cold water piping systems for residential and commercial applications.' : 'Complete hot & cold water piping systems for residential and commercial applications.'}
           </p>
         </div>
 
@@ -174,7 +174,7 @@ export const Category = () => {
                   key={item.id}
                   onClick={() => setActiveCategory(item)}
                   className={`relative group h-40 lg:h-full w-full overflow-hidden text-left border focus:outline-none transition-all duration-500 shadow-sm hover:shadow-md ${
-                    isActive ? 'border-[#1575B3] ring-1 ring-[#1575B3]/30' : 'border-slate-300'
+                    isActive ? tab==='pipes' ? 'border-[#1575B3] ring-1 ring-[#1575B3]/30' : 'border-[#3ab315] ring-1 ring-[#3ab315]/30' : 'border-slate-300'
                   }`}
                 >
                   {/* Background Image */}
@@ -196,14 +196,14 @@ export const Category = () => {
                   {isActive && (
                     <motion.div
                       layoutId="activeCardIndicatorLight"
-                      className="absolute top-0 left-0 w-1.5 h-full bg-[#1575B3] z-20"
+                      className={`absolute top-0 left-0 w-1.5 h-full ${activeTab === 'pipes' ? 'bg-[#1575B3]' : 'bg-[#3ab315]'} z-20`}
                     />
                   )}
 
                   {/* Card Content */}
                   <div className="relative z-10 p-5 h-full flex flex-col justify-between">
                     <div>
-                      <span className={`text-[9px] font-mono tracking-widest uppercase font-semibold block ${isActive ? 'text-sky-300' : 'text-slate-300'}`}>
+                      <span className={`text-[9px] font-mono tracking-widest uppercase font-semibold block ${isActive ? tab==='pipes' ? 'text-sky-300' : 'text-green-300' : 'text-slate-300'}`}>
                         {item.subtitle}
                       </span>
                       <h3 className={`text-sm sm:text-base font-semibold mt-1 leading-snug transition-colors ${isActive ? 'text-white' : 'text-white group-hover:text-sky-100'}`}>

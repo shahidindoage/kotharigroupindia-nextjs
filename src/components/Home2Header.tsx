@@ -8,6 +8,7 @@ const sections = [
   { id: 'home', label: 'Home' },
   { id: 'why-kothari', label: 'About Kothari Group' },
   { id: 'impact', label: 'Sustainability' },
+  {id:'career',label:'Career'}
 ];
 
 const divisions = [

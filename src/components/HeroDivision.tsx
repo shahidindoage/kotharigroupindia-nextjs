@@ -14,14 +14,7 @@ const ArrowIcon = () => (
   </svg>
 );
 
-const heroData = {
-  videoSrc: '/kothari-banner2.mp4',
-  headline: <>Engineered for<br />unmatched flow</>,
-  subtext: 'Delivering high-durability plumbing solutions designed for leak-free precision, flawless water delivery, and modern waste management.',
-  ctaText: 'Explore Plumbing Systems',
-  cardTitle: 'Plumbing & Fittings',
-  cardDescription: 'Zero-leak technology engineered for seamless water delivery and long-term security.',
-};
+
 
 const stats = [
   { value: '35+', label: 'Years of excellence' },
@@ -30,7 +23,7 @@ const stats = [
   { value: '800+', label: 'Channel partners *' },
 ];
 
-export const HeroPipe = () => {
+export const HeroDivision = ({heroData}: {heroData: any}) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const cardVideoRef = useRef<HTMLVideoElement>(null);
 

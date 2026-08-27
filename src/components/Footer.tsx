@@ -17,13 +17,38 @@ interface FooterProps {
   onSelectSection?: (id: string) => void;
   onOpenContactModal?: () => void;
   onOpenCareerModal?: () => void;
+  footerData?: any;
+}
+
+interface footerData{
+  logo: string;
+  about: string;
+  contact: {
+    address: string;
+    phone: string;
+    email: string;
+  };
+  productSegments: string[];
+  quickLinks: string[];
+  certifications: string[];
+  socialLinks: {
+    name: string;
+    icon: React.ReactNode;
+    href: string;
+  }[];
+  newsletterPlaceholder: string;
+  newsletterButton: string;
+  copyright: string;
+  privacyPolicy: string;
+  termsOfUse: string;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onOpenQuoteModal,
   onSelectSection,
   onOpenContactModal,
-  onOpenCareerModal
+  onOpenCareerModal,
+  footerData
 }) => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
@@ -37,6 +62,8 @@ export const Footer: React.FC<FooterProps> = ({
       setSubscribed(false);
     }, 4000);
   };
+
+ 
 
   return (
     <footer className="bg-[#FFFFFF] border-t border-[#DCEAF5] pt-16 pb-8 text-left">
@@ -52,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="flex items-center gap-3">
               <div className="h-22 flex items-center justify-center ">
                 <img 
-                  src="https://kotharigroupindia.com/img/Kothariblue_logo.png" 
+                  src={footerData.logo}
                   alt="Kothari Group Logo" 
                   referrerPolicy="no-referrer"
                   className="h-22 w-auto object-contain max-w-[140px]"
@@ -65,7 +92,7 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
 
             <p className="text-xs font-light text-[#5F6B7A] leading-relaxed max-w-sm">
-              India's trusted leader with over 35 years of excellence in Plumbing Pipes & Fittings, Agri Pipes & Fittings, and Micro Irrigation Systems.
+              {footerData.about}
             </p>
 
             <div className="space-y-2 text-xs font-light text-[#5F6B7A]">
@@ -75,11 +102,11 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
               <div className="flex items-center gap-2">
                 <PhoneCall className="w-4 h-4 text-[#1575B3]" />
-                <span>Toll-Free Helpline: 1800 120 4343</span>
+                <span>Toll-Free Helpline: {footerData.contact.phone}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#1575B3]" />
-                <span>Email: enquiry@kotharigroupindia.com</span>
+                <span>Email: <a href={`mailto:${footerData.contact.email}`} className="hover:text-[#1575B3] transition">{footerData.contact.email}</a></span>
               </div>
             </div>
           </div>
@@ -90,31 +117,13 @@ export const Footer: React.FC<FooterProps> = ({
               Core Segments
             </h4>
             <ul className="space-y-2 font-light text-[#5F6B7A]">
-              <li>
-                <button onClick={() => onSelectSection?.('categories')} className="hover:text-[#1575B3] transition">
-                  Plumbing Pipes & fittings
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onSelectSection?.('categories')} className="hover:text-[#1575B3] transition">
-                  Agri Pipes & fittings
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onSelectSection?.('categories')} className="hover:text-[#1575B3] transition">
-                  Micro Irrigation System
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onSelectSection?.('categories')} className="hover:text-[#1575B3] transition">
-                  CPVC Hot & Cold Water
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onSelectSection?.('categories')} className="hover:text-[#1575B3] transition">
-                  Submersible Column Pipes
-                </button>
-              </li>
+           {footerData.productSegments.map((segment: any, index: number) => (
+            <li key={index}>
+              <button onClick={() => onSelectSection?.('categories')} className="hover:text-[#1575B3] transition">
+                {segment}
+              </button>
+            </li>
+           ))}
             </ul>
           </div>
 
@@ -124,31 +133,13 @@ export const Footer: React.FC<FooterProps> = ({
               Quick Links
             </h4>
             <ul className="space-y-2 font-light text-[#5F6B7A]">
-              <li>
-                <button onClick={() => onSelectSection?.('hero')} className="hover:text-[#1575B3] transition">
-                  Home
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onSelectSection?.('why-kothari')} className="hover:text-[#1575B3] transition">
-                  About Kothari Group
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onSelectSection?.('knowledge-centre')} className="hover:text-[#1575B3] transition">
-                  Resources & Knowledge Centre
-                </button>
-              </li>
-              <li>
-                <button onClick={onOpenCareerModal} className="hover:text-[#1575B3] transition">
-                  Career Opportunities
-                </button>
-              </li>
-              <li>
-                <button onClick={onOpenContactModal} className="hover:text-[#1575B3] transition">
-                  Contact Us
-                </button>
-              </li>
+           {footerData.quickLinks.map((link: any, index: number) => (
+            <li key={index}>
+              <button onClick={() => onSelectSection?.(link.toLowerCase().replace(/\s/g, '-'))} className="hover:text-[#1575B3] transition">
+                {link}
+              </button>
+            </li>
+           ))}
             </ul>
           </div>
 
@@ -158,26 +149,12 @@ export const Footer: React.FC<FooterProps> = ({
               Certifications
             </h4>
             <ul className="space-y-2 font-light text-[#5F6B7A]">
-              <li className="flex items-center gap-1.5">
+             {footerData.certifications.map((certification: any, index: number) => (
+              <li key={index} className="flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#1575B3]" />
-                <span>ISO 9001 Quality System</span>
+                <span>{certification}</span>
               </li>
-              <li className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#1575B3]" />
-                <span>BIS IS 15778 / IS 4985</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#1575B3]" />
-                <span>IS 13488 Micro Irrigation</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#1575B3]" />
-                <span>PMKSY Govt. Subsidy Certified</span>
-              </li>
-              <li className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#1575B3]" />
-                <span>RoHS Lead-Free Formulation</span>
-              </li>
+             ))}
             </ul>
           </div>
 
@@ -186,7 +163,7 @@ export const Footer: React.FC<FooterProps> = ({
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-[#DCEAF5] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-[#5F6B7A]">
           <p>
-            © 2026 Kothari Group India. All Rights Reserved. Empowering Water Management Across 23+ States.
+            {footerData.copyright}
           </p>
 
           <div className="flex items-center gap-6">

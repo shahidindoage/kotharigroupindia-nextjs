@@ -33,7 +33,7 @@ const aboutMegaMenu = {
   ],
 };
 
-const productsMegaMenu = {
+const defaultProductsMegaMenu = {
   headline: 'Our Products',
   description: 'Comprehensive range of piping, irrigation, and agricultural solutions engineered for performance.',
   segments: [
@@ -62,7 +62,7 @@ const productsMegaMenu = {
         {
           name: 'SWR',
           products: [
-            { title: 'SWR Pipes & Fittings', url: '/products/plumbing/swr/pipes-fittings', image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80' },
+            { title: 'SWR Pipes & Fittings', url: '/products/plumbing/swr/pipes-fittings', image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80' },
             { title: 'SWR Ventilation Systems', url: '/products/plumbing/swr/ventilation', image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=600&q=80' },
             { title: 'SWR Trap Assemblies', url: '/products/plumbing/swr/trap-assemblies', image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=80' },
             { title: 'SWR Inspection Chambers', url: '/products/plumbing/swr/inspection-chambers', image: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=600&q=80' },
@@ -97,7 +97,7 @@ const productsMegaMenu = {
           products: [
             { title: 'PVC Casing Pipes', url: '/products/agri-pipes/casing/pipes', image: 'https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?auto=format&fit=crop&w=600&q=80' },
             { title: 'PVC Screen Pipes', url: '/products/agri-pipes/casing/screen-pipes', image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80' },
-            { title: 'PVC Shrouds', url: '/products/agri-pipes/casing/shrouds', image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80' },
+            { title: 'PVC Shrouds', url: '/products/agri-pipes/casing/shrouds', image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80' },
             { title: 'PVC Centralizers', url: '/products/agri-pipes/casing/centralizers', image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=600&q=80' },
           ],
         },
@@ -199,6 +199,34 @@ const resourcesMegaMenu = {
   ],
 };
 
+const solutionsMegaMenu = {
+  category: "SOLUTIONS & SEGMENTS",
+  headline: "Tailored Piping Solutions",
+  description: "Comprehensive piping and fluid management systems engineered for industrial, agricultural, and residential applications.",
+  items: [
+    {
+      title: "Architectural Fluid Systems",
+      url: "/solutions/architectural-fluid-systems",
+      image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      title: "Agricultural Drainage",
+      url: "/solutions/agricultural-drainage",
+      image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      title: "Public Infrastructure & Drainage",
+      url: "/solutions/public-infrastructure",
+      image: "https://images.pexels.com/photos/15555686/pexels-photo-15555686.jpeg",
+    },
+    {
+      title: "Industrial Process Piping",
+      url: "/solutions/industrial-process-piping",
+      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop",
+    },
+  ],
+};
+
 const scrollToId = (id: string) => {
   if (id === 'home') {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -208,7 +236,11 @@ const scrollToId = (id: string) => {
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 };
 
-export const HeaderPipe: React.FC = () => {
+interface HeaderDivisionProps {
+  productsMegaMenu?: any;
+}
+
+export const HeaderDivison: React.FC<HeaderDivisionProps> = ({ productsMegaMenu = defaultProductsMegaMenu }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [heroRevealed, setHeroRevealed] = useState(true);
@@ -374,83 +406,12 @@ const handleSegmentClick = (segIdx: number) => {
           <div className="flex items-center gap-4">
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-              <Link href="/" className={navItemStyle}>
+              {/* <Link href="/" className={navItemStyle}>
                 Home
-              </Link>
+              </Link> */}
 
-              <div
-                className="static"
-                onMouseEnter={() => handleMouseEnter('about')}
-                onMouseLeave={handleMouseLeave}
-              >
-                <button className={navItemStyle}>
-                  About
-                  <ChevronDown
-                    className={`w-4 h-4 transition-transform duration-300 ${
-                      activeDropdown === 'about' ? 'rotate-180' : ''
-                    }`}
-                  />
-                </button>
 
-                {activeDropdown === 'about' && (
-                  <div className="absolute left-0 top-full w-full bg-white border-b border-[#DCEAF5] shadow-2xl py-10 px-8 sm:px-12 transition-all duration-300 z-50">
-                    <div className="max-w-7xl mx-auto grid grid-cols-12 gap-10 items-start">
-                      {/* Left Column - Category Info + Descriptive Text */}
-                      <div className="col-span-5 border-r border-[#DCEAF5] pr-10 flex flex-col justify-between h-full">
-                        <div>
-                          <span className="text-xs font-bold uppercase tracking-wider text-[#1575b3] block mb-2">
-                            {aboutMegaMenu.category}
-                          </span>
-                          <h3 className="text-5xl font-normal text-[#0f172b] leading-snug mb-3">
-                            {aboutMegaMenu.headline}
-                          </h3>
-                          <p className="text-lg text-[#5F6B7A] leading-relaxed">
-                            {aboutMegaMenu.description}
-                          </p>
-                        </div>
-                
-<div className="mt-8 pt-6 border-t border-[#DCEAF5] flex items-center gap-8">
-  <div>
-    <span className="text-3xl font-light text-[#1575b3] tracking-tight">35+</span>
-    <span className="block text-xs font-medium text-[#5F6B7A] uppercase tracking-wider mt-0.5">Years Legacy</span>
-  </div>
-  <div className="w-px h-8 bg-[#DCEAF5]" />
-  <div>
-    <span className="text-3xl font-light text-[#1575b3] tracking-tight">800+</span>
-    <span className="block text-xs font-medium text-[#5F6B7A] uppercase tracking-wider mt-0.5">Partners</span>
-  </div>
-</div>
-                      </div>
-
-                      {/* Right Column - 2 in a row Grid */}
-                      <div className="col-span-7 grid grid-cols-2 gap-6">
-                        {aboutMegaMenu.items.map((item, idx) => (
-                          <Link
-                            key={idx}
-                            href={item.url}
-                            onClick={handleNavClick}
-                            className="group flex flex-col space-y-2.5"
-                          >
-                            <div className="overflow-hidden aspect-[16/9] bg-slate-100 ">
-                              <img
-                                src={item.image}
-                                alt={item.title}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                              />
-                            </div>
-                            <div className="flex items-center gap-1.5 text-sm font-medium text-[#111111] group-hover:text-[#1575B3] transition-colors">
-                              <span>{item.title}</span>
-                              <ChevronRight className="w-4 h-4 text-[#5F6B7A] group-hover:text-[#1575B3] group-hover:translate-x-0.5 transition-all" />
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-             {/* Products Mega Menu */}
+                   {/* Products Mega Menu */}
 <div
   className="static"
   onMouseEnter={() => handleMouseEnter('products')}
@@ -470,7 +431,7 @@ const handleSegmentClick = (segIdx: number) => {
       <div className="max-w-7xl mx-auto grid grid-cols-12 gap-10 items-start">
 
         {/* LEFT — Product Cards 2×2 */}
-        <div className="col-span-7 border-r border-[#DCEAF5] pr-10">
+        <div className="col-span-6 border-r border-[#DCEAF5] pr-10">
           <div
             key={`seg-${activeProductSegment}-cat-${activeProductCategory}`}
             className="grid grid-cols-2 gap-6"
@@ -483,13 +444,13 @@ const handleSegmentClick = (segIdx: number) => {
                 onClick={handleNavClick}
                 className="group flex flex-col space-y-2.5"
               >
-                <div className="overflow-hidden aspect-[16/9] bg-slate-100 ">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                  />
-                </div>
+               <div className="overflow-hidden aspect-[16/9] flex items-center justify-start">
+  <img
+    src={product.image}
+    alt={product.title}
+    className="h-full w-auto object-contain group-hover:scale-105 transition-transform duration-500 ease-out"
+  />
+</div>
                 <div className="flex items-start gap-1.5 text-sm font-medium text-[#111111] group-hover:text-[#1575B3] transition-colors">
                   {/* <ChevronRight className="w-4 h-4 text-[#5F6B7A] group-hover:text-[#1575B3] group-hover:translate-x-0.5 transition-all shrink-0 mt-0.5" /> */}
                   <span>{product.title}</span>
@@ -500,7 +461,7 @@ const handleSegmentClick = (segIdx: number) => {
         </div>
 
      {/* RIGHT — Heading, Description, Accordion Segments */}
-<div className="col-span-5 pl-2 flex flex-col h-full">
+<div className="col-span-6 pl-2 flex flex-col h-full">
   <div>
     <span className="text-xs font-bold uppercase tracking-wider text-[#1575b3] block mb-2">
       Products
@@ -529,7 +490,7 @@ const handleSegmentClick = (segIdx: number) => {
         {/* Segment header */}
         <div className="flex items-center justify-between px-4 py-3">
           <span
-            className={`text-[13px] font-semibold tracking-wide transition-colors leading-snug ${
+            className={`text-[12px] font-semibold tracking-wide transition-colors leading-snug ${
               isOpen ? 'text-[#1575B3]' : 'text-[#1E293B]'
             }`}
           >
@@ -605,6 +566,82 @@ const handleSegmentClick = (segIdx: number) => {
   )}
 </div>
 
+
+
+{/* Solutions Mega Menu */}
+<div
+  className="static"
+  onMouseEnter={() => handleMouseEnter('solutions')}
+  onMouseLeave={handleMouseLeave}
+>
+  <button className={navItemStyle}>
+    Solutions
+    <ChevronDown
+      className={`w-4 h-4 transition-transform duration-300 ${
+        activeDropdown === 'solutions' ? 'rotate-180' : ''
+      }`}
+    />
+  </button>
+
+  {activeDropdown === 'solutions' && (
+    <div className="absolute left-0 top-full w-full bg-white border-b border-[#DCEAF5] shadow-2xl py-10 px-8 sm:px-12 transition-all duration-300 z-50">
+      <div className="max-w-7xl mx-auto grid grid-cols-12 gap-10 items-start">
+        {/* Left Column - Category Info + Featured Callout */}
+        <div className="col-span-5 border-r border-[#DCEAF5] pr-10 flex flex-col justify-between h-full">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-[#1575b3] block mb-2">
+              {solutionsMegaMenu.category}
+            </span>
+            <h3 className="text-5xl font-normal text-[#0f172b] leading-snug mb-3">
+              {solutionsMegaMenu.headline}
+            </h3>
+            <p className="text-lg text-[#5F6B7A] leading-relaxed">
+              {solutionsMegaMenu.description}
+            </p>
+          </div>
+
+          {/* Bottom Action Link */}
+          <div className="mt-8 pt-6 border-t border-[#DCEAF5]">
+            <Link
+              href="/solutions"
+              onClick={handleNavClick}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#0f172b] hover:text-[#1575B3] group transition-colors"
+            >
+              <span>Explore All Industry Segments</span>
+              <ChevronRight className="w-4 h-4 text-[#0f172b] group-hover:text-[#1575B3] group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Right Column - 2 in a row Grid */}
+        <div className="col-span-7 grid grid-cols-2 gap-6">
+          {solutionsMegaMenu.items.map((item, idx) => (
+            <Link
+              key={idx}
+              href={item.url}
+              onClick={handleNavClick}
+              className="group flex flex-col space-y-2.5"
+            >
+              <div className="overflow-hidden aspect-[16/9] bg-slate-100">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                />
+              </div>
+              <div className="flex items-center gap-1.5 text-sm font-medium text-[#111111] group-hover:text-[#1575B3] transition-colors">
+                <span>{item.title}</span>
+                <ChevronRight className="w-4 h-4 text-[#5F6B7A] group-hover:text-[#1575B3] group-hover:translate-x-0.5 transition-all" />
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  )}
+</div>
+
+      {/* Resources Mega Menu */}
               <div
                 className="static"
                 onMouseEnter={() => handleMouseEnter('resources')}
@@ -676,12 +713,90 @@ const handleSegmentClick = (segIdx: number) => {
                 )}
               </div>
 
-              <Link href="/careers" className={navItemStyle}>
-                Career
+
+              {/* About Mega Menu */}
+              <div
+                className="static"
+                onMouseEnter={() => handleMouseEnter('about')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button className={navItemStyle}>
+                  About Us
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      activeDropdown === 'about' ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+
+                {activeDropdown === 'about' && (
+                  <div className="absolute left-0 top-full w-full bg-white border-b border-[#DCEAF5] shadow-2xl py-10 px-8 sm:px-12 transition-all duration-300 z-50">
+                    <div className="max-w-7xl mx-auto grid grid-cols-12 gap-10 items-start">
+                      {/* Left Column - Category Info + Descriptive Text */}
+                      <div className="col-span-5 border-r border-[#DCEAF5] pr-10 flex flex-col justify-between h-full">
+                        <div>
+                          <span className="text-xs font-bold uppercase tracking-wider text-[#1575b3] block mb-2">
+                            {aboutMegaMenu.category}
+                          </span>
+                          <h3 className="text-5xl font-normal text-[#0f172b] leading-snug mb-3">
+                            {aboutMegaMenu.headline}
+                          </h3>
+                          <p className="text-lg text-[#5F6B7A] leading-relaxed">
+                            {aboutMegaMenu.description}
+                          </p>
+                        </div>
+                
+<div className="mt-8 pt-6 border-t border-[#DCEAF5] flex items-center gap-8">
+  <div>
+    <span className="text-3xl font-light text-[#1575b3] tracking-tight">35+</span>
+    <span className="block text-xs font-medium text-[#5F6B7A] uppercase tracking-wider mt-0.5">Years Legacy</span>
+  </div>
+  <div className="w-px h-8 bg-[#DCEAF5]" />
+  <div>
+    <span className="text-3xl font-light text-[#1575b3] tracking-tight">800+</span>
+    <span className="block text-xs font-medium text-[#5F6B7A] uppercase tracking-wider mt-0.5">Partners</span>
+  </div>
+</div>
+                      </div>
+
+                      {/* Right Column - 2 in a row Grid */}
+                      <div className="col-span-7 grid grid-cols-2 gap-6">
+                        {aboutMegaMenu.items.map((item, idx) => (
+                          <Link
+                            key={idx}
+                            href={item.url}
+                            onClick={handleNavClick}
+                            className="group flex flex-col space-y-2.5"
+                          >
+                            <div className="overflow-hidden aspect-[16/9] bg-slate-100 ">
+                              <img
+                                src={item.image}
+                                alt={item.title}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                              />
+                            </div>
+                            <div className="flex items-center gap-1.5 text-sm font-medium text-[#111111] group-hover:text-[#1575B3] transition-colors">
+                              <span>{item.title}</span>
+                              <ChevronRight className="w-4 h-4 text-[#5F6B7A] group-hover:text-[#1575B3] group-hover:translate-x-0.5 transition-all" />
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+        
+
+    
+
+              <Link href="/applications" className={navItemStyle}>
+                Applications
               </Link>
 
               <Link href="/contact" className={navItemStyle}>
-                Contact
+                Contact Us
               </Link>
             </nav>
 
@@ -715,44 +830,16 @@ const handleSegmentClick = (segIdx: number) => {
         {mobileOpen && (
           <div className="lg:hidden fixed top-[65px] left-0 w-full h-[calc(100vh-65px)] bg-white z-[999] flex flex-col justify-between px-6 py-6 border-t border-[#DCEAF5] overflow-y-auto">
             <div className="space-y-2">
-              <Link
+              {/* <Link
                 href="/"
                 onClick={handleNavClick}
                 className="block w-full px-4 py-3 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] hover:text-[#1575B3] transition"
               >
                 Home
-              </Link>
+              </Link> */}
 
-              {/* Mobile About Submenu */}
-              <div>
-                <button
-                  onClick={() => setActiveDropdown(activeDropdown === 'about' ? null : 'about')}
-                  className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] transition"
-                >
-                  <span>About</span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-[#5F6B7A] transition-transform ${
-                      activeDropdown === 'about' ? 'rotate-180' : ''
-                    }`}
-                  />
-                </button>
-                {activeDropdown === 'about' && (
-                  <div className="pl-4 space-y-1 pt-1">
-                    {aboutMegaMenu.items.map((item, i) => (
-                      <Link
-                        key={i}
-                        href={item.url}
-                        onClick={handleNavClick}
-                        className="block p-2.5 text-sm font-medium text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF] transition"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-         {/* Mobile Products Submenu */}
+              
+ {/* Mobile Products Submenu */}
 <div>
   <button
     onClick={() => {
@@ -824,6 +911,37 @@ const handleSegmentClick = (segIdx: number) => {
   )}
 </div>
 
+                 {/* Mobile solutions Submenu */}
+              <div>
+                <button
+                  onClick={() => setActiveDropdown(activeDropdown === 'solutions' ? null : 'solutions')}
+                  className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] transition"
+                >
+                  <span>Solutions</span>
+                  <ChevronDown
+                    className={`w-5 h-5 text-[#5F6B7A] transition-transform ${
+                      activeDropdown === 'about' ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                {activeDropdown === 'solutions' && (
+                  <div className="pl-4 space-y-1 pt-1">
+                    {solutionsMegaMenu.items.map((item, i) => (
+                      <Link
+                        key={i}
+                        href={item.url}
+                        onClick={handleNavClick}
+                        className="block p-2.5 text-sm font-medium text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF] transition"
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+        
+
               {/* Mobile Resources Submenu */}
               <div>
                 <button
@@ -853,12 +971,42 @@ const handleSegmentClick = (segIdx: number) => {
                 )}
               </div>
 
+
+              {/* Mobile About Submenu */}
+              <div>
+                <button
+                  onClick={() => setActiveDropdown(activeDropdown === 'about' ? null : 'about')}
+                  className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] transition"
+                >
+                  <span>About Us</span>
+                  <ChevronDown
+                    className={`w-5 h-5 text-[#5F6B7A] transition-transform ${
+                      activeDropdown === 'about' ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                {activeDropdown === 'about' && (
+                  <div className="pl-4 space-y-1 pt-1">
+                    {aboutMegaMenu.items.map((item, i) => (
+                      <Link
+                        key={i}
+                        href={item.url}
+                        onClick={handleNavClick}
+                        className="block p-2.5 text-sm font-medium text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF] transition"
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               <Link
-                href="/careers"
+                href="/applications"
                 onClick={handleNavClick}
                 className="block w-full px-4 py-3 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] hover:text-[#1575B3] transition"
               >
-                Career
+                Applications
               </Link>
 
               <Link
@@ -866,7 +1014,7 @@ const handleSegmentClick = (segIdx: number) => {
                 onClick={handleNavClick}
                 className="block w-full px-4 py-3 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] hover:text-[#1575B3] transition"
               >
-                Contact
+                Contact Us
               </Link>
             </div>
 

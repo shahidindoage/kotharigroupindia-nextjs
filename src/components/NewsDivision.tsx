@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { ArrowUpRight, Clock, Quote, Star } from 'lucide-react';
-import { Reveal } from '../components/main/Reveal';
+import { Reveal } from './main/Reveal';
 
-export const NewsPipe: React.FC = () => {
+export const NewsDivision: React.FC = () => {
   const newsItems = [
     {
       id: 'NEWS-01',
@@ -79,11 +79,11 @@ export const NewsPipe: React.FC = () => {
 
   return (
     <div className="w-full text-slate-900">
-      
+
       {/* ==================== 1. NEWS AND ARTICLES ==================== */}
       <section id="news" className="w-full py-16 sm:py-24 bg-[#F5F6F8] text-slate-900 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
+
           {/* Section Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-300">
             <div>
@@ -100,8 +100,8 @@ export const NewsPipe: React.FC = () => {
           <Reveal>
             <div className="divide-y divide-slate-200 border-t border-b border-slate-200">
               {newsItems.map((item, idx) => (
-                <article 
-                  key={idx} 
+                <article
+                  key={idx}
                   className="group py-8 sm:py-10 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-slate-50/80 px-4 sm:px-6 transition-colors duration-300"
                 >
                   <div className="space-y-2 max-w-3xl">
@@ -137,7 +137,7 @@ export const NewsPipe: React.FC = () => {
       {/* ==================== 2. TESTIMONIALS SECTION (WHITE BG) ==================== */}
       <section id="testimonials" className="w-full py-16 sm:py-24 bg-white text-slate-900 border-b border-slate-300/70 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
+
           {/* Section Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-300">
             <div>
@@ -154,8 +154,8 @@ export const NewsPipe: React.FC = () => {
           <Reveal>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {testimonials.map((item, idx) => (
-                <div 
-                  key={idx} 
+                <div
+                  key={idx}
                   className="bg-slate-50/60 border border-slate-200 p-8 flex flex-col justify-between relative hover:border-[#1575B3] hover:shadow-lg transition-all duration-300 group"
                 >
                   <Quote className="w-8 h-8 text-[#1575B3]/20 absolute top-6 right-6" />
@@ -194,7 +194,7 @@ export const NewsPipe: React.FC = () => {
       {/* ==================== 3. LATEST BLOGS (#F5F6F8 BG) ==================== */}
       <section id="blogs" className="w-full bg-[#F5F6F8] py-16 sm:py-24 border-b border-slate-300/70 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          
+
           {/* Section Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-300">
             <div>
@@ -213,7 +213,7 @@ export const NewsPipe: React.FC = () => {
               {blogPosts.map((item, idx) => (
                 <Reveal key={idx} delay={idx * 90} className="h-full">
                   <article className="group relative bg-white border border-slate-200/90 flex flex-col justify-between h-full shadow-sm hover:shadow-xl hover:border-[#1575B3] transition-all duration-500 overflow-hidden">
-                    
+
                     {/* Image Header */}
                     <div className="relative aspect-[16/10] overflow-hidden bg-slate-900 border-b border-slate-200">
                       <img
@@ -227,7 +227,7 @@ export const NewsPipe: React.FC = () => {
                         className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-80" />
-                      
+
                       {/* Category Badge */}
                       <div className="absolute top-4 left-4">
                         <span className="bg-black text-white text-[10px] font-mono tracking-widest font-medium px-3 py-1 uppercase">

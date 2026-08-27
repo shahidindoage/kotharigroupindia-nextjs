@@ -3,29 +3,31 @@
 import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
-export const KnowledgeCentre: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
 
-  const items = [
-    {
-      title: 'Plumbing Systems',
-      description: 'CPVC and UPVC technical specifications, solvent welding procedures, and hydraulic pressure loss charts for residential and commercial installations.',
-      image: 'https://kotharigroupindia.com/img/images/Building_pipe.webp',
-      link: '#plumbing'
-    },
-    {
-      title: 'Agri & Borewell',
-      description: 'Field installation manuals for underground UPVC agricultural mains, HDPE coil laying best practices, and torque limits for deep borewell column pipes.',
-      image: 'https://kotharigroupindia.com/img/images/Agri_Pipes.webp',
-      link: '#agri'
-    },
-    {
-      title: 'Micro Irrigation',
-      description: 'Engineering design principles for labyrinth drip emitters, sprinkler throw radii, fertigation dosing setups, and hydro-cyclone sand filtration stations.',
-      image: 'https://kotharigroupindia.com/img/images/Irrigation_products.webp',
-      link: '#irrigation'
-    }
-  ];
+
+const defaultItems = [
+  {
+    title: 'Plumbing Systems',
+    description: 'CPVC and UPVC technical specifications, solvent welding procedures, and hydraulic pressure loss charts for residential and commercial installations.',
+    image: 'https://kotharigroupindia.com/img/images/Building_pipe.webp',
+    link: '#plumbing'
+  },
+  {
+    title: 'Agri & Borewell',
+    description: 'Field installation manuals for underground UPVC agricultural mains, HDPE coil laying best practices, and torque limits for deep borewell column pipes.',
+    image: 'https://kotharigroupindia.com/img/images/Agri_Pipes.webp',
+    link: '#agri'
+  },
+  {
+    title: 'Micro Irrigation',
+    description: 'Engineering design principles for labyrinth drip emitters, sprinkler throw radii, fertigation dosing setups, and hydro-cyclone sand filtration stations.',
+    image: 'https://kotharigroupindia.com/img/images/Irrigation_products.webp',
+    link: '#irrigation'
+  }
+];
+
+export const KnowledgeCentre: React.FC<{ itemData?: any[] }> = ({ itemData = defaultItems }: any) => {
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <section id="knowledge-centre" className="w-full bg-white py-16 sm:py-24 border-b border-slate-300/70 scroll-mt-20">
@@ -48,7 +50,7 @@ export const KnowledgeCentre: React.FC = () => {
           
           {/* Left Column: Clean Borderless Interactive List */}
           <div className="lg:col-span-6 flex flex-col justify-between space-y-8">
-            {items.map((item, idx) => {
+            {itemData?.map((item:any, idx:any) => {
               const isActive = activeIndex === idx;
               return (
                 <div
@@ -95,7 +97,7 @@ export const KnowledgeCentre: React.FC = () => {
 
           {/* Right Column: Clean Image Panel */}
           <div className="lg:col-span-6 min-h-[380px] lg:min-h-full bg-slate-100 relative overflow-hidden">
-            {items.map((item, idx) => (
+            {itemData?.map((item:any, idx:any) => (
               <img
                 key={idx}
                 src={item.image}
