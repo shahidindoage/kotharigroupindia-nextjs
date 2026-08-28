@@ -154,6 +154,7 @@ const productsMegaMenu = {
             { title: 'Ring Fit PVC Pipe', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PVC-Ringfit-pipe.webp' },
             { title: 'Agri PVC Moulded Fittings', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/molded-fittings-Product-Page.webp' },
             { title: 'Fabricated Fittings & Repair Coupler (Rubber Ring)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/Fabricated-Fittings-Repair-Coupler.webp' },
+            { title: 'PVC Solvent Cement', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/PVC-Solvent-Cement-1.webp' },
               ],
         },
         {
@@ -163,6 +164,9 @@ const productsMegaMenu = {
             { title: 'HDPE Coils', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/HDPE-Coils.webp' },
             { title: 'HDPE Fittings', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/HDPE-Pipe-Fittings-1.webp' },
             { title: 'MDPE Pipes', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/08/MDPE-PIPE.webp' },
+            { title: 'Compression Fittings', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/MDPE-Pipes-Fittings.webp' },
+            { title: 'PE Power Spray Hose Pipe (Spray Pipe)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/PE-Power-Spray.webp' },
+            { title: 'LD Krishi Pipe (Lay Flat Tubes)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/LD-Krishi.webp' },
               ],
         },
         {
@@ -172,6 +176,8 @@ const productsMegaMenu = {
             { title: 'Double Union PP Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/PP-Union-Ball-Valve.webp' },
             { title: 'Plain White Blue Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Plain-white-blue-ball-valve.webp' },
             { title: 'Air Cum Vacuum Relief Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Air-Cum-Vacuum-Relief-Valve.webp' },
+            { title: 'Butterfly Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Butterfly-Valve.webp' },
+            { title: 'Flush Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Flush-Valve-1.webp' },
               ],
         },
        
@@ -217,6 +223,11 @@ const productsMegaMenu = {
             { title: 'Mossfree', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/05/MOSSFREE-BLACK-COLOUR-2.webp' },
             { title: 'Zebra', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/05/ZEBRA.webp' },
             { title: 'OMD', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/05/OMD-2.webp' },
+            { title: '50-50', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/05/50-50.webp' },
+            { title: 'Milky', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Milky.webp' },
+            { title: 'Halwa', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/HALWA-2.webp' },
+            { title: 'CTP', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/CTP-2.webp' },
+            { title: 'Black Zebra', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Black-garden.webp' },
               ],
         },
         {
@@ -235,6 +246,21 @@ const productsMegaMenu = {
   ],
 };
 
+const items = [
+  {
+    title: 'Plumbing Systems',
+    description: 'Comprehensive engineering documentation and technical specifications for CPVC and UPVC piping infrastructure. Features material thermal ratings, chemical resistance matrices, precise solvent welding joint protocols, flow rate optimization charts, and hydraulic pressure loss calculations tailored for high-performance residential, commercial, and industrial plumbing installations.',
+    image: 'https://kotharigroupindia.com/img/images/Building_pipe.webp',
+    link: '#plumbing'
+  },
+  {
+    title: 'Agri & Borewell',
+    description: 'Extensive field deployment manuals and practical technical guides covering subterranean UPVC agricultural main lines, HDPE coil layout optimization, surge pressure protection strategies, and precise structural torque thresholds engineered for high-depth borewell column pipe systems.',
+    image: 'https://kotharigroupindia.com/img/images/Agri_Pipes.webp',
+    link: '#agri'
+  },
+ 
+];
   return (
     <>
       <HeaderDivison productsMegaMenu={productsMegaMenu}/>
@@ -242,7 +268,7 @@ const productsMegaMenu = {
       <Category tab="pipes"/>
       <WhyKothariGroup />
       <Impact />
-      <KnowledgeCentre />
+      <KnowledgeCentre itemData={items} />
       <NewsDivision />
       <Footer footerData={footerData}/>
     </>

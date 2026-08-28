@@ -114,6 +114,7 @@ const productsMegaMenu = {
             { title: 'Dripline K-Gol PC', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-GOL-PC-1.webp' },
             { title: 'Dripline K-Lin NPC', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-LIN-1.webp' },
             { title: 'Dripline K-Lin PCAS', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-LIN-PCAS-1.webp' },
+            { title: 'Dripline K-Lin PCND', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-LIN-PCND-1.webp' },
           
           ],
         },
@@ -147,6 +148,8 @@ const productsMegaMenu = {
             { title: 'Thin Wall Dripline K-Smar', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-SMART.webp' },
             { title: 'Thin Wall Dripline K-Slim', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-SLIM-ULTRA.webp' },
             { title: 'Thinwall Dripline K-Slim Ultra', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-SLIM.webp' },
+            { title: 'K-Smart Screen Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/K-Smart-Screen-Filter.webp' },
+            { title: 'Thinwall Drip Poly Fittings', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/08/Thinwall-Drip-Accessories.webp' },
            
           ],
         },
@@ -157,6 +160,31 @@ const productsMegaMenu = {
             { title: 'Double Union PP Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/PP-Union-Ball-Valve.webp' },
             { title: 'Plain White Blue Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Plain-white-blue-ball-valve.webp' },
             { title: 'Butterfly Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Butterfly-Valve.webp' },
+            { title: 'Throttle Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Throttle-valve.webp' },
+            { title: 'Air Cum Vacuum Relief Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Air-Cum-Vacuum-Relief-Valve.webp' },
+            { title: 'Flush Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Flush-Valve-1.webp' },
+            { title: 'Check Valve (Non-Return Valve)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Check-Valve-Non-Return-Valve.webp' },
+           
+          ],
+        },
+        {
+          name: 'Drip Agri PVC Pipes',
+          products: [
+            { title: 'UPVC Pipes', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PVC-Selffit-pipe.webp' },
+           
+          ],
+        },
+        {
+          name: 'Drip Gravity Kits',
+          products: [
+            { title: 'Gravity Drip Kit', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/KOTHARI-GRAVITY-DRIP-KIT.webp' },
+           
+          ],
+        },
+        {
+          name: 'Mulching',
+          products: [
+            { title: 'Mulch Films', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Mulch.webp' },
            
           ],
         },
@@ -174,6 +202,10 @@ const productsMegaMenu = {
             { title: 'Sand Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/SAND-FILTER-1.webp' },
             { title: 'Screen Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Screen-Filter.webp' },
             { title: 'Twin Screen Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Twin-Screen-Filter.webp' },
+            { title: 'Semi Automatic Screen Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Semi-Automatic-Screen-Filter-1.webp' },
+            { title: 'Disc Filter & Twin Disc Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Disc-Filter-Twin-Disc-Filter-1.webp' },
+            { title: 'Mini Sigma Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Mini-Sigma-Filter.webp' },
+            { title: 'Filtomat Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Filtomat-Filter.webp' },
         ],
         },
         {
@@ -213,6 +245,10 @@ const productsMegaMenu = {
             { title: 'Filtomat Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Filtomat-Filter.webp' },
             { title: 'Solenoid Control Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Solenoid-Control-Valve.webp' },
             { title: 'Pressure Reducing Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Pressure-Reducing-Valve.webp' },
+            { title: 'Pressure Sustaining Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Pressure-Sustaining-Valve.webp' },
+            { title: 'Quick Pressure Relief Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/QUICK-PRESSURE.webp' },
+            { title: 'Filter Auto Backwash Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/FILTER-BACKWASH.png.webp' },
+            { title: 'Water Meter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/WATER-METER.webp' },
               ],
         },
        
@@ -317,6 +353,7 @@ const productsMegaMenu = {
           name: 'Turnkey Projects',
           products: [
             { title: 'Turnkey Projects (PDN & CI)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/turnkey-projects-scaled.webp' },
+            { title: 'Turnkey Projects (Infra)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/coming-soon.webp' },
               ],
         },
        
@@ -327,6 +364,7 @@ const productsMegaMenu = {
     
   ],
 };
+
   return (
     <>
       <HeaderDivison productsMegaMenu={productsMegaMenu}/>
