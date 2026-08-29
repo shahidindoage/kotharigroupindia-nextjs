@@ -27,7 +27,7 @@ function PipeDivisionContent() {
     contact: {
       address: 'Corporate HQ: 8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.',
       phone: '1800 120 4343',
-      email: 'enquiry@kotharigroupindia.com',
+      email: 'pipe@kotharigroupindia.com',
     },
     productSegments: [
       'Plumbing Pipes & fittings',
