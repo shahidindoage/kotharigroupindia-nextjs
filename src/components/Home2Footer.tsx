@@ -10,8 +10,10 @@ import {
   Instagram,
   Sprout,
   Factory,
-  ArrowRight
+  ArrowRight,
+  MessageCircle
 } from 'lucide-react';
+import { FaWhatsapp } from "react-icons/fa";
 import Link from 'next/link';
 
 const scrollToId = (id: string) => {
@@ -40,11 +42,33 @@ const supportLinks = [
   { label: 'Contact Us', target: 'home2-footer' }
 ];
 
-const socials = [
-  { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]',url:'https://www.facebook.com/share/1A8KDDBqTx/?mibextid=wwXIfr' },
-  { label: 'LinkedIn', icon: Linkedin, hover: 'hover:bg-[#0A66C2]',url:'https://www.linkedin.com/company/kotharigroupindia/' },
-  { label: 'YouTube', icon: Youtube, hover: 'hover:bg-[#FF0000]',url:'https://www.youtube.com/@kotharipipesplumbing' },
-  { label: 'Instagram', icon: Instagram, hover: 'hover:bg-[#DD2A7B]',url:'https://www.instagram.com/kotharigroup_?igsh=MzJ0Ympyb3VoYmk1&utm_source=qr' }
+const socialGroups = [
+  {
+    title: 'Kothari Group',
+    links: [
+      { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/share/1A8KDDBqTx/?mibextid=wwXIfr' },
+      { label: 'LinkedIn', icon: Linkedin, hover: 'hover:bg-[#0A66C2]', url: 'https://www.linkedin.com/company/kotharigroupindia/' },
+      { label: 'Instagram', icon: Instagram, hover: 'hover:bg-[#DD2A7B]', url: 'https://www.instagram.com/kotharigroup_?igsh=MzJ0Ympyb3VoYmk1&utm_source=qr' },
+    ],
+  },
+  {
+    title: 'Kothari Pipes',
+    links: [
+      { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/share/16ZVVqB5Ju/?mibextid=wwXIfr' },
+      { label: 'WhatsApp', icon: FaWhatsapp, hover: 'hover:bg-[#25D366]', url: 'https://whatsapp.com/channel/0029Vb6myeSGU3BD6QbRqN3i' },
+      { label: 'YouTube', icon: Youtube, hover: 'hover:bg-[#FF0000]', url: 'https://www.youtube.com/@kotharipipesagri' },
+      { label: 'Instagram', icon: Instagram, hover: 'hover:bg-[#DD2A7B]', url: 'https://www.instagram.com/kotharipipess?igsh=MTI0cXZjbGl1Mms2Mw%3D%3D&utm_source=qr' },
+    ],
+  },
+  {
+    title: 'Kothari Irrigation',
+    links: [
+      { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/share/16ii6hpXsP/?mibextid=wwXIfr' },
+      { label: 'WhatsApp', icon: FaWhatsapp, hover: 'hover:bg-[#25D366]', url: 'https://whatsapp.com/channel/0029Va6OjqKA89MhSFoEY32l' },
+      { label: 'YouTube', icon: Youtube, hover: 'hover:bg-[#FF0000]', url: 'https://www.youtube.com/@kothariirrigation' },
+      { label: 'Instagram', icon: Instagram, hover: 'hover:bg-[#DD2A7B]', url: 'https://www.instagram.com/kothariirrigation_/' },
+    ],
+  },
 ];
 
 export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant = 'blue' }) => {
@@ -128,7 +152,7 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
             </p>
 
             {/* Social Links */}
-            <div className="flex items-center gap-2.5">
+            {/* <div className="flex items-center gap-2.5">
               {socials.map((s) => {
                 const Icon = s.icon;
                 return (
@@ -144,7 +168,30 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
                   </a>
                 );
               })}
-            </div>
+            </div> */}
+
+              <div className="space-y-2 text-xs font-light text-[#5F6B7A]">
+                          <div className="flex items-center gap-2">
+                            <MapPin className="w-8 h-8 text-[#1575B3]" />
+                            <span>Corporate HQ: 8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <PhoneCall className="w-4 h-4 text-[#1575B3]" />
+                            <span>Toll-Free Helpline: 1800 120 4343</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Mail className="w-4 h-4 text-[#1575B3]" />
+                            <span>For General Enquiry: <a href={`mailto:enquiry@kotharigroupindia.com`} className="hover:text-[#1575B3] transition">enquiry@kotharigroupindia.com</a></span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Mail className="w-4 h-4 text-[#1575B3] invisible" />
+                            <span>Pipe Division: <a href={`mailto:enquiry@kotharigroupindia.com`} className="hover:text-[#1575B3] transition">enquiry@kotharigroupindia.com</a></span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Mail className="w-4 h-4 text-[#1575B3] invisible" />
+                            <span>Irrigation Division: <a href={`mailto:enquiry@kotharigroupindia.com`} className="hover:text-[#1575B3] transition">enquiry@kotharigroupindia.com</a></span>
+                          </div>
+                        </div>
           </div>
 
           {/* About Us Links */}
@@ -202,35 +249,43 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
             </ul>
           </div>
 
-          {/* Corporate Office */}
-          <div className="space-y-3 text-xs">
-            <h4 className="font-medium text-[#1575B3] text-sm">Corporate Office</h4>
-            <ul className="space-y-3 font-light text-[#5F6B7A]">
-              <li className="flex items-start gap-2.5">
-              
-                <span className="leading-relaxed">
-                  8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.
-                </span>
-              </li>
-              <li className="flex items-start gap-2.5">
-               
-                <a href="tel:+9120" className="hover:text-[#1575B3] transition">
-                  +91 1800 120 4343
-                </a>
-              </li>
-              <li className="flex items-start gap-2.5">
-              
-                <a href="mailto:info@kotharigroup.com" className="hover:text-[#1575B3] transition break-all">
-                  enquiry@kotharigroupindia.com
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Connect with us */}
+          <div className="space-y-2.5 text-xs">
+  <h4 className="font-medium text-[#1575B3] text-sm">Connect with us</h4>
+
+  {socialGroups.map((group) => (
+    <div key={group.title} className="space-y-1.5">
+      {/* Group Title */}
+      <span className="block font-light text-[#5F6B7A] leading-relaxed">
+        {group.title}
+      </span>
+
+      {/* Social Links for this Group */}
+      <div className="flex items-center gap-2.5">
+        {group.links.map((s) => {
+          const Icon = s.icon;
+          return (
+            <a
+              key={s.label}
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${group.title} ${s.label}`}
+              className={`w-9 h-9 bg-[#F5F6F8] border border-[#DCEAF5] text-[#1575B3] flex items-center justify-center transition-all hover:text-white hover:shadow-md ${s.hover}`}
+            >
+              <Icon className="w-4 h-4" />
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  ))}
+</div>
         </div>
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-[#DCEAF5] flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-light text-[#5F6B7A]">
-          <p>© 2025 Kothari Group. All Rights Reserved.</p>
+          <p>© 2026 Kothari Group. All Rights Reserved.</p>
 
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             <button onClick={() => scrollToId('home2-footer')} className="hover:text-[#1575B3] transition">
