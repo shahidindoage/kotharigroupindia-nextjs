@@ -9,6 +9,9 @@ import { WhyKothariGroup } from '@/components/main/WhyKothariGroup';
 import { Impact } from '@/components/main/Impact';
 import { Footer } from '@/components/Footer';
 import { NewsDivision } from '@/components/NewsDivision';
+import { Facebook, Instagram, Youtube } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
+import { FeaturedProducts } from '@/components/FeaturedProducts';
 
 
 function PipeDivisionContent() {
@@ -77,6 +80,16 @@ function PipeDivisionContent() {
     copyright: '© 2026 Kothari Group India. All Rights Reserved. Empowering Water Management Across 23+ States.',
     privacyPolicy: 'Privacy Policy',
     termsOfUse: 'Terms of Use',
+    socialgroup:[
+      {
+        links: [
+      { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/share/16ZVVqB5Ju/?mibextid=wwXIfr' },
+      { label: 'WhatsApp', icon: FaWhatsapp, hover: 'hover:bg-[#25D366]', url: 'https://whatsapp.com/channel/0029Vb6myeSGU3BD6QbRqN3i' },
+      { label: 'YouTube', icon: Youtube, hover: 'hover:bg-[#FF0000]', url: 'https://www.youtube.com/@kotharipipesagri' },
+      { label: 'Instagram', icon: Instagram, hover: 'hover:bg-[#DD2A7B]', url: 'https://www.instagram.com/kotharipipess?igsh=MTI0cXZjbGl1Mms2Mw%3D%3D&utm_source=qr' },
+    ]
+      }
+    ]
   }
 
 const productsMegaMenu = {
@@ -261,13 +274,69 @@ const items = [
   },
  
 ];
+
+
+
+const FEATURE_PRODUCTS = [
+  {
+    id: '1',
+    title: 'UPVC Pipes & Fittings',
+    subtitle: 'Advanced Plumbing Matrix',
+    description: 'A high-durability, lead-free thermoplastic engineered for safe, bacteria-resistant, and corrosion-free drinking water systems.',
+    image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/UPVC-PIPES-FITTINGS.webp',
+    category: 'Plumbing Solutions',
+    link: '#',
+    spec: 'Temp Tolerance: Up to 93°C',
+  },
+  {
+    id: '2',
+    title: 'CPVC Pipes & Fittings – Hot & Cold Water Piping System',
+    subtitle: 'Precision Yield Technology',
+    description: 'A durable, eco-friendly virgin CPVC piping solution designed for safe hot and cold drinking water systems (0°C–93°C), featuring high UV resistance, low heat loss, and self-extinguishing safety.',
+    image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/CPVC-PIPES-FITTINGS.webp',
+    category: 'Micro Irrigation',
+    link: '#',
+    spec: 'Efficiency Rate: 98%',
+  },
+  {
+    id: '3',
+    title: 'SWR (Soil, Waste & Rainwater) Piping System',
+    subtitle: 'Deep-Borehole Heavy Duty',
+    description: 'A heavy-duty, leak-free, lead-free piping solution featuring a 10 kg/cm² push-fit rubber ring joint for maintenance-free, corrosion-resistant underground and sewer drainage.',
+    image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/SWR-PIPES-FITTINGS.webp',
+    category: 'Agri & Submersible',
+    link: '#',
+    spec: 'Load Capacity: High PSI',
+  },
+  {
+    id: '4',
+    title: 'UPVC Underground Drainage Piping System (solid wall UDS)',
+    description: 'A lightweight, rodent-resistant uPVC piping system featuring leak-proof rubber ring joints and high impact resistance for easy installation and durable, clog-free drainage.',
+    subtitle: 'High Pressure Carrier',
+    image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/UDS-PIPES-FITTINGS.webp',
+    category: 'Agri Solutions',
+    link: '#',
+    spec: 'UV & Chemical Resistant',
+  },
+  {
+    id: '5',
+    title: 'Kothari Special Garden Hose Pipes',
+    subtitle: 'Climate Control Micro-Jet',
+    description: 'A flexible, anti-twist garden hose made from 100% virgin raw material, offering superior durability, weather resistance, and easy installation for all gardening needs.',
+    image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/05/KOTHARI-SPECIAL-ORANGE-COLOR-2.webp',
+    category: 'Micro Irrigation',
+    link: '#',
+    spec: 'Coverage: 360° Uniformity',
+  },
+];
   return (
     <>
       <HeaderDivison productsMegaMenu={productsMegaMenu}/>
       <HeroDivision heroData={heroData} />
       <Category tab="pipes"/>
-      <WhyKothariGroup />
-      <Impact />
+      <FeaturedProducts products={FEATURE_PRODUCTS}/>
+      {/* <WhyKothariGroup /> */}
+      {/* <Impact /> */}
       <KnowledgeCentre itemData={items} />
       <NewsDivision />
       <Footer footerData={footerData}/>

@@ -1,22 +1,32 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, PhoneCall, Mail, MapPin, Send, CheckCircle2, Building2 } from 'lucide-react';
 
 interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialCategory?: string;
 }
 
-export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
+export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, initialCategory }) => {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
     state: 'Maharashtra',
-    category: 'Plumbing Pipes & fittings',
+    category: initialCategory || 'Plumbing Pipes & fittings',
     message: ''
   });
+
+  useEffect(() => {
+    if (isOpen) {
+      setFormData(prev => ({
+        ...prev,
+        category: initialCategory || 'Plumbing Pipes & fittings'
+      }));
+    }
+  }, [isOpen, initialCategory]);
 
   if (!isOpen) return null;
 

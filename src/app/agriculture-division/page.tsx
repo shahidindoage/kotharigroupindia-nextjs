@@ -10,6 +10,9 @@ import { Impact } from '@/components/main/Impact';
 import { Footer } from '@/components/Footer';
 import { NewsDivision } from '@/components/NewsDivision';
 import { Home3Footer } from '@/components/Home3Footer';
+import { Facebook, Instagram, Youtube } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
+import { FeaturedProducts } from '@/components/FeaturedProducts';
 
 
 function AgricultureDivisionContent() {
@@ -78,6 +81,16 @@ function AgricultureDivisionContent() {
     copyright: '© 2026 Kothari Group India. All Rights Reserved. Empowering Water Management Across 23+ States.',
     privacyPolicy: 'Privacy Policy',
     termsOfUse: 'Terms of Use',
+    socialgroup:[
+      {
+        links: [
+      { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/share/16ii6hpXsP/?mibextid=wwXIfr' },
+      { label: 'WhatsApp', icon: FaWhatsapp, hover: 'hover:bg-[#25D366]', url: 'https://whatsapp.com/channel/0029Va6OjqKA89MhSFoEY32l' },
+      { label: 'YouTube', icon: Youtube, hover: 'hover:bg-[#FF0000]', url: 'https://www.youtube.com/@kothariirrigation' },
+      { label: 'Instagram', icon: Instagram, hover: 'hover:bg-[#DD2A7B]', url: 'https://www.instagram.com/kothariirrigation_/' },
+    ]
+      }
+    ]
   }
   const items = [
     {
@@ -364,14 +377,66 @@ const productsMegaMenu = {
     
   ],
 };
-
+const FEATURE_PRODUCTS = [
+  {
+    id: '1',
+    title: 'Dripline',
+    subtitle: 'Advanced Plumbing Matrix',
+    description: 'Dripline from Kothari Group is a cylindrical integral non-pressure compensating emitting pipe designed for uniform irrigation. As a key agri drip irrigation product, it is engineered to provide efficient and uniform irrigation, promoting better crop yields and water conservation',
+    image: 'https://kotharigroupindia.com/img/productsbanner/Subsection_Banner-HDPE.webp',
+    category: 'Plumbing Solutions',
+    link: '#',
+    spec: 'Temp Tolerance: Up to 93°C',
+  },
+  {
+    id: '2',
+    title: 'Fertigation Machines',
+    subtitle: 'Precision Yield Technology',
+    description: 'Kothari’s fertigation machines are automated systems for nutrient supply through irrigation. They are engineered for precise and uniform fertilizer application, enhancing crop growth and maximising yields.',
+    image: 'https://kotharigroupindia.com/img/product-banners/nutrijet.webp',
+    category: 'Micro Irrigation',
+    link: '#',
+    spec: 'Efficiency Rate: 98%',
+  },
+  {
+    id: '3',
+    title: 'Micro Sprinklers & Assemblies',
+    subtitle: 'Deep-Borehole Heavy Duty',
+    description: 'Kothari engineered microsprinklers and assemblies after understanding the challenges farmers face in arid areas. These devices are built for uniform and gentle watering.',
+    image: 'https://kotharigroupindia.com/img/product-banners/micro-sprinklers-and-assemblies.webp',
+    category: 'Agri & Submersible',
+    link: '#',
+    spec: 'Load Capacity: High PSI',
+  },
+  {
+    id: '4',
+    title: 'Filters',
+    description: `Kothari Group's extensive range of irrigation system filters and injectors, proudly manufactured in-house under the 'Make in India' initiative, are reliable safeguards against clogging hazards. Our filters are specifically engineered to ensure smooth operation of your irrigation system.`,
+    subtitle: 'High Pressure Carrier',
+    image: 'https://kotharigroupindia.com/img/product-banners/filters.webp',
+    category: 'Agri Solutions',
+    link: '#',
+    spec: 'UV & Chemical Resistant',
+  },
+  {
+    id: '5',
+    title: 'Valves Drip Irrigation',
+    subtitle: 'Climate Control Micro-Jet',
+    description: 'Kothari’s valves for drip irrigation are used to control, stop, or direct water flow in drip irrigation lines. These valves ensure easy control of water flow.',
+    image: 'https://kotharigroupindia.com/img/product-banners/valves.webp',
+    category: 'Micro Irrigation',
+    link: '#',
+    spec: 'Coverage: 360° Uniformity',
+  },
+];
   return (
     <>
       <HeaderDivison productsMegaMenu={productsMegaMenu}/>
       <HeroDivision heroData={heroData} />
       <Category tab="agriculture"/>
-      <WhyKothariGroup />
-      <Impact />
+      <FeaturedProducts products={FEATURE_PRODUCTS}/>
+      {/* <WhyKothariGroup /> */}
+      {/* <Impact /> */}
       <KnowledgeCentre itemData={items}/>
       <NewsDivision />
       <Footer footerData={footerData}/>

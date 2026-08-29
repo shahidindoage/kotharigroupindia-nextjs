@@ -1,19 +1,15 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import {
   MapPin,
   PhoneCall,
   Mail,
   Facebook,
   Linkedin,
-  Youtube,
   Instagram,
   Sprout,
-  Factory,
-  ArrowRight,
-  MessageCircle
+  Factory
 } from 'lucide-react';
-import { FaWhatsapp } from "react-icons/fa";
 import Link from 'next/link';
 
 const scrollToId = (id: string) => {
@@ -30,9 +26,8 @@ const aboutLinks = [
 ];
 
 const divisionLinks = [
-  
-  { label: 'Pipe Division', sub: 'Agri Pipes, Plumbing Pipes & Fittings', target: 'solutions', icon: Factory, accent: 'text-[#1575B3] bg-[#F5FAFF]' ,url:'/pipe-division'},
-{ label: 'Irrigation Division', sub: 'Micro Irrigation', target: 'solutions', icon: Sprout, accent: 'text-[#1E8E3E] bg-[#EAF8EF]',url:'/agriculture-division' },
+  { label: 'Pipe Division', sub: 'Agri Pipes, Plumbing Pipes & Fittings', target: 'solutions', icon: Factory, accent: 'text-[#1575B3] bg-[#F5FAFF]', url: '/pipe-division' },
+  { label: 'Irrigation Division', sub: 'Micro Irrigation', target: 'solutions', icon: Sprout, accent: 'text-[#1E8E3E] bg-[#EAF8EF]', url: '/agriculture-division' },
 ];
 
 const supportLinks = [
@@ -44,96 +39,23 @@ const supportLinks = [
 
 const socialGroups = [
   {
-    title: 'Kothari Group',
     links: [
       { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/share/1A8KDDBqTx/?mibextid=wwXIfr' },
       { label: 'LinkedIn', icon: Linkedin, hover: 'hover:bg-[#0A66C2]', url: 'https://www.linkedin.com/company/kotharigroupindia/' },
       { label: 'Instagram', icon: Instagram, hover: 'hover:bg-[#DD2A7B]', url: 'https://www.instagram.com/kotharigroup_?igsh=MzJ0Ympyb3VoYmk1&utm_source=qr' },
     ],
   },
-  {
-    title: 'Kothari Pipes',
-    links: [
-      { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/share/16ZVVqB5Ju/?mibextid=wwXIfr' },
-      { label: 'WhatsApp', icon: FaWhatsapp, hover: 'hover:bg-[#25D366]', url: 'https://whatsapp.com/channel/0029Vb6myeSGU3BD6QbRqN3i' },
-      { label: 'YouTube', icon: Youtube, hover: 'hover:bg-[#FF0000]', url: 'https://www.youtube.com/@kotharipipesagri' },
-      { label: 'Instagram', icon: Instagram, hover: 'hover:bg-[#DD2A7B]', url: 'https://www.instagram.com/kotharipipess?igsh=MTI0cXZjbGl1Mms2Mw%3D%3D&utm_source=qr' },
-    ],
-  },
-  {
-    title: 'Kothari Irrigation',
-    links: [
-      { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/share/16ii6hpXsP/?mibextid=wwXIfr' },
-      { label: 'WhatsApp', icon: FaWhatsapp, hover: 'hover:bg-[#25D366]', url: 'https://whatsapp.com/channel/0029Va6OjqKA89MhSFoEY32l' },
-      { label: 'YouTube', icon: Youtube, hover: 'hover:bg-[#FF0000]', url: 'https://www.youtube.com/@kothariirrigation' },
-      { label: 'Instagram', icon: Instagram, hover: 'hover:bg-[#DD2A7B]', url: 'https://www.instagram.com/kothariirrigation_/' },
-    ],
-  },
 ];
 
 export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant = 'blue' }) => {
-  const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const green = variant === 'green';
-
-  const newsCard = green
-    ? 'bg-[#F2FBF4] border-[#BFE4CC]'
-    : 'bg-[#F5F6F8] border-[#DCEAF5]';
-  const newsHeading = green ? 'text-[#0F6B2B]' : 'text-[#0f172b]';
-  const newsInput = green
-    ? 'border-[#BFE4CC] focus:ring-[#1E8E3E]/30'
-    : 'border-[#DCEAF5] focus:ring-[#1575B3]/30';
-  const newsBtn = green
-    ? 'bg-[#1E8E3E] hover:bg-[#0F6B2B]'
-    : 'bg-[#0f172b] hover:bg-[#1575B3]';
-
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newsletterEmail) return;
-    setSubscribed(true);
-    setTimeout(() => {
-      setNewsletterEmail('');
-      setSubscribed(false);
-    }, 4000);
-  };
-
   return (
     <footer id="home2-footer" className="bg-[#FFFFFF] border-t border-[#DCEAF5] pt-16 pb-8 text-left">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
 
-        {/* Newsletter */}
-        {/* <div className={` border p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xs ${newsCard}`}>
-          <div className="space-y-1.5 max-w-xl">
-            <h3 className={`text-xl sm:text-2xl font-medium ${newsHeading}`}>
-              Subscribe To Kothari Group Updates
-            </h3>
-            <p className="text-xs font-light text-[#5F6B7A]">
-              Get insights on micro irrigation, agri pipes and plumbing innovations, straight to your inbox.
-            </p>
-          </div>
-
-          <form onSubmit={handleNewsletterSubmit} className="flex w-full lg:w-auto items-center gap-2">
-            <input
-              type="email"
-              required
-              placeholder="Enter your email address..."
-              value={newsletterEmail}
-              onChange={(e) => setNewsletterEmail(e.target.value)}
-              className={`px-4 py-3 bg-[#FFFFFF] border  text-xs font-light text-[#111111] placeholder-[#5F6B7A] focus:outline-none focus:ring-2 w-full lg:w-64 ${newsInput}`}
-            />
-            <button
-              type="submit"
-              className={`text-white px-5 py-3  font-medium text-xs shadow-sm transition shrink-0 ${newsBtn}`}
-            >
-              {subscribed ? 'Subscribed!' : 'Subscribe'}
-            </button>
-          </form>
-        </div> */}
-
-        {/* Main Sitemap Columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8">
-          {/* Brand Info */}
+        {/* Main Sitemap Columns (5 columns layout) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+          
+          {/* Brand Info (Spans 2 columns) */}
           <div className="lg:col-span-2 space-y-5">
             <div className="h-18 flex items-center">
               <img
@@ -151,47 +73,24 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
               Kothari Group is a leading piping solutions provider with a strong focus on quality, innovation and sustainability.
             </p>
 
-            {/* Social Links */}
-            {/* <div className="flex items-center gap-2.5">
-              {socials.map((s) => {
-                const Icon = s.icon;
-                return (
-                  <a
-                    key={s.label}
-                    href={s.url}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    aria-label={s.label}
-                    className={`w-9 h-9  bg-[#F5F6F8] border border-[#DCEAF5] text-[#1575B3] flex items-center justify-center transition-all hover:text-white hover:shadow-md ${s.hover}`}
-                  >
-                    <Icon className="w-4 h-4" />
-                  </a>
-                );
-              })}
-            </div> */}
-
-              <div className="space-y-2 text-xs font-light text-[#5F6B7A]">
-                          <div className="flex items-center gap-2">
-                            <MapPin className="w-8 h-8 text-[#1575B3]" />
-                            <span>Corporate HQ: 8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <PhoneCall className="w-4 h-4 text-[#1575B3]" />
-                            <span>Toll-Free Helpline: 1800 120 4343</span>
-                          </div>
-                          {/* <div className="flex items-center gap-2">
-                            <Mail className="w-4 h-4 text-[#1575B3]" />
-                            <span>For General Enquiry: <a href={`mailto:enquiry@kotharigroupindia.com`} className="hover:text-[#1575B3] transition">enquiry@kotharigroupindia.com</a></span>
-                          </div> */}
-                          <div className="flex items-center gap-2">
-                            <Mail className="w-4 h-4 text-[#1575B3]" />
-                            <span>Pipe Division: <a href={`mailto:pipe@kotharigroupindia.com`} className="hover:text-[#1575B3] transition">pipe@kotharigroupindia.com</a></span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <Mail className="w-4 h-4 text-[#1575B3] invisible" />
-                            <span>Irrigation Division: <a href={`mailto:irrigation@kotharigroupindia.com`} className="hover:text-[#1575B3] transition">irrigation@kotharigroupindia.com</a></span>
-                          </div>
-                        </div>
+            <div className="space-y-2 text-xs font-light text-[#5F6B7A]">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-6 h-6 text-[#1575B3]" />
+                <span>Corporate HQ: 8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <PhoneCall className="w-4 h-4 text-[#1575B3]" />
+                <span>Toll-Free Helpline: 1800 120 4343</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-[#1575B3]" />
+                <span>Pipe Division: <a href="mailto:pipe@kotharigroupindia.com" className="hover:text-[#1575B3] transition">pipe@kotharigroupindia.com</a></span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-[#1575B3] invisible" />
+                <span>Irrigation Division: <a href="mailto:irrigation@kotharigroupindia.com" className="hover:text-[#1575B3] transition">irrigation@kotharigroupindia.com</a></span>
+              </div>
+            </div>
           </div>
 
           {/* About Us Links */}
@@ -221,7 +120,7 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
                       onClick={() => scrollToId(link.target)}
                       className="flex items-start gap-2 text-left hover:text-[#1575B3] transition group"
                     >
-                      <span className={`mt-0.5 w-6 h-6  flex items-center justify-center shrink-0 ${link.accent}`}>
+                      <span className={`mt-0.5 w-6 h-6 flex items-center justify-center shrink-0 ${link.accent}`}>
                         <Icon className="w-3.5 h-3.5" />
                       </span>
                       <span>
@@ -235,52 +134,46 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
             </ul>
           </div>
 
-          {/* Support */}
-          <div className="space-y-3 text-xs">
-            <h4 className="font-medium text-[#1575B3] text-sm">Support</h4>
-            <ul className="space-y-2 font-light text-[#5F6B7A]">
-              {supportLinks.map((link) => (
-                <li key={link.label}>
-                  <button onClick={() => scrollToId(link.target)} className="hover:text-[#1575B3] transition">
-                    {link.label}
-                  </button>
-                </li>
+          {/* Support Column + Connect with us below */}
+          <div className="space-y-6">
+            <div className="space-y-3 text-xs">
+              <h4 className="font-medium text-[#1575B3] text-sm">Support</h4>
+              <ul className="space-y-2 font-light text-[#5F6B7A]">
+                {supportLinks.map((link) => (
+                  <li key={link.label}>
+                    <button onClick={() => scrollToId(link.target)} className="hover:text-[#1575B3] transition">
+                      {link.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Connect with us placed right inside Support Column */}
+            <div className="space-y-2.5 text-xs pt-2 border-t border-slate-100">
+              <h4 className="font-medium text-[#1575B3] text-sm">Connect with us</h4>
+              {socialGroups.map((group, groupIdx) => (
+                <div key={groupIdx} className="flex items-center gap-2.5">
+                  {group.links.map((s) => {
+                    const Icon = s.icon;
+                    return (
+                      <a
+                        key={s.label}
+                        href={s.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={s.label}
+                        className={`w-9 h-9 bg-[#F5F6F8] border border-[#DCEAF5] text-[#1575B3] flex items-center justify-center transition-all hover:text-white hover:shadow-md ${s.hover}`}
+                      >
+                        <Icon className="w-4 h-4" />
+                      </a>
+                    );
+                  })}
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
-          {/* Connect with us */}
-          <div className="space-y-2.5 text-xs">
-  <h4 className="font-medium text-[#1575B3] text-sm">Connect with us</h4>
-
-  {socialGroups.map((group) => (
-    <div key={group.title} className="space-y-1.5">
-      {/* Group Title */}
-      <span className="block font-light text-[#5F6B7A] leading-relaxed">
-        {group.title}
-      </span>
-
-      {/* Social Links for this Group */}
-      <div className="flex items-center gap-2.5">
-        {group.links.map((s) => {
-          const Icon = s.icon;
-          return (
-            <a
-              key={s.label}
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${group.title} ${s.label}`}
-              className={`w-9 h-9 bg-[#F5F6F8] border border-[#DCEAF5] text-[#1575B3] flex items-center justify-center transition-all hover:text-white hover:shadow-md ${s.hover}`}
-            >
-              <Icon className="w-4 h-4" />
-            </a>
-          );
-        })}
-      </div>
-    </div>
-  ))}
-</div>
         </div>
 
         {/* Bottom Bar */}

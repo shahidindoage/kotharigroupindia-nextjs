@@ -149,7 +149,7 @@ export const Category = ({tab}:any) => {
   const currentCategories = activeTab === 'pipes' ? pipesData : agricultureData;
 
   return (
-    <section className="w-full bg-[#F5F6F8] py-20 lg:py-28 text-slate-900 overflow-hidden">
+    <section className="w-full bg-[#FFF] py-20 lg:py-28 text-slate-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Editorial Bar */}
