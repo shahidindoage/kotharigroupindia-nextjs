@@ -179,12 +179,12 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
                             <PhoneCall className="w-4 h-4 text-[#1575B3]" />
                             <span>Toll-Free Helpline: 1800 120 4343</span>
                           </div>
-                          <div className="flex items-center gap-2">
+                          {/* <div className="flex items-center gap-2">
                             <Mail className="w-4 h-4 text-[#1575B3]" />
                             <span>For General Enquiry: <a href={`mailto:enquiry@kotharigroupindia.com`} className="hover:text-[#1575B3] transition">enquiry@kotharigroupindia.com</a></span>
-                          </div>
+                          </div> */}
                           <div className="flex items-center gap-2">
-                            <Mail className="w-4 h-4 text-[#1575B3] invisible" />
+                            <Mail className="w-4 h-4 text-[#1575B3]" />
                             <span>Pipe Division: <a href={`mailto:pipe@kotharigroupindia.com`} className="hover:text-[#1575B3] transition">pipe@kotharigroupindia.com</a></span>
                           </div>
                           <div className="flex items-center gap-2">
