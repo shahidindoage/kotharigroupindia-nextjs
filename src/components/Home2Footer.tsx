@@ -185,11 +185,11 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
                           </div>
                           <div className="flex items-center gap-2">
                             <Mail className="w-4 h-4 text-[#1575B3] invisible" />
-                            <span>Pipe Division: <a href={`mailto:enquiry@kotharigroupindia.com`} className="hover:text-[#1575B3] transition">enquiry@kotharigroupindia.com</a></span>
+                            <span>Pipe Division: <a href={`mailto:pipe@kotharigroupindia.com`} className="hover:text-[#1575B3] transition">pipe@kotharigroupindia.com</a></span>
                           </div>
                           <div className="flex items-center gap-2">
                             <Mail className="w-4 h-4 text-[#1575B3] invisible" />
-                            <span>Irrigation Division: <a href={`mailto:enquiry@kotharigroupindia.com`} className="hover:text-[#1575B3] transition">enquiry@kotharigroupindia.com</a></span>
+                            <span>Irrigation Division: <a href={`mailto:irrigation@kotharigroupindia.com`} className="hover:text-[#1575B3] transition">irrigation@kotharigroupindia.com</a></span>
                           </div>
                         </div>
           </div>
