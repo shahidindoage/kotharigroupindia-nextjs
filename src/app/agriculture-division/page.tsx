@@ -31,7 +31,7 @@ function AgricultureDivisionContent() {
     contact: {
       address: 'Corporate HQ: 8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.',
       phone: '1800 120 4343',
-      email: 'irrigation@kotharigroupindia.com',
+      email: 'sales.irrigation@kotharigroupindia.com',
     },
     productSegments: [
       'Drip Irrigation Systems',
@@ -84,9 +84,9 @@ function AgricultureDivisionContent() {
     socialgroup:[
       {
         links: [
-      { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/share/16ii6hpXsP/?mibextid=wwXIfr' },
+      { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/kothariirrigation/' },
       { label: 'WhatsApp', icon: FaWhatsapp, hover: 'hover:bg-[#25D366]', url: 'https://whatsapp.com/channel/0029Va6OjqKA89MhSFoEY32l' },
-      { label: 'YouTube', icon: Youtube, hover: 'hover:bg-[#FF0000]', url: 'https://www.youtube.com/@kothariirrigation' },
+      { label: 'YouTube', icon: Youtube, hover: 'hover:bg-[#FF0000]', url: 'https://www.youtube.com/@KothariIrrigation' },
       { label: 'Instagram', icon: Instagram, hover: 'hover:bg-[#DD2A7B]', url: 'https://www.instagram.com/kothariirrigation_/' },
     ]
       }

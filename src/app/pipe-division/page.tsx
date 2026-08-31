@@ -30,7 +30,7 @@ function PipeDivisionContent() {
     contact: {
       address: 'Corporate HQ: 8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.',
       phone: '1800 120 4343',
-      email: 'pipe@kotharigroupindia.com',
+      email: 'sales.pipe@kotharigroupindia.com',
     },
     productSegments: [
       'Plumbing Pipes & fittings',
@@ -82,11 +82,22 @@ function PipeDivisionContent() {
     termsOfUse: 'Terms of Use',
     socialgroup:[
       {
+        heading: 'Kothari Pipes',
         links: [
-      { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/share/16ZVVqB5Ju/?mibextid=wwXIfr' },
-      { label: 'WhatsApp', icon: FaWhatsapp, hover: 'hover:bg-[#25D366]', url: 'https://whatsapp.com/channel/0029Vb6myeSGU3BD6QbRqN3i' },
+      { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/KothariPipesAgri' },
+      // { label: 'WhatsApp', icon: FaWhatsapp, hover: 'hover:bg-[#25D366]', url: 'https://whatsapp.com/channel/0029Vb6myeSGU3BD6QbRqN3i' },
       { label: 'YouTube', icon: Youtube, hover: 'hover:bg-[#FF0000]', url: 'https://www.youtube.com/@kotharipipesagri' },
-      { label: 'Instagram', icon: Instagram, hover: 'hover:bg-[#DD2A7B]', url: 'https://www.instagram.com/kotharipipess?igsh=MTI0cXZjbGl1Mms2Mw%3D%3D&utm_source=qr' },
+      { label: 'Instagram', icon: Instagram, hover: 'hover:bg-[#DD2A7B]', url: 'https://www.instagram.com/kotharipipesagri/' },
+    ]
+      },
+       {
+        heading: 'Kothari Plumbing',
+        links: [
+      { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/kotharipipesplumbing/' },
+
+      { label: 'YouTube', icon: Youtube, hover: 'hover:bg-[#FF0000]', url: 'https://www.youtube.com/@kotharipipesplumbing' },
+      { label: 'Instagram', icon: Instagram, hover: 'hover:bg-[#DD2A7B]', url: 'https://www.instagram.com/kotharipipesplumbing/' },
+          { label: 'WhatsApp', icon: FaWhatsapp, hover: 'hover:bg-[#25D366]', url: 'https://whatsapp.com/channel/0029Vb6myeSGU3BD6QbRqN3i' },
     ]
       }
     ]
@@ -326,6 +337,16 @@ const FEATURE_PRODUCTS = [
     subtitle: 'Climate Control Micro-Jet',
     description: 'A flexible, anti-twist garden hose made from 100% virgin raw material, offering superior durability, weather resistance, and easy installation for all gardening needs.',
     image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/05/KOTHARI-SPECIAL-ORANGE-COLOR-2.webp',
+    category: 'Micro Irrigation',
+    link: '#',
+    spec: 'Coverage: 360° Uniformity',
+  },
+  {
+    id: '6',
+    title: 'PVC Pipes',
+    subtitle: 'Climate Control Micro-Jet',
+    description: 'Our PVC pipes are manufactured using premium raw materials, adhering to strict industry standards, and conducting rigorous testing. They ensure reliable and efficient, leak-resistant water supply to every farm.',
+    image: 'https://kotharigroupindia.com/img/productsbanner/Subsection_Banner-PVCPipes.webp',
     category: 'Micro Irrigation',
     link: '#',
     spec: 'Coverage: 360° Uniformity',

@@ -18,6 +18,8 @@ interface FooterProps {
   onOpenCareerModal?: () => void;
   footerData?: any;
   socialGroups?: {
+    heading?: string;
+    title?: string;
     links: {
       label: string;
       url: string;
@@ -29,6 +31,7 @@ interface FooterProps {
 
 const DEFAULT_SOCIAL_GROUPS = [
   {
+    heading: 'Kothari Pipes',
     links: [
       { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/share/16ZVVqB5Ju/?mibextid=wwXIfr' },
       { label: 'WhatsApp', icon: FaWhatsapp, hover: 'hover:bg-[#25D366]', url: 'https://whatsapp.com/channel/0029Vb6myeSGU3BD6QbRqN3i' },
@@ -56,24 +59,59 @@ export const Footer: React.FC<FooterProps> = ({
     (footerData?.socialgroup && footerData?.socialgroup.length > 0) ? footerData.socialgroup :
     DEFAULT_SOCIAL_GROUPS;
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newsletterEmail) return;
-    setSubscribed(true);
-    setTimeout(() => {
-      setNewsletterEmail('');
-      setSubscribed(false);
-    }, 4000);
-  };
+  const isMultipleSocialGroups = activeSocialGroups.length > 1;
+
+  // Render function for social links block
+  const renderSocialGroups = () => (
+    <div className="space-y-4 text-xs">
+      {/* Main Section Heading */}
+      <h4 className="font-medium text-[#1575B3] text-sm">
+        Connect with us
+      </h4>
+
+      {/* Social Groups */}
+      <div className="space-y-3">
+        {activeSocialGroups.map((group: any, groupIdx: number) => (
+          <div key={groupIdx} className="space-y-1.5">
+            {/* Render Group Title/Heading if it exists */}
+            {(group.title || group.heading) && (
+              <span className="text-xs font-light text-[#5F6B7A] block">
+                {group.title || group.heading}
+              </span>
+            )}
+
+            {/* Social Icons Row */}
+            <div className="flex items-center gap-2.5 flex-wrap">
+              {group.links?.map((s: any) => {
+                const Icon = s.icon;
+                return (
+                  <a
+                    key={s.label}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className={`w-9 h-9 bg-[#F5F6F8] border border-[#DCEAF5] text-[#1575B3] flex items-center justify-center transition-all hover:text-white hover:shadow-md ${s.hover}`}
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <footer className="bg-[#FFFFFF] border-t border-[#DCEAF5] pt-16 pb-8 text-left">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
         
         {/* Main Footer Sitemap Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className={`grid grid-cols-1 md:grid-cols-2 ${isMultipleSocialGroups ? 'lg:grid-cols-6' : 'lg:grid-cols-5'} gap-8`}>
           
-          {/* Brand Info (Spans 2 columns) */}
+          {/* Brand Info Column: ALWAYS expanded to lg:col-span-2 */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <div className="h-22 flex items-center justify-center">
@@ -109,7 +147,7 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
           </div>
 
-          {/* Column 1: Product Segments */}
+          {/* Core Segments */}
           <div className="space-y-3 text-xs">
             <h4 className="font-medium text-[#1575B3] text-sm">
               Core Segments
@@ -125,7 +163,7 @@ export const Footer: React.FC<FooterProps> = ({
             </ul>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Quick Links */}
           <div className="space-y-3 text-xs">
             <h4 className="font-medium text-[#1575B3] text-sm">
               Quick Links
@@ -141,10 +179,8 @@ export const Footer: React.FC<FooterProps> = ({
             </ul>
           </div>
 
-          {/* Column 3: Quality & Compliance + Connect With Us */}
+          {/* Certifications (+ Single Social Group attached below) */}
           <div className="space-y-6">
-            
-            {/* Certifications Block */}
             <div className="space-y-3 text-xs">
               <h4 className="font-medium text-[#1575B3] text-sm">
                 Certifications
@@ -159,32 +195,20 @@ export const Footer: React.FC<FooterProps> = ({
               </ul>
             </div>
 
-            {/* Connect With Us Block */}
-            <div className="space-y-2.5 text-xs pt-2 border-t border-slate-100">
-              <h4 className="font-medium text-[#1575B3] text-sm">Connect with us</h4>
-
-              {activeSocialGroups.map((group: any, groupIdx: number) => (
-                <div key={groupIdx} className="flex items-center gap-2.5">
-                  {group.links.map((s: any) => {
-                    const Icon = s.icon;
-                    return (
-                      <a
-                        key={s.label}
-                        href={s.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={s.label}
-                        className={`w-9 h-9 bg-[#F5F6F8] border border-[#DCEAF5] text-[#1575B3] flex items-center justify-center transition-all hover:text-white hover:shadow-md ${s.hover}`}
-                      >
-                        <Icon className="w-4 h-4" />
-                      </a>
-                    );
-                  })}
-                </div>
-              ))}
-            </div>
-
+            {/* SINGLE GROUP CONDITION: Rendered below Certifications */}
+            {!isMultipleSocialGroups && (
+              <div className="pt-2 border-t border-slate-100">
+                {renderSocialGroups()}
+              </div>
+            )}
           </div>
+
+          {/* MULTIPLE GROUPS CONDITION: Placed in its own column */}
+          {isMultipleSocialGroups && (
+            <div>
+              {renderSocialGroups()}
+            </div>
+          )}
 
         </div>
 
