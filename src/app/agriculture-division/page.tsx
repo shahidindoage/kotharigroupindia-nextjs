@@ -123,81 +123,81 @@ const productsMegaMenu = {
         {
           name: 'Dripline',
           products: [
-            { title: 'Dripline K-Gol NPC', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-GOL-NPC.webp' },
-            { title: 'Dripline K-Gol PC', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-GOL-PC-1.webp' },
-            { title: 'Dripline K-Lin NPC', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-LIN-1.webp' },
-            { title: 'Dripline K-Lin PCAS', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-LIN-PCAS-1.webp' },
-            { title: 'Dripline K-Lin PCND', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-LIN-PCND-1.webp' },
+            { title: 'Dripline K-Gol NPC', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-GOL-NPC.webp',shortDesc: 'Clog-resistant dripline tubing delivering uniform, efficient crop irrigation.' },
+            { title: 'Dripline K-Gol PC', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-GOL-PC-1.webp',shortDesc: 'Pressure-compensating dripline ensuring uniform, efficient irrigation across slopes.' },
+            { title: 'Dripline K-Lin NPC', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-LIN-1.webp' ,shortDesc:'Advanced LLDPE dripline ensuring uniform, clog-resistant irrigation performance.'},
+            { title: 'Dripline K-Lin PCAS', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-LIN-PCAS-1.webp', shortDesc: 'Anti-siphon dripline providing precise, uniform, root-protected irrigation.'},
+            { title: 'Dripline K-Lin PCND', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-LIN-PCND-1.webp',shortDesc:'Advanced PCND dripline ensuring stable, uniform, root-protected irrigation.' },
           
           ],
         },
         {
           name: 'Polyfittings & Accessories',
           products: [
-            { title: 'Drip Poly Fittings', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIP-POLY-FITTINGS.webp' },
-            { title: 'Drip Winder', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/Drip-Winder.webp' },
+            { title: 'Drip Poly Fittings', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIP-POLY-FITTINGS.webp',shortDesc:'Reinforced PPCP fittings providing durable, leak-proof, UV-resistant connections.' },
+            { title: 'Drip Winder', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/Drip-Winder.webp' , shortDesc:'Portable metal reel enabling quick, efficient dripline handling and storage.'},
            
           ],
         },
         {
           name: 'Drip Tubes (Polytube)',
           products: [
-            { title: 'Polytube', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/POLYTUBE.webp' },
+            { title: 'Polytube', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/POLYTUBE.webp',shortDesc: 'Advanced LLDPE tubing delivering uniform flow and weather-resistant durability.' },
            
           ],
         },
         {
           name: 'Emitters (Drippers)',
           products: [
-            { title: 'Turbo Dripper', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/TURBO-DRIPPER-1.webp' },
-            { title: 'PC Dripper', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PC-DRIPPER.webp' },
+            { title: 'Turbo Dripper', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/TURBO-DRIPPER-1.webp' ,shortDesc: 'Clog-resistant drippers ensuring precise, uniform, low-waste irrigation performance.'},
+            { title: 'PC Dripper', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PC-DRIPPER.webp',shortDesc:'Pressure-compensating dripper ensuring clog-resistant, uniform water distribution.' },
            
           ],
         },
         {
           name: 'Thinwall Drip Line',
           products: [
-            { title: 'Thin Wall Dripline K-Super', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-SUPER.webp' },
-            { title: 'Thin Wall Dripline K-Smar', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-SMART.webp' },
-            { title: 'Thin Wall Dripline K-Slim', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-SLIM-ULTRA.webp' },
-            { title: 'Thinwall Dripline K-Slim Ultra', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-SLIM.webp' },
-            { title: 'K-Smart Screen Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/K-Smart-Screen-Filter.webp' },
-            { title: 'Thinwall Drip Poly Fittings', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/08/Thinwall-Drip-Accessories.webp' },
+            { title: 'Thin Wall Dripline K-Super', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-SUPER.webp',shortDesc: 'Cylindrical drippers delivering uniform, clog-resistant irrigation across larger fields.' },
+            { title: 'Thin Wall Dripline K-Smar', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-SMART.webp' , shortDesc: 'Durable dripline tubing ensuring precise, uniform, high-efficiency irrigation.'},
+            { title: 'Thin Wall Dripline K-Slim', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-SLIM-ULTRA.webp',shortDesc: 'Precision dripline tubing delivering steady, efficient, clog-resistant irrigation.' },
+            { title: 'Thinwall Dripline K-Slim Ultra', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-SLIM.webp' , shortDesc: 'Reliable 10mil dripline tubing ensuring uniform, clog-resistant water distribution.'},
+            { title: 'K-Smart Screen Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/K-Smart-Screen-Filter.webp' ,shortDesc: 'Durable 130-micron filters providing cost-effective irrigation water filtration.'},
+            { title: 'Thinwall Drip Poly Fittings', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/08/Thinwall-Drip-Accessories.webp',shortDesc:'Durable barb fittings providing leak-free, UV- and chemical-resistant connections.' },
            
           ],
         },
         {
           name: 'Valves',
           products: [
-            { title: 'Single & Double Union PVC Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Single-Double-Union-PVC.webp' },
-            { title: 'Double Union PP Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/PP-Union-Ball-Valve.webp' },
-            { title: 'Plain White Blue Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Plain-white-blue-ball-valve.webp' },
-            { title: 'Butterfly Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Butterfly-Valve.webp' },
-            { title: 'Throttle Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Throttle-valve.webp' },
-            { title: 'Air Cum Vacuum Relief Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Air-Cum-Vacuum-Relief-Valve.webp' },
-            { title: 'Flush Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Flush-Valve-1.webp' },
-            { title: 'Check Valve (Non-Return Valve)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Check-Valve-Non-Return-Valve.webp' },
+            { title: 'Single & Double Union PVC Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Single-Double-Union-PVC.webp',shortDesc: 'Durable PVC valves ensuring effortless, leak-proof irrigation flow control.' },
+            { title: 'Double Union PP Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/PP-Union-Ball-Valve.webp' ,shortDesc: 'Durable polypropylene valves offering reliable, leak-proof flow control.'},
+            { title: 'Plain White Blue Ball Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Plain-white-blue-ball-valve.webp',shortDesc: 'Compact, lightweight valves providing easy, leak-proof irrigation control.' },
+            { title: 'Butterfly Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Butterfly-Valve.webp' ,shortDesc: 'Compact disc valves offering quick operation and efficient flow control.'},
+            { title: 'Throttle Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Throttle-valve.webp' ,shortDesc: 'Durable irrigation valve enabling precise, visual water flow control.'},
+            { title: 'Air Cum Vacuum Relief Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Air-Cum-Vacuum-Relief-Valve.webp',shortDesc: 'Automatic air valve preventing vacuum, water hammer, and leakage.' },
+            { title: 'Flush Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Flush-Valve-1.webp' ,shortDesc:'Durable flushing valve enabling easy, leak-proof irrigation system cleaning.'},
+            { title: 'Check Valve (Non-Return Valve)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Check-Valve-Non-Return-Valve.webp',shortDesc: 'Heavy-duty backflow preventer ensuring reliable, durable irrigation system protection.' },
            
           ],
         },
         {
           name: 'Drip Agri PVC Pipes',
           products: [
-            { title: 'UPVC Pipes', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PVC-Selffit-pipe.webp' },
+            { title: 'UPVC Pipes', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PVC-Selffit-pipe.webp' ,shortDesc:'Durable HDPE distribution pipes for flexible, cost-effective irrigation.'},
            
           ],
         },
         {
           name: 'Drip Gravity Kits',
           products: [
-            { title: 'Gravity Drip Kit', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/KOTHARI-GRAVITY-DRIP-KIT.webp' },
+            { title: 'Gravity Drip Kit', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/KOTHARI-GRAVITY-DRIP-KIT.webp',shortDesc:'Pump-free drip irrigation kits enabling easy, efficient low-pressure watering.' },
            
           ],
         },
         {
           name: 'Mulching',
           products: [
-            { title: 'Mulch Films', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Mulch.webp' },
+            { title: 'Mulch Films', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Mulch.webp' ,shortDesc:'Mulching film conserves moisture, controls weeds, and promotes healthier crops.'},
            
           ],
         },
@@ -211,23 +211,23 @@ const productsMegaMenu = {
         {
           name: 'Filters',
           products: [
-            { title: 'Hydrocyclone Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Hydrocyclone-Filter.webp' },
-            { title: 'Sand Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/SAND-FILTER-1.webp' },
-            { title: 'Screen Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Screen-Filter.webp' },
-            { title: 'Twin Screen Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Twin-Screen-Filter.webp' },
-            { title: 'Semi Automatic Screen Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Semi-Automatic-Screen-Filter-1.webp' },
-            { title: 'Disc Filter & Twin Disc Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Disc-Filter-Twin-Disc-Filter-1.webp' },
-            { title: 'Mini Sigma Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Mini-Sigma-Filter.webp' },
-            { title: 'Filtomat Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Filtomat-Filter.webp' },
+            { title: 'Hydrocyclone Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Hydrocyclone-Filter.webp' ,shortDesc:'Hydrodynamic filter providing efficient particle separation and extended filtration.'},
+            { title: 'Sand Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/SAND-FILTER-1.webp',shortDesc:'Advanced sand filters delivering ultra-fine, low-loss water filtration.' },
+            { title: 'Screen Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Screen-Filter.webp' ,shortDesc:'Durable screen filters offering efficient filtration and easy maintenance.'},
+            { title: 'Twin Screen Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Twin-Screen-Filter.webp' ,shortDesc:'Dual screen filter providing high-flow, durable, versatile filtration performance.'},
+            { title: 'Semi Automatic Screen Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Semi-Automatic-Screen-Filter-1.webp',shortDesc:'High-capacity filters offering easy maintenance and real-time clogging indication.' },
+            { title: 'Disc Filter & Twin Disc Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Disc-Filter-Twin-Disc-Filter-1.webp' ,shortDesc: 'Grooved disc filters delivering fine, efficient, low-maintenance water filtration.'},
+            { title: 'Mini Sigma Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Mini-Sigma-Filter.webp' ,shortDesc:'Compact self-cleaning filters delivering efficient, automatic low-pressure filtration.'},
+            { title: 'Filtomat Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Filtomat-Filter.webp',shortDesc:'Power-free automatic filters ensuring continuous, efficient, water-saving filtration.' },
         ],
         },
         {
           name: 'Dosing pumps & Fertilizer Injectors',
           products: [
-            { title: 'HDPE Header Manifold', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/HDPE-Header-Manifold.webp' },
-            { title: 'PP Header Assembly', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PP-Header-Assembly.webp' },
-            { title: 'Venturi Injector', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Venturi-Injector.webp' },
-            { title: 'Dosing Pump', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/DOZING-PUMP.webp' },
+            { title: 'HDPE Header Manifold', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/HDPE-Header-Manifold.webp' ,shortDesc:'Durable HDPE manifolds offering leak-proof, high-pressure irrigation performance.'},
+            { title: 'PP Header Assembly', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PP-Header-Assembly.webp',shortDesc:'Durable PP manifolds with sturdy support and precise pressure monitoring.' },
+            { title: 'Venturi Injector', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Venturi-Injector.webp',shortDesc:'Efficient Venturi fertilizer injector ensuring uniform, energy-free crop nutrition.' },
+            { title: 'Dosing Pump', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/DOZING-PUMP.webp' ,shortDesc:'Adjustable fertilizer injector delivering precise, efficient nutrient application for irrigation.'},
           ],
         }
       
@@ -240,28 +240,28 @@ const productsMegaMenu = {
         {
           name: 'Fertigation Machines',
           products: [
-            { title: 'Nutrijet Fertigation Machines', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/NUTRIJET.webp' },
+            { title: 'Nutrijet Fertigation Machines', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/NUTRIJET.webp' ,shortDesc:'IoT-enabled fertigation system delivering precise, automated nutrient management.'},
               ],
         },
         {
           name: 'Controllers',
           products: [
-            { title: 'Irribeat Controllers', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/IRRIBEAT.webp' },
-            { title: 'GSI (Galcon Smart Irrigation) Controller', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/GSI-Galcon-Smart-Irrigation.webp' },
-            { title: 'Galpro Controller (AC/DC)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Galpro-AC-DC.webp' },
+            { title: 'Irribeat Controllers', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/IRRIBEAT.webp' ,shortDesc:'Smart IoT irrigation controller enabling remote, expandable multi-zone management.'},
+            { title: 'GSI (Galcon Smart Irrigation) Controller', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/GSI-Galcon-Smart-Irrigation.webp',shortDesc:'Compact IoT controller enabling remote, customizable irrigation and fertigation.' },
+            { title: 'Galpro Controller (AC/DC)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Galpro-AC-DC.webp',shortDesc:'Smart irrigation controller enabling automated, water-saving fertigation and scheduling.' },
               ],
         },
         {
           name: 'Automatic Filters & Accessories',
           products: [
-            { title: 'Mini Sigma Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Mini-Sigma-Filter.webp' },
-            { title: 'Filtomat Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Filtomat-Filter.webp' },
-            { title: 'Solenoid Control Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Solenoid-Control-Valve.webp' },
-            { title: 'Pressure Reducing Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Pressure-Reducing-Valve.webp' },
-            { title: 'Pressure Sustaining Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Pressure-Sustaining-Valve.webp' },
-            { title: 'Quick Pressure Relief Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/QUICK-PRESSURE.webp' },
-            { title: 'Filter Auto Backwash Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/FILTER-BACKWASH.png.webp' },
-            { title: 'Water Meter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/WATER-METER.webp' },
+            { title: 'Mini Sigma Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Mini-Sigma-Filter.webp' ,shortDesc:'Compact self-cleaning filters delivering efficient, automatic low-pressure filtration.'},
+            { title: 'Filtomat Filter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Filtomat-Filter.webp' ,shortDesc:'Power-free automatic filters ensuring continuous, efficient, water-saving filtration.'},
+            { title: 'Solenoid Control Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Solenoid-Control-Valve.webp',shortDesc:'Hydraulic control valves enabling automated, high-flow irrigation water management.' },
+            { title: 'Pressure Reducing Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Pressure-Reducing-Valve.webp' ,shortDesc:'Hydraulic pressure regulator ensuring smooth, precise, energy-efficient irrigation control.'},
+            { title: 'Pressure Sustaining Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Pressure-Sustaining-Valve.webp',shortDesc:'Hydraulic pressure-sustaining valve ensuring reliable, efficient irrigation flow control.' },
+            { title: 'Quick Pressure Relief Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/QUICK-PRESSURE.webp' ,shortDesc:'Automatic pressure relief valve protecting irrigation systems from overpressure.'},
+            { title: 'Filter Auto Backwash Valve', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/FILTER-BACKWASH.png.webp',shortDesc:'Compact automatic backwash valves enabling efficient, low-maintenance filtration control.' },
+            { title: 'Water Meter', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/WATER-METER.webp' ,shortDesc:'Durable magnetic flow meter providing accurate, versatile water measurement. '},
               ],
         },
        
@@ -274,33 +274,33 @@ const productsMegaMenu = {
         {
           name: 'Micro Sprinklers & Assemblies',
           products: [
-            { title: 'K-Mic Excel', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K-Mic-Excel.webp' },
-            { title: 'K-Mic Micro Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K-Mic-Micro-Sprinkler.webp' },
-            { title: 'K-Tuff Micro Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K-Tuff-Micro-Sprinkler.webp' },
+            { title: 'K-Mic Excel', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K-Mic-Excel.webp',shortDesc:'Efficient micro sprinklers providing uniform, durable irrigation coverage.' },
+            { title: 'K-Mic Micro Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K-Mic-Micro-Sprinkler.webp',shortDesc:'High-pressure mist sprinklers providing gentle, customizable crop irrigation.' },
+            { title: 'K-Tuff Micro Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K-Tuff-Micro-Sprinkler.webp' ,shortDesc:'Low-pressure micro sprinklers delivering smooth, gentle, insect-protected irrigation.'},
               ],
         },
         {
           name: 'Mini Sprinklers & Assemblies',
           products: [
-            { title: 'Mini Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/MINI-SPRINKLER.png' },
+            { title: 'Mini Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/MINI-SPRINKLER.png' ,shortDesc:'Adjustable mini sprinklers delivering uniform, flexible, weather-resistant crop irrigation.'},
               ],
         },
         {
           name: 'Micro Jets & assemblies',
           products: [
-            { title: 'Micro Sprayer', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/MICRO-SPRAYER.webp' },
+            { title: 'Micro Sprayer', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/MICRO-SPRAYER.webp',shortDesc:'Versatile mini sprinklers delivering uniform, adjustable spray patterns.' },
               ],
         },
         {
           name: 'Misters & Assemblies',
           products: [
-            { title: 'K-Mist', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K%E2%80%93Fogger-K%E2%80%93Fogger.webp' },
+            { title: 'K-Mist', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K%E2%80%93Fogger-K%E2%80%93Fogger.webp' ,shortDesc:'Efficient sprinklers providing gentle, water-saving coverage for large fields.'},
               ],
         },
         {
           name: 'Foggers & Assemblies',
           products: [
-            { title: 'K-Fogger', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K%E2%80%93Fogger-K%E2%80%93Fogger.webp' },
+            { title: 'K-Fogger', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K%E2%80%93Fogger-K%E2%80%93Fogger.webp' ,shortDesc:'Fine-mist sprinklers delivering efficient cooling, humidity control, and uniform coverage.'},
               ],
         },
        
@@ -313,46 +313,46 @@ const productsMegaMenu = {
         {
           name: 'Metal Sprinklers',
           products: [
-            { title: 'Metal Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/06/METAL-SPRINKLER.webp' },
+            { title: 'Metal Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/06/METAL-SPRINKLER.webp' ,shortDesc:'Durable ISI-certified impact sprinkler delivering uniform, wide-area coverage.'},
               ],
         },
         {
           name: 'Plastic Sprinklers',
           products: [
-            { title: 'Mini Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/MINI-SPRINKLER.png' },
+            { title: 'Mini Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/MINI-SPRINKLER.png',shortDesc:'Adjustable plastic sprinklers delivering uniform, durable, flexible crop irrigation.' },
               ],
         },
         {
           name: 'HDPE Sprinklers Pipes (QCPE)',
           products: [
-            { title: 'Sprinklers Pipes (QCPE)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/QCPE-Spinklar-pipe.webp' },
+            { title: 'Sprinklers Pipes (QCPE)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/QCPE-Spinklar-pipe.webp',shortDesc:'UV-resistant HDPE clamps ensuring smooth flow and flexible installation.' },
               ],
         },
         {
           name: 'Sprinkler Connectors & Accessories',
           products: [
-            { title: 'HDPE Pipe Sprinkler Set', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/HDPE-Pipe-Sprinkler-Set-1.webp' },
+            { title: 'HDPE Pipe Sprinkler Set', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/HDPE-Pipe-Sprinkler-Set-1.webp',shortDesc:'HDPE sprinkler set with brass nozzle for precise, wide-area irrigation.' },
               ],
         },
         {
           name: 'Raingun & Accessories',
           products: [
-            { title: 'Raingun and Accessories', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Rainguns.webp' },
+            { title: 'Raingun and Accessories', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Rainguns.webp' ,shortDesc:'Portable raingun sprinkler providing wide coverage and adjustable watering.'},
               ],
         },
         {
           name: 'Garden & Landscape Sprinklers',
           products: [
-            { title: 'Pop-up Spray Heads and Rotors', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Pop-up-spray-heads-rotors.png' },
-            { title: 'Swing Joint', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Swing-joint-1.png' },
-            { title: 'Quick Coupling Valve (QCV)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Quick-Coupling-Valve-QCV.webp' },
+            { title: 'Pop-up Spray Heads and Rotors', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Pop-up-spray-heads-rotors.png',shortDesc:'Gear-driven rotor sprinkler delivering uniform, gentle, long-lasting irrigation coverage.' },
+            { title: 'Swing Joint', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Swing-joint-1.png' ,shortDesc:'Flexible pop-up fittings protecting nozzles from pressure and damage.'},
+            { title: 'Quick Coupling Valve (QCV)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Quick-Coupling-Valve-QCV.webp' ,shortDesc:'Key-operated irrigation valves ensuring secure, portable, high-pressure connections.'},
               ],
         },
         {
           name: 'K-Eco Rain Pipes & K- Flex Submain Pipes',
           products: [
-            { title: 'K-Eco Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/K-Eco-sprinkler.webp' },
-            { title: 'K-Flex Submain Pipes', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Flexsubmain.webp' },
+            { title: 'K-Eco Sprinkler', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/K-Eco-sprinkler.webp',shortDesc:'Laser-perforated flat pipe delivering uniform, filter-free irrigation coverage.' },
+            { title: 'K-Flex Submain Pipes', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Flexsubmain.webp' ,shortDesc:'Durable HDPE flat pipes offering flexible, cost-effective irrigation distribution.'},
               ],
         },
        
@@ -365,8 +365,8 @@ const productsMegaMenu = {
         {
           name: 'Turnkey Projects',
           products: [
-            { title: 'Turnkey Projects (PDN & CI)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/turnkey-projects-scaled.webp' },
-            { title: 'Turnkey Projects (Infra)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/coming-soon.webp' },
+            { title: 'Turnkey Projects (PDN & CI)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/turnkey-projects-scaled.webp',shortDesc:'Coming Soon' },
+            { title: 'Turnkey Projects (Infra)', url: '#', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/coming-soon.webp',shortDesc:'Coming Soon' },
               ],
         },
        
@@ -377,6 +377,7 @@ const productsMegaMenu = {
     
   ],
 };
+
 const FEATURE_PRODUCTS = [
   {
     id: '1',

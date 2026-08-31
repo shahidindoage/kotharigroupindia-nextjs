@@ -448,7 +448,6 @@ const handleSegmentClick = (segIdx: number) => {
                         : 'border-[#E2EBF3] bg-white text-[#1E293B] hover:border-[#1575B3]/30 hover:bg-[#F8FAFC]'
                     }`}
                   >
-                    {/* Increased Font Size from text-xs to text-sm */}
                     <span className="text-sm font-semibold tracking-wide">
                       {segment.name}
                     </span>
@@ -466,6 +465,13 @@ const handleSegmentClick = (segIdx: number) => {
 
         {/* RIGHT — All Products Belonging to Selected Segment */}
         <div className="col-span-8 pl-2">
+          {/* Segment Name Above Product Grid */}
+          <div className="mb-4 pb-2 border-b border-[#E2EBF3]">
+            <h3 className="text-lg font-bold text-[#1575B3]">
+              {productsMegaMenu.segments[activeProductSegment]?.name}
+            </h3>
+          </div>
+
           <div
             key={`seg-products-${activeProductSegment}`}
             className="grid grid-cols-3 gap-5 max-h-[440px] overflow-y-auto pr-2 custom-scrollbar"
@@ -478,20 +484,34 @@ const handleSegmentClick = (segIdx: number) => {
                 key={idx}
                 href={product.url}
                 onClick={handleNavClick}
-                className="group flex flex-col items-center p-2.5 rounded-lg  transition-colors"
+                className="group flex flex-col justify-between items-center p-3.5 border border-[#E2EBF3]  hover:border-[#1575B3]/40 hover:shadow-md bg-white  transition-all"
               >
-                {/* 1. Increased Image Height to h-36 */}
-                <div className="w-full h-36 flex items-center justify-center p-2 rounded mb-2.5">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300 ease-out"
-                  />
+                <div className="flex flex-col items-center w-full">
+                  {/* Image Container */}
+                  <div className="w-full h-32 flex items-center justify-center p-2 rounded mb-3">
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300 ease-out"
+                    />
+                  </div>
+
+                  {/* Product Title */}
+                  <span className="text-sm font-semibold text-[#111111] group-hover:text-[#1575B3] transition-colors text-center leading-snug mb-1">
+                    {product.title}
+                  </span>
+
+                  {/* Product Short Description */}
+                  {product.shortDesc && (
+                    <p className="text-xs text-[#5F6B7A] text-center line-clamp-2 leading-relaxed mb-3">
+                      {product.shortDesc}
+                    </p>
+                  )}
                 </div>
 
-                {/* 2. Full Product Name Below Image */}
-                <span className="text-xs font-semibold text-[#111111] group-hover:text-[#1575B3] transition-colors text-center leading-snug">
-                  {product.title}
+                {/* View Product Button */}
+                <span className="w-full text-center py-1.5 px-3 mt-2 text-xs font-semibold text-[#1575B3] bg-[#F0F7FC] border border-[#1575B3]/20  group-hover:bg-[#1575B3] group-hover:text-white transition-all">
+                  View Product
                 </span>
               </Link>
             ))}
