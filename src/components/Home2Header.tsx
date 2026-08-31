@@ -27,7 +27,7 @@ const divisions = [
     desc: 'Drip, sprinklers & micro irrigation.',
     icon: Sprout,
     accent: 'text-[#1E8E3E] bg-[#EAF8EF]',
-    url: '/agriculture-division'
+    url: '/irrigation-division'
   },
 ];
 

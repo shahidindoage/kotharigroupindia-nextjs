@@ -36,7 +36,7 @@ interface AppShellProps {
 
 export default function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
-  const isStandalone = pathname === '/' || pathname === '/agriculture-division';
+  const isStandalone = pathname === '/' || pathname === '/irrigation-division';
 
   const [loading, setLoading] = useState(!loaderPlayedOnce);
   const [activeSection, setActiveSection] = useState('hero');

@@ -37,7 +37,7 @@ const DEFAULT_PRODUCTS: Product[] = [
     description: 'Micro-drip water management engineered to maximize crop yield while reducing consumption by up to 60%.',
     image: 'https://kotharigroupindia.com/img/Kothariblue_logo.png',
     category: 'Micro Irrigation',
-    link: '/agriculture-division',
+    link: '/irrigation-division',
     spec: 'Efficiency Rate: 98%',
   },
   {
@@ -67,7 +67,7 @@ const DEFAULT_PRODUCTS: Product[] = [
     description: 'Advanced micro-sprinkling tech providing hyper-uniform droplet distribution for protected cultivation.',
     image: 'https://kotharigroupindia.com/img/Kothariblue_logo.png',
     category: 'Micro Irrigation',
-    link: '/agriculture-division',
+    link: '/irrigation-division',
     spec: 'Coverage: 360° Uniformity',
   },
 ];

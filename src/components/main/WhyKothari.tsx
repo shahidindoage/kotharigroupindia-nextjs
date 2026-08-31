@@ -36,7 +36,7 @@ const divisionData: DivisionOverview[] = [
       { title: 'Cable & Underground Ducting' },
       { title: 'Borewell & Deep Extraction' },
     ],
-    exploreLink: '/divisions/pipes',
+    exploreLink: '/pipe-division',
   },
   {
     id: 'irrigation-division',
@@ -53,7 +53,7 @@ const divisionData: DivisionOverview[] = [
       { title: 'Sprinklers & Filtration' },
       { title: 'Automated Farm Systems' },
     ],
-    exploreLink: '/divisions/agriculture',
+    exploreLink: '/irrigation-division',
   },
 ];
 

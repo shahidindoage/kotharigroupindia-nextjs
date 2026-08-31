@@ -103,27 +103,27 @@ export const WhyKothariGroup = () => {
                   <div className="absolute top-0 left-0 right-0 h-[2px] bg-slate-100 group-hover:bg-[#1575B3] transition-colors duration-300" />
 
                   {/* Header Row: Icon + Index Tag */}
-                  <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center justify-center mb-6">
                     <div className="w-12 h-12 bg-slate-50 border border-slate-200 flex items-center justify-center group-hover:bg-[#1575B3] group-hover:border-[#1575B3] transition-all duration-300">
-                      <IconComponent className="w-6 h-6 text-slate-700 group-hover:text-white stroke-[1.75] transition-colors" />
+                      <IconComponent className="w-6 h-6 text-slate-700 group-hover:text-white stroke-[1.75] transition-colors flex items-center justify-center" />
                     </div>
-                    <span className="text-xs font-mono font-medium text-slate-400 group-hover:text-[#1575B3] transition-colors">
+                    {/* <span className="text-xs font-mono font-medium text-slate-400 group-hover:text-[#1575B3] transition-colors">
                       {card.id}
-                    </span>
+                    </span> */}
                   </div>
 
                   {/* Content Body */}
                   <div className="space-y-3">
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-serif font-normal text-slate-900 group-hover:text-[#1575B3] transition-colors">
+                      <h3 className="text-xl sm:text-2xl font-serif font-normal text-slate-900 group-hover:text-[#1575B3] transition-colors text-center">
                         {card.title}
                       </h3>
-                      <span className="text-xs font-mono uppercase tracking-wider text-slate-400 block mt-0.5">
+                      <span className="text-xs font-mono uppercase tracking-wider text-slate-400 block mt-0.5 text-center">
                         {card.subtitle}
                       </span>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-slate-500 leading-relaxed pt-3 border-t border-slate-100 group-hover:border-slate-200 transition-colors">
+                    <p className="text-center text-xs sm:text-sm text-slate-500 leading-relaxed pt-3 border-t border-slate-100 group-hover:border-slate-200 transition-colors">
                       {card.description}
                     </p>
                   </div>

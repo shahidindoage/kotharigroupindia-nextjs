@@ -227,6 +227,34 @@ const solutionsMegaMenu = {
   ],
 };
 
+const divisionsMegaMenu = {
+  category: "OUR DIVISIONS",
+  headline: "Two engines. One purpose.",
+  description: "Piping infrastructure and precision irrigation — two specialized verticals engineered under one Kothari promise of flow, strength and scale.",
+  divisions: [
+    {
+      id: "pipes",
+      title: "Pipe Division",
+      shortDesc: "Engineered fluid conveyance and underground infrastructure.",
+      fullDesc: "Comprehensive piping for residential towers, urban drainage, cable ducting and deep borewell extraction.",
+      image: "https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=1600&q=80",
+      link: "/pipe-division",
+      accent: "text-[#1575B3]",
+      badges: ["Plumbing & Fluid Systems", "Sewerage & Drainage", "Cable & Underground Ducting", "Borewell & Deep Extraction"],
+    },
+    {
+      id: "irrigation",
+      title: "Irrigation Division",
+      shortDesc: "Micro-hydration, drip networks and smart farm automation.",
+      fullDesc: "Advanced agri infra for maximum yield, zero-clog filtration and automated farm governance.",
+      image: "https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=1600&q=80",
+      link: "/irrigation-division",
+      accent: "text-emerald-700",
+      badges: ["Agri Supply Piping", "Precision Drip & Micro", "Sprinklers & Filtration", "Automated Farm Systems"],
+    },
+  ],
+};
+
 const scrollToId = (id: string) => {
   if (id === 'home') {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -238,9 +266,10 @@ const scrollToId = (id: string) => {
 
 interface HeaderDivisionProps {
   productsMegaMenu?: any;
+  solid?: boolean;
 }
 
-export const HeaderDivison: React.FC<HeaderDivisionProps> = ({ productsMegaMenu = defaultProductsMegaMenu }) => {
+export const HeaderDivison: React.FC<HeaderDivisionProps> = ({ productsMegaMenu = defaultProductsMegaMenu, solid = false }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [heroRevealed, setHeroRevealed] = useState(true);
@@ -248,6 +277,7 @@ export const HeaderDivison: React.FC<HeaderDivisionProps> = ({ productsMegaMenu 
  const [activeProductSegment, setActiveProductSegment] = useState(0);
 const [activeProductCategory, setActiveProductCategory] = useState(0);
 const [openSegment, setOpenSegment] = useState<number | null>(null);
+const [hoveredDivision, setHoveredDivision] = useState<string | null>(null);
 
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -362,8 +392,9 @@ const handleSegmentClick = (segIdx: number) => {
     }, 2500);
   };
 
+  const isSolid = solid || isScrolled || mobileOpen;
   const navItemStyle = `px-3 py-2 text-[16px] font-medium transition-all duration-200 flex items-center gap-1 ${
-    isScrolled
+    isSolid
       ? 'text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF]/60'
       : 'text-white/90 hover:text-white hover:bg-white/10'
   }`;
@@ -372,13 +403,13 @@ const handleSegmentClick = (segIdx: number) => {
     <>
       <header
         className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-300 ease-in-out ${
-          isScrolled || mobileOpen
+          isSolid
             ? 'bg-white backdrop-blur-md border-b border-[#DCEAF5] shadow-sm py-2'
             : 'bg-transparent border-b border-white/10 py-3'
         }`}
         style={{
-          opacity: heroRevealed ? 1 : 0,
-          pointerEvents: heroRevealed ? 'auto' : 'none',
+          opacity: solid ? 1 : heroRevealed ? 1 : 0,
+          pointerEvents: solid ? 'auto' : heroRevealed ? 'auto' : 'none',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between gap-4">
@@ -387,7 +418,7 @@ const handleSegmentClick = (segIdx: number) => {
             href="/"
             onClick={() => scrollToId('home')}
             className={`flex items-center shrink-0 transition-all duration-300 px-3 py-1 ${
-              isScrolled || mobileOpen ? 'bg-transparent' : 'bg-white'
+              isSolid ? 'bg-transparent' : 'bg-white'
             }`}
             aria-label="Kothari Group Home"
           >
@@ -597,6 +628,7 @@ const handleSegmentClick = (segIdx: number) => {
   )}
 </div>
 
+    
       {/* Resources Mega Menu */}
               <div
                 className="static"
@@ -669,7 +701,153 @@ const handleSegmentClick = (segIdx: number) => {
                 )}
               </div>
 
+ <div
+  className="static"
+  onMouseEnter={() => handleMouseEnter('divisions')}
+  onMouseLeave={handleMouseLeave}
+>
+  <button className={navItemStyle}>
+    Divisions
+    <ChevronDown
+      className={`w-4 h-4 transition-transform duration-300 ${
+        activeDropdown === 'divisions' ? 'rotate-180' : ''
+      }`}
+    />
+  </button>
 
+  {activeDropdown === 'divisions' && (
+    <div className="absolute left-0 top-full w-full bg-white border-b border-[#DCEAF5] shadow-2xl py-10 px-8 sm:px-12 transition-all duration-300 z-50">
+      <div className="max-w-7xl mx-auto grid grid-cols-12 gap-10 items-stretch">
+        
+        {/* Left Side: Category Info & Division Selectors */}
+        <div className="col-span-5 border-r border-[#DCEAF5] pr-10 flex flex-col justify-between h-full">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-[#1575b3] block mb-2">
+              {divisionsMegaMenu.category}
+            </span>
+            <h3 className="text-5xl font-normal text-[#0f172b] leading-snug mb-3">
+              {divisionsMegaMenu.headline}
+            </h3>
+            <p className="text-lg text-[#5F6B7A] leading-relaxed mb-6">
+              {divisionsMegaMenu.description}
+            </p>
+
+            {/* Division Selectors */}
+            <div className="space-y-3">
+              {divisionsMegaMenu.divisions.map((div: any) => {
+                const isActive = (hoveredDivision || divisionsMegaMenu.divisions[0].id) === div.id;
+                return (
+                  <Link
+                    key={div.id}
+                    href={div.link}
+                    onClick={handleNavClick}
+                    onMouseEnter={() => setHoveredDivision(div.id)}
+                    className={`group flex items-center justify-between p-4 border transition-all duration-300 ${
+                      isActive
+                        ? 'border-[#1575B3] bg-[#F5F9FC] shadow-sm'
+                        : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'
+                    }`}
+                  >
+                    <div>
+                      <h4 className={`text-base font-semibold ${isActive ? 'text-[#1575B3]' : 'text-[#111111]'}`}>
+                        {div.title}
+                      </h4>
+                      <p className="text-sm text-[#5F6B7A] line-clamp-1 mt-0.5">
+                        {div.shortDesc}
+                      </p>
+                    </div>
+                    <ChevronRight className={`w-5 h-5 transition-transform ${isActive ? 'text-[#1575B3] translate-x-1' : 'text-[#5F6B7A]'}`} />
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Bottom Action Link */}
+          {/* <div className="mt-8 pt-6 border-t border-[#DCEAF5]">
+            <Link
+              href="/divisions"
+              onClick={handleNavClick}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#0f172b] hover:text-[#1575B3] group transition-colors"
+            >
+              <span>Explore All Divisions</span>
+              <ChevronRight className="w-4 h-4 text-[#0f172b] group-hover:text-[#1575B3] group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div> */}
+        </div>
+
+        {/* Right Side: Dynamic Division Card Preview */}
+        <div className="col-span-7">
+          {(() => {
+            const activeDiv = divisionsMegaMenu.divisions.find(
+              (d: any) => d.id === (hoveredDivision || divisionsMegaMenu.divisions[0].id)
+            ) || divisionsMegaMenu.divisions[0];
+
+            return (
+              <Link
+                href={activeDiv.link}
+                onClick={handleNavClick}
+                className="group relative h-[420px] w-full overflow-hidden border border-slate-200 bg-slate-950 flex flex-col justify-end shadow-lg block"
+              >
+                {/* Background Image */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  style={{ backgroundImage: `url(${activeDiv.image})` }}
+                />
+
+                {/* Overlays */}
+                <div
+                  className={`absolute inset-0 transition-opacity duration-500 ${
+                    activeDiv.id === 'pipes'
+                      ? 'bg-gradient-to-t from-[#0E588A]/95 via-[#1575B3]/75 to-slate-950/40'
+                      : 'bg-gradient-to-t from-emerald-950/95 via-teal-900/75 to-slate-950/40'
+                  }`}
+                />
+
+                {/* Card Content */}
+                <div className="relative z-10 p-8 flex flex-col justify-end h-full">
+                  <span className="text-xs font-bold uppercase tracking-wider text-sky-200 mb-1">
+                    Selected Division
+                  </span>
+                  <h4 className="text-4xl font-normal text-white leading-snug mb-3">
+                    {activeDiv.title}
+                  </h4>
+                  
+                  <p className="text-sm text-slate-100 leading-relaxed mb-4 line-clamp-3">
+                    {activeDiv.fullDesc || activeDiv.shortDesc}
+                  </p>
+
+                  {/* Badges */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {activeDiv.badges?.map((b: string) => (
+                      <span
+                        key={b}
+                        className="text-xs px-2.5 py-1 border bg-white/10 text-white border-white/20 backdrop-blur-sm"
+                      >
+                        {b}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Explore Link */}
+                  <span
+                    className={`inline-flex items-center gap-2 text-sm font-semibold ${
+                      activeDiv.id === 'pipes' ? 'text-sky-200' : 'text-emerald-200'
+                    }`}
+                  >
+                    <span>Explore {activeDiv.title}</span>
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </Link>
+            );
+          })()}
+        </div>
+
+      </div>
+    </div>
+  )}
+</div>
               {/* About Mega Menu */}
               <div
                 className="static"
@@ -759,7 +937,7 @@ const handleSegmentClick = (segIdx: number) => {
             <button
               onClick={handleOpenGetInTouch}
               className={`hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium transition-all ${
-                isScrolled || activeDropdown
+                isSolid || activeDropdown
                   ? 'bg-[#1575B3] hover:bg-[#0E588A] text-white shadow-md shadow-[#1575B3]/15'
                   : 'bg-white hover:bg-white/90 text-black shadow-lg'
               }`}
@@ -771,7 +949,7 @@ const handleSegmentClick = (segIdx: number) => {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className={`lg:hidden p-2.5 border transition ${
-                isScrolled || mobileOpen || activeDropdown
+                isSolid || activeDropdown
                   ? 'text-[#1575B3] bg-[#F5FAFF] border-[#DCEAF5] hover:bg-[#DCEAF5]/50'
                   : 'text-white bg-white/10 border-white/20 hover:bg-white/20'
               }`}
@@ -866,6 +1044,37 @@ const handleSegmentClick = (segIdx: number) => {
     </div>
   )}
 </div>
+
+              {/* Mobile Divisions Submenu — ref WhyKothari */}
+              <div>
+                <button
+                  onClick={() => setActiveDropdown(activeDropdown === 'divisions' ? null : 'divisions')}
+                  className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] transition"
+                >
+                  <span>Divisions</span>
+                  <ChevronDown
+                    className={`w-5 h-5 text-[#5F6B7A] transition-transform ${
+                      activeDropdown === 'divisions' ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                {activeDropdown === 'divisions' && (
+                  <div className="pl-4 space-y-3 pt-1 pb-2">
+                    {divisionsMegaMenu.divisions.map((div: any) => (
+                      <div key={div.id} className="border border-slate-200 overflow-hidden">
+                        <Link href={div.link} onClick={handleNavClick} className="block">
+                          <div className="h-28 bg-cover bg-center" style={{ backgroundImage: `url(${div.image})` }} />
+                          <div className="p-3 space-y-1">
+                            <span className="block text-sm font-semibold text-[#111111]">{div.title}</span>
+                            <span className="block text-xs text-[#5F6B7A] line-clamp-2">{div.shortDesc}</span>
+                            <span className="inline-flex items-center gap-1 text-xs font-mono tracking-widest uppercase text-[#1575B3]">Explore <ChevronRight className="w-3 h-3" /></span>
+                          </div>
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
 
                  {/* Mobile solutions Submenu */}
               <div>
