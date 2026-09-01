@@ -1,7 +1,7 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, PanInfo } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
 export interface Product {
@@ -77,7 +77,8 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
 }) => {
   const [itemsPerPage, setItemsPerPage] = useState(3);
   const [currentPage, setCurrentPage] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -95,30 +96,69 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const totalPages = Math.ceil(products.length / itemsPerPage);
+  const totalPages = Math.max(1, Math.ceil(products.length / itemsPerPage));
+  const safePage = currentPage % totalPages;
+
+  const handleNext = useCallback(() => {
+    setDirection(1);
+    setCurrentPage((prev) => (prev + 1) % totalPages);
+  }, [totalPages]);
+
+  const handlePrev = useCallback(() => {
+    setDirection(-1);
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  }, [totalPages]);
+
+  // Touch & Swipe gesture handling
+  const handlePanEnd = (_: any, info: PanInfo) => {
+    const swipeThreshold = 40;
+    const velocityThreshold = 200;
+
+    if (
+      info.offset.x < -swipeThreshold ||
+      info.velocity.x < -velocityThreshold
+    ) {
+      handleNext();
+    } else if (
+      info.offset.x > swipeThreshold ||
+      info.velocity.x > velocityThreshold
+    ) {
+      handlePrev();
+    }
+  };
+
+  useEffect(() => {
+    if (isPaused || totalPages <= 1) return;
+
+    const autoSlideTimer = setInterval(() => {
+      handleNext();
+    }, 4000);
+
+    return () => clearInterval(autoSlideTimer);
+  }, [isPaused, totalPages, handleNext]);
 
   const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 100 : -100,
+    enter: (dir: number) => ({
+      x: dir > 0 ? '100%' : '-100%',
       opacity: 0,
     }),
     center: {
-      x: 0,
+      x: '0%',
       opacity: 1,
     },
-    exit: (direction: number) => ({
-      x: direction < 0 ? 100 : -100,
+    exit: (dir: number) => ({
+      x: dir < 0 ? '100%' : '-100%',
       opacity: 0,
     }),
   };
 
   const visibleProducts = products.slice(
-    currentPage * itemsPerPage,
-    currentPage * itemsPerPage + itemsPerPage
+    safePage * itemsPerPage,
+    safePage * itemsPerPage + itemsPerPage
   );
 
   return (
-    <section className="bg-[#015CAA] py-24 relative overflow-hidden">
+    <section className="bg-[#015CAA] py-24 relative overflow-hidden select-none">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-cyan-400/10 to-transparent blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-blue-900/40 to-transparent blur-3xl pointer-events-none" />
@@ -139,23 +179,26 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
         </div>
 
         {/* Product Grid Stage */}
-        <div className="relative min-h-[490px]">
+        <div className="relative min-h-[550px] w-full py-6 px-1 touch-pan-y overflow-hidden">
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
-              key={currentPage}
+              key={safePage}
               custom={direction}
               variants={slideVariants}
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full"
+              transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+              onPanEnd={handlePanEnd}
+              className="w-full cursor-grab active:cursor-grabbing touch-pan-y"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {visibleProducts.map((product) => (
                   <div
                     key={product.id}
-                    className="group relative bg-[#014d8f]/40 backdrop-blur-md border border-white/15 hover:border-white/40 transition-all duration-500 flex flex-col justify-between shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-2 overflow-hidden"
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                    className="group relative bg-[#014d8f]/40 backdrop-blur-md border border-white/15 hover:border-white/40 transition-all duration-500 flex flex-col justify-between shadow-xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-1 overflow-hidden"
                   >
                     {/* Top Accent Light Bar */}
                     <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -166,7 +209,8 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
                         <img
                           src={product.image}
                           alt={product.title}
-                          className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500 ease-out"
+                          draggable={false}
+                          className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500 ease-out pointer-events-none"
                         />
                       </div>
 
@@ -208,12 +252,12 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
             <button
               key={idx}
               onClick={() => {
-                setDirection(idx > currentPage ? 1 : -1);
+                setDirection(idx > safePage ? 1 : -1);
                 setCurrentPage(idx);
               }}
               className={`h-1 transition-all duration-500 ${
-                idx === currentPage
-                  ? 'w-12 bg-cyan-400 '
+                idx === safePage
+                  ? 'w-12 bg-cyan-400'
                   : 'w-4 bg-white/20 hover:bg-white/50'
               }`}
               aria-label={`Go to slide ${idx + 1}`}

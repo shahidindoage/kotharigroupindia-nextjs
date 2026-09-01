@@ -114,7 +114,7 @@ const productsMegaMenu = {
         {
           name: 'CPVC',
           products: [
-            { title: 'CPVC Pipes & Fittings – Hot & Cold Water Piping System', url: 'https://kotharigroupindia.com/cpvc/cpvc-hot-and-cold-water-piping-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/CPVC-PIPES-FITTINGS.webp', shortDesc: 'Hot & Cold Water Piping System' },
+            { title: 'CPVC Pipes & Fittings', url: 'https://kotharigroupindia.com/cpvc/cpvc-hot-and-cold-water-piping-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/CPVC-PIPES-FITTINGS.webp', shortDesc: 'Hot & Cold Water Piping System' },
             { title: 'CPVC Solvent Cement', url: 'https://kotharigroupindia.com/cpvc/cpvc-solvent-cement', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/06/cpvc.webp', shortDesc: 'Strong, Leak-Proof CPVC Water Joints'},
           
           ],
@@ -145,7 +145,7 @@ const productsMegaMenu = {
           name: 'Underground Pipe and Fittings',
           products: [
             { title: 'UPVC Underground Drainage Piping System (solid wall UDS)', url: 'https://kotharigroupindia.com/underground-pipe-and-fittings/upvc-underground-drainage-piping-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/UDS-PIPES-FITTINGS.webp',shortDesc:'Solid Wall Pipe for Underground Drainage.' },
-            { title: 'Foamcore Underground Drainage Piping System', url: 'https://kotharigroupindia.com/underground-pipe-and-fittings/foamcore-underground-drainage-piping-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/UDS-Foamcore.webp',shortDesc: 'Lightweight Multilayer Drainage Solution.' },
+            { title: 'Foamcore Underground Drainage Piping System', url: 'https://kotharigroupindia.com/underground-pipe-and-fittings/foamcore-underground-drainage-piping-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/UDS-Foamcore.webp',shortDesc: 'Lightweight Three Layer Drainage Solution.' },
             { title: 'Underground Double Wall Corrugated pipes(DWC)', url: 'https://kotharigroupindia.com/underground-pipe-and-fittings/underground-double-wall-corrugated-pipes', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/11/Underground-Double-Wall-Corrugated-pipesDWC.webp',shortDesc: 'Flexible, Durable Underground Drainage Pipe.' },
             { title: 'HDPE (Sewerage IS: 14333)', url: 'https://kotharigroupindia.com/underground-pipe-and-fittings/hdpe', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/PE-Sewerage-Pipes-scaled.webp',shortDesc: 'Rugged Underground Sewerage Pipe.' },
             { title: 'Sub-Surface Drainage System', url: 'https://kotharigroupindia.com/underground-pipe-and-fittings/sub-surface-drainage-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/11/Sub-Surface-Drainage-System.webp',shortDesc: 'Perforated Pipe for Smart Field Drainage.' },

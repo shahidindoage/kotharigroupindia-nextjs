@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+fetch-faq.ps1
+fetch-wp.ps1
+fetch-wp2.ps1
+fetch-wp3.ps1
