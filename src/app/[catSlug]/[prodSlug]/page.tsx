@@ -1,11 +1,12 @@
+// src/app/[catSlug]/[prodSlug]/page.tsx
+
 import { notFound } from 'next/navigation';
 import AppShell from '@/components/AppShell';
-import { HeaderDivison } from '@/components/HeaderDivision';
-import { Footer } from '@/components/Footer';
 import { ProductDetailPage } from '@/components/ProductDetailPage';
+import ProductPageLayout from '@/components/ProductPageLayout';
 import { productsData } from '@/data/products';
 import { findProductBySlugs, getCategorySlug, getProductSlug } from '@/lib/slug';
-import { fetchWpProductFaqs } from '@/lib/wp';
+import { fetchWpProductBySlug } from '@/lib/wp-product';
 
 type Params = { catSlug: string; prodSlug: string };
 
@@ -18,6 +19,26 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Params | Promise<Params> }) {
   const { catSlug, prodSlug } = await Promise.resolve(params);
+
+  // Try WordPress first for SEO
+  const wpProduct = await fetchWpProductBySlug(prodSlug);
+  if (wpProduct) {
+    return {
+      title: `${wpProduct.name} | Kothari Group`,
+      description: wpProduct.specificationsHtml
+        ?.replace(/<[^>]*>/g, '')
+        .slice(0, 160) || '',
+      openGraph: {
+        title: wpProduct.name,
+        description: wpProduct.specificationsHtml
+          ?.replace(/<[^>]*>/g, '')
+          .slice(0, 160) || '',
+        images: [wpProduct.mainImage],
+      },
+    };
+  }
+
+  // Fallback to static data
   const product = findProductBySlugs(catSlug, prodSlug, productsData);
   if (!product) return { title: 'Product Not Found | Kothari Group' };
   return {
@@ -33,22 +54,23 @@ export async function generateMetadata({ params }: { params: Params | Promise<Pa
 
 export default async function CategoryProductPage({ params }: { params: Params | Promise<Params> }) {
   const { catSlug, prodSlug } = await Promise.resolve(params);
-  const product = findProductBySlugs(catSlug, prodSlug, productsData);
-  if (!product) notFound();
 
-  // Fetch live FAQs from WordPress ACF (revalidate 600s)
-  let wpFaqs: { question: string; answer: string }[] | undefined;
-  try {
-    wpFaqs = await fetchWpProductFaqs(prodSlug, product.name);
-  } catch {
-    wpFaqs = undefined;
-  }
+  // Try fetch from WordPress first
+  const wpProduct = await fetchWpProductBySlug(prodSlug);
+
+  // Fallback to static data
+  const staticProduct = findProductBySlugs(catSlug, prodSlug, productsData);
+
+  if (!wpProduct && !staticProduct) notFound();
 
   return (
     <AppShell>
-      <HeaderDivison solid />
-      <ProductDetailPage product={product} wpFaqs={wpFaqs} />
-      <Footer />
+      <ProductPageLayout catSlug={catSlug}>
+        <ProductDetailPage
+          product={staticProduct || undefined}
+          wp={wpProduct || undefined}
+        />
+      </ProductPageLayout>
     </AppShell>
   );
 }
