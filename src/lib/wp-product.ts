@@ -26,10 +26,21 @@ function getMetaString(meta: { key: string; value: unknown }[] | undefined, key:
   return '';
 }
 
-// Helper: get array from meta
-function getMetaArray(meta: { key: string; value: unknown }[] | undefined, key: string): string[] {
+// Helper: get array from meta (supports string, number, or object with ID)
+function getMetaArray(meta: { key: string; value: unknown }[] | undefined, key: string): (string | number)[] {
   const v = getMeta(meta, key);
-  if (Array.isArray(v)) return v.filter((x) => typeof x === 'string' && x !== '');
+  if (Array.isArray(v)) {
+    return v
+      .map((x) => {
+        if (typeof x === 'object' && x !== null && 'ID' in x) {
+          return (x as { ID: number | string }).ID;
+        }
+        return x;
+      })
+      .filter((x): x is string | number => (typeof x === 'string' && x.trim() !== '') || typeof x === 'number');
+  }
+  if (typeof v === 'string' && v.trim()) return [v.trim()];
+  if (typeof v === 'number') return [v];
   return [];
 }
 
@@ -302,15 +313,17 @@ async function fetchRelatedProductsBySegment(
   }
 }
 
-// Fallback: Fetch related products by WooCommerce IDs
+// Fallback: Fetch related products by WooCommerce IDs or manual IDs
 async function fetchRelatedProductsByIds(
-  ids: number[]
+  ids: (number | string)[]
 ): Promise<WpProductData['relatedProducts']> {
   if (!ids.length) return [];
 
   try {
     // FIX: Remove per_page parameter so WordPress returns all IDs requested
-    const idsParam = ids.join(',');
+    const idsParam = ids.map(String).filter(Boolean).join(',');
+    if (!idsParam) return [];
+
     const res = await fetch(`${WOO_ADMIN}?include=${idsParam}`, {
       headers: { ...getAuthHeaders() },
       next: { revalidate: 600 },

@@ -358,7 +358,7 @@ export const ProductDetailPage: React.FC<{
               >
                 {displayRelated.map((rel) => {
                   const isWpRel = !!rel.slug && !!rel.categorySlug;
-                  const href = isWpRel ? `/${rel.categorySlug}/${rel.slug}` : getProductHref(rel as ProductItem);
+                  const href = isWpRel ? `/${rel.categorySlug}/${rel.slug}` : getProductHref(rel);
                   const Wrapper: any = isWpRel ? Link : 'button';
                   const wrapperProps = isWpRel ? { href } : { onClick: () => router.push(href) };
                   

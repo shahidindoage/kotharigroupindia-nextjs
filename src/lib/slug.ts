@@ -14,11 +14,11 @@ export function getCategorySlug(category: string): string {
   return slugify(category);
 }
 
-export function getProductSlug(product: ProductItem): string {
+export function getProductSlug(product: { name: string }): string {
   return slugify(product.name);
 }
 
-export function getProductHref(product: ProductItem): string {
+export function getProductHref(product: { category: string; name: string }): string {
   return `/${getCategorySlug(product.category)}/${getProductSlug(product)}`;
 }
 
