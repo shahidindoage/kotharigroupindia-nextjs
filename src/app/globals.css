@@ -163,3 +163,155 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #0E588A;
 }
+
+
+
+/* WordPress WYSIWYG HTML Styling for Product Tabs */
+
+/* 1. Features, Specs, Applications Lists */
+.wp-tab-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  gap: 0.75rem 1rem;
+}
+
+/* Switch to 2 columns on larger screens */
+@media (min-width: 640px) {
+  .wp-tab-list ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.wp-tab-list ul li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.875rem;
+  transition: background 0.2s;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.wp-tab-list ul li:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+.wp-tab-list ul li::before {
+  content: '✓';
+  font-weight: bold;
+  color: #1575B3;
+  background: white;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* 2. Standards & Dimensions Tables */
+.wp-tab-table {
+  overflow-x: auto;
+  background: transparent; /* Container is transparent */
+}
+
+.wp-tab-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  background: white; /* Only the table itself is white */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); /* Added shadow directly to table */
+}
+
+.wp-tab-table table th {
+  background: #1575B3;
+  color: white;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-family: monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid #dcdcdc8e;
+}
+
+.wp-tab-table table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  font-size: 0.75rem;
+  color: #334155;
+}
+
+.wp-tab-table table tbody tr:nth-child(even) {
+  background: #F8FAFC;
+}
+
+/* 3. Fittings Grid */
+.wp-tab-fittings .product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .wp-tab-fittings .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Target the DIV directly, not the <p> tag */
+.wp-tab-fittings .product-item {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers items horizontally */
+  text-align: center; /* Centers text */
+  color: white !important; /* Forces text white */
+  padding-bottom: 1.25rem; /* Space at the bottom */
+}
+
+.wp-tab-fittings .product-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-4px);
+}
+
+/* Force the image to take up its own line at the top and be full width */
+.wp-tab-fittings .product-item img {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important; /* Removed the 200px cap so it goes full width */
+  height: auto !important;
+  aspect-ratio: 1/1; /* Keeps the card height consistent even if images are different sizes */
+  object-fit: contain; /* Prevents the image from stretching or distorting */
+  margin: 0 auto 0.75rem auto !important; /* Centers image, adds gap below */
+  background: white;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* 4. Main Description & Highlights in Hero */
+.wp-html-content ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+.wp-html-content ul li {
+  font-size: 0.875rem;
+  color: #475569;
+  margin-bottom: 0.25rem;
+}
+.wp-html-content p {
+  font-size: 0.875rem;
+  color: #475569;
+  margin-bottom: 0.75rem;
+}

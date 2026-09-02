@@ -1,6 +1,6 @@
 // src/lib/wp-product.ts
 
-const WP_API = process.env.NEXT_PUBLIC_WP_API_URL; // https://admin.kotharigroupindia.com/wp-json
+const WP_API = process.env.NEXT_PUBLIC_WP_API_URL;
 const WOO_ADMIN = `${WP_API}/wc/v3/products`;
 const WP_MEDIA = `${WP_API}/wp/v2/media`;
 
@@ -15,52 +15,85 @@ function getAuthHeaders(): HeadersInit {
 }
 
 // Helper: find value in meta_data array by key
-function getMeta(meta: { key: string; value: unknown }[], key: string): unknown {
+function getMeta(meta: { key: string; value: unknown }[] | undefined, key: string): unknown {
   return meta?.find((m) => m.key === key)?.value;
 }
 
 // Helper: get string from meta
-function getMetaString(meta: { key: string; value: unknown }[], key: string): string {
+function getMetaString(meta: { key: string; value: unknown }[] | undefined, key: string): string {
   const v = getMeta(meta, key);
   if (typeof v === 'string') return v;
   return '';
 }
 
 // Helper: get array from meta
-function getMetaArray(meta: { key: string; value: unknown }[], key: string): string[] {
+function getMetaArray(meta: { key: string; value: unknown }[] | undefined, key: string): string[] {
   const v = getMeta(meta, key);
   if (Array.isArray(v)) return v.filter((x) => typeof x === 'string' && x !== '');
   return [];
 }
 
-// Parsed WP Product — exactly what ProductDetailPage needs
+// Helper: remove leading slash from slugs if entered in WP admin
+function cleanSlug(slug: string): string {
+  if (!slug) return '';
+  return slug.replace(/^\//, '').trim();
+}
+
+// Helper: Convert YouTube Watch URL to Embed URL
+function getYouTubeEmbedUrl(url: string): string {
+  if (!url) return '';
+  if (url.includes('/embed/')) return url;
+  const regex = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([^&?/]+)/;
+  const match = url.match(regex);
+  if (match && match[1]) {
+    return `https://www.youtube.com/embed/${match[1]}`;
+  }
+  return url;
+}
+
+// Parsed WP Product
 export interface WpProductData {
-  // Basic
   id: number;
   name: string;
   slug: string;
   category: string;
-
+  
+  // New Organization Fields
+  divisionName: string;
+  divisionSlug: string;
+  segmentName: string;
+  segmentSlug: string;
+  
+  // Hero
+  tagline: string;
+  mainDescriptionHtml: string;
+  
   // Images
   mainImage: string;
   certificateImages: { src: string; alt: string; thumbnail: string }[];
-
+  
   // Tab content (HTML)
   featuresHtml: string;
   specificationsHtml: string;
+  standardsHtml: string;
+  dimensionsHtml: string;
+  fittingsHtml: string;
   applicationsHtml: string;
-
-  // FAQ (parsed from HTML)
+  
+  // Media
+  productVideoUrl: string;
+  
+  // FAQ
   faqs: { question: string; answer: string }[];
-
+  
   // PDF
   pdfUrl: string;
   pdfName: string;
   pdfSize: number;
-
-  // Description (replaces static tables section)
+  
+  // Description fallback
   descriptionHtml: string;
-
+  
   // Related products
   relatedProducts: {
     id: number;
@@ -74,15 +107,13 @@ export interface WpProductData {
 }
 
 // Parse FAQ HTML into structured array
-// Input: <h4><b>1. Question?</b></h4><span>Answer...</span>...
 function parseFaqHtml(html: string): { question: string; answer: string }[] {
   const faqs: { question: string; answer: string }[] = [];
-  // Split by <h4> tags
+  if (!html) return faqs;
+  
   const parts = html.split(/<h4>/i).filter(Boolean);
   for (const part of parts) {
-    // Extract question: everything inside <b>...</b>
     const qMatch = part.match(/<b>(.*?)<\/b>/i);
-    // Extract answer: everything after </h4> until next <h4> or end
     const aMatch = part.match(/<\/h4>\s*([\s\S]*?)(?=<h4>|$)/i);
     if (qMatch) {
       faqs.push({
@@ -101,14 +132,11 @@ function parseFaqHtml(html: string): { question: string; answer: string }[] {
 }
 
 // Main fetch function
-export async function fetchWpProductBySlug(
-  slug: string
-): Promise<WpProductData | null> {
+export async function fetchWpProductBySlug(slug: string): Promise<WpProductData | null> {
   try {
-    // Step 1: Fetch product by slug from Admin API
     const res = await fetch(`${WOO_ADMIN}?slug=${slug}&per_page=1`, {
       headers: { ...getAuthHeaders() },
-      next: { revalidate: 600 }, // cache 10 min
+      next: { revalidate: 600 },
     });
 
     if (!res.ok) return null;
@@ -119,14 +147,29 @@ export async function fetchWpProductBySlug(
     const raw = products[0];
     const meta = raw.meta_data || [];
 
-    // Step 2: Extract tab content from meta_data
-    const featuresHtml = getMetaString(meta, '_woodmart_product_custom_tab_content');
-    const applicationsHtml = getMetaString(meta, '_woodmart_product_custom_tab_content_2');
-    const specificationsHtml = raw.short_description || '';
+    // Extract new ACF fields
+    const divisionName = getMetaString(meta, 'division_name');
+    const divisionSlug = cleanSlug(getMetaString(meta, 'division_slug'));
+    const segmentName = getMetaString(meta, 'segment_name');
+    const segmentSlug = cleanSlug(getMetaString(meta, 'segment_slug'));
+
+    const tagline = getMetaString(meta, 'tagline');
+    const mainDescriptionHtml = getMetaString(meta, 'main_description');
+
+    const featuresHtml = getMetaString(meta, 'tab_features');
+    const specificationsHtml = getMetaString(meta, 'tab_specifications');
+    const standardsHtml = getMetaString(meta, 'tab_standards');
+    const dimensionsHtml = getMetaString(meta, 'tab_dimensions');
+    const fittingsHtml = getMetaString(meta, 'tab_fittings');
+    const applicationsHtml = getMetaString(meta, 'tab_applications');
+
+    const rawVideoUrl = getMetaString(meta, 'product_video_url');
+    const productVideoUrl = getYouTubeEmbedUrl(rawVideoUrl);
+
+    // Existing fields
     const faqRawHtml = getMetaString(meta, 'faq_content');
     const faqs = faqRawHtml ? parseFaqHtml(faqRawHtml) : [];
 
-    // Step 3: Images — first image = main, rest = certificates
     const images = raw.images || [];
     const mainImage = images[0]?.src || '';
     const certificateImages = images
@@ -137,10 +180,10 @@ export async function fetchWpProductBySlug(
         thumbnail: img.thumbnail || img.src,
       }));
 
-    // Step 4: Category name
     const category = raw.categories?.[0]?.name || '';
+    const descriptionHtml = raw.description || '';
 
-    // Step 5: PDF — get media ID from meta, then fetch actual URL
+    // PDF fetching logic (existing)
     const pdfMediaIds = getMetaArray(meta, 'wcpoa_attachment_url');
     const pdfNames = getMetaArray(meta, 'wcpoa_attachment_name');
 
@@ -161,33 +204,52 @@ export async function fetchWpProductBySlug(
           pdfSize = media.filesize || 0;
         }
       } catch {
-        // PDF fetch failed, continue without it
+        // PDF fetch failed
       }
     }
 
-    // Step 6: Description HTML (replaces static tables)
-    const descriptionHtml = raw.description || '';
-
-     // Step 7: Related products
-    const relatedIds: number[] = raw.related_ids || [];
-    const relatedProducts = await fetchRelatedProducts(relatedIds);
+       // Step 7: Related products - Fetch by manually selected ACF Relationship field
+    let relatedProducts: WpProductData['relatedProducts'] = [];
+    
+    // 1. Check for manually selected related products first
+    const manualRelatedIds = getMetaArray(meta, 'related_products_manual');
+    
+    if (manualRelatedIds.length > 0) {
+      relatedProducts = await fetchRelatedProductsByIds(manualRelatedIds);
+    }
+    
+    // 2. Fallback to WooCommerce's default related products if none are manually selected
+    if (relatedProducts.length === 0) {
+      const wooRelatedIds: number[] = raw.related_ids || [];
+      relatedProducts = await fetchRelatedProductsByIds(wooRelatedIds);
+    }
 
     return {
       id: raw.id,
       name: raw.name,
       slug: raw.slug,
       category,
+      divisionName,
+      divisionSlug,
+      segmentName,
+      segmentSlug,
+      tagline,
+      mainDescriptionHtml,
       mainImage,
       certificateImages,
       featuresHtml,
       specificationsHtml,
+      standardsHtml,
+      dimensionsHtml,
+      fittingsHtml,
       applicationsHtml,
+      productVideoUrl,
       faqs,
       pdfUrl,
       pdfName,
       pdfSize,
       descriptionHtml,
-      relatedProducts,   
+      relatedProducts,
     };
   } catch (error) {
     console.error('[wp-product] Fetch failed for slug:', slug, error);
@@ -195,15 +257,61 @@ export async function fetchWpProductBySlug(
   }
 }
 
-// Fetch related products by IDs
-async function fetchRelatedProducts(
+// Fetch related products by Segment Slug (New ACF logic)
+async function fetchRelatedProductsBySegment(
+  currentId: number,
+  segmentSlug: string
+): Promise<WpProductData['relatedProducts']> {
+  try {
+    // Fetch recent products to find matches by segment_slug
+    const res = await fetch(`${WOO_ADMIN}?per_page=20&orderby=date&order=desc`, {
+      headers: { ...getAuthHeaders() },
+      next: { revalidate: 600 },
+    });
+
+    if (!res.ok) return [];
+
+    const products = await res.json();
+    const matches: WpProductData['relatedProducts'] = [];
+
+    for (const p of products) {
+      if (p.id === currentId) continue;
+      
+      const pMeta = p.meta_data || [];
+      const pSegSlug = cleanSlug(getMetaString(pMeta, 'segment_slug'));
+      
+      if (pSegSlug && pSegSlug === segmentSlug) {
+        matches.push({
+          id: p.id,
+          name: p.name,
+          slug: p.slug,
+          image: p.images?.[0]?.src || '',
+          shortDescription: p.short_description?.replace(/<[^>]*>/g, '').slice(0, 120) || '',
+          category: p.categories?.[0]?.name || '',
+          categorySlug: p.categories?.[0]?.slug || '',
+        });
+      }
+      
+      if (matches.length >= 3) break;
+    }
+
+    return matches;
+  } catch (error) {
+    console.error('[wp-product] Segment related fetch failed:', error);
+    return [];
+  }
+}
+
+// Fallback: Fetch related products by WooCommerce IDs
+async function fetchRelatedProductsByIds(
   ids: number[]
 ): Promise<WpProductData['relatedProducts']> {
   if (!ids.length) return [];
 
   try {
+    // FIX: Remove per_page parameter so WordPress returns all IDs requested
     const idsParam = ids.join(',');
-    const res = await fetch(`${WOO_ADMIN}?include=${idsParam}&per_page=10`, {
+    const res = await fetch(`${WOO_ADMIN}?include=${idsParam}`, {
       headers: { ...getAuthHeaders() },
       next: { revalidate: 600 },
     });
@@ -224,9 +332,7 @@ async function fetchRelatedProducts(
       name: p.name,
       slug: p.slug,
       image: p.images?.[0]?.src || '',
-      shortDescription: p.short_description
-        ?.replace(/<[^>]*>/g, '')
-        .slice(0, 120) || '',
+      shortDescription: p.short_description?.replace(/<[^>]*>/g, '').slice(0, 120) || '',
       category: p.categories?.[0]?.name || '',
       categorySlug: p.categories?.[0]?.slug || '',
     }));
