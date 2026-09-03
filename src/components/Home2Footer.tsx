@@ -76,7 +76,7 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
             <div className="space-y-2 text-xs font-light text-[#5F6B7A]">
               <div className="flex items-center gap-2">
                 <MapPin className="w-6 h-6 text-[#1575B3]" />
-                <span>Corporate HQ: 8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.</span>
+                <span>Registered office address: 8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.</span>
               </div>
               <div className="flex items-center gap-2">
                 <PhoneCall className="w-4 h-4 text-[#1575B3]" />
