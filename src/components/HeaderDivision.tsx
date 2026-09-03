@@ -1087,7 +1087,7 @@ const handleSegmentClick = (segIdx: number) => {
 </div>
            
 
-                 {/* Mobile solutions Submenu */}
+               {/* Mobile solutions Submenu */}
               <div>
                 <button
                   onClick={() => setActiveDropdown(activeDropdown === 'solutions' ? null : 'solutions')}
@@ -1096,13 +1096,13 @@ const handleSegmentClick = (segIdx: number) => {
                   <span>Solutions</span>
                   <ChevronDown
                     className={`w-5 h-5 text-[#5F6B7A] transition-transform ${
-                      activeDropdown === 'about' ? 'rotate-180' : ''
+                      activeDropdown === 'solutions' ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
                 {activeDropdown === 'solutions' && (
                   <div className="pl-4 space-y-1 pt-1">
-                    {solutionsMegaMenu.items.map((item, i) => (
+                    {solutionsMegaMenu.items.map((item: any, i: number) => (
                       <Link
                         key={i}
                         href={item.url}
