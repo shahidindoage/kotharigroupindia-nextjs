@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import { Menu, X, ChevronDown, ChevronRight, Phone, Mail, MapPin, Send, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight, Phone, Mail, MapPin, Send, ArrowRight, Factory, Sprout } from 'lucide-react';
 import Link from 'next/link';
 
 // Mega Menu Data Configurations
@@ -183,49 +183,90 @@ const resourcesMegaMenu = {
       image: 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=600&q=80',
     },
     {
-      title: 'News',
-      url: '/resources/news',
-      image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80',
-    },{
-      title: 'Blogs',
-      url: '/resources/blogs',
+      title: 'Blog',
+      url: '/resources/blog',
       image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80',
     },
     {
-      title: 'Knowledge Section',
-      url: '/resources/knowledge-section',
-      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80',
+      title: 'News',
+      url: '/resources/news',
+      image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80',
+    },
+    {
+      title: 'Success Story',
+      url: '/resources/success-story',
+      image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80',
+    },
+    {
+      title: 'Video',
+      url: '/resources/video',
+      image: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=600&q=80',
+    },
+    {
+      title: 'Quality Policy',
+      url: '/resources/quality-policy',
+      image: 'https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&w=600&q=80',
     },
   ],
 };
 
-const solutionsMegaMenu = {
+export const pipeSolutionsMegaMenu = {
   category: "SOLUTIONS & SEGMENTS",
-  headline: "Tailored Piping Solutions",
-  description: "Comprehensive piping and fluid management systems engineered for industrial, agricultural, and residential applications.",
+  headline: "Piping Solutions for Every Need",
+  description: "Engineered piping systems for buildings, cities, farms and industry — built for flow, strength and longevity.",
   items: [
     {
-      title: "Architectural Fluid Systems",
-      url: "/solutions/architectural-fluid-systems",
-      image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1200&auto=format&fit=crop",
+      title: "Residential & Commercial Plumbing Solutions",
+      url: "/solutions/residential-commercial-plumbing",
+      image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80",
     },
     {
-      title: "Agricultural Drainage",
-      url: "/solutions/agricultural-drainage",
-      image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200&auto=format&fit=crop",
+      title: "Urban Drainage & Sewerage Networks",
+      url: "/solutions/urban-drainage-sewerage",
+      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
     },
     {
-      title: "Public Infrastructure & Drainage",
-      url: "/solutions/public-infrastructure",
-      image: "https://images.pexels.com/photos/15555686/pexels-photo-15555686.jpeg",
+      title: "Groundwater Access Solutions",
+      url: "/solutions/groundwater-access",
+      image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80",
     },
     {
-      title: "Industrial Process Piping",
-      url: "/solutions/industrial-process-piping",
-      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop",
+      title: "Farm Infrastructure Piping Solutions",
+      url: "/solutions/farm-infrastructure-piping",
+      image: "https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=600&q=80",
     },
   ],
 };
+
+export const irrigationSolutionsMegaMenu = {
+  category: "SOLUTIONS & SEGMENTS",
+  headline: "Irrigation Solutions for Every Field",
+  description: "Precision water management from greenhouse to open field — saving water, boosting yield.",
+  items: [
+    {
+      title: "Precision Irrigation",
+      url: "/solutions/precision-irrigation",
+      image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=600&q=80",
+    },
+    {
+      title: "Polyhouse (Greenhouse) Irrigation",
+      url: "/solutions/polyhouse-greenhouse-irrigation",
+      image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=80",
+    },
+    {
+      title: "Agricultural Field Irrigation",
+      url: "/solutions/agricultural-field-irrigation",
+      image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80",
+    },
+    {
+      title: "Water Management",
+      url: "/solutions/water-management",
+      image: "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=600&q=80",
+    },
+  ],
+};
+
+const solutionsMegaMenu = pipeSolutionsMegaMenu;
 
 const divisionsMegaMenu = {
   category: "OUR DIVISIONS",
@@ -266,10 +307,12 @@ const scrollToId = (id: string) => {
 
 interface HeaderDivisionProps {
   productsMegaMenu?: any;
+  solutionsMegaMenu?: any;
   solid?: boolean;
 }
 
-export const HeaderDivison: React.FC<HeaderDivisionProps> = ({ productsMegaMenu = defaultProductsMegaMenu, solid = false }) => {
+export const HeaderDivison: React.FC<HeaderDivisionProps> = ({ productsMegaMenu = defaultProductsMegaMenu, solutionsMegaMenu: solutionsMegaMenuProp, solid = false }) => {
+  const solutionsMegaMenu = solutionsMegaMenuProp || pipeSolutionsMegaMenu;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [heroRevealed, setHeroRevealed] = useState(true);
@@ -602,7 +645,7 @@ const handleSegmentClick = (segIdx: number) => {
 
         {/* Right Column - 2 in a row Grid */}
         <div className="col-span-7 grid grid-cols-2 gap-6">
-          {solutionsMegaMenu.items.map((item, idx) => (
+          {solutionsMegaMenu.items.map((item: any, idx: number) => (
             <Link
               key={idx}
               href={item.url}
@@ -628,6 +671,9 @@ const handleSegmentClick = (segIdx: number) => {
   )}
 </div>
 
+  <Link href="/applications" className={navItemStyle}>
+                Applications
+              </Link>
     
       {/* Resources Mega Menu */}
               <div
@@ -674,8 +720,82 @@ const handleSegmentClick = (segIdx: number) => {
                       </div>
 
                       {/* Right Column - 2 in a row Grid */}
-                      <div className="col-span-7 grid grid-cols-2 gap-6">
+                      <div className="col-span-7 grid grid-cols-3 gap-6">
                         {resourcesMegaMenu.items.map((item, idx) => (
+                          <Link
+                            key={idx}
+                            href={item.url}
+                            onClick={handleNavClick}
+                            className="group flex flex-col space-y-2.5"
+                          >
+                            <div className="overflow-hidden aspect-[12/9] bg-slate-100 ">
+                              <img
+                                src={item.image}
+                                alt={item.title}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                              />
+                            </div>
+                            <div className="flex items-center gap-1.5 text-sm font-medium text-[#111111] group-hover:text-[#1575B3] transition-colors">
+                              <span>{item.title}</span>
+                              <ChevronRight className="w-4 h-4 text-[#5F6B7A] group-hover:text-[#1575B3] group-hover:translate-x-0.5 transition-all" />
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+ 
+              {/* About Mega Menu */}
+              {/* <div
+                className="static"
+                onMouseEnter={() => handleMouseEnter('about')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button className={navItemStyle}>
+                  About Us
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      activeDropdown === 'about' ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+
+                {activeDropdown === 'about' && (
+                  <div className="absolute left-0 top-full w-full bg-white border-b border-[#DCEAF5] shadow-2xl py-10 px-8 sm:px-12 transition-all duration-300 z-50">
+                    <div className="max-w-7xl mx-auto grid grid-cols-12 gap-10 items-start">
+                    
+                      <div className="col-span-5 border-r border-[#DCEAF5] pr-10 flex flex-col justify-between h-full">
+                        <div>
+                          <span className="text-xs font-bold uppercase tracking-wider text-[#1575b3] block mb-2">
+                            {aboutMegaMenu.category}
+                          </span>
+                          <h3 className="text-5xl font-normal text-[#0f172b] leading-snug mb-3">
+                            {aboutMegaMenu.headline}
+                          </h3>
+                          <p className="text-lg text-[#5F6B7A] leading-relaxed">
+                            {aboutMegaMenu.description}
+                          </p>
+                        </div>
+                
+<div className="mt-8 pt-6 border-t border-[#DCEAF5] flex items-center gap-8">
+  <div>
+    <span className="text-3xl font-light text-[#1575b3] tracking-tight">35+</span>
+    <span className="block text-xs font-medium text-[#5F6B7A] uppercase tracking-wider mt-0.5">Years Legacy</span>
+  </div>
+  <div className="w-px h-8 bg-[#DCEAF5]" />
+  <div>
+    <span className="text-3xl font-light text-[#1575b3] tracking-tight">800+</span>
+    <span className="block text-xs font-medium text-[#5F6B7A] uppercase tracking-wider mt-0.5">Partners</span>
+  </div>
+</div>
+                      </div>
+
+                
+                      <div className="col-span-7 grid grid-cols-2 gap-6">
+                        {aboutMegaMenu.items.map((item, idx) => (
                           <Link
                             key={idx}
                             href={item.url}
@@ -699,9 +819,22 @@ const handleSegmentClick = (segIdx: number) => {
                     </div>
                   </div>
                 )}
-              </div>
+              </div> */}
 
- <div
+        
+
+    <Link href="/about" className={navItemStyle}>
+                About Us
+              </Link>
+
+            
+
+              <Link href="/contact" className={navItemStyle}>
+                Contact Us
+              </Link>
+
+
+              <div
   className="static"
   onMouseEnter={() => handleMouseEnter('divisions')}
   onMouseLeave={handleMouseLeave}
@@ -719,7 +852,7 @@ const handleSegmentClick = (segIdx: number) => {
     <div className="absolute left-0 top-full w-full bg-white border-b border-[#DCEAF5] shadow-2xl py-10 px-8 sm:px-12 transition-all duration-300 z-50">
       <div className="max-w-7xl mx-auto grid grid-cols-12 gap-10 items-stretch">
         
-        {/* Left Side: Category Info & Division Selectors */}
+     
         <div className="col-span-5 border-r border-[#DCEAF5] pr-10 flex flex-col justify-between h-full">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-[#1575b3] block mb-2">
@@ -732,7 +865,6 @@ const handleSegmentClick = (segIdx: number) => {
               {divisionsMegaMenu.description}
             </p>
 
-            {/* Division Selectors */}
             <div className="space-y-3">
               {divisionsMegaMenu.divisions.map((div: any) => {
                 const isActive = (hoveredDivision || divisionsMegaMenu.divisions[0].id) === div.id;
@@ -763,20 +895,9 @@ const handleSegmentClick = (segIdx: number) => {
             </div>
           </div>
 
-          {/* Bottom Action Link */}
-          {/* <div className="mt-8 pt-6 border-t border-[#DCEAF5]">
-            <Link
-              href="/divisions"
-              onClick={handleNavClick}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-[#0f172b] hover:text-[#1575B3] group transition-colors"
-            >
-              <span>Explore All Divisions</span>
-              <ChevronRight className="w-4 h-4 text-[#0f172b] group-hover:text-[#1575B3] group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div> */}
+        
         </div>
 
-        {/* Right Side: Dynamic Division Card Preview */}
         <div className="col-span-7">
           {(() => {
             const activeDiv = divisionsMegaMenu.divisions.find(
@@ -789,13 +910,13 @@ const handleSegmentClick = (segIdx: number) => {
                 onClick={handleNavClick}
                 className="group relative h-[420px] w-full overflow-hidden border border-slate-200 bg-slate-950 flex flex-col justify-end shadow-lg block"
               >
-                {/* Background Image */}
+         
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
                   style={{ backgroundImage: `url(${activeDiv.image})` }}
                 />
 
-                {/* Overlays */}
+            
                 <div
                   className={`absolute inset-0 transition-opacity duration-500 ${
                     activeDiv.id === 'pipes'
@@ -804,7 +925,7 @@ const handleSegmentClick = (segIdx: number) => {
                   }`}
                 />
 
-                {/* Card Content */}
+             
                 <div className="relative z-10 p-8 flex flex-col justify-end h-full">
                   <span className="text-xs font-bold uppercase tracking-wider text-sky-200 mb-1">
                     Selected Division
@@ -817,7 +938,7 @@ const handleSegmentClick = (segIdx: number) => {
                     {activeDiv.fullDesc || activeDiv.shortDesc}
                   </p>
 
-                  {/* Badges */}
+           
                   <div className="flex flex-wrap gap-2 mb-6">
                     {activeDiv.badges?.map((b: string) => (
                       <span
@@ -829,7 +950,7 @@ const handleSegmentClick = (segIdx: number) => {
                     ))}
                   </div>
 
-                  {/* Explore Link */}
+              
                   <span
                     className={`inline-flex items-center gap-2 text-sm font-semibold ${
                       activeDiv.id === 'pipes' ? 'text-sky-200' : 'text-emerald-200'
@@ -848,90 +969,10 @@ const handleSegmentClick = (segIdx: number) => {
     </div>
   )}
 </div>
-              {/* About Mega Menu */}
-              <div
-                className="static"
-                onMouseEnter={() => handleMouseEnter('about')}
-                onMouseLeave={handleMouseLeave}
-              >
-                <button className={navItemStyle}>
-                  About Us
-                  <ChevronDown
-                    className={`w-4 h-4 transition-transform duration-300 ${
-                      activeDropdown === 'about' ? 'rotate-180' : ''
-                    }`}
-                  />
-                </button>
 
-                {activeDropdown === 'about' && (
-                  <div className="absolute left-0 top-full w-full bg-white border-b border-[#DCEAF5] shadow-2xl py-10 px-8 sm:px-12 transition-all duration-300 z-50">
-                    <div className="max-w-7xl mx-auto grid grid-cols-12 gap-10 items-start">
-                      {/* Left Column - Category Info + Descriptive Text */}
-                      <div className="col-span-5 border-r border-[#DCEAF5] pr-10 flex flex-col justify-between h-full">
-                        <div>
-                          <span className="text-xs font-bold uppercase tracking-wider text-[#1575b3] block mb-2">
-                            {aboutMegaMenu.category}
-                          </span>
-                          <h3 className="text-5xl font-normal text-[#0f172b] leading-snug mb-3">
-                            {aboutMegaMenu.headline}
-                          </h3>
-                          <p className="text-lg text-[#5F6B7A] leading-relaxed">
-                            {aboutMegaMenu.description}
-                          </p>
-                        </div>
-                
-<div className="mt-8 pt-6 border-t border-[#DCEAF5] flex items-center gap-8">
-  <div>
-    <span className="text-3xl font-light text-[#1575b3] tracking-tight">35+</span>
-    <span className="block text-xs font-medium text-[#5F6B7A] uppercase tracking-wider mt-0.5">Years Legacy</span>
-  </div>
-  <div className="w-px h-8 bg-[#DCEAF5]" />
-  <div>
-    <span className="text-3xl font-light text-[#1575b3] tracking-tight">800+</span>
-    <span className="block text-xs font-medium text-[#5F6B7A] uppercase tracking-wider mt-0.5">Partners</span>
-  </div>
-</div>
-                      </div>
 
-                      {/* Right Column - 2 in a row Grid */}
-                      <div className="col-span-7 grid grid-cols-2 gap-6">
-                        {aboutMegaMenu.items.map((item, idx) => (
-                          <Link
-                            key={idx}
-                            href={item.url}
-                            onClick={handleNavClick}
-                            className="group flex flex-col space-y-2.5"
-                          >
-                            <div className="overflow-hidden aspect-[16/9] bg-slate-100 ">
-                              <img
-                                src={item.image}
-                                alt={item.title}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                              />
-                            </div>
-                            <div className="flex items-center gap-1.5 text-sm font-medium text-[#111111] group-hover:text-[#1575B3] transition-colors">
-                              <span>{item.title}</span>
-                              <ChevronRight className="w-4 h-4 text-[#5F6B7A] group-hover:text-[#1575B3] group-hover:translate-x-0.5 transition-all" />
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
 
-        
 
-    
-
-              <Link href="/applications" className={navItemStyle}>
-                Applications
-              </Link>
-
-              <Link href="/contact" className={navItemStyle}>
-                Contact Us
-              </Link>
             </nav>
 
             <button
@@ -1044,37 +1085,7 @@ const handleSegmentClick = (segIdx: number) => {
     </div>
   )}
 </div>
-
-              {/* Mobile Divisions Submenu — ref WhyKothari */}
-              <div>
-                <button
-                  onClick={() => setActiveDropdown(activeDropdown === 'divisions' ? null : 'divisions')}
-                  className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] transition"
-                >
-                  <span>Divisions</span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-[#5F6B7A] transition-transform ${
-                      activeDropdown === 'divisions' ? 'rotate-180' : ''
-                    }`}
-                  />
-                </button>
-                {activeDropdown === 'divisions' && (
-                  <div className="pl-4 space-y-3 pt-1 pb-2">
-                    {divisionsMegaMenu.divisions.map((div: any) => (
-                      <div key={div.id} className="border border-slate-200 overflow-hidden">
-                        <Link href={div.link} onClick={handleNavClick} className="block">
-                          <div className="h-28 bg-cover bg-center" style={{ backgroundImage: `url(${div.image})` }} />
-                          <div className="p-3 space-y-1">
-                            <span className="block text-sm font-semibold text-[#111111]">{div.title}</span>
-                            <span className="block text-xs text-[#5F6B7A] line-clamp-2">{div.shortDesc}</span>
-                            <span className="inline-flex items-center gap-1 text-xs font-mono tracking-widest uppercase text-[#1575B3]">Explore <ChevronRight className="w-3 h-3" /></span>
-                          </div>
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+           
 
                  {/* Mobile solutions Submenu */}
               <div>
@@ -1104,6 +1115,16 @@ const handleSegmentClick = (segIdx: number) => {
                   </div>
                 )}
               </div>
+
+
+
+               <Link
+                href="/applications"
+                onClick={handleNavClick}
+                className="block w-full px-4 py-3 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] hover:text-[#1575B3] transition"
+              >
+                Applications
+              </Link>
 
         
 
@@ -1138,7 +1159,7 @@ const handleSegmentClick = (segIdx: number) => {
 
 
               {/* Mobile About Submenu */}
-              <div>
+              {/* <div>
                 <button
                   onClick={() => setActiveDropdown(activeDropdown === 'about' ? null : 'about')}
                   className="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] transition"
@@ -1164,14 +1185,14 @@ const handleSegmentClick = (segIdx: number) => {
                     ))}
                   </div>
                 )}
-              </div>
+              </div> */}
 
               <Link
-                href="/applications"
+                href="/about"
                 onClick={handleNavClick}
                 className="block w-full px-4 py-3 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] hover:text-[#1575B3] transition"
               >
-                Applications
+                About Us
               </Link>
 
               <Link
@@ -1181,6 +1202,45 @@ const handleSegmentClick = (segIdx: number) => {
               >
                 Contact Us
               </Link>
+
+
+
+                 {/* Mobile Divisions — same as Home2Header */}
+              <div className="space-y-1 pt-2">
+                <button
+                  onClick={() => setActiveDropdown(activeDropdown === 'divisions' ? null : 'divisions')}
+                  className="w-full flex items-center justify-between px-4 py-3.5 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] transition"
+                >
+                  <span>Divisions</span>
+                  <ChevronDown className={`w-5 h-5 text-[#5F6B7A] transition-transform ${activeDropdown === 'divisions' ? 'rotate-180' : ''}`} />
+                </button>
+                {activeDropdown === 'divisions' && (
+                  <div className="pl-2 space-y-2 pt-1">
+                    {[
+                      { name: 'Pipe Division', desc: 'Agri, plumbing & drainage pipes.', icon: Factory, accent: 'text-[#1575B3] bg-[#F5FAFF]', url: '/pipe-division' },
+                      { name: 'Irrigation Division', desc: 'Drip, sprinklers & micro irrigation.', icon: Sprout, accent: 'text-[#1E8E3E] bg-[#EAF8EF]', url: '/irrigation-division' },
+                    ].map((d, i) => {
+                      const Icon = d.icon;
+                      return (
+                        <Link
+                          key={i}
+                          href={d.url}
+                          onClick={handleNavClick}
+                          className="w-full flex items-center gap-3 px-4 py-3 bg-[#F5F6F8] hover:bg-[#DCEAF5]/40 transition text-left"
+                        >
+                          <span className={`w-10 h-10 flex items-center justify-center shrink-0 ${d.accent}`}>
+                            <Icon className="w-5 h-5" />
+                          </span>
+                          <span>
+                            <span className="block text-sm font-medium text-[#111111]">{d.name}</span>
+                            <span className="block text-xs font-light text-[#5F6B7A] mt-0.5">{d.desc}</span>
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className="pt-6 border-t border-slate-100 mt-auto">

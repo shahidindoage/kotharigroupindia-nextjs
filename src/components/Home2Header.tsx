@@ -217,7 +217,7 @@ export const Home2Header: React.FC = () => {
                       : 'text-white/90 hover:text-white hover:bg-white/10'
                   }`}
                 >
-                  Our Divisions
+                 Divisions
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${divOpen ? 'rotate-180' : ''}`} />
                 </button>
 

@@ -90,10 +90,11 @@ export const ProductDetailPage: React.FC<{
     return [
       ...(hasFeatures ? [{ key: 'FEATURES' as HeroTab, label: 'Features' }] : []),
       ...(hasSpecs ? [{ key: 'SPECIFICATIONS' as HeroTab, label: 'Specifications' }] : []),
+      ...(hasApps ? [{ key: 'APPLICATIONS' as HeroTab, label: 'Applications' }] : []),
       ...(hasStandards ? [{ key: 'STANDARDS' as HeroTab, label: 'Standards' }] : []),
       ...(hasDimensions ? [{ key: 'DIMENSIONS' as HeroTab, label: 'Dimensions' }] : []),
       ...(hasFittings ? [{ key: 'FITTINGS' as HeroTab, label: 'Fittings' }] : []),
-      ...(hasApps ? [{ key: 'APPLICATIONS' as HeroTab, label: 'Applications' }] : []),
+      
       ...(hasFaqs ? [{ key: 'FAQs' as HeroTab, label: 'FAQs' }] : []),
     ];
   }, [isWp, wp, productProp, displayFaqs]);
@@ -262,6 +263,13 @@ export const ProductDetailPage: React.FC<{
               </div>
             )}
 
+             {heroTab === 'APPLICATIONS' && (
+              <div className="py-2">
+                <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">Applications</h3>
+                <div className="wp-tab-list" dangerouslySetInnerHTML={{ __html: wp?.applicationsHtml || '' }} />
+              </div>
+            )}
+
             {heroTab === 'DIMENSIONS' && (
               <div className="py-2">
                 <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">Dimensions</h3>
@@ -276,12 +284,7 @@ export const ProductDetailPage: React.FC<{
               </div>
             )}
 
-            {heroTab === 'APPLICATIONS' && (
-              <div className="py-2">
-                <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">Applications</h3>
-                <div className="wp-tab-list" dangerouslySetInnerHTML={{ __html: wp?.applicationsHtml || '' }} />
-              </div>
-            )}
+           
 
             {heroTab === 'FAQs' && (
               <div className="py-2">

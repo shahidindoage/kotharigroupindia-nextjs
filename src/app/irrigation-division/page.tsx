@@ -3,7 +3,7 @@
 import AppShell from '@/components/AppShell';
 import { KnowledgeCentre } from '@/components/KnowledgeCentre';
 import { HeroDivision } from '@/components/HeroDivision';
-import { HeaderDivison } from '@/components/HeaderDivision';
+import { HeaderDivison, irrigationSolutionsMegaMenu } from '@/components/HeaderDivision';
 import { Category } from '@/components/Category';
 import { WhyKothariGroup } from '@/components/main/WhyKothariGroup';
 import { Impact } from '@/components/main/Impact';
@@ -432,7 +432,7 @@ const FEATURE_PRODUCTS = [
 ];
   return (
     <>
-      <HeaderDivison productsMegaMenu={productsMegaMenu}/>
+      <HeaderDivison productsMegaMenu={productsMegaMenu} solutionsMegaMenu={irrigationSolutionsMegaMenu}/>
       <HeroDivision heroData={heroData} />
       <Category tab="agriculture"/>
       <FeaturedProducts products={FEATURE_PRODUCTS}/>
