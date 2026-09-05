@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import React from 'react';
 
 interface SubCategory {
@@ -75,7 +76,8 @@ export const WhyKothari = () => {
         {/* 50% / 50% Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-auto lg:h-[620px]">
           {divisionData.map((division) => (
-            <div
+            <Link
+              href={division.exploreLink}
               key={division.id}
               className="group relative w-full h-[500px] lg:h-full overflow-hidden border border-slate-300/80 shadow-lg bg-slate-950 flex flex-col justify-end transition-all duration-500 hover:shadow-2xl hover:border-slate-400"
             >
@@ -127,17 +129,17 @@ export const WhyKothari = () => {
 
                 {/* CTA Action Bar */}
                 <div className="pt-5 border-t border-slate-700/60 flex items-center justify-between">
-                  <a
+                  <Link
                     href={division.exploreLink}
                     className={`inline-flex items-center gap-2.5 text-xs tracking-widest uppercase font-mono font-semibold transition-colors ${division.accentColor}`}
                   >
                     <span>Explore Division</span>
                     <ArrowRight className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300 stroke-[1.75]" />
-                  </a>
+                  </Link>
                 </div>
 
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

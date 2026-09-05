@@ -1,8 +1,21 @@
 // src/lib/wp-product.ts
+import { cache } from 'react';
 
 const WP_API = process.env.NEXT_PUBLIC_WP_API_URL;
 const WOO_ADMIN = `${WP_API}/wc/v3/products`;
 const WP_MEDIA = `${WP_API}/wp/v2/media`;
+
+// Fetch with a timeout so a slow WP backend never hangs navigation.
+// Next dedupes + caches the result (see cached fetch below).
+async function fetchWithTimeout(url: string, init?: RequestInit, ms = 9000): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ms);
+  try {
+    return await fetch(url, { ...init, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
 // Auth for Admin API (server-side only)
 function getAuthHeaders(): HeadersInit {
@@ -115,6 +128,11 @@ export interface WpProductData {
     category: string;
     categorySlug: string;
   }[];
+
+
+    // SEO (Yoast)
+  seoTitle: string;
+  seoDescription: string;
 }
 
 // Parse FAQ HTML into structured array
@@ -142,10 +160,10 @@ function parseFaqHtml(html: string): { question: string; answer: string }[] {
   return faqs;
 }
 
-// Main fetch function
-export async function fetchWpProductBySlug(slug: string): Promise<WpProductData | null> {
+// Main fetch function — cached so generateMetadata + page share one request
+export const fetchWpProductBySlug = cache(async (slug: string): Promise<WpProductData | null> => {
   try {
-    const res = await fetch(`${WOO_ADMIN}?slug=${slug}&per_page=1`, {
+    const res = await fetchWithTimeout(`${WOO_ADMIN}?slug=${slug}&per_page=1`, {
       headers: { ...getAuthHeaders() },
       next: { revalidate: 600 },
     });
@@ -194,6 +212,11 @@ export async function fetchWpProductBySlug(slug: string): Promise<WpProductData 
     const category = raw.categories?.[0]?.name || '';
     const descriptionHtml = raw.description || '';
 
+
+        // Extract Yoast SEO fields
+    const seoTitle = getMetaString(meta, '_yoast_wpseo_title');
+    const seoDescription = getMetaString(meta, '_yoast_wpseo_metadesc');
+
     // PDF fetching logic (existing)
     const pdfMediaIds = getMetaArray(meta, 'wcpoa_attachment_url');
     const pdfNames = getMetaArray(meta, 'wcpoa_attachment_name');
@@ -202,37 +225,32 @@ export async function fetchWpProductBySlug(slug: string): Promise<WpProductData 
     let pdfName = 'Technical-Catalogue.pdf';
     let pdfSize = 0;
 
-    if (pdfMediaIds.length > 0 && pdfMediaIds[0]) {
-      try {
-        const mediaRes = await fetch(`${WP_MEDIA}/${pdfMediaIds[0]}`, {
-          headers: { ...getAuthHeaders() },
-          next: { revalidate: 3600 },
-        });
-        if (mediaRes.ok) {
-          const media = await mediaRes.json();
-          pdfUrl = media.source_url || '';
-          pdfName = media.filename || pdfNames[0] || 'Technical-Catalogue.pdf';
-          pdfSize = media.filesize || 0;
-        }
-      } catch {
-        // PDF fetch failed
-      }
-    }
-
-       // Step 7: Related products - Fetch by manually selected ACF Relationship field
-    let relatedProducts: WpProductData['relatedProducts'] = [];
-    
-    // 1. Check for manually selected related products first
+    // PDF + related IDs resolved first so the two network calls run in parallel
     const manualRelatedIds = getMetaArray(meta, 'related_products_manual');
-    
-    if (manualRelatedIds.length > 0) {
-      relatedProducts = await fetchRelatedProductsByIds(manualRelatedIds);
-    }
-    
-    // 2. Fallback to WooCommerce's default related products if none are manually selected
-    if (relatedProducts.length === 0) {
-      const wooRelatedIds: number[] = raw.related_ids || [];
-      relatedProducts = await fetchRelatedProductsByIds(wooRelatedIds);
+    const wooRelatedIds: number[] = raw.related_ids || [];
+    const relatedIds = manualRelatedIds.length > 0 ? manualRelatedIds : wooRelatedIds;
+
+    const [mediaResult, relatedProducts] = await Promise.all([
+      (async () => {
+        if (!pdfMediaIds.length || !pdfMediaIds[0]) return null;
+        try {
+          const mediaRes = await fetchWithTimeout(`${WP_MEDIA}/${pdfMediaIds[0]}`, {
+            headers: { ...getAuthHeaders() },
+            next: { revalidate: 3600 },
+          }, 8000);
+          if (!mediaRes.ok) return null;
+          return await mediaRes.json();
+        } catch {
+          return null; // PDF fetch failed — page still renders
+        }
+      })(),
+      fetchRelatedProductsByIds(relatedIds),
+    ]);
+
+    if (mediaResult) {
+      pdfUrl = mediaResult.source_url || '';
+      pdfName = mediaResult.filename || pdfNames[0] || 'Technical-Catalogue.pdf';
+      pdfSize = mediaResult.filesize || 0;
     }
 
     return {
@@ -260,13 +278,15 @@ export async function fetchWpProductBySlug(slug: string): Promise<WpProductData 
       pdfName,
       pdfSize,
       descriptionHtml,
+      seoTitle,
+      seoDescription,
       relatedProducts,
     };
   } catch (error) {
     console.error('[wp-product] Fetch failed for slug:', slug, error);
     return null;
   }
-}
+});
 
 // Fetch related products by Segment Slug (New ACF logic)
 async function fetchRelatedProductsBySegment(
@@ -275,7 +295,7 @@ async function fetchRelatedProductsBySegment(
 ): Promise<WpProductData['relatedProducts']> {
   try {
     // Fetch recent products to find matches by segment_slug
-    const res = await fetch(`${WOO_ADMIN}?per_page=20&orderby=date&order=desc`, {
+    const res = await fetchWithTimeout(`${WOO_ADMIN}?per_page=20&orderby=date&order=desc`, {
       headers: { ...getAuthHeaders() },
       next: { revalidate: 600 },
     });
@@ -324,7 +344,7 @@ async function fetchRelatedProductsByIds(
     const idsParam = ids.map(String).filter(Boolean).join(',');
     if (!idsParam) return [];
 
-    const res = await fetch(`${WOO_ADMIN}?include=${idsParam}`, {
+    const res = await fetchWithTimeout(`${WOO_ADMIN}?include=${idsParam}`, {
       headers: { ...getAuthHeaders() },
       next: { revalidate: 600 },
     });

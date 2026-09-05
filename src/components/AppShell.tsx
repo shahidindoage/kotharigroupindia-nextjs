@@ -50,7 +50,7 @@ export default function AppShell({ children }: AppShellProps) {
   useEffect(() => {
     if (!loaderPlayedOnce) {
       loaderPlayedOnce = true;
-      const timeout = setTimeout(() => setLoading(false), 2800);
+      const timeout = setTimeout(() => setLoading(false), 1400);
       return () => clearTimeout(timeout);
     }
     setLoading(false);

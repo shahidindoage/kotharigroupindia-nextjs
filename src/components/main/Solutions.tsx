@@ -19,9 +19,9 @@ export const Solutions = () => {
           
           {/* Left Side: Sharp Square Portrait Card */}
           <div className="lg:col-span-5 relative w-full">
-            <div className="relative mx-auto max-w-md lg:max-w-none w-full aspect-[4/5] overflow-hidden shadow-2xl bg-slate-900 rounded-none">
+            <div className="relative mx-auto max-w-md lg:max-w-none w-full aspect-[4/5] overflow-hidden  bg-slate-900 rounded-none">
               <Image
-                src="https://kotharigroupindia.com/img/images/kiran-s-kothari.webp" 
+                src="field3.jpeg" 
                 alt="Kiran S. Kothari - Founder Chairman"
                 fill
                 priority
@@ -32,10 +32,10 @@ export const Solutions = () => {
               
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
               
-              <div className="absolute bottom-6 left-6 right-6 text-white lg:hidden">
+              {/* <div className="absolute bottom-6 left-6 right-6 text-white lg:hidden">
                 <h3 className="text-xl font-bold">Kiran S. Kothari</h3>
                 <p className="text-xs text-white/70">Founder Chairman, Kothari Group</p>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -46,56 +46,34 @@ export const Solutions = () => {
             <div className="flex items-center gap-3">
               <span className="w-8 h-[2px] bg-[#1575B3]" />
               <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#1575B3]">
-                From The Chairman&apos;s Desk
+                ABOUT US
               </span>
             </div>
 
-            {/* Static All-Dark Quote Body (No Blue Text) */}
-            <div 
+            {/* Updated Quote Body */}
+            <blockquote 
               className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight leading-[1.35] text-[#0F172A] select-none"
             >
-              <span className="inline-block">“Empowering</span>{' '}
-              <span className="inline-block">our</span>{' '}
-              <span className="inline-block">farmers</span>{' '}
-              <span className="inline-block">and</span>{' '}
-              <span className="inline-block">industries</span>{' '}
-              <span className="inline-block">demands</span>{' '}
-              <span className="inline-block font-normal">more</span>{' '}
-              <span className="inline-block font-normal">than</span>{' '}
-              <span className="inline-block font-normal">products</span>{' '}
-              <span className="inline-block">—</span>{' '}
-              <span className="inline-block">it</span>{' '}
-              <span className="inline-block">requires</span>{' '}
-              <span className="inline-block">relentless</span>{' '}
-              <span className="inline-block">precision,</span>{' '}
-              <span className="inline-block">sustainable</span>{' '}
-              <span className="inline-block">engineering,</span>{' '}
-              <span className="inline-block">and</span>{' '}
-              <span className="inline-block">an</span>{' '}
-              <span className="inline-block">unyielding</span>{' '}
-              <span className="inline-block font-semibold">commitment</span>{' '}
-              <span className="inline-block font-semibold">to</span>{' '}
-              <span className="inline-block font-semibold">India’s</span>{' '}
-              <span className="inline-block font-semibold">growth.”</span>
-            </div>
+              “We are dedicated to nurturing lands and building dreams with <span className="font-semibold">innovative irrigation solutions</span> for agriculture and <span className="font-semibold">plumbing solutions</span> for farms and buildings.”
+            </blockquote>
 
             {/* Author Attribution Block */}
             <div className="pt-4 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-              <div className="hidden lg:block">
-                <h3 className="text-2xl font-bold tracking-tight text-gray-900">
-                  Kiran S. Kothari
-                </h3>
-                <p className="text-sm text-gray-500 font-medium">
-                  Founder Chairman, Kothari Group
-                </p>
-              </div>
+             <div className="hidden lg:block">
+  <h3 className="text-2xl font-bold tracking-tight text-gray-900">
+    Kothari Group
+  </h3>
+  <p className="text-sm text-gray-500 font-medium">
+    Pioneering Irrigation & Plumbing Excellence
+  </p>
+</div>
 
               {/* Square / Sharp CTA Button */}
               <a
                 href="/about"
                 className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-none border border-gray-900 bg-transparent text-gray-900 text-sm font-semibold hover:bg-[#1575B3] hover:border-[#1575B3] hover:text-white transition-all duration-300 self-start sm:self-auto"
               >
-                <span>Read Full Message</span>
+                <span>Discover Our Story</span>
                 <span className="transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>

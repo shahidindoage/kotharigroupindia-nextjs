@@ -29,7 +29,8 @@ export const ProductDetailPage: React.FC<{
   const displayName = wp?.name || productProp?.name || 'Product';
   const displayTagline = wp?.tagline || 'Piping System';
   const displayImage = wp?.mainImage || productProp?.image || '';
-  const displayDescHtml = wp?.mainDescriptionHtml || productProp?.shortDescription || '';
+  const DEFAULT_DESC_HTML = `<p>Engineered by Kothari Group for dependable performance, this system is built for Indian site conditions — tough water, harsh summers, and daily wear and tear. Every pipe and fitting passes strict quality checks for pressure endurance, dimensional accuracy and finish, so installations stay leak-free with minimal maintenance.</p><p>Designed for versatility, it suits residential apartments, independent villas, commercial complexes, public utilities and agricultural installations alike. Consistent material quality keeps flow smooth, joints reliable and service life long — even under continuous pressure and varying water quality.</p><p><strong>What makes it stand out?</strong></p><ul><li>Precision manufacturing to relevant IS / ASTM standards for dependable site performance.</li><li>Robust joints engineered against leaks, vibration loosening and pressure surges.</li><li>Corrosion-free, scale-resistant bore for steady flow and lower pumping cost.</li><li>UV and weather resistance for safe indoor as well as outdoor installation.</li><li>Easy handling and quick jointing that cuts installation time and labour effort.</li><li>Wide size range with compatible fittings, valves and accessories for complete systems.</li></ul><p>For sizes, standards, dimensions and system components, refer to the tabs below — or contact our engineering team for project-specific guidance.</p>`;
+  const displayDescHtml = wp?.mainDescriptionHtml || productProp?.shortDescription || DEFAULT_DESC_HTML;
   
   const displayPdfUrl = wp?.pdfUrl || '';
   const displayPdfName = wp?.pdfName || 'Technical-Catalogue.pdf';
@@ -78,26 +79,51 @@ export const ProductDetailPage: React.FC<{
   const safeIndex = Math.min(currentIndex, maxIndex);
   const itemWidth = 100 / itemsPerPage;
 
+  // Always show all tabs; missing content renders a placeholder inside the tab.
   const visibleTabs: { key: HeroTab; label: string }[] = useMemo(() => {
-    const hasFeatures = isWp ? !!wp?.featuresHtml : !!(productProp?.keyFeatures && productProp.keyFeatures.length > 0);
-    const hasSpecs = isWp ? !!wp?.specificationsHtml : true;
-    const hasStandards = isWp ? !!wp?.standardsHtml : true;
-    const hasDimensions = isWp ? !!wp?.dimensionsHtml : !!(productProp?.dimensionsTable && productProp.dimensionsTable.length > 0);
-    const hasFittings = isWp ? !!wp?.fittingsHtml : !!(productProp?.fittingsList && productProp.fittingsList.length > 0);
-    const hasApps = isWp ? !!wp?.applicationsHtml : !!(productProp?.applications && productProp.applications.length > 0);
-    const hasFaqs = !!(displayFaqs && displayFaqs.length > 0);
-
     return [
-      ...(hasFeatures ? [{ key: 'FEATURES' as HeroTab, label: 'Features' }] : []),
-      ...(hasSpecs ? [{ key: 'SPECIFICATIONS' as HeroTab, label: 'Specifications' }] : []),
-      ...(hasApps ? [{ key: 'APPLICATIONS' as HeroTab, label: 'Applications' }] : []),
-      ...(hasStandards ? [{ key: 'STANDARDS' as HeroTab, label: 'Standards' }] : []),
-      ...(hasDimensions ? [{ key: 'DIMENSIONS' as HeroTab, label: 'Dimensions' }] : []),
-      ...(hasFittings ? [{ key: 'FITTINGS' as HeroTab, label: 'Fittings' }] : []),
-      
-      ...(hasFaqs ? [{ key: 'FAQs' as HeroTab, label: 'FAQs' }] : []),
+      { key: 'FEATURES' as HeroTab, label: 'Features' },
+      { key: 'SPECIFICATIONS' as HeroTab, label: 'Specifications' },
+
+       { key: 'APPLICATIONS' as HeroTab, label: 'Applications' },
+      { key: 'STANDARDS' as HeroTab, label: 'Standards' },
+      { key: 'DIMENSIONS' as HeroTab, label: 'Dimensions' },
+      { key: 'FITTINGS' as HeroTab, label: 'Fittings' },
+     
+      { key: 'FAQs' as HeroTab, label: 'FAQs' },
     ];
-  }, [isWp, wp, productProp, displayFaqs]);
+  }, []);
+
+  const isEmptyHtml = (html?: string) => {
+    if (!html) return true;
+    const text = html.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim();
+    return text.length === 0;
+  };
+
+  const EmptyTabIcon: Record<string, React.ElementType> = {
+    Features: Sparkles,
+    Specifications: Factory,
+    Standards: ShieldCheck,
+    Dimensions: Table,
+    Fittings: Wrench,
+    Applications: Layers,
+    FAQs: HelpCircle,
+  };
+
+  const EmptyTabPlaceholder: React.FC<{ label: string }> = ({ label }) => {
+    const Icon = EmptyTabIcon[label] || FileText;
+    return (
+      <div className="py-2">
+        <div className="border border-white/20 bg-white/10 backdrop-blur-sm px-6 py-12 text-center max-w-xl mx-auto">
+          <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-white flex items-center justify-center shadow-md">
+            <Icon className="w-6 h-6 text-[#1575B3]" />
+          </div>
+          <p className="text-white text-base font-semibold tracking-wide">No {label.toLowerCase()} available yet</p>
+          <p className="text-white/70 text-xs mt-2 leading-relaxed">Detailed {label.toLowerCase()} for this product are coming soon — reach out to our team for assistance meanwhile.</p>
+        </div>
+      </div>
+    );
+  };
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -243,50 +269,77 @@ export const ProductDetailPage: React.FC<{
           <div className="py-8 sm:py-10 min-h-[320px]">
             
             {heroTab === 'FEATURES' && (
-              <div className="py-2">
-                <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">Key Features</h3>
-                <div className="wp-tab-list" dangerouslySetInnerHTML={{ __html: wp?.featuresHtml || '' }} />
-              </div>
+              isEmptyHtml(wp?.featuresHtml) ? (
+                <EmptyTabPlaceholder label="Features" />
+              ) : (
+                <div className="py-2">
+                  <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">Key Features</h3>
+                  <div className="wp-tab-list" dangerouslySetInnerHTML={{ __html: wp?.featuresHtml || '' }} />
+                </div>
+              )
             )}
 
             {heroTab === 'SPECIFICATIONS' && (
-              <div className="py-2">
-                <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">Specifications</h3>
-                <div className="wp-tab-list" dangerouslySetInnerHTML={{ __html: wp?.specificationsHtml || '' }} />
-              </div>
+              isEmptyHtml(wp?.specificationsHtml) ? (
+                <EmptyTabPlaceholder label="Specifications" />
+              ) : (
+                <div className="py-2">
+                  <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">Specifications</h3>
+                  <div className="wp-tab-list" dangerouslySetInnerHTML={{ __html: wp?.specificationsHtml || '' }} />
+                </div>
+              )
             )}
 
             {heroTab === 'STANDARDS' && (
-              <div className="py-2">
-                <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">Standards</h3>
-                <div className="wp-tab-table bg-white overflow-hidden shadow-lg" dangerouslySetInnerHTML={{ __html: wp?.standardsHtml || '' }} />
-              </div>
+              isEmptyHtml(wp?.standardsHtml) ? (
+                <EmptyTabPlaceholder label="Standards" />
+              ) : (
+                <div className="py-2">
+                  <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">Standards</h3>
+                  <div className="wp-tab-table bg-white overflow-hidden shadow-lg" dangerouslySetInnerHTML={{ __html: wp?.standardsHtml || '' }} />
+                </div>
+              )
             )}
 
              {heroTab === 'APPLICATIONS' && (
-              <div className="py-2">
-                <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">Applications</h3>
-                <div className="wp-tab-list" dangerouslySetInnerHTML={{ __html: wp?.applicationsHtml || '' }} />
-              </div>
+              isEmptyHtml(wp?.applicationsHtml) ? (
+                <EmptyTabPlaceholder label="Applications" />
+              ) : (
+                <div className="py-2">
+                  <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">Applications</h3>
+                  <div className="wp-tab-list" dangerouslySetInnerHTML={{ __html: wp?.applicationsHtml || '' }} />
+                </div>
+              )
             )}
 
             {heroTab === 'DIMENSIONS' && (
-              <div className="py-2">
-                <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">Dimensions</h3>
-                <div className="wp-tab-table bg-white overflow-hidden shadow-lg" dangerouslySetInnerHTML={{ __html: wp?.dimensionsHtml || '' }} />
-              </div>
+              isEmptyHtml(wp?.dimensionsHtml) ? (
+                <EmptyTabPlaceholder label="Dimensions" />
+              ) : (
+                <div className="py-2">
+                  <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">Dimensions</h3>
+                  <div className="wp-tab-table bg-white overflow-hidden shadow-lg" dangerouslySetInnerHTML={{ __html: wp?.dimensionsHtml || '' }} />
+                </div>
+              )
             )}
 
             {heroTab === 'FITTINGS' && (
-              <div className="py-2">
-                <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">Fittings</h3>
-                <div className="wp-tab-fittings" dangerouslySetInnerHTML={{ __html: wp?.fittingsHtml || '' }} />
-              </div>
+              isEmptyHtml(wp?.fittingsHtml) ? (
+                <EmptyTabPlaceholder label="Fittings" />
+              ) : (
+                <div className="py-2">
+                  <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">Fittings</h3>
+                  <div className="wp-tab-fittings" dangerouslySetInnerHTML={{ __html: wp?.fittingsHtml || '' }} />
+                </div>
+              )
             )}
 
            
 
             {heroTab === 'FAQs' && (
+              (!displayFaqs || displayFaqs.length === 0) ? (
+                <EmptyTabPlaceholder label="FAQs" />
+              ) : (
               <div className="py-2">
                 <h3 className="text-white text-2xl sm:text-4xl font-serif font-light uppercase tracking-wide text-center mb-8">FAQs</h3>
                 <div className="space-y-3 max-w-4xl mx-auto">
@@ -304,6 +357,7 @@ export const ProductDetailPage: React.FC<{
                   })}
                 </div>
               </div>
+              )
             )}
           </div>
         </div>
