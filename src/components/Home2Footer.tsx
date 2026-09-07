@@ -49,17 +49,17 @@ const socialGroups = [
 
 export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant = 'blue' }) => {
   return (
-    <footer id="home2-footer" className="bg-[#FFFFFF] border-t border-[#DCEAF5] pt-16 pb-8 text-left">
+    <footer id="home2-footer" className="bg-[#1575B3] pt-16 pb-8 text-left text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
 
         {/* Main Sitemap Columns (5 columns layout) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-          
+
           {/* Brand Info (Spans 2 columns) */}
           <div className="lg:col-span-2 space-y-5">
-            <div className="h-18 flex items-center">
+            <div className="h-18 flex items-center  px-3 py-1 w-fit">
               <img
-                src="https://kotharigroupindia.com/img/Kothariblue_logo.png"
+                src="https://kotharigroupindia.com/img/kothari-logo.png"
                 alt="Kothari Group Logo"
                 referrerPolicy="no-referrer"
                 className="h-18 w-auto object-contain max-w-[160px]"
@@ -69,37 +69,37 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
               />
             </div>
 
-            <p className="text-xs font-light text-[#5F6B7A] leading-relaxed max-w-sm">
+            <p className="text-xs font-light text-white/80 leading-relaxed max-w-sm">
               Kothari Group is a leading piping solutions provider with a strong focus on quality, innovation and sustainability.
             </p>
 
-            <div className="space-y-2 text-xs font-light text-[#5F6B7A]">
+            <div className="space-y-2 text-xs font-light text-white/80">
               <div className="flex items-center gap-2">
-                <MapPin className="w-6 h-6 text-[#1575B3]" />
+                <MapPin className="w-6 h-6 text-white shrink-0" />
                 <span>Registered office address: 8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.</span>
               </div>
               <div className="flex items-center gap-2">
-                <PhoneCall className="w-4 h-4 text-[#1575B3]" />
+                <PhoneCall className="w-4 h-4 text-white shrink-0" />
                 <span>Toll-Free Helpline: 1800 120 4343</span>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#1575B3]" />
-                <span>Pipe Division: <a href="mailto:sales.pipe@kotharigroupindia.com" className="hover:text-[#1575B3] transition">sales.pipe@kotharigroupindia.com</a></span>
+                <Mail className="w-4 h-4 text-white shrink-0" />
+                <span>Pipe Division: <a href="mailto:sales.pipe@kotharigroupindia.com" className="text-white hover:text-white hover:underline transition">sales.pipe@kotharigroupindia.com</a></span>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#1575B3] invisible" />
-                <span>Irrigation Division: <a href="mailto:sales.irrigation@kotharigroupindia.com" className="hover:text-[#1575B3] transition">sales.irrigation@kotharigroupindia.com</a></span>
+                <Mail className="w-4 h-4 text-white shrink-0 invisible" />
+                <span>Irrigation Division: <a href="mailto:sales.irrigation@kotharigroupindia.com" className="text-white hover:text-white hover:underline transition">sales.irrigation@kotharigroupindia.com</a></span>
               </div>
             </div>
           </div>
 
           {/* About Us Links */}
           <div className="space-y-3 text-xs">
-            <h4 className="font-medium text-[#1575B3] text-sm">About Us</h4>
-            <ul className="space-y-2 font-light text-[#5F6B7A]">
+            <h4 className="font-medium text-white text-sm">About Us</h4>
+            <ul className="space-y-2 font-light text-white/80">
               {aboutLinks.map((link) => (
                 <li key={link.label}>
-                  <button onClick={() => scrollToId(link.target)} className="hover:text-[#1575B3] transition">
+                  <button onClick={() => scrollToId(link.target)} className="hover:text-white hover:underline transition">
                     {link.label}
                   </button>
                 </li>
@@ -109,8 +109,8 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
 
           {/* Our Divisions */}
           <div className="space-y-3 text-xs">
-            <h4 className="font-medium text-[#1575B3] text-sm">Our Divisions</h4>
-            <ul className="space-y-3 font-light text-[#5F6B7A]">
+            <h4 className="font-medium text-white text-sm">Our Divisions</h4>
+            <ul className="space-y-3 font-light text-white/80">
               {divisionLinks.map((link) => {
                 const Icon = link.icon;
                 return (
@@ -118,14 +118,14 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
                     <Link
                       href={link.url}
                       onClick={() => scrollToId(link.target)}
-                      className="flex items-start gap-2 text-left hover:text-[#1575B3] transition group"
+                      className="flex items-start gap-2 text-left hover:text-white transition group"
                     >
-                      <span className={`mt-0.5 w-6 h-6 flex items-center justify-center shrink-0 ${link.accent}`}>
+                      <span className="mt-0.5 w-6 h-6 flex items-center justify-center shrink-0 bg-white/15 text-white">
                         <Icon className="w-3.5 h-3.5" />
                       </span>
                       <span>
-                        <span className="block font-medium text-[#111111] group-hover:text-[#1575B3] transition">{link.label}</span>
-                        <span className="block text-[11px] font-light text-[#5F6B7A]">{link.sub}</span>
+                        <span className="block font-medium text-white group-hover:underline transition">{link.label}</span>
+                        <span className="block text-[11px] font-light text-white/70">{link.sub}</span>
                       </span>
                     </Link>
                   </li>
@@ -137,11 +137,11 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
           {/* Support Column + Connect with us below */}
           <div className="space-y-6">
             <div className="space-y-3 text-xs">
-              <h4 className="font-medium text-[#1575B3] text-sm">Support</h4>
-              <ul className="space-y-2 font-light text-[#5F6B7A]">
+              <h4 className="font-medium text-white text-sm">Support</h4>
+              <ul className="space-y-2 font-light text-white/80">
                 {supportLinks.map((link) => (
                   <li key={link.label}>
-                    <button onClick={() => scrollToId(link.target)} className="hover:text-[#1575B3] transition">
+                    <button onClick={() => scrollToId(link.target)} className="hover:text-white hover:underline transition">
                       {link.label}
                     </button>
                   </li>
@@ -150,8 +150,8 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
             </div>
 
             {/* Connect with us placed right inside Support Column */}
-            <div className="space-y-2.5 text-xs pt-2 border-t border-slate-100">
-              <h4 className="font-medium text-[#1575B3] text-sm">Connect with us</h4>
+            <div className="space-y-2.5 text-xs pt-2 border-t border-white/20">
+              <h4 className="font-medium text-white text-sm">Connect with us</h4>
               {socialGroups.map((group, groupIdx) => (
                 <div key={groupIdx} className="flex items-center gap-2.5">
                   {group.links.map((s) => {
@@ -163,7 +163,7 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={s.label}
-                        className={`w-9 h-9 bg-[#F5F6F8] border border-[#DCEAF5] text-[#1575B3] flex items-center justify-center transition-all hover:text-white hover:shadow-md ${s.hover}`}
+                        className={`w-9 h-9 bg-white/10 border border-white/20 text-white flex items-center justify-center transition-all hover:text-white hover:shadow-md ${s.hover}`}
                       >
                         <Icon className="w-4 h-4" />
                       </a>
@@ -177,17 +177,17 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-[#DCEAF5] flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-light text-[#5F6B7A]">
+        <div className="pt-8 border-t border-white/20 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-light text-white/80">
           <p>© 2026 Kothari Group. All Rights Reserved.</p>
 
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            <button onClick={() => scrollToId('home2-footer')} className="hover:text-[#1575B3] transition">
+            <button onClick={() => scrollToId('home2-footer')} className="hover:text-white hover:underline transition">
               Privacy Policy
             </button>
-            <button onClick={() => scrollToId('home2-footer')} className="hover:text-[#1575B3] transition">
+            <button onClick={() => scrollToId('home2-footer')} className="hover:text-white hover:underline transition">
               Terms & Conditions
             </button>
-            <button onClick={() => scrollToId('home2-footer')} className="hover:text-[#1575B3] transition">
+            <button onClick={() => scrollToId('home2-footer')} className="hover:text-white hover:underline transition">
               Disclaimer
             </button>
           </div>

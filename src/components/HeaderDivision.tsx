@@ -1,18 +1,18 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import { Menu, X, ChevronDown, ChevronRight, Phone, Mail, MapPin, Send, ArrowRight, Factory, Sprout } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight, Phone, Mail, MapPin, Send, ArrowRight, Factory, Sprout, Users, Award, Building2 } from 'lucide-react';
 import Link from 'next/link';
 
 // Mega Menu Data Configurations
 const aboutMegaMenu = {
-  category: 'About Us',
+  category: 'About',
   headline: 'Building Sustainable Piping & Agriculture Solutions',
   description: 'Discover our journey of engineering excellence, strong corporate governance, and commitment to environmental stewardship.',
   items: [
     {
-      title: 'Our Story',
-      url: '/about/our-story',
+      title: 'About Us',
+      url: '/about',
       image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80',
     },
     {
@@ -25,11 +25,11 @@ const aboutMegaMenu = {
       url: '/about/capabilities',
       image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80',
     },
-    {
-      title: 'Sustainability',
-      url: '/about/sustainability',
-      image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=80',
-    },
+    // {
+    //   title: 'Sustainability',
+    //   url: '/about/sustainability',
+    //   image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=80',
+    // },
   ],
 };
 
@@ -311,7 +311,50 @@ interface HeaderDivisionProps {
   solid?: boolean;
 }
 
+const aboutUsItems = [
+  {
+    name: 'About Us',
+    desc: 'Our legacy, vision & corporate ethos.',
+    icon: Building2,
+    accent: 'text-[#1575B3] bg-[#F5FAFF]',
+    url: '/about-us'
+  },
+  {
+    name: 'Our Board',
+    desc: 'Leadership steering our growth.',
+    icon: Users,
+    accent: 'text-[#1575B3] bg-[#F5FAFF]',
+    url: '/our-board'
+  },
+  {
+    name: 'Capabilities & More',
+    desc: 'Infrastructure & operational reach.',
+    icon: Award,
+    accent: 'text-[#1575B3] bg-[#F5FAFF]',
+    url: '/capabilities'
+  }
+];
+const divisions = [
+  {
+    id: 'solutions',
+    name: 'Pipe Division',
+    desc: 'Agri, plumbing & drainage pipes.',
+    icon: Factory,
+    accent: 'text-[#1575B3] bg-[#F5FAFF]',
+    url: '/pipe-division'
+  },
+  {
+    id: 'solutions',
+    name: 'Irrigation Division',
+    desc: 'Drip, sprinklers & micro irrigation.',
+    icon: Sprout,
+    accent: 'text-[#1E8E3E] bg-[#EAF8EF]',
+    url: '/irrigation-division'
+  },
+];
 export const HeaderDivison: React.FC<HeaderDivisionProps> = ({ productsMegaMenu = defaultProductsMegaMenu, solutionsMegaMenu: solutionsMegaMenuProp, solid = false }) => {
+  
+  const [active, setActive] = useState('');
   const solutionsMegaMenu = solutionsMegaMenuProp || pipeSolutionsMegaMenu;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -321,6 +364,8 @@ export const HeaderDivison: React.FC<HeaderDivisionProps> = ({ productsMegaMenu 
 const [activeProductCategory, setActiveProductCategory] = useState(0);
 const [openSegment, setOpenSegment] = useState<number | null>(null);
 const [hoveredDivision, setHoveredDivision] = useState<string | null>(null);
+const [aboutOpen, setAboutOpen] = useState(false);
+const [divOpen, setDivOpen] = useState(false);
 
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -410,6 +455,8 @@ const handleSegmentClick = (segIdx: number) => {
   const handleNavClick = () => {
     setMobileOpen(false);
     setActiveDropdown(null);
+    setDivOpen(false);
+    setAboutOpen(false);
   };
 
   const handleOpenGetInTouch = () => {
@@ -417,6 +464,8 @@ const handleSegmentClick = (segIdx: number) => {
     setActiveDropdown(null);
     setFormSubmitted(false);
     setIsModalOpen(true);
+    setAboutOpen(false);
+    setDivOpen(false);
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
@@ -749,13 +798,13 @@ const handleSegmentClick = (segIdx: number) => {
 
  
               {/* About Mega Menu */}
-              {/* <div
+              <div
                 className="static"
                 onMouseEnter={() => handleMouseEnter('about')}
                 onMouseLeave={handleMouseLeave}
               >
                 <button className={navItemStyle}>
-                  About Us
+                  About
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-300 ${
                       activeDropdown === 'about' ? 'rotate-180' : ''
@@ -819,13 +868,64 @@ const handleSegmentClick = (segIdx: number) => {
                     </div>
                   </div>
                 )}
-              </div> */}
+              </div>
 
         
 
-    <Link href="/about" className={navItemStyle}>
+    {/* <Link href="/about" className={navItemStyle}>
                 About Us
-              </Link>
+              </Link> */}
+
+
+              {/* About Us Dropdown */}
+                            {/* <div
+                              className="relative"
+                              onMouseEnter={() => setAboutOpen(true)}
+                              onMouseLeave={() => setAboutOpen(false)}
+                            >
+                              <button
+                                onClick={() => setAboutOpen(!aboutOpen)}
+                                className={`flex items-center gap-1.5 px-3.5 py-2 text-[17px] font-medium transition-all duration-200 ${
+                                  active === 'why-kothari'
+                                    ? 'text-[#1575B3]'
+                                    : isScrolled
+                                    ? 'text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF]/60'
+                                    : 'text-white/90 hover:text-white hover:bg-white/10'
+                                }`}
+                              >
+                                About
+                                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${aboutOpen ? 'rotate-180' : ''}`} />
+                              </button>
+              
+                              {aboutOpen && (
+                                <div className="absolute left-0 top-full pt-2 w-72">
+                                  <div className="bg-white border border-[#DCEAF5] shadow-xl p-2 space-y-1">
+                                    {aboutUsItems.map((item, i) => {
+                                      const Icon = item.icon;
+                                      return (
+                                        <Link 
+                                          href={item.url}
+                                          key={i}
+                                          onClick={() => {
+                                            setAboutOpen(false);
+                                            setMobileOpen(false);
+                                          }}
+                                          className="w-full flex items-start gap-3 p-3 hover:bg-[#F5FAFF] transition-colors text-left"
+                                        >
+                                          <span className={`w-10 h-10 flex items-center justify-center shrink-0 ${item.accent}`}>
+                                            <Icon className="w-5 h-5" />
+                                          </span>
+                                          <span>
+                                            <span className="block text-sm font-medium text-[#111111]">{item.name}</span>
+                                            <span className="block text-xs font-light text-[#5F6B7A] mt-0.5">{item.desc}</span>
+                                          </span>
+                                        </Link>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                              )}
+                            </div> */}
 
             
 
@@ -970,7 +1070,51 @@ const handleSegmentClick = (segIdx: number) => {
   )}
 </div>
 
+ {/* <div
+                className="relative"
+                onMouseEnter={() => setDivOpen(true)}
+                onMouseLeave={() => setDivOpen(false)}
+              >
+                <button
+                  onClick={() => setDivOpen(!divOpen)}
+                  className={`flex items-center gap-1.5 px-3.5 py-2 text-[17px] font-medium transition-all duration-200 ${
+                    active === 'solutions'
+                      ? 'text-[#1575B3]'
+                      : isScrolled
+                      ? 'text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF]/60'
+                      : 'text-white/90 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  Divisions
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${divOpen ? 'rotate-180' : ''}`} />
+                </button>
 
+                {divOpen && (
+                  <div className="absolute right-0 top-full pt-2 w-72">
+                    <div className="bg-white border border-[#DCEAF5] shadow-xl p-2 space-y-1">
+                      {divisions.map((d, i) => {
+                        const Icon = d.icon;
+                        return (
+                          <Link 
+                            href={d.url}
+                            key={i}
+                            onClick={() => handleNav(d.id)}
+                            className="w-full flex items-start gap-3 p-3 hover:bg-[#F5FAFF] transition-colors text-left"
+                          >
+                            <span className={`w-10 h-10 flex items-center justify-center shrink-0 ${d.accent}`}>
+                              <Icon className="w-5 h-5" />
+                            </span>
+                            <span>
+                              <span className="block text-sm font-medium text-[#111111]">{d.name}</span>
+                              <span className="block text-xs font-light text-[#5F6B7A] mt-0.5">{d.desc}</span>
+                            </span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div> */}
 
 
             </nav>
@@ -1187,13 +1331,50 @@ const handleSegmentClick = (segIdx: number) => {
                 )}
               </div> */}
 
-              <Link
+              {/* <Link
                 href="/about"
                 onClick={handleNavClick}
                 className="block w-full px-4 py-3 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] hover:text-[#1575B3] transition"
               >
                 About Us
-              </Link>
+              </Link> */}
+
+                 <div className="space-y-1">
+                              <button
+                                onClick={() => setAboutOpen(!aboutOpen)}
+                                className="w-full flex items-center justify-between px-4 py-3.5 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] transition"
+                              >
+                                <span>About</span>
+                                <ChevronDown className={`w-5 h-5 text-[#5F6B7A] transition-transform ${aboutOpen ? 'rotate-180' : ''}`} />
+                              </button>
+                              
+                              {aboutOpen && (
+                                <div className="pl-2 space-y-2 pt-1">
+                                  {aboutUsItems.map((item, i) => {
+                                    const Icon = item.icon;
+                                    return (
+                                      <Link
+                                        key={i}
+                                        href={item.url}
+                                        onClick={() => {
+                                          setAboutOpen(false);
+                                          setMobileOpen(false);
+                                        }}
+                                        className="w-full flex items-center gap-3 px-4 py-3 transition text-left"
+                                      >
+                                        {/* <span className={`w-10 h-10 flex items-center justify-center shrink-0 ${item.accent}`}>
+                                          <Icon className="w-5 h-5" />
+                                        </span> */}
+                                        <span>
+                                          <span className="block text-sm font-medium text-[#5F6B7A]">{item.name}</span>
+                                          {/* <span className="block text-xs font-light text-[#5F6B7A] mt-0.5">{item.desc}</span> */}
+                                        </span>
+                                      </Link>
+                                    );
+                                  })}
+                                </div>
+                              )}
+                            </div>
 
               <Link
                 href="/contact"
@@ -1226,14 +1407,14 @@ const handleSegmentClick = (segIdx: number) => {
                           key={i}
                           href={d.url}
                           onClick={handleNavClick}
-                          className="w-full flex items-center gap-3 px-4 py-3 bg-[#F5F6F8] hover:bg-[#DCEAF5]/40 transition text-left"
+                          className="w-full flex items-center gap-3 px-4 py-3  transition text-left"
                         >
-                          <span className={`w-10 h-10 flex items-center justify-center shrink-0 ${d.accent}`}>
+                          {/* <span className={`w-10 h-10 flex items-center justify-center shrink-0 ${d.accent}`}>
                             <Icon className="w-5 h-5" />
-                          </span>
+                          </span> */}
                           <span>
-                            <span className="block text-sm font-medium text-[#111111]">{d.name}</span>
-                            <span className="block text-xs font-light text-[#5F6B7A] mt-0.5">{d.desc}</span>
+                            <span className="block text-sm font-medium text-[#5F6B7A]">{d.name}</span>
+                            {/* <span className="block text-xs font-light text-[#5F6B7A] mt-0.5">{d.desc}</span> */}
                           </span>
                         </Link>
                       );

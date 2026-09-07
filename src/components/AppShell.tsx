@@ -9,7 +9,7 @@ import { ProductDetailModal } from './ProductDetailModal';
 import { ContactModal } from './ContactModal';
 import { CareerModal } from './CareerModal';
 import { ProductItem } from '@/lib/types';
-import { Building2 } from 'lucide-react';
+import { ArrowUp, Building2 } from 'lucide-react';
 
 interface AppContextValue {
   openQuoteModal: () => void;
@@ -46,6 +46,16 @@ export default function AppShell({ children }: AppShellProps) {
   const [careerModalOpen, setCareerModalOpen] = useState(false);
   const [selectedProductModal, setSelectedProductModal] = useState<ProductItem | null>(null);
   const [specList, setSpecList] = useState<string[]>([]);
+  const [showTopButton, setShowTopButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowTopButton(window.scrollY > 300);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     if (!loaderPlayedOnce) {
@@ -168,6 +178,18 @@ export default function AppShell({ children }: AppShellProps) {
   <Building2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white group-hover:scale-110 transition-transform duration-300 rotate-90" />
   <span className="whitespace-nowrap">Become Dealer</span>
 </button>
+
+        {/* Back to Top — sticky bottom-right, appears on scroll, all pages */}
+        {showTopButton && (
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            aria-label="Back to top"
+            title="Back to top"
+            className="fixed bottom-6 right-6 z-[45] w-11 h-11 bg-[#1575B3] hover:bg-[#0E588A] text-white shadow-lg flex items-center justify-center transition-all"
+          >
+            <ArrowUp className="w-5 h-5" />
+          </button>
+        )}
 
       </div>
     </AppContext.Provider>

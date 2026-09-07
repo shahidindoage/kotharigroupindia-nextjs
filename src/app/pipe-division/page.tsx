@@ -25,7 +25,7 @@ function PipeDivisionContent() {
   };
 
    const footerData = {
-    logo: 'https://kotharigroupindia.com/img/Kothariblue_logo.png',
+    logo: 'https://kotharigroupindia.com/img/kothari-logo.png',
     about: 'India\'s trusted leader with over 35 years of excellence in Plumbing Pipes & Fittings, Agri Pipes & Fittings, and Micro Irrigation Systems.',
     contact: {
       address: 'Corporate HQ: 8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.',

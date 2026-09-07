@@ -1,18 +1,54 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Menu, X, ChevronDown, Sprout, Factory, ArrowRight, Mail, Phone, MapPin, Send } from 'lucide-react';
+import { 
+  Menu, 
+  X, 
+  ChevronDown, 
+  Sprout, 
+  Factory, 
+  ArrowRight, 
+  Mail, 
+  Phone, 
+  MapPin, 
+  Send,
+  Building2,
+  Users,
+  Award
+} from 'lucide-react';
 import Link from 'next/link';
 
 const sections = [
-  { id: 'home', label: 'Home' },
-  { id: 'why-kothari', label: 'About Kothari Group' },
+  // { id: 'why-kothari', label: 'About Kothari Group' },
   { id: 'impact', label: 'Sustainability' },
-  {id:'career',label:'Career'}
+  { id: 'career', label: 'Career' }
+];
+
+const aboutUsItems = [
+  {
+    name: 'About Us',
+    desc: 'Our legacy, vision & corporate ethos.',
+    icon: Building2,
+    accent: 'text-[#1575B3] bg-[#F5FAFF]',
+    url: '/about-us'
+  },
+  {
+    name: 'Our Board',
+    desc: 'Leadership steering our growth.',
+    icon: Users,
+    accent: 'text-[#1575B3] bg-[#F5FAFF]',
+    url: '/our-board'
+  },
+  {
+    name: 'Capabilities & More',
+    desc: 'Infrastructure & operational reach.',
+    icon: Award,
+    accent: 'text-[#1575B3] bg-[#F5FAFF]',
+    url: '/capabilities'
+  }
 ];
 
 const divisions = [
-  
   {
     id: 'solutions',
     name: 'Pipe Division',
@@ -44,6 +80,7 @@ export const Home2Header: React.FC = () => {
   const [active, setActive] = useState('home');
   const [mobileOpen, setMobileOpen] = useState(false);
   const [divOpen, setDivOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const [heroRevealed, setHeroRevealed] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   
@@ -121,12 +158,14 @@ export const Home2Header: React.FC = () => {
   const handleNav = (id: string) => {
     setMobileOpen(false);
     setDivOpen(false);
+    setAboutOpen(false);
     scrollToId(id);
   };
 
   const handleOpenGetInTouch = () => {
     setMobileOpen(false);
     setDivOpen(false);
+    setAboutOpen(false);
     setFormSubmitted(false);
     setIsModalOpen(true);
   };
@@ -185,6 +224,71 @@ export const Home2Header: React.FC = () => {
           <div className="ml-auto flex items-center gap-3">
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+              {/* Home Link */}
+              <button
+                onClick={() => handleNav('home')}
+                className={`px-3.5 py-2 text-[17px] font-medium transition-all duration-200 ${
+                  active === 'home'
+                    ? 'text-[#1575B3]'
+                    : isScrolled
+                    ? 'text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF]/60'
+                    : 'text-white/90 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                Home
+              </button>
+
+              {/* About Us Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setAboutOpen(true)}
+                onMouseLeave={() => setAboutOpen(false)}
+              >
+                <button
+                  onClick={() => setAboutOpen(!aboutOpen)}
+                  className={`flex items-center gap-1.5 px-3.5 py-2 text-[17px] font-medium transition-all duration-200 ${
+                    active === 'why-kothari'
+                      ? 'text-[#1575B3]'
+                      : isScrolled
+                      ? 'text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF]/60'
+                      : 'text-white/90 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  About
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${aboutOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {aboutOpen && (
+                  <div className="absolute left-0 top-full pt-2 w-72">
+                    <div className="bg-white border border-[#DCEAF5] shadow-xl p-2 space-y-1">
+                      {aboutUsItems.map((item, i) => {
+                        const Icon = item.icon;
+                        return (
+                          <Link 
+                            href={item.url}
+                            key={i}
+                            onClick={() => {
+                              setAboutOpen(false);
+                              setMobileOpen(false);
+                            }}
+                            className="w-full flex items-start gap-3 p-3 hover:bg-[#F5FAFF] transition-colors text-left"
+                          >
+                            <span className={`w-10 h-10 flex items-center justify-center shrink-0 ${item.accent}`}>
+                              <Icon className="w-5 h-5" />
+                            </span>
+                            <span>
+                              <span className="block text-sm font-medium text-[#111111]">{item.name}</span>
+                              <span className="block text-xs font-light text-[#5F6B7A] mt-0.5">{item.desc}</span>
+                            </span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Remaining Sections */}
               {sections.map((item) => (
                 <button
                   key={item.id}
@@ -217,7 +321,7 @@ export const Home2Header: React.FC = () => {
                       : 'text-white/90 hover:text-white hover:bg-white/10'
                   }`}
                 >
-                 Divisions
+                  Divisions
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${divOpen ? 'rotate-180' : ''}`} />
                 </button>
 
@@ -247,11 +351,9 @@ export const Home2Header: React.FC = () => {
                   </div>
                 )}
               </div>
-
-              
             </nav>
 
-            {/* Get in Touch Button (Triggers Popup Modal) */}
+            {/* Get in Touch Button */}
             <button
               onClick={handleOpenGetInTouch}
               className={`hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium transition-all ${
@@ -269,6 +371,7 @@ export const Home2Header: React.FC = () => {
               onClick={() => {
                 setMobileOpen(!mobileOpen);
                 setDivOpen(false);
+                setAboutOpen(false);
               }}
               className={`lg:hidden p-2.5 border transition ${
                 isScrolled || mobileOpen
@@ -286,6 +389,53 @@ export const Home2Header: React.FC = () => {
         {mobileOpen && (
           <div className="lg:hidden fixed top-[65px] left-0 w-full h-[calc(100vh-65px)] bg-white z-[999] flex flex-col justify-between px-6 py-8 border-t border-[#DCEAF5] overflow-y-auto">
             <div className="space-y-3">
+              {/* Mobile Home Link */}
+              <button
+                onClick={() => handleNav('home')}
+                className="w-full text-left px-4 py-3.5 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] hover:text-[#1575B3] border border-transparent hover:border-[#DCEAF5] transition"
+              >
+                Home
+              </button>
+
+              {/* Mobile About Us Submenu */}
+              <div className="space-y-1">
+                <button
+                  onClick={() => setAboutOpen(!aboutOpen)}
+                  className="w-full flex items-center justify-between px-4 py-3.5 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] transition"
+                >
+                  <span>About</span>
+                  <ChevronDown className={`w-5 h-5 text-[#5F6B7A] transition-transform ${aboutOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {aboutOpen && (
+                  <div className="pl-2 space-y-2 pt-1">
+                    {aboutUsItems.map((item, i) => {
+                      const Icon = item.icon;
+                      return (
+                        <Link
+                          key={i}
+                          href={item.url}
+                          onClick={() => {
+                            setAboutOpen(false);
+                            setMobileOpen(false);
+                          }}
+                          className="w-full flex items-center gap-3 px-4 py-3  transition text-left"
+                        >
+                          {/* <span className={`w-10 h-10 flex items-center justify-center shrink-0 ${item.accent}`}>
+                            <Icon className="w-5 h-5" />
+                          </span> */}
+                          <span>
+                            <span className="block text-sm font-medium text-[#5F6B7A]">{item.name}</span>
+                            {/* <span className="block text-xs font-light text-[#5F6B7A] mt-0.5">{item.desc}</span> */}
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+
+              {/* Mobile Sections */}
               {sections.map((item) => (
                 <button
                   key={item.id}
@@ -302,7 +452,7 @@ export const Home2Header: React.FC = () => {
                   onClick={() => setDivOpen(!divOpen)}
                   className="w-full flex items-center justify-between px-4 py-3.5 text-base font-medium text-[#111111] hover:bg-[#F5FAFF] transition"
                 >
-                  <span>Our Divisions</span>
+                  <span>Divisions</span>
                   <ChevronDown className={`w-5 h-5 text-[#5F6B7A] transition-transform ${divOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
@@ -315,14 +465,14 @@ export const Home2Header: React.FC = () => {
                           key={i}
                           href={d.url}
                           onClick={() => handleNav(d.id)}
-                          className="w-full flex items-center gap-3 px-4 py-3 bg-[#F5FAFF] hover:bg-[#DCEAF5]/40 transition text-left"
+                          className="w-full flex items-center gap-3 px-4 py-3  transition text-left"
                         >
-                          <span className={`w-10 h-10 flex items-center justify-center shrink-0 ${d.accent}`}>
+                          {/* <span className={`w-10 h-10 flex items-center justify-center shrink-0 ${d.accent}`}>
                             <Icon className="w-5 h-5" />
-                          </span>
+                          </span> */}
                           <span>
-                            <span className="block text-sm font-medium text-[#111111]">{d.name}</span>
-                            <span className="block text-xs font-light text-[#5F6B7A] mt-0.5">{d.desc}</span>
+                            <span className="block text-sm font-medium text-[#5F6B7A]">{d.name}</span>
+                            {/* <span className="block text-xs font-light text-[#5F6B7A] mt-0.5">{d.desc}</span> */}
                           </span>
                         </Link>
                       );
@@ -366,7 +516,7 @@ export const Home2Header: React.FC = () => {
               <X className="w-6 h-6" />
             </button>
 
-            {/* Left Column: Brand Context & Quick Details (Hidden on mobile, visible on MD+) */}
+            {/* Left Column */}
             <div className="hidden md:flex md:w-5/12 bg-[#0E588A] text-white p-6 sm:p-8 flex-col justify-between shrink-0">
               <div>
                 <span className="text-xs font-semibold tracking-wider uppercase text-white/70 block mb-2">
@@ -407,7 +557,7 @@ export const Home2Header: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column: Interaction Form */}
+            {/* Right Column */}
             <div className="w-full md:w-7/12 p-6 sm:p-8 bg-white overflow-y-auto">
               {formSubmitted ? (
                 <div className="h-full min-h-[300px] flex flex-col items-center justify-center text-center p-6">
@@ -428,7 +578,6 @@ export const Home2Header: React.FC = () => {
                     </p>
                   </div>
 
-                  {/* Full Name Input */}
                   <div>
                     <label className="block text-xs font-medium text-[#111111] uppercase tracking-wider mb-1.5">
                       Full Name *
@@ -443,7 +592,6 @@ export const Home2Header: React.FC = () => {
                     />
                   </div>
 
-                  {/* Grid: Email & Phone */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-medium text-[#111111] uppercase tracking-wider mb-1.5">
@@ -473,7 +621,6 @@ export const Home2Header: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Division Choice */}
                   <div>
                     <label className="block text-xs font-medium text-[#111111] uppercase tracking-wider mb-1.5">
                       Division Interest
@@ -489,7 +636,6 @@ export const Home2Header: React.FC = () => {
                     </select>
                   </div>
 
-                  {/* Message Input */}
                   <div>
                     <label className="block text-xs font-medium text-[#111111] uppercase tracking-wider mb-1.5">
                       Message / Requirement
@@ -503,7 +649,6 @@ export const Home2Header: React.FC = () => {
                     />
                   </div>
 
-                  {/* Submit Action */}
                   <button
                     type="submit"
                     className="w-full flex items-center justify-center gap-2 bg-[#1575B3] hover:bg-[#0E588A] text-white py-3.5 font-medium text-sm transition-colors shadow-sm mt-2"

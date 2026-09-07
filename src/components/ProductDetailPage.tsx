@@ -9,7 +9,7 @@ import { ProductItem } from '@/lib/types';
 import { getProductHref, findProductBySlugs } from '@/lib/slug';
 import {
   Download, ShieldCheck, CheckCircle2, ChevronRight,
-  Send, Sparkles, Layers, HelpCircle, Award,
+  Send, Sparkles, Layers, HelpCircle, Award, Search,
   ArrowUpRight, ArrowRight, Factory, ChevronDown, ChevronUp, FileText, Check, Table, Wrench
 } from 'lucide-react';
 
@@ -66,6 +66,8 @@ export const ProductDetailPage: React.FC<{
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+
 
   // Reset currentIndex if it goes out of bounds when itemsPerPage changes
   useEffect(() => {
@@ -591,6 +593,7 @@ export const ProductDetailPage: React.FC<{
           </div>
         </div>
       )}
+
     </div>
   );
 };

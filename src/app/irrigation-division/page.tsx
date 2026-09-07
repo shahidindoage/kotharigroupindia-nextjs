@@ -26,7 +26,7 @@ function AgricultureDivisionContent() {
   };
 
   const footerData = {
-    logo: 'https://kotharigroupindia.com/img/Kothariblue_logo.png',
+    logo: 'https://kotharigroupindia.com/img/kothari-logo.png',
     about: 'For over four decades, Kothari Group has empowered farmers and builders with water-wise micro irrigation systems, agri pipes and premium plumbing solutions across India.',
     contact: {
       address: 'Corporate HQ: 8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.',

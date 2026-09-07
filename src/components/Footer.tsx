@@ -65,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({
   const renderSocialGroups = () => (
     <div className="space-y-4 text-xs">
       {/* Main Section Heading */}
-      <h4 className="font-medium text-[#1575B3] text-sm">
+      <h4 className="font-medium text-white text-sm">
         Connect with us
       </h4>
 
@@ -75,7 +75,7 @@ export const Footer: React.FC<FooterProps> = ({
           <div key={groupIdx} className="space-y-1.5">
             {/* Render Group Title/Heading if it exists */}
             {(group.title || group.heading) && (
-              <span className="text-xs font-light text-[#5F6B7A] block">
+              <span className="text-xs font-light text-white/70 block">
                 {group.title || group.heading}
               </span>
             )}
@@ -91,7 +91,7 @@ export const Footer: React.FC<FooterProps> = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    className={`w-9 h-9 bg-[#F5F6F8] border border-[#DCEAF5] text-[#1575B3] flex items-center justify-center transition-all hover:text-white hover:shadow-md ${s.hover}`}
+                    className={`w-9 h-9 bg-white/10 border border-white/20 text-white flex items-center justify-center transition-all hover:text-white hover:shadow-md ${s.hover}`}
                   >
                     <Icon className="w-4 h-4" />
                   </a>
@@ -105,19 +105,19 @@ export const Footer: React.FC<FooterProps> = ({
   );
 
   return (
-    <footer className="bg-[#FFFFFF] border-t border-[#DCEAF5] pt-16 pb-8 text-left">
+    <footer className="bg-[#1575B3] pt-16 pb-8 text-left text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-        
+
         {/* Main Footer Sitemap Columns */}
         <div className={`grid grid-cols-1 md:grid-cols-2 ${isMultipleSocialGroups ? 'lg:grid-cols-6' : 'lg:grid-cols-5'} gap-8`}>
-          
+
           {/* Brand Info Column: ALWAYS expanded to lg:col-span-2 */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="h-22 flex items-center justify-center">
-                <img 
+              <div className="flex items-center justify-center  px-3 py-1 w-fit">
+                <img
                   src={footerData?.logo}
-                  alt="Kothari Group Logo" 
+                  alt="Kothari Group Logo"
                   referrerPolicy="no-referrer"
                   className="h-22 w-auto object-contain max-w-[140px]"
                   onError={(e) => {
@@ -127,35 +127,35 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
             </div>
 
-            <p className="text-xs font-light text-[#5F6B7A] leading-relaxed max-w-sm">
+            <p className="text-xs font-light text-white/80 leading-relaxed max-w-sm">
               {footerData?.about}
             </p>
 
-            <div className="space-y-2 text-xs font-light text-[#5F6B7A]">
+            <div className="space-y-2 text-xs font-light text-white/80">
               <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-[#1575B3] shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-white shrink-0 mt-0.5" />
                 <span>Registered office address: 8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.</span>
               </div>
               <div className="flex items-center gap-2">
-                <PhoneCall className="w-4 h-4 text-[#1575B3] shrink-0" />
+                <PhoneCall className="w-4 h-4 text-white shrink-0" />
                 <span>Toll-Free Helpline: {footerData?.contact?.phone}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#1575B3] shrink-0" />
-                <span>Email: <a href={`mailto:${footerData?.contact?.email}`} className="hover:text-[#1575B3] transition">{footerData?.contact?.email}</a></span>
+                <Mail className="w-4 h-4 text-white shrink-0" />
+                <span>Email: <a href={`mailto:${footerData?.contact?.email}`} className="text-white hover:underline transition">{footerData?.contact?.email}</a></span>
               </div>
             </div>
           </div>
 
           {/* Core Segments */}
           <div className="space-y-3 text-xs">
-            <h4 className="font-medium text-[#1575B3] text-sm">
+            <h4 className="font-medium text-white text-sm">
               Core Segments
             </h4>
-            <ul className="space-y-2 font-light text-[#5F6B7A]">
+            <ul className="space-y-2 font-light text-white/80">
               {footerData?.productSegments?.map((segment: any, index: number) => (
                 <li key={index}>
-                  <button onClick={() => onSelectSection?.('categories')} className="hover:text-[#1575B3] transition text-left">
+                  <button onClick={() => onSelectSection?.('categories')} className="hover:text-white hover:underline transition text-left">
                     {segment}
                   </button>
                 </li>
@@ -165,13 +165,13 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Quick Links */}
           <div className="space-y-3 text-xs">
-            <h4 className="font-medium text-[#1575B3] text-sm">
+            <h4 className="font-medium text-white text-sm">
               Quick Links
             </h4>
-            <ul className="space-y-2 font-light text-[#5F6B7A]">
+            <ul className="space-y-2 font-light text-white/80">
               {footerData?.quickLinks?.map((link: any, index: number) => (
                 <li key={index}>
-                  <button onClick={() => onSelectSection?.(link.toLowerCase().replace(/\s/g, '-'))} className="hover:text-[#1575B3] transition text-left">
+                  <button onClick={() => onSelectSection?.(link.toLowerCase().replace(/\s/g, '-'))} className="hover:text-white hover:underline transition text-left">
                     {link}
                   </button>
                 </li>
@@ -182,13 +182,13 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Certifications (+ Single Social Group attached below) */}
           <div className="space-y-6">
             <div className="space-y-3 text-xs">
-              <h4 className="font-medium text-[#1575B3] text-sm">
+              <h4 className="font-medium text-white text-sm">
                 Certifications
               </h4>
-              <ul className="space-y-2 font-light text-[#5F6B7A]">
+              <ul className="space-y-2 font-light text-white/80">
                 {footerData?.certifications?.map((certification: any, index: number) => (
                   <li key={index} className="flex items-center gap-1.5">
-                    <ShieldCheck className="w-3.5 h-3.5 text-[#1575B3] shrink-0" />
+                    <ShieldCheck className="w-3.5 h-3.5 text-white shrink-0" />
                     <span>{certification}</span>
                   </li>
                 ))}
@@ -197,7 +197,7 @@ export const Footer: React.FC<FooterProps> = ({
 
             {/* SINGLE GROUP CONDITION: Rendered below Certifications */}
             {!isMultipleSocialGroups && (
-              <div className="pt-2 border-t border-slate-100">
+              <div className="pt-2 border-t border-white/20">
                 {renderSocialGroups()}
               </div>
             )}
@@ -213,16 +213,16 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-[#DCEAF5] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-[#5F6B7A]">
+        <div className="pt-8 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-white/80">
           <p>
             {footerData?.copyright}
           </p>
 
           <div className="flex items-center gap-6">
-            <button onClick={() => onSelectSection?.('why-kothari')} className="hover:text-[#1575B3] transition">
+            <button onClick={() => onSelectSection?.('why-kothari')} className="hover:text-white hover:underline transition">
               Quality Assurance Policy
             </button>
-            <button onClick={onOpenQuoteModal} className="text-[#1575B3] font-medium hover:underline">
+            <button onClick={onOpenQuoteModal} className="text-white font-medium hover:underline">
               Get Quotation
             </button>
           </div>

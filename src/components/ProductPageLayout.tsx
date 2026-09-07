@@ -6,7 +6,7 @@ import { Facebook, Instagram, Youtube } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 
 const PipefooterData = {
-  logo: 'https://kotharigroupindia.com/img/Kothariblue_logo.png',
+  logo: 'https://kotharigroupindia.com/img/kothari-logo.png',
   about: "India's trusted leader with over 35 years of excellence in Plumbing Pipes & Fittings, Agri Pipes & Fittings, and Micro Irrigation Systems.",
   contact: {
     address: 'Corporate HQ: 8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.',
@@ -43,7 +43,7 @@ const PipefooterData = {
 };
 
 const IrrigationfooterData = {
-  logo: 'https://kotharigroupindia.com/img/Kothariblue_logo.png',
+  logo: 'https://kotharigroupindia.com/img/kothari-logo.png',
   about: 'For over four decades, Kothari Group has empowered farmers and builders with water-wise micro irrigation systems, agri pipes and premium plumbing solutions across India.',
   contact: {
     address: 'Corporate HQ: 8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.',
