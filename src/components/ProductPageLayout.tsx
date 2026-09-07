@@ -5,7 +5,7 @@ import { Footer } from '@/components/Footer';
 import { Facebook, Instagram, Youtube } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 
-const PipefooterData = {
+export const PipefooterData = {
   logo: 'https://kotharigroupindia.com/img/kothari-logo.png',
   about: "India's trusted leader with over 35 years of excellence in Plumbing Pipes & Fittings, Agri Pipes & Fittings, and Micro Irrigation Systems.",
   contact: {
@@ -42,7 +42,7 @@ const PipefooterData = {
   ]
 };
 
-const IrrigationfooterData = {
+export const IrrigationfooterData = {
   logo: 'https://kotharigroupindia.com/img/kothari-logo.png',
   about: 'For over four decades, Kothari Group has empowered farmers and builders with water-wise micro irrigation systems, agri pipes and premium plumbing solutions across India.',
   contact: {
@@ -74,7 +74,7 @@ const IrrigationfooterData = {
   ]
 };
 
-const PipeproductsMegaMenu = {
+export const PipeproductsMegaMenu = {
   headline: 'Our Products',
   description: 'CPVC pipes, fittings and solvent cement for hot and cold water systems.',
   segments: [
@@ -242,7 +242,7 @@ const PipeproductsMegaMenu = {
   ],
   };
 
-const IrrigationproductsMegaMenu = {
+export const IrrigationproductsMegaMenu = {
   headline: 'Our Products',
   description: 'CPVC pipes, fittings and solvent cement for hot and cold water systems.',
   segments: [
