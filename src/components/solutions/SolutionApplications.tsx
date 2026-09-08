@@ -1,58 +1,94 @@
 import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
+
+const APP_IMAGES = [
+  'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
+];
+
+const APP_TAGLINES = [
+  'Proven performance in demanding field conditions.',
+  'Built for season-after-season reliability.',
+  'Engineered for uniform, efficient coverage.',
+  'Trusted across Indian farms and projects.',
+  'Optimized for water saving and better yield.',
+  'Designed for easy installation at any scale.',
+];
 
 export const SolutionApplications: React.FC<{ applications: string[] }> = ({ applications }) => {
   if (!applications.length) return null;
   return (
-    <section className="w-full bg-[#015CAA] py-24 lg:py-32 text-white overflow-hidden relative">
+    <section className="bg-[#015CAA] py-24 relative overflow-hidden">
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-cyan-400/10 to-transparent blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-blue-900/40 to-transparent blur-3xl pointer-events-none" />
 
-      {/* Background Architectural Grid Lines */}
-      <div className="absolute inset-0 pointer-events-none opacity-10">
-        <div className="max-w-7xl mx-auto h-full border-x border-white/30" />
-      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-14 relative z-10">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-20">
-
-        {/* Editorial Header Row */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-10 border-b border-white/20">
-          <div className="space-y-2">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-light tracking-tight uppercase text-white">
+        {/* Top Header Section */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
+          <div className="space-y-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight uppercase font-serif text-white">
               Applications
             </h2>
           </div>
 
-          <p className="text-xs sm:text-sm text-sky-100/80 max-w-sm font-light leading-relaxed">
+          <p className="text-xs sm:text-sm text-blue-100/80 max-w-md font-light leading-relaxed">
             Where this solution delivers measurable efficiency and lifecycle value.
           </p>
         </div>
 
-        {/* Minimalist Editorial Columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8">
-          {applications.map((app, idx) => {
-            const num = String(idx + 1).padStart(2, '0');
-            return (
-              <div
-                key={app}
-                className="group relative pt-8 border-b border-white/15  sm:border-b-0 sm:border-r sm:border-white/15"
-              >
-                {/* Large Stylized Background Number */}
-                <span className="absolute -top-10 left-0 text-8xl font-mono font-bold text-white/[0.05] group-hover:text-white/[0.08] transition-colors duration-500 pointer-events-none select-none">
-                  {num}
-                </span>
+        {/* Applications Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {applications.map((app, idx) => (
+            <div
+              key={app}
+              className="group relative bg-[#014d8f]/40 backdrop-blur-md border border-white/15 hover:border-white/40 transition-all duration-500 flex flex-col justify-between shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-2 overflow-hidden"
+            >
+              {/* Top Accent Light Bar */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                <div className="relative z-10 space-y-2">
-                  <h3 className="text-2xl sm:text-3xl font-serif font-light text-white tracking-tight leading-tight">
+              <div>
+                {/* Image Frame */}
+                <div className="relative h-60 w-full overflow-hidden border-b border-white/10">
+                  <img
+                    src={APP_IMAGES[idx % APP_IMAGES.length]}
+                    alt={app}
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#014d8f]/50 via-transparent to-transparent pointer-events-none" />
+                </div>
+
+                {/* Content Area */}
+                <div className="p-7 space-y-4">
+                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-200 transition-colors leading-snug">
                     {app}
                   </h3>
-
-                  {/* Bottom Accent Line */}
-                  <div className="invisible mt-6 flex items-center gap-2 pt-4">
-                    <span className="w-1.5 h-1.5 rounded-full bg-sky-400/40 group-hover:bg-sky-300 group-hover:scale-125 transition-all duration-300" />
-                    <span className="h-[1px] w-8 bg-white/20 group-hover:w-16 group-hover:bg-sky-300/50 transition-all duration-500" />
-                  </div>
+                  <p className="text-xs text-blue-100/70 font-light leading-relaxed">
+                    {APP_TAGLINES[idx % APP_TAGLINES.length]}
+                  </p>
                 </div>
               </div>
-            );
-          })}
+
+              {/* CTA Button */}
+              {/* <div className="p-7 pt-0">
+                <a
+                  href="#related-products"
+                  className="w-full inline-flex items-center justify-between bg-white/10 hover:bg-white text-white hover:text-[#015CAA] border border-white/20 hover:border-white text-xs font-semibold uppercase tracking-wider py-3.5 px-5 transition-all duration-300 group/btn"
+                >
+                  <span>Explore Products</span>
+                  <ArrowUpRight className="w-4 h-4 text-cyan-300 group-hover/btn:text-[#015CAA] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-all" />
+                </a>
+              </div> */}
+
+            </div>
+          ))}
         </div>
 
       </div>

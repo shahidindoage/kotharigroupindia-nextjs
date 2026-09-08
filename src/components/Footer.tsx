@@ -132,10 +132,10 @@ export const Footer: React.FC<FooterProps> = ({
             </p>
 
             <div className="space-y-2 text-xs font-light text-white/80">
-              <div className="flex items-start gap-2">
+              <a href='https://maps.app.goo.gl/qCPHM3aF8EQkpaBw7' target="_blank" className="flex items-start gap-2 hover:text-white hover:underline ">
                 <MapPin className="w-4 h-4 text-white shrink-0 mt-0.5" />
                 <span>Registered office address: 8516/11, Level 3,Sun Plaza, Subhash Chowk, Murarji Peth, Solapur - 413 001. Maharashtra.</span>
-              </div>
+              </a>
               <div className="flex items-center gap-2">
                 <PhoneCall className="w-4 h-4 text-white shrink-0" />
                 <span>Toll-Free Helpline: {footerData?.contact?.phone}</span>

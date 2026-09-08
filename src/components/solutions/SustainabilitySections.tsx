@@ -1,0 +1,254 @@
+import React from 'react';
+import Link from 'next/link';
+import { ArrowUpRight, ChevronRight, Sun, Leaf, Users } from 'lucide-react';
+import { SectionHeader } from './SectionHeader';
+import { Reveal } from '../main/Reveal';
+
+const PILLARS = [
+  {
+    num: '01',
+    icon: Sun,
+    title: '100% Green Energy Powered',
+    text: 'We power all our production processes through rooftop solar panels, making our manufacturing fully solar-powered. This ensures eco-friendly production and a minimal carbon footprint across our facilities.',
+    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    num: '02',
+    icon: Leaf,
+    title: 'Sustainable Product Portfolio',
+    text: 'Our entire product range from piping systems to irrigation solutions is designed around durability and responsible resource use. Across both divisions, our focus stays the same: reduce waste, reduce water loss, and build infrastructure that lasts.',
+    image: 'https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    num: '03',
+    icon: Users,
+    title: 'Enabling Small-Scale Farmers',
+    text: 'Sustainability extends beyond manufacturing into the communities we serve. We empower key stakeholders farmers and dealers through educational programs and knowledge-sharing meetups that promote innovation and better water practices on the ground.',
+    image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=80',
+  },
+];
+
+export const SustainPillars: React.FC = () => {
+  return (
+    <section className="w-full bg-[#F5F6F8] py-16 sm:py-24 border-b border-slate-300/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
+        <SectionHeader
+          title="Our Sustainability Pillars"
+          description="Three commitments that shape every product we make and every community we serve."
+        />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {PILLARS.map((pillar, idx) => {
+            const Icon = pillar.icon;
+            return (
+              <Reveal key={pillar.num} delay={idx * 90} className="h-full">
+                <article className="group relative bg-white border border-slate-200/90 flex flex-col h-full shadow-sm hover:shadow-xl hover:border-[#1575B3] hover:-translate-y-1 transition-all duration-500 overflow-hidden">
+
+                  {/* Image Header */}
+                  <div className="relative aspect-[16/10] overflow-hidden bg-slate-900 border-b border-slate-200">
+                    <img
+                      src={pillar.image}
+                      alt={pillar.title}
+                      referrerPolicy="no-referrer"
+                      loading="lazy"
+                      className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-80" />
+
+                    {/* Number Badge */}
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-black text-white text-[10px] font-mono tracking-widest font-medium px-3 py-1">
+                        {pillar.num}
+                      </span>
+                    </div>
+
+                    {/* Icon Chip */}
+                    {/* <div className="absolute bottom-4 left-4 sm:left-6 w-10 h-10 bg-white flex items-center justify-center shadow-md">
+                      <Icon className="w-5 h-5 text-[#1575B3]" />
+                    </div> */}
+                  </div>
+
+                  {/* Content Body */}
+                  <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div className="space-y-3">
+                      <h3 className="text-xl font-serif font-normal text-slate-900 leading-snug tracking-tight group-hover:text-[#1575B3] transition-colors duration-300">
+                        {pillar.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
+                        {pillar.text}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export const SUSTAINABILITY_INTRO =
+  `As one of India's leading pipe and irrigation manufacturers, we understand the true value of every natural resource, especially water. Sustainability isn't a separate initiative for us; it's built into how we manufacture, across both our Pipe Division and our Irrigation Division, and how we support the farming and building communities who depend on us. This commitment extends to every aspect of our operations.`;
+
+export const SustainHero: React.FC = () => {
+  return (
+    <div className="relative w-full min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
+      {/* Background Image Container */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=2000&q=80"
+          alt="Solar-powered manufacturing at Kothari Group"
+          referrerPolicy="no-referrer"
+          className="w-full h-full object-cover object-center"
+        />
+
+        {/* Base Dark Overlay */}
+        <div className="absolute inset-0 bg-black/25 pointer-events-none" />
+
+        {/* Top-Heavy Gradient Overlay for increased top contrast and navbar contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/30 to-black/50 pointer-events-none" />
+      </div>
+
+      {/* Main Container - Full Height Layout */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full min-h-[100dvh] pt-24 sm:pt-28 pb-8 sm:pb-12 flex flex-col justify-between">
+
+        {/* Breadcrumb */}
+        {/* <nav className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-white/60 overflow-x-auto whitespace-nowrap shrink-0">
+          <Link href="/" className="hover:text-white transition-colors">Home</Link>
+          <ChevronRight className="w-3 h-3 shrink-0" />
+          <span className="text-white/90">Sustainability</span>
+        </nav> */}
+
+        {/* Headline Section - Centered Vertically */}
+        <div className="w-full flex flex-col gap-5 sm:gap-6 my-auto py-8">
+          <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5">
+            Our Responsibility
+          </span>
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
+            Sustainability at Kothari Group
+          </h1>
+          {/* <p className="text-base sm:text-xl font-semibold text-white leading-snug max-w-3xl drop-shadow-md">
+            Every drop counts — in our factories and on every farm we serve.
+          </p> */}
+        </div>
+
+        {/* Stats Grid & Video - Anchored at Bottom */}
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-end gap-6 sm:gap-8 lg:gap-12 w-full mt-auto">
+
+          {/* Left Side: Stats Grid */}
+          <div className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-10 w-full lg:w-auto border-t border-white/20 pt-6">
+            {[
+              { value: '100%', label: 'Solar-powered manufacturing' },
+              { value: '2', label: 'Divisions built around durability' },
+              { value: '35+', label: 'Years serving farm communities' },
+            ].map((stat, idx) => (
+              <div key={idx} className="flex flex-col">
+                <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white drop-shadow-md">
+                  {stat.value}
+                </span>
+                <span className="text-xs sm:text-sm text-white/90 leading-snug mt-1 drop-shadow-sm">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Right Side: Video Card */}
+          <div className="w-full lg:w-auto lg:max-w-[420px] shrink-0">
+            <div className="bg-black/50 backdrop-blur-md border border-white/20 rounded-sm shadow-2xl overflow-hidden">
+              <div className="relative aspect-video w-full">
+                <iframe
+                  src="https://www.youtube.com/embed/IZ1k7fZDNss"
+                  title="Sustainability at Kothari Group"
+                  className="absolute inset-0 w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              <p className="px-4 py-3 text-xs font-mono tracking-widest uppercase text-white/80">
+                Watch our story
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+export const SustainByDesign: React.FC = () => {
+  return (
+    <section className="w-full bg-white py-16 sm:py-24 border-b border-slate-300/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
+        <SectionHeader
+          title="Sustainability, By Design"
+          description="Not a checklist — a property of the products themselves."
+        />
+        <div className="max-w-4xl space-y-4">
+          <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+            We don&apos;t treat sustainability as a separate checklist; it&apos;s built into the products themselves.
+          </p>
+          <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+            Across our Irrigation Division, every solution is engineered to help farmers use water more precisely from root-zone drip systems to automated field irrigation that minimizes runoff. Across our Pipe Division, our focus is on durability and leak-free performance, because piping that lasts longer and wastes less water is, in its own way, a sustainability tool too.
+          </p>
+          <div className="flex flex-wrap gap-3 pt-4">
+            <Link
+              href="/irrigation-division"
+              className="inline-flex items-center gap-2 bg-[#1575B3] hover:bg-[#0E588A] text-white text-xs font-mono tracking-widest uppercase px-6 py-3.5 transition-colors"
+            >
+              Irrigation Solutions <ArrowUpRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/pipe-division"
+              className="inline-flex items-center gap-2 bg-white border border-slate-300 hover:border-[#1575B3] hover:text-[#1575B3] text-slate-700 text-xs font-mono tracking-widest uppercase px-6 py-3.5 transition-colors"
+            >
+              Pipe Solutions <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const VIDEO_TESTIMONIALS = [
+  { id: 'IZ1k7fZDNss', title: 'Farmer Testimonial 1' },
+  { id: 'BDgJgfq67_s', title: 'Farmer Testimonial 2' },
+  { id: '3uNUGXYo3UM', title: 'Farmer Testimonial 3' },
+];
+
+export const SustainTestimonials: React.FC = () => {
+  return (
+    <section className="w-full bg-[#F5F6F8] py-16 sm:py-24 border-b border-slate-300/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
+        <SectionHeader
+          title="What People Say"
+          description="Farmers and partners sharing their experience with Kothari Group."
+        />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {VIDEO_TESTIMONIALS.map((video) => (
+            <div
+              key={video.id}
+              className="group relative bg-white border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#1575B3] transition-all duration-500 overflow-hidden"
+            >
+              <div className="relative aspect-video w-full bg-slate-950 overflow-hidden">
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.id}`}
+                  title={video.title}
+                  className="absolute inset-0 w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};

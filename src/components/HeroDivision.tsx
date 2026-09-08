@@ -68,13 +68,13 @@ export const HeroDivision = ({heroData}: {heroData: any}) => {
               <p className="text-white/95 text-base sm:text-lg leading-relaxed max-w-xl lg:max-w-none drop-shadow-md">
                 {heroData.subtext}
               </p>
-              <a 
+              {/* <a 
                 href="#" 
                 className="group inline-flex items-center self-start bg-white text-black px-6 sm:px-7 py-3.5 sm:py-4 font-semibold text-sm sm:text-base lg:text-lg hover:bg-white/90 transition-colors shrink-0 shadow-lg"
               >
                 {heroData.ctaText}
                 <ArrowIcon />
-              </a>
+              </a> */}
             </div>
 
           </div>

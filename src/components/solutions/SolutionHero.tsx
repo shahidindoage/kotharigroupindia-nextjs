@@ -52,26 +52,25 @@ export const SolutionHero: React.FC<{ solution: Solution }> = ({ solution }) => 
           <p className="text-base sm:text-xl font-semibold text-white leading-snug max-w-3xl drop-shadow-md">
             {solution.tagline}
           </p>
-          <div className="space-y-3 max-w-3xl">
-            {solution.overview.map((para, idx) => (
-              <p key={idx} className="text-sm sm:text-base text-white/85 font-normal leading-relaxed drop-shadow-sm">
-                {para}
-              </p>
-            ))}
-          </div>
         </div>
 
-        {/* Pillars Grid & Callout Card - Anchored at Bottom */}
-        {/* <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-end gap-6 sm:gap-8 lg:gap-12 w-full mt-auto">
+        {/* Stats Grid & Callout Card - Anchored at Bottom */}
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-end gap-6 sm:gap-8 lg:gap-12 w-full mt-auto">
 
+          {/* Left Side: Stats Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-10 w-full lg:w-auto border-t border-white/20 pt-6">
-            {solution.pillars.map((pillar) => (
-              <div key={pillar.label} className="flex flex-col">
-                <span className="text-base sm:text-lg lg:text-xl font-semibold tracking-tight text-white drop-shadow-md leading-snug">
-                  {pillar.label}
+            {[
+              { value: '35+', label: 'Years of excellence' },
+              { value: '23+', label: 'States served pan-India' },
+              { value: '2L+', label: 'Farmers empowered' },
+              { value: '800+', label: 'Channel partners' },
+            ].map((stat) => (
+              <div key={stat.label} className="flex flex-col">
+                <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white drop-shadow-md">
+                  {stat.value}
                 </span>
-                <span className="text-[11px] sm:text-xs text-white/80 leading-snug mt-1 drop-shadow-sm">
-                  {pillar.text}
+                <span className="text-xs sm:text-sm text-white/90 leading-snug mt-1 drop-shadow-sm">
+                  {stat.label}
                 </span>
               </div>
             ))}
@@ -104,7 +103,7 @@ export const SolutionHero: React.FC<{ solution: Solution }> = ({ solution }) => 
             </Link>
           )}
 
-        </div> */}
+        </div>
 
       </div>
     </div>

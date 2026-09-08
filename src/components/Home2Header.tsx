@@ -20,7 +20,7 @@ import Link from 'next/link';
 
 const sections = [
   // { id: 'why-kothari', label: 'About Kothari Group' },
-  { id: 'impact', label: 'Sustainability' },
+  { id: 'sustainability', label: 'Sustainability' },
   { id: 'career', label: 'Career' }
 ];
 
@@ -290,9 +290,9 @@ export const Home2Header: React.FC = () => {
 
               {/* Remaining Sections */}
               {sections.map((item) => (
-                <button
+                <Link
                   key={item.id}
-                  onClick={() => handleNav(item.id)}
+                  href={item.id}
                   className={`px-3.5 py-2 text-[17px] font-medium transition-all duration-200 ${
                     active === item.id
                       ? 'text-[#1575B3]'
@@ -302,7 +302,7 @@ export const Home2Header: React.FC = () => {
                   }`}
                 >
                   {item.label}
-                </button>
+                </Link>
               ))}
 
               {/* Our Divisions Dropdown */}

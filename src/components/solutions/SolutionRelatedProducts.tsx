@@ -34,7 +34,7 @@ export const SolutionRelatedProducts: React.FC<{ products: SolutionRelatedProduc
   if (!products.length) return null;
 
   return (
-    <section className="w-full bg-[#F5F6F8] py-16 border-b border-slate-300/70">
+    <section id="related-products" className="w-full bg-[#F5F6F8] py-16 border-b border-slate-300/70 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
         <SectionHeader
           title="Related Products"

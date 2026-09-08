@@ -23,10 +23,10 @@ export const useReveal = () => {
   return ref;
 };
 
-export const Reveal: React.FC<{ children: React.ReactNode; delay?: number; className?: string }> = ({ children, delay = 0, className = '' }) => {
+export const Reveal: React.FC<{ children: React.ReactNode; delay?: number; className?: string; from?: 'bottom' | 'top' }> = ({ children, delay = 0, className = '', from = 'bottom' }) => {
   const ref = useReveal();
   return (
-    <div ref={ref} className={`reveal ${className}`} style={{ transitionDelay: `${delay}ms` }}>
+    <div ref={ref} className={`${from === 'top' ? 'reveal-top' : 'reveal'} ${className}`} style={{ transitionDelay: `${delay}ms` }}>
       {children}
     </div>
   );

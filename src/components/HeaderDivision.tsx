@@ -12,12 +12,12 @@ const aboutMegaMenu = {
   items: [
     {
       title: 'About Us',
-      url: '/about',
+      url: '/about-us',
       image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80',
     },
     {
       title: 'Our Board',
-      url: '/about/our-board',
+      url: '/our-board',
       image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80',
     },
     {
