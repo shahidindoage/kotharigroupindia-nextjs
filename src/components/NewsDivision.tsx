@@ -89,8 +89,62 @@ export const NewsDivision: React.FC = () => {
   return (
     <div className="w-full text-slate-900">
 
-      {/* ==================== 1. NEWS AND ARTICLES ==================== */}
-      <section id="news" className="w-full py-16 sm:py-24 bg-[#F5F6F8] text-slate-900 scroll-mt-20">
+      {/* ==================== 1. TESTIMONIALS (GREY BG) ==================== */}
+      <section id="testimonials" className="w-full py-16 sm:py-24 bg-[#F5F6F8] text-slate-900 scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-300">
+            <div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight uppercase font-serif text-slate-900">
+                Testimonials
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-600 max-w-md font-normal leading-relaxed">
+              What engineers, agricultural experts, and project managers say about our piping solutions.
+            </p>
+          </div>
+
+          {/* Testimonial Cards */}
+          <Reveal>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {testimonials.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white border border-slate-200 p-8 flex flex-col justify-between relative hover:border-[#1575B3] hover:shadow-lg transition-all duration-300 group"
+                >
+                  <Quote className="w-8 h-8 text-[#1575B3]/20 absolute top-6 right-6" />
+
+                  <div className="space-y-6 relative z-10">
+                    <div className="flex items-center gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-[#1575B3] text-[#1575B3]" />
+                      ))}
+                    </div>
+
+                    <p className="text-sm sm:text-base text-slate-700 font-serif italic leading-relaxed">
+                      &ldquo;{item.quote}&rdquo;
+                    </p>
+                  </div>
+
+                  <div className="pt-6 mt-6 border-t border-slate-200">
+                    <h4 className="text-base font-medium text-slate-900 group-hover:text-[#1575B3] transition-colors duration-300">
+                      {item.author}
+                    </h4>
+                    <p className="text-xs font-mono text-slate-500 mt-1 uppercase tracking-wider">
+                      {item.role}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+        </div>
+      </section>
+
+      {/* ==================== 2. NEWS AND ARTICLES (WHITE BG) ==================== */}
+      <section id="news" className="w-full py-16 sm:py-24 bg-white text-slate-900 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
           {/* Section Header */}
@@ -105,12 +159,12 @@ export const NewsDivision: React.FC = () => {
             </p>
           </div>
 
-          {/* News Cards Grid — same as Blogs */}
+          {/* News Cards Grid */}
           <Reveal>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {newsItems.map((item, idx) => (
                 <Reveal key={idx} delay={idx * 90} className="h-full">
-                  <article className="group relative bg-white border border-slate-200/90 flex flex-col justify-between h-full shadow-sm hover:shadow-xl hover:border-[#1575B3] transition-all duration-500 overflow-hidden">
+                  <article className="group relative bg-[#F5F6F8] border border-slate-200/90 flex flex-col justify-between h-full shadow-sm hover:shadow-xl hover:border-[#1575B3] transition-all duration-500 overflow-hidden">
 
                     {/* Image Header */}
                     <div className="relative aspect-[16/10] overflow-hidden bg-slate-900 border-b border-slate-200">
@@ -173,64 +227,7 @@ export const NewsDivision: React.FC = () => {
         </div>
       </section>
 
-      {/* ==================== 2. TESTIMONIALS SECTION (WHITE BG) ==================== */}
-      <section id="testimonials" className="w-full py-16 sm:py-24 bg-white text-slate-900 border-b border-slate-300/70 scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-
-          {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-300">
-            <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight uppercase font-serif text-slate-900">
-                Testimonials
-              </h2>
-            </div>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-md font-normal leading-relaxed">
-              What engineers, agricultural experts, and project managers say about our piping solutions.
-            </p>
-          </div>
-
-          {/* Testimonial Cards */}
-          <Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {testimonials.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="bg-slate-50/60 border border-slate-200 p-8 flex flex-col justify-between relative hover:border-[#1575B3] hover:shadow-lg transition-all duration-300 group"
-                >
-                  <Quote className="w-8 h-8 text-[#1575B3]/20 absolute top-6 right-6" />
-
-                  <div className="space-y-6 relative z-10">
-                    <div className="flex items-center gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-[#1575B3] text-[#1575B3]" />
-                      ))}
-                    </div>
-
-                    <p className="text-sm sm:text-base text-slate-700 font-serif italic leading-relaxed">
-                      "{item.quote}"
-                    </p>
-                  </div>
-
-                  <div className="pt-6 mt-6 border-t border-slate-200">
-                    <h4 className="text-base font-medium text-slate-900 group-hover:text-[#1575B3] transition-colors duration-300">
-                      {item.author}
-                    </h4>
-                    <p className="text-xs font-mono text-slate-500 mt-1 uppercase tracking-wider">
-                      {item.role}
-                    </p>
-                    {/* <p className="text-[11px] font-mono text-[#1575B3] uppercase tracking-widest mt-0.5 font-semibold">
-                      {item.company}
-                    </p> */}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-
-        </div>
-      </section>
-
-      {/* ==================== 3. LATEST BLOGS (#F5F6F8 BG) ==================== */}
+      {/* ==================== 3. LATEST BLOGS (GREY BG) ==================== */}
       <section id="blogs" className="w-full bg-[#F5F6F8] py-16 sm:py-24 border-b border-slate-300/70 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
 

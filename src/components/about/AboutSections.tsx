@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
   ChevronRight,
@@ -234,184 +234,131 @@ export const AboutCoreValues: React.FC = () => {
   );
 };
 
-/* ── 6. LEGACY BRICKS + POPUP ──────────────────────────── */
+/* ── 6. LEGACY SLIDER ──────────────────────────────────── */
+
 export const AboutLegacy: React.FC = () => {
-  const [selected, setSelected] = useState<number | null>(null);
-  const [gridVisible, setGridVisible] = useState(false);
-  const gridRef = useRef<HTMLDivElement>(null);
+  // Track active selected item index (starts directly at index 0)
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
 
-  // Scroll trigger: when the grid enters the viewport, bricks cascade one by one
   useEffect(() => {
-    const el = gridRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setGridVisible(true);
-            obs.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.08 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
+    const handleResize = () => {
+      if (window.innerWidth < 640) setItemsPerPage(1);
+      else if (window.innerWidth < 1024) setItemsPerPage(3);
+      else setItemsPerPage(5);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelected(null);
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, []);
+  const totalItems = aboutLegacy.timeline.length;
 
-  useEffect(() => {
-    document.body.style.overflow = selected !== null ? 'hidden' : 'unset';
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [selected]);
+  // Calculate slide start index so active item is kept visible
+  const maxStartIndex = Math.max(0, totalItems - itemsPerPage);
+  const startIndex = Math.min(
+    Math.max(0, activeIndex - Math.floor(itemsPerPage / 2)),
+    maxStartIndex
+  );
 
-  const entry = selected !== null ? aboutLegacy.timeline[selected] : null;
+  // Step backward by 1
+  const goPrev = () => {
+    setActiveIndex((prev) => (prev > 0 ? prev - 1 : totalItems - 1));
+  };
 
-  // Running-bond rows for the brick wall (desktop): even rows 4 bricks, odd rows 3 + 2 half-bricks
-  const brickRows: number[][] = [];
-  {
-    let i = 0;
-    let r = 0;
-    while (i < aboutLegacy.timeline.length) {
-      const take = r % 2 === 0 ? 4 : 3;
-      const row: number[] = [];
-      for (let k = 0; k < take && i < aboutLegacy.timeline.length; k++, i++) row.push(i);
-      brickRows.push(row);
-      r++;
-    }
-  }
+  // Step forward by 1
+  const goNext = () => {
+    setActiveIndex((prev) => (prev < totalItems - 1 ? prev + 1 : 0));
+  };
+
+  const visibleTimeline = aboutLegacy.timeline.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <section className="w-full bg-white py-16 sm:py-24 border-b border-slate-300/70">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
         <SectionHeader
           title={aboutLegacy.heading}
-          description="Four decades of milestones — tap any year to explore the story."
+          description="Four decades of milestones — from a fertilizer shop to a 100-acre mega plant."
         />
-        <div ref={gridRef} className="grid grid-cols-2 sm:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-2.5 bg-slate-300 border border-slate-300 p-2 sm:p-2.5">
-          {brickRows.map((row, ri) => (
-            <div key={ri} className="contents">
-              {/* Half-brick spacers create the running-bond offset on desktop */}
-              {ri % 2 === 1 && (
-                <div aria-hidden className="hidden lg:block bg-white/70 rounded-[2px]" />
-              )}
-              {row.map((idx) => {
-                const item = aboutLegacy.timeline[idx];
-                const isActive = selected === idx;
+
+        {/* Milestone Timeline Track */}
+        <div className="relative flex items-center justify-between min-h-[220px]">
+          {/* Previous Arrow Button */}
+          <button
+            onClick={goPrev}
+            aria-label="Previous milestone"
+            className="z-10 shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-black hover:bg-[#1575B3] text-white flex items-center justify-center transition-colors shadow-md"
+          >
+            ‹
+          </button>
+
+          {/* Timeline Wrapper */}
+          <div className="relative flex-1 mx-2 sm:mx-6 overflow-hidden">
+            {/* Horizontal Dashed Axis Line */}
+            <div className="absolute top-[38px] left-0 right-0 border-b border-dashed border-slate-400/80 z-0" />
+
+            {/* Grid of Milestone Items */}
+            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 items-start">
+              {visibleTimeline.map((entry, index) => {
+                const globalIndex = startIndex + index;
+                const isActive = globalIndex === activeIndex;
+
                 return (
-                  <button
-                    key={item.year}
-                    onClick={() => setSelected(idx)}
-                    style={{ transitionDelay: gridVisible ? `${idx * 70}ms` : '0ms' }}
-                    className={`group col-span-1 sm:col-span-2 p-4 sm:p-5 text-left rounded-[2px] transition-all duration-700 h-full w-full shadow-[inset_0_1px_0_rgba(255,255,255,0.9),inset_0_-3px_6px_rgba(15,23,42,0.08)] ${
-                      gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'
-                    } ${
-                      isActive
-                        ? 'bg-[#1575B3] text-white'
-                        : 'bg-[#1575B3] text-white'
-                    }`}
+                  <article
+                    key={`${entry.year}-${globalIndex}`}
+                    onClick={() => setActiveIndex(globalIndex)}
+                    className="flex flex-col items-center text-center group cursor-pointer"
                   >
+                    {/* Year */}
                     <span
-                      className={`block text-xl sm:text-2xl font-mono font-bold tracking-tight transition-colors ${
-                        isActive ? 'text-white' : 'text-white'
+                      className={`text-xs sm:text-sm font-mono tracking-wider transition-all duration-300 ${
+                        isActive
+                          ? 'text-[#1575B3] font-bold text-sm sm:text-base -translate-y-0.5'
+                          : 'text-slate-500 hover:text-slate-800'
                       }`}
                     >
-                      {item.year}
+                      {entry.year}
                     </span>
-                    <span
-                      className={`block text-xs sm:text-sm font-medium mt-1 leading-snug transition-colors ${
-                        isActive ? 'text-white' : 'text-white'
+
+                    {/* Timeline Node */}
+                    <div className="h-[28px] flex items-center justify-center my-1">
+                      <div
+                        className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                          isActive
+                            ? 'bg-[#1575B3] ring-4 ring-[#1575B3]/20 scale-125'
+                            : 'bg-slate-400 group-hover:bg-[#1575B3]'
+                        }`}
+                      />
+                    </div>
+
+                    {/* Title */}
+                    <h4
+                      className={`text-xs sm:text-sm leading-snug max-w-[180px] transition-colors duration-300 ${
+                        isActive
+                          ? 'text-slate-900 font-bold'
+                          : 'text-slate-600 font-normal group-hover:text-slate-900'
                       }`}
                     >
-                      {item.title}
-                    </span>
-                    <span
-                      className={`inline-flex items-center gap-1 mt-3 text-[10px] font-mono tracking-widest uppercase transition-colors ${
-                        isActive ? 'text-white/80' : 'text-white/80'
-                      }`}
-                    >
-                      View Story
-                      <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                    </span>
-                  </button>
+                      {entry.title}
+                    </h4>
+                  </article>
                 );
               })}
-              {ri % 2 === 1 && (
-                <div aria-hidden className="hidden lg:block bg-white/70 rounded-[2px]" />
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Milestone Popup */}
-      {entry && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-            onClick={() => setSelected(null)}
-          />
-          <div className="relative bg-white w-full max-w-lg shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
-            <div className="bg-[#1575B3] px-6 sm:px-8 py-6 flex items-start justify-between gap-4">
-              <div>
-                <span className="text-xs font-mono tracking-[0.25em] text-white/70 uppercase">
-                  Milestone
-                </span>
-                <h3 className="text-3xl sm:text-4xl font-mono font-semibold text-white tracking-tight mt-1">
-                  {entry.year}
-                </h3>
-              </div>
-              <button
-                onClick={() => setSelected(null)}
-                aria-label="Close"
-                className="w-9 h-9 shrink-0 flex items-center justify-center text-white/80 hover:text-white hover:bg-white/10 transition-colors"
-              >
-                ✕
-              </button>
-            </div>
-            <div className="p-6 sm:p-8 space-y-3">
-              <h4 className="text-xl font-serif font-normal text-slate-900">
-                {entry.title}
-              </h4>
-              <p className="text-sm text-slate-600 font-normal leading-relaxed">
-                {entry.description}
-              </p>
-              <div className="flex items-center justify-between pt-4 border-t border-slate-200">
-                <button
-                  onClick={() => setSelected((prev) => (prev !== null && prev > 0 ? prev - 1 : prev))}
-                  disabled={selected === 0}
-                  className="inline-flex items-center gap-1 text-xs font-mono tracking-widest uppercase text-slate-500 hover:text-[#1575B3] transition-colors disabled:opacity-30 disabled:pointer-events-none"
-                >
-                  ← Prev
-                </button>
-                <span className="text-[11px] font-mono tracking-widest text-slate-400">
-                  {(selected ?? 0) + 1} / {aboutLegacy.timeline.length}
-                </span>
-                <button
-                  onClick={() =>
-                    setSelected((prev) =>
-                      prev !== null && prev < aboutLegacy.timeline.length - 1 ? prev + 1 : prev
-                    )
-                  }
-                  disabled={selected === aboutLegacy.timeline.length - 1}
-                  className="inline-flex items-center gap-1 text-xs font-mono tracking-widest uppercase text-slate-500 hover:text-[#1575B3] transition-colors disabled:opacity-30 disabled:pointer-events-none"
-                >
-                  Next →
-                </button>
-              </div>
             </div>
           </div>
+
+          {/* Next Arrow Button */}
+          <button
+            onClick={goNext}
+            aria-label="Next milestone"
+            className="z-10 shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-black hover:bg-[#1575B3] text-white flex items-center justify-center transition-colors shadow-md"
+          >
+            ›
+          </button>
         </div>
-      )}
+
+      
+      </div>
     </section>
   );
 };
