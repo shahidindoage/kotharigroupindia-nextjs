@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { ChevronRight, ChevronDown, ChevronUp, Linkedin } from 'lucide-react';
+import { ChevronRight, ChevronDown, ChevronUp, Linkedin, X } from 'lucide-react';
 import { SectionHeader } from '../solutions/SectionHeader';
 import { Reveal } from '../main/Reveal';
 import { boardHero, boardOfDirectors, youngLeadership, type BoardMember } from '@/data/board';
@@ -123,27 +123,234 @@ const MemberCard: React.FC<{ member: BoardMember }> = ({ member }) => {
 
 /* ── BOARD OF DIRECTORS ──────────────────────────────── */
 export const BoardDirectors: React.FC = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [collapsed, setCollapsed] = useState<Record<number, boolean>>({});
+  const [openMember, setOpenMember] = useState<BoardMember | null>(null);
+  const active = boardOfDirectors[activeIndex];
+
+  useEffect(() => {
+    if (!openMember) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpenMember(null);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [openMember]);
+
   return (
     <section className="w-full bg-white py-16 sm:py-24 border-b border-slate-300/70">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
         <SectionHeader
           title="Board of Directors"
           description="The founders and stewards guiding Kothari Group's vision and growth."
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {boardOfDirectors.map((member, idx) => (
-            <Reveal key={member.name} delay={idx * 90} className="h-full">
-              <MemberCard member={member} />
+
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          {/* Name tabs */}
+          <div className="lg:col-span-5 lg:self-start lg:sticky lg:top-24">
+            <Reveal className="flex flex-col border-y border-slate-200 bg-white">
+              {boardOfDirectors.map((member, i) => {
+                const isActive = i === activeIndex;
+                const isBodyOpen = isActive && !collapsed[i];
+                return (
+                  <button
+                    key={member.name}
+                    onMouseEnter={() => setActiveIndex(i)}
+                    onFocus={() => setActiveIndex(i)}
+                    onClick={() => setCollapsed((prev) => ({ ...prev, [i]: !prev[i] }))}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setCollapsed((prev) => ({ ...prev, [i]: !prev[i] }));
+                      }
+                    }}
+                    className={`group relative flex flex-col px-5 sm:px-6 py-5 text-left border-b border-slate-100 last:border-b-0 transition-colors ${
+                      isActive ? 'bg-[#F5F6F8]' : 'hover:bg-[#F5F6F8]'
+                    }`}
+                  >
+                    <span
+                      aria-hidden
+                      className={`absolute left-0 top-0 h-full w-[3px] bg-[#1575B3] origin-top transition-transform duration-300 ${
+                        isActive ? 'scale-y-100' : 'scale-y-0 group-hover:scale-y-100'
+                      }`}
+                    />
+                    <span className="flex items-center gap-4 sm:gap-5">
+                      <span
+                        className={`flex items-center justify-center w-9 h-9 shrink-0 border font-mono text-xs transition-all duration-300 ${
+                          isActive
+                            ? 'bg-[#1575B3] border-[#1575B3] text-white'
+                            : 'border-slate-200 text-slate-400 group-hover:border-[#1575B3]/40 group-hover:text-[#1575B3]'
+                        }`}
+                      >
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className="flex-1 min-w-0">
+                        <span
+                          className={`block text-base font-semibold leading-snug transition-colors ${
+                            isActive ? 'text-[#1575B3]' : 'text-slate-900 group-hover:text-slate-700'
+                          }`}
+                        >
+                          {member.name}
+                        </span>
+                        <span className="block mt-1 text-[11px] font-mono tracking-[0.18em] uppercase text-slate-500">
+                          {member.designation}
+                        </span>
+                      </span>
+                      <ChevronRight
+                        className={`w-4 h-4 shrink-0 transition-all duration-300 ${
+                          isActive
+                            ? `translate-x-0 opacity-100 text-[#1575B3] ${isBodyOpen ? 'rotate-90' : ''}`
+                            : '-translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100'
+                        }`}
+                      />
+                    </span>
+                    {isBodyOpen && (
+                      <span className="fade-in block mt-4 pt-4 border-t border-slate-200/80 text-sm text-slate-600 font-normal leading-relaxed">
+                        {member.description && (
+                          <span className="block">{member.description}</span>
+                        )}
+                        <span
+                          role="button"
+                          tabIndex={0}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setOpenMember(member);
+                          }}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.stopPropagation();
+                              setOpenMember(member);
+                            }
+                          }}
+                          className="mt-3.5 inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold tracking-wider uppercase text-[#1575B3] hover:text-[#0E588A] transition-colors cursor-pointer select-none"
+                        >
+                          Read More
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </span>
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
             </Reveal>
-          ))}
+          </div>
+
+          {/* Portrait preview */}
+          <div className="lg:col-span-7">
+            <Reveal delay={80} className="h-full">
+              <div className="relative aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] overflow-hidden bg-slate-100">
+                {boardOfDirectors.map((member, i) => (
+                  <img
+                    key={member.name}
+                    src={member.imageUrl}
+                    alt={member.name}
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                    className={`absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 ease-out ${
+                      i === activeIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+                    }`}
+                  />
+                ))}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent pointer-events-none" />
+
+                {/* <div className="absolute top-5 right-5 w-11 h-11 bg-white/10 backdrop-blur-md border border-white/25 text-white flex items-center justify-center font-mono text-xs">
+                  {String(activeIndex + 1).padStart(2, '0')}
+                </div> */}
+
+                <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-4 p-6 sm:p-8">
+                  <div className="transition-opacity duration-300">
+                    <p className="text-[11px] font-mono tracking-[0.22em] uppercase text-sky-200">
+                      {active.designation}
+                    </p>
+                    <h3 className="mt-1.5 text-2xl sm:text-3xl font-serif font-normal text-white leading-tight tracking-tight">
+                      {active.name}
+                    </h3>
+                  </div>
+                  {active.linkedin && active.linkedinUrl && (
+                    <a
+                      href={active.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${active.name} on LinkedIn`}
+                      className="w-10 h-10 shrink-0 bg-white/95 text-[#0A66C2] flex items-center justify-center shadow-md hover:bg-[#0A66C2] hover:text-white transition-colors"
+                    >
+                      <Linkedin className="w-4 h-4" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </div>
+
+{openMember && (
+        <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4 sm:p-6 lg:p-8">
+          <button
+            type="button"
+            aria-label="Close"
+            onClick={() => setOpenMember(null)}
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-zoom-out"
+          />
+          <div className="relative w-full max-w-lg sm:max-w-xl bg-white shadow-2xl max-h-[85vh] overflow-y-auto fade-in">
+            <button
+              type="button"
+              onClick={() => setOpenMember(null)}
+              aria-label="Close"
+              className="absolute top-4 right-4 w-9 h-9 border border-slate-200 text-slate-500 flex items-center justify-center hover:bg-[#1575B3] hover:text-white transition-colors z-10"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <div className="p-7 sm:p-9 border-b border-slate-200 bg-[#F5F6F8]">
+              <p className="text-[11px] font-mono tracking-[0.22em] uppercase text-[#1575B3]">
+                {openMember.designation}
+              </p>
+              <h3 className="mt-1.5 text-2xl sm:text-3xl font-serif font-normal text-slate-900 leading-tight tracking-tight">
+                {openMember.name}
+              </h3>
+            </div>
+            <div className="p-7 sm:p-9 space-y-4">
+              {openMember.readMoreContent
+                .split('\n')
+                .map((p) => p.trim())
+                .filter(Boolean)
+                .map((para, idx) => (
+                  <p key={idx} className="text-sm text-slate-600 font-normal leading-relaxed">
+                    {para}
+                  </p>
+                ))}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
 
 /* ── YOUNG LEADERSHIP ────────────────────────────────── */
 export const BoardYoungLeadership: React.FC = () => {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleScroll = () => {
+    const el = scrollerRef.current;
+    const card = el?.firstElementChild as HTMLElement | null;
+    if (!el || !card) return;
+    setActiveIndex(Math.round(el.scrollLeft / card.offsetWidth));
+  };
+
+  const scrollToSlide = (idx: number) => {
+    const el = scrollerRef.current;
+    const card = el?.firstElementChild as HTMLElement | null;
+    if (!el || !card) return;
+    el.scrollTo({ left: idx * card.offsetWidth, behavior: 'smooth' });
+  };
+
   return (
     <section className="w-full bg-[#F5F6F8] py-16 sm:py-24 border-b border-slate-300/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
@@ -151,11 +358,25 @@ export const BoardYoungLeadership: React.FC = () => {
           title={youngLeadership.heading}
           description={youngLeadership.description}
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {youngLeadership.members.map((member, idx) => (
-            <Reveal key={member.name} delay={(idx % 3) * 90} className="h-full">
+        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" ref={scrollerRef} onScroll={handleScroll}>
+          {youngLeadership.members.map((member) => (
+            <Reveal key={member.name} delay={80} className="h-full w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start">
               <MemberCard member={member} />
             </Reveal>
+          ))}
+        </div>
+        <div className="flex items-center justify-center gap-2">
+          {youngLeadership.members.map((member, idx) => (
+            <button
+              key={member.name}
+              onClick={() => scrollToSlide(idx)}
+              aria-label={`Go to ${member.name}`}
+              className={`h-1 transition-all duration-300 ${
+                idx === activeIndex
+                  ? 'w-8 bg-[#1575B3]'
+                  : 'w-2 bg-slate-300 hover:bg-[#1575B3]/50'
+              }`}
+            />
           ))}
         </div>
       </div>

@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   ChevronRight,
   Eye,
@@ -18,6 +17,7 @@ import {
   Award,
   TrendingUp,
   MapPin,
+  ArrowUpRight,
 } from 'lucide-react';
 import { SectionHeader } from '../solutions/SectionHeader';
 import { Reveal } from '../main/Reveal';
@@ -178,7 +178,7 @@ export const AboutApproach: React.FC = () => {
       </div>
 
       {/* Purpose Band */}
-      <div className="w-full bg-[#015CAA]">
+      {/* <div className="w-full bg-[#015CAA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-10 sm:py-12 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
           <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-sky-200 border border-white/25 bg-white/10 px-3 py-1.5 self-start shrink-0">
             {aboutApproach.purpose.label}
@@ -187,7 +187,7 @@ export const AboutApproach: React.FC = () => {
             {aboutApproach.purpose.description}
           </p>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
@@ -207,24 +207,31 @@ const VALUE_ICONS: Record<string, React.ElementType> = {
 
 export const AboutCoreValues: React.FC = () => {
   return (
-    <section className="w-full bg-[#F5F6F8] py-16 sm:py-24 border-b border-slate-300/70">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
+    <section className="w-full bg-white py-16 sm:py-24 border-b border-slate-300/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
         <SectionHeader
           title={aboutCoreValues.heading}
           description="Nine values that guide how we build, serve and grow."
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 border border-slate-200">
+
+        {/* Value cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {aboutCoreValues.values.map((value) => {
             const Icon = VALUE_ICONS[value.icon] || BadgeCheck;
             return (
-              <div key={value.title} className="group bg-white p-6 space-y-4 hover:bg-slate-50/60 transition-colors">
-                <div className="w-10 h-10 bg-[#F5F6F8] border border-slate-200 flex items-center justify-center group-hover:bg-[#1575B3] group-hover:border-[#1575B3] transition-colors">
+              <div
+                key={value.title}
+                className="group relative border border-slate-200 bg-white p-7 hover:border-[#1575B3]/40 hover:shadow-[0_24px_50px_-24px_rgba(21,117,179,0.35)] transition-all duration-300"
+              >
+                <div className="w-12 h-12 bg-[#F5F6F8] border border-slate-200 flex items-center justify-center group-hover:bg-[#1575B3] group-hover:border-[#1575B3] group-hover:shadow-[0_10px_20px_-8px_rgba(21,117,179,0.6)] transition-all duration-300">
                   <Icon className="w-5 h-5 text-[#1575B3] group-hover:text-white transition-colors" />
                 </div>
-                <div className="space-y-1.5">
-                  <h3 className="text-sm font-semibold text-slate-900 leading-snug">{value.title}</h3>
-                  <p className="text-xs text-slate-600 font-normal leading-relaxed">{value.description}</p>
-                </div>
+                <h3 className="mt-5 text-base font-semibold text-slate-900 leading-snug">
+                  {value.title}
+                </h3>
+                <p className="mt-2 text-sm text-slate-600 font-normal leading-relaxed">
+                  {value.description}
+                </p>
               </div>
             );
           })}
@@ -234,131 +241,291 @@ export const AboutCoreValues: React.FC = () => {
   );
 };
 
-/* ── 6. LEGACY SLIDER ──────────────────────────────────── */
+/* ── 6. LEGACY — THE RIVER OF MILESTONES ─────────────── */
+const LEGACY_RIVER_PATH =
+  'M 0 65 C 130 25 250 130 350 130 C 450 130 470 265 580 250 C 690 235 720 130 840 150 C 960 170 960 320 1180 295';
+
+const LEGACY_VIEW_W = 1200;
+const LEGACY_VIEW_H = 500;
+
+// Five fixed "beads" spread along the full river — each cycles through milestones
+const LEGACY_BEAD_FRACTIONS = [0.1, 0.3, 0.47, 0.66, 0.85];
 
 export const AboutLegacy: React.FC = () => {
-  // Track active selected item index (starts directly at index 0)
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const timeline = aboutLegacy.timeline;
+  const WINDOW = 5;
+  const [active, setActive] = useState(0);
+  const [points, setPoints] = useState<{ x: number; y: number }[]>([]);
+  const [paused, setPaused] = useState(false);
+  const [hovered, setHovered] = useState<number | null>(null);
+  const pathRef = useRef<SVGPathElement>(null);
+  const boxRef = useRef<HTMLDivElement>(null);
+  const [geo, setGeo] = useState({ w: LEGACY_VIEW_W, h: LEGACY_VIEW_H });
 
+  // Only 5 dots "ride" the river at once — they page forward in windows
+  const totalPages = Math.ceil(timeline.length / WINDOW);
+  const page = Math.floor(active / WINDOW);
+
+  const goPage = (p: number) => {
+    const np = (p + totalPages) % totalPages;
+    setActive(np * WINDOW);
+  };
+
+  // Compute the 5 bead positions spread down the full river once the path is mounted
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 640) setItemsPerPage(1);
-      else if (window.innerWidth < 1024) setItemsPerPage(3);
-      else setItemsPerPage(5);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const el = pathRef.current;
+    if (!el) return;
+    const len = el.getTotalLength();
+    const pts = LEGACY_BEAD_FRACTIONS.map((f) => {
+      const p = el.getPointAtLength(f * len);
+      return { x: p.x, y: p.y };
+    });
+    setPoints(pts);
   }, []);
 
-  const totalItems = aboutLegacy.timeline.length;
+  // Measure the rendered SVG box so HTML dots align exactly on the river
+  // (the SVG letterboxes, so we map user-space coords through its scale/offset)
+  useEffect(() => {
+    const el = boxRef.current;
+    if (!el) return;
+    const update = () => {
+      const r = el.getBoundingClientRect();
+      if (r.width > 0 && r.height > 0) {
+        setGeo({ w: r.width, h: r.height });
+      }
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    window.addEventListener('resize', update);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', update);
+    };
+  }, []);
 
-  // Calculate slide start index so active item is kept visible
-  const maxStartIndex = Math.max(0, totalItems - itemsPerPage);
-  const startIndex = Math.min(
-    Math.max(0, activeIndex - Math.floor(itemsPerPage / 2)),
-    maxStartIndex
-  );
+  const scale = Math.min(geo.w / LEGACY_VIEW_W, geo.h / LEGACY_VIEW_H);
+  const boxW = LEGACY_VIEW_W * scale;
+  const boxH = LEGACY_VIEW_H * scale;
+  const offX = (geo.w - boxW) / 2;
+  const offY = (geo.h - boxH) / 2;
+  const toPct = (value: number, size: number, offset: number) =>
+    ((offset + value * scale) / size) * 100;
 
-  // Step backward by 1
-  const goPrev = () => {
-    setActiveIndex((prev) => (prev > 0 ? prev - 1 : totalItems - 1));
-  };
-
-  // Step forward by 1
-  const goNext = () => {
-    setActiveIndex((prev) => (prev < totalItems - 1 ? prev + 1 : 0));
-  };
-
-  const visibleTimeline = aboutLegacy.timeline.slice(startIndex, startIndex + itemsPerPage);
+  // Auto-slide between years — pauses on hover
+  useEffect(() => {
+    if (paused) return;
+    const id = window.setInterval(() => {
+      setActive((a) => (a + 1) % timeline.length);
+    }, 3000);
+    return () => window.clearInterval(id);
+  }, [paused, active, timeline.length]);
 
   return (
-    <section className="w-full bg-white py-16 sm:py-24 border-b border-slate-300/70">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-        <SectionHeader
-          title={aboutLegacy.heading}
-          description="Four decades of milestones — from a fertilizer shop to a 100-acre mega plant."
-        />
+    <section className="relative w-full bg-gradient-to-br from-[#061E33] via-[#0E588A] to-[#015CAA] pt-20 pb-8  overflow-hidden border-b border-slate-900/20">
+      {/* Decorative glows */}
+      <div aria-hidden className="absolute -top-32 -right-24 w-[560px] h-[560px] bg-cyan-300/10 rounded-full blur-3xl pointer-events-none" />
+      <div aria-hidden className="absolute -bottom-40 -left-24 w-[600px] h-[600px] bg-blue-900/50 rounded-full blur-3xl pointer-events-none" />
+      <div aria-hidden className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[480px] h-[480px] bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Milestone Timeline Track */}
-        <div className="relative flex items-center justify-between min-h-[220px]">
-          {/* Previous Arrow Button */}
-          <button
-            onClick={goPrev}
-            aria-label="Previous milestone"
-            className="z-10 shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-black hover:bg-[#1575B3] text-white flex items-center justify-center transition-colors shadow-md"
-          >
-            ‹
-          </button>
+      {/* Dotted grid pattern */}
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-[0.06] pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px)',
+          backgroundSize: '36px 36px',
+        }}
+      />
 
-          {/* Timeline Wrapper */}
-          <div className="relative flex-1 mx-2 sm:mx-6 overflow-hidden">
-            {/* Horizontal Dashed Axis Line */}
-            <div className="absolute top-[38px] left-0 right-0 border-b border-dashed border-slate-400/80 z-0" />
+      {/* Faint background image */}
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-cover bg-center opacity-[0.04] pointer-events-none"
+        style={{ backgroundImage: "url('/heronew3.jpg')" }}
+      />
+   
 
-            {/* Grid of Milestone Items */}
-            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 items-start">
-              {visibleTimeline.map((entry, index) => {
-                const globalIndex = startIndex + index;
-                const isActive = globalIndex === activeIndex;
-
-                return (
-                  <article
-                    key={`${entry.year}-${globalIndex}`}
-                    onClick={() => setActiveIndex(globalIndex)}
-                    className="flex flex-col items-center text-center group cursor-pointer"
-                  >
-                    {/* Year */}
-                    <span
-                      className={`text-xs sm:text-sm font-mono tracking-wider transition-all duration-300 ${
-                        isActive
-                          ? 'text-[#1575B3] font-bold text-sm sm:text-base -translate-y-0.5'
-                          : 'text-slate-500 hover:text-slate-800'
-                      }`}
-                    >
-                      {entry.year}
-                    </span>
-
-                    {/* Timeline Node */}
-                    <div className="h-[28px] flex items-center justify-center my-1">
-                      <div
-                        className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                          isActive
-                            ? 'bg-[#1575B3] ring-4 ring-[#1575B3]/20 scale-125'
-                            : 'bg-slate-400 group-hover:bg-[#1575B3]'
-                        }`}
-                      />
-                    </div>
-
-                    {/* Title */}
-                    <h4
-                      className={`text-xs sm:text-sm leading-snug max-w-[180px] transition-colors duration-300 ${
-                        isActive
-                          ? 'text-slate-900 font-bold'
-                          : 'text-slate-600 font-normal group-hover:text-slate-900'
-                      }`}
-                    >
-                      {entry.title}
-                    </h4>
-                  </article>
-                );
-              })}
-            </div>
+      {/* Header — constrained to content width */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-8 z-10">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/15">
+          <div>
+         
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight uppercase font-serif text-white">
+              {aboutLegacy.heading}
+            </h2>
           </div>
+          <p className="text-xs sm:text-sm text-blue-100/80 max-w-md font-normal leading-relaxed">
+            Four decades of milestones winding like a river — five years ride the full flow at once. When the fifth flows past, the next five arrive.
+          </p>
+        </div>
+      </div>
 
-          {/* Next Arrow Button */}
-          <button
-            onClick={goNext}
-            aria-label="Next milestone"
-            className="z-10 shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-black hover:bg-[#1575B3] text-white flex items-center justify-center transition-colors shadow-md"
+      {/* Winding river — full viewport width */}
+      <div
+        ref={boxRef}
+        className="relative mt-12 h-[420px] sm:h-[510px] lg:h-[530px] w-full"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+          <svg
+            viewBox={`0 0 ${LEGACY_VIEW_W} ${LEGACY_VIEW_H}`}
+            preserveAspectRatio="xMidYMid meet"
+            className="absolute inset-0 w-full h-full overflow-visible"
           >
-            ›
-          </button>
+            <defs>
+              <linearGradient id="riverGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#22d3ee" />
+                <stop offset="55%" stopColor="#ffffff" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#7dd3fc" />
+              </linearGradient>
+              <filter id="riverGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="5" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            {/* Wide soft underlay + dashed flowing waters */}
+            <path
+              ref={pathRef}
+              d={LEGACY_RIVER_PATH}
+              fill="none"
+              stroke="url(#riverGrad)"
+              strokeWidth="10"
+              strokeLinecap="round"
+              opacity="0.18"
+              filter="url(#riverGlow)"
+            />
+            <path
+              d={LEGACY_RIVER_PATH}
+              fill="none"
+              stroke="url(#riverGrad)"
+              strokeWidth="3.5"
+              strokeLinecap="round"
+              className="river-flow"
+            />
+            <path
+              d={LEGACY_RIVER_PATH}
+              fill="none"
+              stroke="rgba(165,243,252,0.9)"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              className="river-flow-fast"
+            />
+          </svg>
+
+          {/* Five beads spread across the full river — filling one by one */}
+          {points.map((p, k) => {
+            const gi = page * WINDOW + k;
+            const milestone = timeline[gi];
+            if (!milestone) return null;
+            const left = toPct(p.x, geo.w, offX);
+            const top = toPct(p.y, geo.h, offY);
+            const slot = active % WINDOW;
+            const isActive = k === slot;
+            const isPassed = k < slot;
+            const delay = k * 90;
+            // Position layout per slot: 1=below/above, 2=below/above, 3=above/below, 4=below/above, 5=above/below
+            const yearAbove = k === 2 || k === 4;
+            return (
+              <button
+                key={`${page}-${gi}-${milestone.year}`}
+                onClick={() => setActive(gi)}
+                onMouseEnter={() => {
+                  setPaused(true);
+                  setHovered(gi);
+                }}
+                onMouseLeave={() => {
+                  setPaused(false);
+                  setHovered(null);
+                }}
+                aria-label={`Milestone ${milestone.year}`}
+                className="group absolute -translate-x-1/2 -translate-y-1/2 focus:outline-none"
+                style={{ left: `${left}%`, top: `${top}%` }}
+              >
+                {isActive && (
+                  <span className="dot-pulse absolute inset-0 rounded-full bg-cyan-300/60" />
+                )}
+                <span
+                  className={`dot-in relative block rounded-full z-10 transition-all duration-300 ${
+                    isActive
+                      ? 'w-[18px] h-[18px] bg-white border border-cyan-200 shadow-[0_0_18px_rgba(103,232,249,0.95)]'
+                      : isPassed
+                        ? 'w-3.5 h-3.5 bg-cyan-300 shadow-[0_0_10px_rgba(103,232,249,0.6)]'
+                        : 'w-3 h-3 bg-white/25 border border-cyan-200/40 group-hover:bg-cyan-300 group-hover:bg-white/70'
+                  }`}
+                  style={{ animationDelay: `${delay}ms` }}
+                />
+                {/* Year on every dot — above (odd slot) / below (even slot) */}
+                <span
+                  className={`fade-in absolute left-1/2 -translate-x-1/2 z-20 whitespace-nowrap font-mono text-[11px] font-semibold tracking-[0.12em] px-1.5 py-0.5 transition-colors duration-300 ${
+                    isActive
+                      ? 'bg-white text-[#0E588A] shadow-[0_0_14px_rgba(103,232,249,0.6)]'
+                      : 'bg-cyan-300/15 text-cyan-100/90 group-hover:bg-cyan-300/25 group-hover:text-white'
+                  } ${yearAbove ? 'bottom-[calc(100%+8px)]' : 'top-[calc(100%+10px)]'}`}
+                  style={{ animationDelay: `${delay + 90}ms` }}
+                >
+                  {milestone.year}
+                </span>
+              </button>
+            );
+          })}
+
+          {/* Single full description card — clamped so it stays inside the viewport */}
+          {(() => {
+            const inWindow =
+              hovered !== null &&
+              hovered >= page * WINDOW &&
+              hovered < page * WINDOW + WINDOW;
+            const descGi = inWindow ? hovered : active;
+            const descK = descGi - page * WINDOW;
+            const dm = timeline[descGi];
+            const dp = points[descK];
+            if (!dm || !dp) return null;
+            const dotX = ((toPct(dp.x, geo.w, offX) / 100) * geo.w);
+            const dotY = ((toPct(dp.y, geo.h, offY) / 100) * geo.h);
+            const cardW = Math.min(340, geo.w * 0.84);
+            let cardLeft = dotX - cardW / 2;
+            cardLeft = Math.max(8, Math.min(cardLeft, geo.w - cardW - 8));
+            const descBelow = descK === 2 || descK === 4;
+            return (
+              <div
+                key={`${page}-${descGi}`}
+                className="fade-in absolute z-30 text-left font-normal text-xs sm:text-sm leading-relaxed text-blue-50 pointer-events-none"
+                style={{
+                  left: cardLeft,
+                  width: cardW,
+                  top: descBelow ? dotY + 14 : undefined,
+                  bottom: descBelow ? undefined : geo.h - dotY + 14,
+                }}
+              >
+                <span className="block border border-cyan-200/25 bg-[#0b3d61]/95 backdrop-blur-md px-4 py-3 shadow-[0_18px_40px_rgba(0,0,0,0.35)]">
+                  {dm.description}
+                </span>
+              </div>
+            );
+          })()}
         </div>
 
-      
-      </div>
+        {/* Page dots only */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-8 z-10 mt-2 flex items-center justify-center gap-2">
+          {Array.from({ length: totalPages }).map((_, pi) => (
+            <button
+              key={pi}
+              onClick={() => goPage(pi)}
+              aria-label={`Go to milestone window ${pi + 1}`}
+              className={`h-1 transition-all duration-300 ${
+                pi === page
+                  ? 'w-8 bg-cyan-300 shadow-[0_0_8px_rgba(103,232,249,0.8)]'
+                  : 'w-2 bg-white/25 hover:bg-white/50'
+              }`}
+            />
+          ))}
+        </div>
     </section>
   );
 };
@@ -381,18 +548,29 @@ export const AboutWhyKothari: React.FC = () => {
           title={aboutWhyKothari.heading}
           description="Six reasons farmers, builders and engineers standardize on Kothari."
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 border border-slate-200">
-          {aboutWhyKothari.items.map((item) => {
+        <div className="flex flex-col divide-y divide-slate-200 border-y border-slate-200 bg-white">
+          {aboutWhyKothari.items.map((item, i) => {
             const Icon = WHY_ICONS[item.icon] || Award;
             return (
-              <div key={item.title} className="group bg-white p-6 space-y-4 hover:bg-slate-50/60 transition-colors">
-                <div className="w-10 h-10 bg-[#F5F6F8] border border-slate-200 flex items-center justify-center group-hover:bg-[#1575B3] group-hover:border-[#1575B3] transition-colors">
+              <div
+                key={item.title}
+                className="group relative flex items-center gap-4 sm:gap-8 px-5 sm:px-8 py-6 sm:py-7 hover:bg-[#F5F6F8] transition-colors"
+              >
+                <span
+                  aria-hidden
+                  className="absolute left-0 top-0 h-full w-[3px] bg-[#1575B3] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-300"
+                />
+                <span className="w-10 shrink-0 font-mono text-sm text-[#1575B3]">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div className="w-12 h-12 shrink-0 bg-[#F5F6F8] border border-slate-200 flex items-center justify-center group-hover:bg-[#1575B3] group-hover:border-[#1575B3] group-hover:shadow-[0_10px_20px_-8px_rgba(21,117,179,0.6)] transition-all duration-300">
                   <Icon className="w-5 h-5 text-[#1575B3] group-hover:text-white transition-colors" />
                 </div>
-                <div className="space-y-1.5">
-                  <h3 className="text-sm font-semibold text-slate-900 leading-snug">{item.title}</h3>
-                  <p className="text-xs text-slate-600 font-normal leading-relaxed">{item.description}</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base font-semibold text-slate-900 leading-snug">{item.title}</h3>
+                  <p className="mt-1 text-sm text-slate-600 font-normal leading-relaxed">{item.description}</p>
                 </div>
+                {/* <ArrowUpRight className="w-5 h-5 shrink-0 text-slate-300 opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:text-[#1575B3] transition-all duration-300" /> */}
               </div>
             );
           })}

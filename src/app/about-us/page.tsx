@@ -26,8 +26,9 @@ export default function AboutPage() {
         <AboutGrowth />
         <AboutVisionMission />
         <AboutApproach />
-        <AboutCoreValues />
+       
         <AboutLegacy />
+         <AboutCoreValues />
         <AboutWhyKothari />
         <Home2Footer />
       </div>
