@@ -183,8 +183,8 @@ const resourcesMegaMenu = {
       image: 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=600&q=80',
     },
     {
-      title: 'Blog',
-      url: '/resources/blog',
+      title: 'Blogs',
+      url: '/blogs',
       image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80',
     },
     {
@@ -194,17 +194,17 @@ const resourcesMegaMenu = {
     },
     {
       title: 'Success Story',
-      url: '/resources/success-story',
+      url: '/success-stories',
       image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80',
     },
     {
-      title: 'Video',
-      url: '/resources/video',
+      title: 'Videos',
+      url: '/videos',
       image: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=600&q=80',
     },
     {
       title: 'Quality Policy',
-      url: '/resources/quality-policy',
+      url: '/quality-policy',
       image: 'https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&w=600&q=80',
     },
   ],

@@ -1,16 +1,28 @@
+import React from 'react';
+import {
+  BadgeCheck,
+  Lightbulb,
+  Leaf,
+  ShieldCheck,
+  Users,
+  PackageCheck,
+  Recycle,
+  Cpu,
+  MessageSquare,
+  HardHat,
+} from 'lucide-react';
 import AppShell from '@/components/AppShell';
 import { Home2Header } from '@/components/Home2Header';
 import { Home2Footer } from '@/components/Home2Footer';
 import { Reveal } from '@/components/main/Reveal';
 import { SectionHeader } from '@/components/solutions/SectionHeader';
+import { QualityDocument } from '@/components/quality-policy/QualityDocument';
 
 export const metadata = {
   title: 'Quality Policy | Kothari Group',
   description:
     'Discover the Kothari Group\u2019s commitment to quality \u2014 our standards for materials, manufacturing, inspection and service in irrigation and agricultural solutions.',
 };
-
-const QUALITY_IMAGE = 'https://kotharigroupindia.com/img/images/quality-policy.webp';
 
 const HERO_STATS = [
   { value: '35+', label: 'Years of Excellence' },
@@ -19,20 +31,58 @@ const HERO_STATS = [
 ];
 
 const PRINCIPLES = [
-  'Quality Excellence \u2013 Meeting and exceeding global standards.',
-  'Process Innovation \u2013 Embracing digital transformation and automation.',
-  'Sustainable Growth \u2013 Minimizing environmental impact through responsible sourcing and production.',
-  'Risk-Based Thinking \u2013 Proactively identifying and mitigating quality-related risks.',
-  'Employee Development \u2013 Empowering our workforce with the latest industry skills.',
+  {
+    title: 'Quality Excellence',
+    description: 'Meeting and exceeding global standards.',
+    icon: BadgeCheck,
+  },
+  {
+    title: 'Process Innovation',
+    description: 'Embracing digital transformation and automation.',
+    icon: Lightbulb,
+  },
+  {
+    title: 'Sustainable Growth',
+    description: 'Minimizing environmental impact through responsible sourcing and production.',
+    icon: Leaf,
+  },
+  {
+    title: 'Risk-Based Thinking',
+    description: 'Proactively identifying and mitigating quality-related risks.',
+    icon: ShieldCheck,
+  },
+  {
+    title: 'Employee Development',
+    description: 'Empowering our workforce with the latest industry skills.',
+    icon: Users,
+  },
 ];
 
 const OBJECTIVES = [
-  'Achieve zero major quality defects through continuous monitoring and preventive actions.',
-  'Enhance supplier quality performance to improve overall product standards.',
-  'Achieve a 10% annual reduction in resource wastage (materials, water, and energy).',
-  'Implement real-time quality monitoring using IoT and automation for predictive maintenance.',
-  'Establish a customer feedback-driven improvement process to enhance satisfaction.',
-  'Maintain a strong focus on workplace safety and regulatory compliance.',
+  {
+    text: 'Achieve zero major quality defects through continuous monitoring and preventive actions.',
+    icon: ShieldCheck,
+  },
+  {
+    text: 'Enhance supplier quality performance to improve overall product standards.',
+    icon: PackageCheck,
+  },
+  {
+    text: 'Achieve a 10% annual reduction in resource wastage (materials, water, and energy).',
+    icon: Recycle,
+  },
+  {
+    text: 'Implement real-time quality monitoring using IoT and automation for predictive maintenance.',
+    icon: Cpu,
+  },
+  {
+    text: 'Establish a customer feedback-driven improvement process to enhance satisfaction.',
+    icon: MessageSquare,
+  },
+  {
+    text: 'Maintain a strong focus on workplace safety and regulatory compliance.',
+    icon: HardHat,
+  },
 ];
 
 export default function QualityPolicyPage() {
@@ -41,7 +91,7 @@ export default function QualityPolicyPage() {
       <div className="text-left">
         <Home2Header />
 
-        <div className="relative w-full min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
+        <div className="relative w-full min-h-[40dvh] sm:min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
           <div className="absolute inset-0 z-0">
             <img
               src="/plant_quality_lab_1784719742717.jpg"
@@ -53,7 +103,7 @@ export default function QualityPolicyPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/30 to-black/50 pointer-events-none" />
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full min-h-[100dvh] pt-24 sm:pt-28 pb-8 sm:pb-12 flex flex-col justify-between">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full min-h-[40dvh] sm:min-h-[100dvh] pt-24 sm:pt-28 pb-8 sm:pb-12 flex flex-col justify-between">
             <div className="w-full flex flex-col gap-5 sm:gap-6 my-auto py-8">
               <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5">
                 Kothari Group
@@ -61,9 +111,9 @@ export default function QualityPolicyPage() {
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
                 Quality Policy
               </h1>
-              <p className="text-sm sm:text-base text-white/85 font-normal leading-relaxed max-w-3xl drop-shadow-sm">
+              {/* <p className="text-sm sm:text-base text-white/85 font-normal leading-relaxed max-w-3xl drop-shadow-sm">
                 Our commitment to excellence in every material, process and product.
-              </p>
+              </p> */}
             </div>
 
             <div className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-10 w-full border-t border-white/20 pt-6 mt-auto max-w-2xl">
@@ -81,73 +131,101 @@ export default function QualityPolicyPage() {
           </div>
         </div>
 
+        {/* OVERVIEW */}
         <section className="w-full bg-white py-16 sm:py-24 border-b border-slate-300/70">
-          <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-6">
             <SectionHeader
               title="Overview"
-              description="At Kothari Agritech Private Limited, we are committed to delivering high-quality, eco-friendly, and technologically advanced products that ensure maximum customer satisfaction."
+              description="Who we are and what drives our quality promise."
             />
+            <Reveal>
+              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed max-w-7xl">
+                The Kothari Group is a leading Indian manufacturer of irrigation and plumbing solutions,
+                delivering reliable, certified products for more than three decades. Every material, process and
+                finished product is governed by a single, uncompromising standard of quality.
+              </p>
+            </Reveal>
+            <Reveal delay={90}>
+              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed max-w-7xl">
+                This Quality Policy outlines the principles and objectives that guide our teams, our suppliers and
+                our partners. It is reviewed continuously so our products keep meeting global standards while
+                respecting people and the planet.
+              </p>
+            </Reveal>
+          </div>
+        </section>
 
-            <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-              <div className="lg:col-span-7 space-y-7 lg:space-y-9">
-                <Reveal>
-                  <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
-                    Our approach is built on the following key principles:
-                  </p>
-                </Reveal>
-
-                <Reveal delay={90}>
-                  <ul className="space-y-3.5">
-                    {PRINCIPLES.map((item, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-3.5 text-sm sm:text-base text-slate-600 font-normal leading-relaxed"
-                      >
-                        <span aria-hidden className="mt-[0.62em] w-1.5 h-1.5 shrink-0 bg-[#1575B3]" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
-
-                <Reveal>
-                  <h2 className="font-serif text-2xl sm:text-3xl font-light uppercase tracking-tight text-slate-900 leading-snug border-l-2 border-[#1575B3] pl-4">
-                    Quality Objectives
-                  </h2>
-                </Reveal>
-
-                <Reveal delay={90}>
-                  <ul className="space-y-3.5">
-                    {OBJECTIVES.map((item, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-3.5 text-sm sm:text-base text-slate-600 font-normal leading-relaxed"
-                      >
-                        <span aria-hidden className="mt-[0.62em] w-1.5 h-1.5 shrink-0 bg-[#1575B3]" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
-              </div>
-
-              <div className="lg:col-span-5 lg:sticky lg:top-24">
-                <Reveal delay={120}>
-                  <div className="relative border border-[#F5F6F8] p-3 sm:p-4">
-                    <img
-                      src={QUALITY_IMAGE}
-                      alt="Quality Policy"
-                      referrerPolicy="no-referrer"
-                      loading="lazy"
-                      className="w-full h-auto object-contain"
+        {/* KEY PRINCIPLES — ledger rows */}
+        <section className="w-full bg-[#F5F6F8] py-16 sm:py-24 border-b border-slate-300/70">
+          <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
+            <SectionHeader
+              title="Our Key Principles"
+              description="Five quality commitments that are non-negotiable."
+            />
+            <div className="flex flex-col divide-y divide-slate-200 border-y border-slate-200 bg-white">
+              {PRINCIPLES.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={item.title}
+                    className="group relative flex items-center gap-4 sm:gap-8 px-5 sm:px-8 py-6 sm:py-7 hover:bg-[#F5F6F8] transition-colors"
+                  >
+                    <span
+                      aria-hidden
+                      className="absolute left-0 top-0 h-full w-[3px] bg-[#1575B3] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-300"
                     />
-                   
+                    <span className="w-10 shrink-0 font-mono text-sm text-[#1575B3]">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <div className="w-12 h-12 shrink-0 bg-[#F5F6F8] border border-slate-200 flex items-center justify-center group-hover:bg-[#1575B3] group-hover:border-[#1575B3] group-hover:shadow-[0_10px_20px_-8px_rgba(21,117,179,0.6)] transition-all duration-300">
+                      <Icon className="w-5 h-5 text-[#1575B3] group-hover:text-white transition-colors" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-base font-semibold text-slate-900 leading-snug">{item.title}</h3>
+                      <p className="mt-1 text-sm text-slate-600 font-normal leading-relaxed">{item.description}</p>
+                    </div>
                   </div>
-                </Reveal>
-              </div>
+                );
+              })}
             </div>
           </div>
         </section>
+
+        {/* QUALITY OBJECTIVES — 3-col card grid */}
+        <section className="w-full bg-white py-16 sm:py-24 border-b border-slate-300/70">
+          <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
+            <SectionHeader
+              title="Quality Objectives"
+              description="Six measurable goals that keep our quality promise sharp."
+            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              {OBJECTIVES.map((objective, i) => {
+                const Icon = objective.icon;
+                return (
+                  <Reveal key={i} delay={(i % 3) * 90} className="h-full">
+                    <div className="group relative h-full bg-white border border-slate-200 p-6 sm:p-7 overflow-hidden hover:border-[#1575B3] hover:shadow-[0_14px_34px_-12px_rgba(21,117,179,0.25)] transition-all duration-300">
+                      <span
+                        aria-hidden
+                        className="absolute left-0 top-0 h-full w-[3px] bg-[#1575B3] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-300"
+                      />
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="w-10 h-10 bg-[#1575B3]/10 border border-[#1575B3]/30 flex items-center justify-center text-[#1575B3] transition-colors duration-300 group-hover:bg-[#1575B3] group-hover:text-white">
+                          <Icon className="w-5 h-5" />
+                        </span>
+                        {/* <span className="font-mono text-xs text-slate-300 group-hover:text-[#1575B3] transition-colors duration-300">
+                          {String(i + 1).padStart(2, '0')}
+                        </span> */}
+                      </div>
+                      <p className="text-sm text-slate-600 font-normal leading-relaxed">{objective.text}</p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <QualityDocument />
 
         <Home2Footer />
       </div>

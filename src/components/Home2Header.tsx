@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState } from 'react';
 import { 
@@ -76,13 +76,15 @@ const scrollToId = (id: string) => {
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 };
 
-export const Home2Header: React.FC = () => {
+export const Home2Header: React.FC<{ solid?: boolean }> = ({ solid = false }) => {
   const [active, setActive] = useState('home');
   const [mobileOpen, setMobileOpen] = useState(false);
   const [divOpen, setDivOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [heroRevealed, setHeroRevealed] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const solidHeader = solid || isScrolled || mobileOpen;
   
   // Popup Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -190,7 +192,7 @@ export const Home2Header: React.FC = () => {
     <>
       <header
         className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-300 ease-in-out ${
-          isScrolled || mobileOpen
+          solidHeader
             ? 'bg-white backdrop-blur-md border-b border-[#DCEAF5] shadow-sm py-2'
             : 'bg-transparent border-b border-white/10 py-3'
         }`}
@@ -205,7 +207,7 @@ export const Home2Header: React.FC = () => {
             href="/"
             onClick={() => handleNav('home')}
             className={`flex items-center shrink-0 transition-all duration-300 px-3 py-1 ${
-              isScrolled || mobileOpen ? 'bg-transparent' : 'bg-white'
+              solidHeader ? 'bg-transparent' : 'bg-white'
             }`}
             aria-label="Kothari Group Home"
           >
@@ -230,8 +232,7 @@ export const Home2Header: React.FC = () => {
                 className={`px-3.5 py-2 text-[17px] font-medium transition-all duration-200 ${
                   active === 'home'
                     ? 'text-[#1575B3]'
-                    : isScrolled
-                    ? 'text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF]/60'
+                    : solidHeader ? 'text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF]/60'
                     : 'text-white/90 hover:text-white hover:bg-white/10'
                 }`}
               >
@@ -249,8 +250,7 @@ export const Home2Header: React.FC = () => {
                   className={`flex items-center gap-1.5 px-3.5 py-2 text-[17px] font-medium transition-all duration-200 ${
                     active === 'why-kothari'
                       ? 'text-[#1575B3]'
-                      : isScrolled
-                      ? 'text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF]/60'
+                      : solidHeader ? 'text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF]/60'
                       : 'text-white/90 hover:text-white hover:bg-white/10'
                   }`}
                 >
@@ -296,8 +296,7 @@ export const Home2Header: React.FC = () => {
                   className={`px-3.5 py-2 text-[17px] font-medium transition-all duration-200 ${
                     active === item.id
                       ? 'text-[#1575B3]'
-                      : isScrolled
-                      ? 'text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF]/60'
+                      : solidHeader ? 'text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF]/60'
                       : 'text-white/90 hover:text-white hover:bg-white/10'
                   }`}
                 >
@@ -316,8 +315,7 @@ export const Home2Header: React.FC = () => {
                   className={`flex items-center gap-1.5 px-3.5 py-2 text-[17px] font-medium transition-all duration-200 ${
                     active === 'solutions'
                       ? 'text-[#1575B3]'
-                      : isScrolled
-                      ? 'text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF]/60'
+                      : solidHeader ? 'text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF]/60'
                       : 'text-white/90 hover:text-white hover:bg-white/10'
                   }`}
                 >
@@ -356,8 +354,8 @@ export const Home2Header: React.FC = () => {
             {/* Get in Touch Button */}
             <button
               onClick={handleOpenGetInTouch}
-              className={`hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium transition-all ${
-                isScrolled
+className={`hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium transition-all ${
+                solidHeader
                   ? 'bg-[#1575B3] hover:bg-[#0E588A] text-white shadow-md shadow-[#1575B3]/15'
                   : 'bg-white hover:bg-white/90 text-black shadow-lg'
               }`}
@@ -374,7 +372,7 @@ export const Home2Header: React.FC = () => {
                 setAboutOpen(false);
               }}
               className={`lg:hidden p-2.5 border transition ${
-                isScrolled || mobileOpen
+                solidHeader
                   ? 'text-[#1575B3] bg-[#F5FAFF] border-[#DCEAF5] hover:bg-[#DCEAF5]/50'
                   : 'text-white bg-white/10 border-white/20 hover:bg-white/20'
               }`}
@@ -523,7 +521,7 @@ export const Home2Header: React.FC = () => {
                   Kothari Group
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-semibold leading-tight text-white mb-4">
-                  Let’s build sustainable solutions together.
+                  Letâ€™s build sustainable solutions together.
                 </h3>
                 <p className="text-sm text-white/80 leading-relaxed mb-8">
                   Reach out to our specialized agricultural and piping experts for consultations, product catalogs, or institutional queries.
@@ -665,3 +663,4 @@ export const Home2Header: React.FC = () => {
     </>
   );
 };
+

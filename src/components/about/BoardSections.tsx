@@ -10,7 +10,7 @@ import { boardHero, boardOfDirectors, youngLeadership, type BoardMember } from '
 /* ── HERO ────────────────────────────────────────────── */
 export const BoardHero: React.FC = () => {
   return (
-    <div className="relative w-full min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
+    <div className="relative w-full  min-h-[40dvh] sm:min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
       <div className="absolute inset-0 z-0">
         <img
           src="heronew.jpg"
@@ -22,7 +22,7 @@ export const BoardHero: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/30 to-black/50 pointer-events-none" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full min-h-[100dvh] pt-24 sm:pt-28 pb-8 sm:pb-12 flex flex-col justify-between">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full  min-h-[40dvh] sm:min-h-[100dvh] pt-24 sm:pt-28 pb-8 sm:pb-12 flex flex-col justify-between">
         {/* <nav className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-white/60 overflow-x-auto whitespace-nowrap shrink-0">
           <Link href="/" className="hover:text-white transition-colors">Home</Link>
           <ChevronRight className="w-3 h-3 shrink-0" />

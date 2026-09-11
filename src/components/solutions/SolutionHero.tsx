@@ -7,7 +7,7 @@ export const SolutionHero: React.FC<{ solution: Solution }> = ({ solution }) => 
   const featured = solution.relatedProducts[0];
 
   return (
-    <div className="relative w-full min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
+    <div className="relative w-full  min-h-[40dvh] sm:min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <img
@@ -25,7 +25,7 @@ export const SolutionHero: React.FC<{ solution: Solution }> = ({ solution }) => 
       </div>
 
       {/* Main Container - Full Height Layout */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full min-h-[100dvh] pt-24 sm:pt-28 pb-8 sm:pb-12 flex flex-col justify-between">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full  min-h-[40dvh] sm:min-h-[100dvh] pt-24 sm:pt-28 pb-8 sm:pb-12 flex flex-col justify-between">
 
         {/* Breadcrumb */}
         {/* <nav aria-hidden="true" className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-white/60 overflow-x-auto whitespace-nowrap shrink-0">

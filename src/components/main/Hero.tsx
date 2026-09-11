@@ -94,7 +94,7 @@ export const Hero = () => {
   const active = slides[currentSlide];
 
   return (
-    <div className="relative w-full min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
+    <div className="relative w-full  min-h-[80dvh] sm:min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <div ref={bgRef} className="relative w-full h-full">
@@ -116,7 +116,7 @@ export const Hero = () => {
       </div>
 
       {/* Main Container - Full Height Layout */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full min-h-[100dvh] pt-20 pb-8 sm:pb-12 flex flex-col justify-between">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full  min-h-[80dvh] sm:min-h-[100dvh] pt-20 pb-8 sm:pb-12 flex flex-col justify-between">
         
         {/* Top spacer to ensure vertical balance */}
         <div aria-hidden="true" className="w-full shrink-0 h-4" />

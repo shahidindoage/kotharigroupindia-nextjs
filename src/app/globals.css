@@ -375,3 +375,100 @@
   color: #475569;
   margin-bottom: 0.75rem;
 }
+
+/* 5. Blog Article Body */
+.wp-blog-content {
+  color: #334155;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.wp-blog-content > p {
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  color: #334155;
+  line-height: 1.75;
+}
+.wp-blog-content h1,
+.wp-blog-content h2,
+.wp-blog-content h3,
+.wp-blog-content h4 {
+  font-family: 'Lato', sans-serif;
+  color: #0f172a;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 2rem 0 0.75rem;
+}
+.wp-blog-content h2 { font-size: 1.6rem; }
+.wp-blog-content h3 { font-size: 1.3rem; }
+.wp-blog-content h4 { font-size: 1.1rem; }
+.wp-blog-content ul,
+.wp-blog-content ol {
+  margin: 0 0 1.25rem 1.5rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.wp-blog-content ul { list-style: disc; }
+.wp-blog-content ol { list-style: decimal; }
+.wp-blog-content li {
+  font-size: 1rem;
+  color: #334155;
+  line-height: 1.7;
+}
+.wp-blog-content blockquote {
+  margin: 1.75rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 3px solid #1575B3;
+  background: #F5FAFF;
+  color: #1e293b;
+  font-style: italic;
+}
+.wp-blog-content a {
+  color: #1575B3;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.wp-blog-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border: 1px solid #e2e8f0;
+}
+.wp-blog-content figure {
+  margin: 1.5rem 0;
+}
+.wp-blog-content figure img {
+  margin: 0;
+}
+.wp-blog-content figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #64748b;
+  text-align: center;
+}
+.wp-blog-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+  background: white;
+}
+.wp-blog-content th,
+.wp-blog-content td {
+  border: 1px solid #e2e8f0;
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+}
+.wp-blog-content th {
+  background: #1575B3;
+  color: white;
+  font-family: monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+}
+.wp-blog-content strong {
+  color: #0f172a;
+  font-weight: 700;
+}
