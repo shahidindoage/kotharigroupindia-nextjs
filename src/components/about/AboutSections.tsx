@@ -242,16 +242,23 @@ export const AboutCoreValues: React.FC = () => {
 };
 
 /* ── 6. LEGACY — THE RIVER OF MILESTONES ─────────────── */
-const LEGACY_RIVER_PATH =
-  'M 0 65 C 130 25 250 130 350 130 C 450 130 470 265 580 250 C 690 235 720 130 840 150 C 960 170 960 320 1180 295';
+const LEGACY_RIVER_PATH = 'M 0 250 L 1200 250';
 
 const LEGACY_VIEW_W = 1200;
 const LEGACY_VIEW_H = 500;
 
+const LEGACY_BG_IMAGES = [
+  '/heronew.jpg',
+  '/heronew2.jpg',
+  '/heronew3.jpg',
+  '/t3.jpg',
+  '/plant_quality_lab_1784719742717.jpg',
+];
+
 // Five fixed "beads" spread along the full river — each cycles through milestones
 const LEGACY_BEAD_FRACTIONS = [0.1, 0.3, 0.47, 0.66, 0.85];
 
-export const AboutLegacy: React.FC = () => {
+export const AboutLegacy: React.FC = () => { 
   const timeline = aboutLegacy.timeline;
   const WINDOW = 5;
   const [active, setActive] = useState(0);
@@ -304,13 +311,10 @@ export const AboutLegacy: React.FC = () => {
     };
   }, []);
 
-  const scale = Math.min(geo.w / LEGACY_VIEW_W, geo.h / LEGACY_VIEW_H);
-  const boxW = LEGACY_VIEW_W * scale;
-  const boxH = LEGACY_VIEW_H * scale;
-  const offX = (geo.w - boxW) / 2;
-  const offY = (geo.h - boxH) / 2;
-  const toPct = (value: number, size: number, offset: number) =>
-    ((offset + value * scale) / size) * 100;
+  // Uniform non-uniform mapping — the SVG uses preserveAspectRatio="none",
+  // so user-space coords map directly to percentage positions in the rendered box.
+  const toPctX = (x: number) => (x / LEGACY_VIEW_W) * 100;
+  const toPctY = (y: number) => (y / LEGACY_VIEW_H) * 100;
 
   // Auto-slide between years — pauses on hover
   useEffect(() => {
@@ -338,12 +342,13 @@ export const AboutLegacy: React.FC = () => {
         }}
       />
 
-      {/* Faint background image */}
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-cover bg-center opacity-[0.04] pointer-events-none"
-        style={{ backgroundImage: "url('/heronew3.jpg')" }}
-      />
+{/* Faint background image — changes with each milestone */}
+          <div
+            key={`bg-${active}`}
+            aria-hidden
+            className="absolute inset-0 bg-cover bg-center opacity-[0.04] pointer-events-none"
+            style={{ backgroundImage: `url('${LEGACY_BG_IMAGES[active % LEGACY_BG_IMAGES.length]}')` }}
+          />
    
 
       {/* Header — constrained to content width */}
@@ -362,7 +367,7 @@ export const AboutLegacy: React.FC = () => {
         </div>
       </div>
 
-      {/* Winding river — full viewport width */}
+      {/* Straight river line — full viewport width */}
       <div
         ref={boxRef}
         className="relative mt-12 h-[420px] sm:h-[510px] lg:h-[530px] w-full"
@@ -371,7 +376,7 @@ export const AboutLegacy: React.FC = () => {
       >
           <svg
             viewBox={`0 0 ${LEGACY_VIEW_W} ${LEGACY_VIEW_H}`}
-            preserveAspectRatio="xMidYMid meet"
+            preserveAspectRatio="none"
             className="absolute inset-0 w-full h-full overflow-visible"
           >
             <defs>
@@ -423,14 +428,16 @@ export const AboutLegacy: React.FC = () => {
             const gi = page * WINDOW + k;
             const milestone = timeline[gi];
             if (!milestone) return null;
-            const left = toPct(p.x, geo.w, offX);
-            const top = toPct(p.y, geo.h, offY);
+            const left = toPctX(p.x);
+            const top = toPctY(p.y);
             const slot = active % WINDOW;
             const isActive = k === slot;
             const isPassed = k < slot;
             const delay = k * 90;
             // Position layout per slot: 1=below/above, 2=below/above, 3=above/below, 4=below/above, 5=above/below
-            const yearAbove = k === 2 || k === 4;
+            // Odd dots (0,2,4): year below, description above
+            // Even dots (1,3): year above, description below
+            const yearAbove = k === 1 || k === 3;
             return (
               <button
                 key={`${page}-${gi}-${milestone.year}`}
@@ -486,12 +493,13 @@ export const AboutLegacy: React.FC = () => {
             const dm = timeline[descGi];
             const dp = points[descK];
             if (!dm || !dp) return null;
-            const dotX = ((toPct(dp.x, geo.w, offX) / 100) * geo.w);
-            const dotY = ((toPct(dp.y, geo.h, offY) / 100) * geo.h);
+            const dotX = (dp.x / LEGACY_VIEW_W) * geo.w;
+            const dotY = (dp.y / LEGACY_VIEW_H) * geo.h;
             const cardW = Math.min(340, geo.w * 0.84);
             let cardLeft = dotX - cardW / 2;
             cardLeft = Math.max(8, Math.min(cardLeft, geo.w - cardW - 8));
-            const descBelow = descK === 2 || descK === 4;
+            // Odd dots (0,2,4): description above; Even dots (1,3): description below
+            const descBelow = descK === 1 || descK === 3;
             return (
               <div
                 key={`${page}-${descGi}`}
