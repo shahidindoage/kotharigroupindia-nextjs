@@ -521,7 +521,7 @@ className={`hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-me
                   Kothari Group
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-semibold leading-tight text-white mb-4">
-                  Letâ€™s build sustainable solutions together.
+                  Let's build sustainable solutions together.
                 </h3>
                 <p className="text-sm text-white/80 leading-relaxed mb-8">
                   Reach out to our specialized agricultural and piping experts for consultations, product catalogs, or institutional queries.

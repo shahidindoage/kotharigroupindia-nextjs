@@ -59,8 +59,36 @@ async function Article({ slug }: { slug: string }) {
           {/* Glassy byline card - bottom right */}
           <div className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 lg:right-10">
             <div className="bg-white/15 backdrop-blur-md border border-white/30 shadow-lg px-2 sm:px-7 py-2 sm:py-5 flex flex-col gap-3.5">
-              
-              <div>
+
+              <div className="flex items-center gap-2 sm:gap-3">
+                {post.authorAvatar ? (
+                  <img
+                    src={post.authorAvatar}
+                    alt={post.author}
+                    referrerPolicy="no-referrer"
+                    className="w-7 h-7 sm:w-10 sm:h-10 rounded-full object-cover border border-white/40"
+                  />
+                ) : (
+                  <span className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-[#1575B3]/90 text-white flex items-center justify-center text-[10px] sm:text-sm font-semibold uppercase">
+                    {post.author
+                      .split(/\s+/)
+                      .filter(Boolean)
+                      .map((w: string) => w[0])
+                      .slice(0, 2)
+                      .join('')}
+                  </span>
+                )}
+                <div>
+                  <span className="block text-[6px] sm:text-[10px] font-mono tracking-[0.2em] uppercase text-white/70">
+                    Written by
+                  </span>
+                  <span className="block text-[9px] sm:text-sm font-semibold text-white leading-snug">
+                    {post.author}
+                  </span>
+                </div>
+              </div>
+
+              <div className="pt-3 border-t border-white/20">
                 <span className="block text-[6px] sm:text-[10px] font-mono tracking-[0.2em] uppercase text-white/70">
                   Published on
                 </span>

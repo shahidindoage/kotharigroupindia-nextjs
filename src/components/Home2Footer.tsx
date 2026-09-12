@@ -18,11 +18,13 @@ const scrollToId = (id: string) => {
 };
 
 const aboutLinks = [
-  { label: 'Our Legacy', target: 'why-kothari' },
-  { label: 'Leadership', target: 'why-kothari' },
-  { label: 'Careers', target: 'home2-footer' },
-  { label: 'Sustainability', target: 'impact' },
-  { label: 'News & Media', target: 'news' }
+  { label: 'Our Legacy', target: 'about-us' },
+  { label: 'Leadership', target: 'our-board' },
+  { label: 'Career', target: 'career' },
+  { label: 'Sustainability', target: 'sustainability' },
+  { label: 'Blogs', target: 'blogs' },
+  { label: 'News & Articles', target: 'news' },
+  {label: 'Contact Us', target: 'contact-us'},
 ];
 
 const divisionLinks = [
@@ -31,10 +33,10 @@ const divisionLinks = [
 ];
 
 const supportLinks = [
-  { label: 'Downloads', target: 'home2-footer' },
-  { label: 'Dealer Locator', target: 'home2-footer' },
-  { label: 'FAQs', target: 'home2-footer' },
-  { label: 'Contact Us', target: 'home2-footer' }
+  { label: 'Downloads', target: 'downloads' },
+  { label: 'Become Dealer', target: 'become-dealer' },
+  // { label: 'FAQs', target: 'home2-footer' },
+  { label: 'Contact Us', target: 'contact-us' }
 ];
 
 const socialGroups = [
@@ -99,9 +101,9 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
             <ul className="space-y-2 font-light text-white/80">
               {aboutLinks.map((link) => (
                 <li key={link.label}>
-                  <button onClick={() => scrollToId(link.target)} className="hover:text-white hover:underline transition">
+                  <Link href={link.target}  className="hover:text-white hover:underline transition">
                     {link.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -141,9 +143,9 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
               <ul className="space-y-2 font-light text-white/80">
                 {supportLinks.map((link) => (
                   <li key={link.label}>
-                    <button onClick={() => scrollToId(link.target)} className="hover:text-white hover:underline transition">
+                    <Link href={link.target} className="hover:text-white hover:underline transition">
                       {link.label}
-                    </button>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -181,15 +183,13 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
           <p>© 2026 Kothari Group. All Rights Reserved.</p>
 
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            <button onClick={() => scrollToId('home2-footer')} className="hover:text-white hover:underline transition">
+            <Link href="/privacy-policy" className="hover:text-white hover:underline transition">
               Privacy Policy
-            </button>
-            <button onClick={() => scrollToId('home2-footer')} className="hover:text-white hover:underline transition">
+            </Link>
+            <Link href="/terms-and-conditions" className="hover:text-white hover:underline transition">
               Terms & Conditions
-            </button>
-            <button onClick={() => scrollToId('home2-footer')} className="hover:text-white hover:underline transition">
-              Disclaimer
-            </button>
+            </Link>
+          
           </div>
         </div>
 

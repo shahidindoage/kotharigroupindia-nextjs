@@ -10,6 +10,7 @@ export interface WpBlogPost {
   excerpt: string;
   date: string;
   author: string;
+  authorAvatar: string | null;
   category: string;
   featuredImage: string | null;
   readMinutes: number;
@@ -64,7 +65,15 @@ function mapPost(raw: any): WpBlogPost {
   const media = embed['wp:featuredmedia'];
   const term = embed['wp:term'];
   const category = term?.[0]?.find((t: any) => t.taxonomy === 'category')?.name ?? 'Kothari Group';
-  const author = embed?.author?.[0]?.name ?? 'Kothari Group';
+  const author =
+    raw.acf?.author_name ??
+    embed?.author?.[0]?.name ??
+    'Kothari Group';
+  const authorAvatar = embed?.author?.[0]?.avatar_urls?.['96'] ?? null;
+  const authorImageOverride =
+    raw.acf?.author_image ??
+    embed?.author?.[0]?.acf?.author_image ??
+    null;
   const content = raw.content?.rendered ?? '';
   return {
     id: raw.id,
@@ -73,6 +82,7 @@ function mapPost(raw: any): WpBlogPost {
     excerpt: stripHtml(raw.excerpt?.rendered ?? ''),
     date: formatDate(raw.date ?? ''),
     author,
+    authorAvatar: authorImageOverride || authorAvatar,
     category,
     featuredImage: media?.[0]?.source_url ?? null,
     readMinutes: estimateReadMinutes(content),

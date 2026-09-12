@@ -10,6 +10,7 @@ import {
   Instagram
 } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
+import Link from 'next/link';
 
 interface FooterProps {
   onOpenQuoteModal?: () => void;
@@ -171,9 +172,9 @@ export const Footer: React.FC<FooterProps> = ({
             <ul className="space-y-2 font-light text-white/80">
               {footerData?.quickLinks?.map((link: any, index: number) => (
                 <li key={index}>
-                  <button onClick={() => onSelectSection?.(link.toLowerCase().replace(/\s/g, '-'))} className="hover:text-white hover:underline transition text-left">
-                    {link}
-                  </button>
+                  <Link href={link.target} className="hover:text-white hover:underline transition text-left">
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -219,12 +220,12 @@ export const Footer: React.FC<FooterProps> = ({
           </p>
 
           <div className="flex items-center gap-6">
-            <button onClick={() => onSelectSection?.('why-kothari')} className="hover:text-white hover:underline transition">
-              Quality Assurance Policy
-            </button>
-            <button onClick={onOpenQuoteModal} className="text-white font-medium hover:underline">
-              Get Quotation
-            </button>
+           <Link href="/privacy-policy" className="hover:text-white hover:underline transition">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-and-conditions" className="hover:text-white hover:underline transition">
+              Terms & Conditions
+            </Link>
           </div>
         </div>
 

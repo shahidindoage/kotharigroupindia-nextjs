@@ -1,8 +1,22 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence, type PanInfo } from 'framer-motion';
 import { ArrowUpRight, ChevronRight, Sun, Leaf, Users } from 'lucide-react';
 import { SectionHeader } from './SectionHeader';
 import { Reveal } from '../main/Reveal';
+
+const YouTubeIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+    <path
+      fill="#FF0000"
+      fillRule="evenodd"
+      d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+    />
+    <path fill="white" d="M9.545 8.432L15.818 12l-6.273 3.568z" />
+  </svg>
+);
 
 const PILLARS = [
   {
@@ -156,21 +170,32 @@ export const SustainHero: React.FC = () => {
 
           {/* Right Side: Video Card */}
           <div className="w-full lg:w-auto lg:max-w-[420px] shrink-0">
-            <div className="bg-black/50 backdrop-blur-md border border-white/20 rounded-sm shadow-2xl overflow-hidden">
-              <div className="relative aspect-video w-full">
-                <iframe
-                  src="https://www.youtube.com/embed/IZ1k7fZDNss"
-                  title="Sustainability at Kothari Group"
-                  className="absolute inset-0 w-full h-full"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
+            <a
+              href="https://www.youtube.com/watch?v=IZ1k7fZDNss"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Watch our story on YouTube"
+              className="group card bg-black/50 backdrop-blur-md border border-white/20 rounded-sm shadow-2xl overflow-hidden block cursor-pointer"
+            >
+              <div className="relative aspect-video w-full bg-slate-900">
+                <img
+                  src="https://img.youtube.com/vi/IZ1k7fZDNss/maxresdefault.jpg"
+                  alt="Watch our story"
+                  referrerPolicy="no-referrer"
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:scale-[1.02] transition-all duration-500"
                 />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors" />
+                <div className="absolute inset-0 bg-white/10 backdrop-blur-[2px] pointer-events-none" />
+<div className="absolute inset-0 flex items-center justify-center">
+                  <YouTubeIcon className="w-9 h-9 drop-shadow-lg" />
+                </div>
               </div>
-              <p className="px-4 py-3 text-xs font-mono tracking-widest uppercase text-white/80">
-                Watch our story
-              </p>
-            </div>
+              <div className="px-4 py-3 text-xs font-mono tracking-widest uppercase text-white/85 group-hover:text-sky-200 flex items-center justify-between gap-3 transition-colors">
+                <span>Watch our story</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </div>
+            </a>
           </div>
 
         </div>
@@ -219,9 +244,91 @@ const VIDEO_TESTIMONIALS = [
   { id: 'IZ1k7fZDNss', title: 'Farmer Testimonial 1' },
   { id: 'BDgJgfq67_s', title: 'Farmer Testimonial 2' },
   { id: '3uNUGXYo3UM', title: 'Farmer Testimonial 3' },
+  { id: 'k2Dbf9smCA4', title: 'Farmer Testimonial 4' },
+  { id: 's8A44TYAS-8', title: 'Farmer Testimonial 5' },
+  { id: 'fLviTf8y-Ew', title: 'Farmer Testimonial 6' },
 ];
 
+const testimonialSlideVariants = {
+  enter: (dir: number) => ({
+    x: dir > 0 ? '100%' : '-100%',
+    opacity: 0,
+  }),
+  center: {
+    x: '0%',
+    opacity: 1,
+  },
+  exit: (dir: number) => ({
+    x: dir < 0 ? '100%' : '-100%',
+    opacity: 0,
+  }),
+};
+
 export const SustainTestimonials: React.FC = () => {
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerPage(1);
+      } else if (window.innerWidth < 1024) {
+        setItemsPerPage(2);
+      } else {
+        setItemsPerPage(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const totalPages = Math.max(1, Math.ceil(VIDEO_TESTIMONIALS.length / itemsPerPage));
+  const safePage = currentPage % totalPages;
+
+  const handleNext = React.useCallback(() => {
+    setDirection(1);
+    setCurrentPage((prev) => (prev + 1) % totalPages);
+  }, [totalPages]);
+
+  const handlePrev = React.useCallback(() => {
+    setDirection(-1);
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  }, [totalPages]);
+
+  useEffect(() => {
+    if (isPaused || totalPages <= 1) return;
+    const autoSlideTimer = setInterval(() => {
+      handleNext();
+    }, 4000);
+    return () => clearInterval(autoSlideTimer);
+  }, [isPaused, totalPages, handleNext]);
+
+  const handlePanEnd = (_: unknown, info: PanInfo) => {
+    const swipeThreshold = 40;
+    const velocityThreshold = 200;
+
+    if (
+      info.offset.x < -swipeThreshold ||
+      info.velocity.x < -velocityThreshold
+    ) {
+      handleNext();
+    } else if (
+      info.offset.x > swipeThreshold ||
+      info.velocity.x > velocityThreshold
+    ) {
+      handlePrev();
+    }
+  };
+
+  const visibleTestimonials = VIDEO_TESTIMONIALS.slice(
+    safePage * itemsPerPage,
+    safePage * itemsPerPage + itemsPerPage
+  );
+
   return (
     <section className="w-full bg-[#F5F6F8] py-16 sm:py-24 border-b border-slate-300/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
@@ -229,23 +336,62 @@ export const SustainTestimonials: React.FC = () => {
           title="What People Say"
           description="Farmers and partners sharing their experience with Kothari Group."
         />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          {VIDEO_TESTIMONIALS.map((video) => (
-            <div
-              key={video.id}
-              className="group relative bg-white border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#1575B3] transition-all duration-500 overflow-hidden"
+
+        <div
+          className="relative min-h-[200px] w-full overflow-hidden touch-pan-y"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <AnimatePresence initial={false} custom={direction} mode="wait">
+            <motion.div
+              key={safePage}
+              custom={direction}
+              variants={testimonialSlideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+              onPanEnd={handlePanEnd}
+              className="w-full cursor-grab active:cursor-grabbing touch-pan-y"
             >
-              <div className="relative aspect-video w-full bg-slate-950 overflow-hidden">
-                <iframe
-                  src={`https://www.youtube.com/embed/${video.id}`}
-                  title={video.title}
-                  className="absolute inset-0 w-full h-full"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                {visibleTestimonials.map((video) => (
+                  <div
+                    key={video.id}
+                    className="group relative bg-white border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#1575B3] transition-all duration-500 overflow-hidden"
+                  >
+                    <div className="relative aspect-video w-full bg-slate-950 overflow-hidden">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${video.id}`}
+                        title={video.title}
+                        className="absolute inset-0 w-full h-full"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <div className="flex items-center justify-center gap-3 pt-2">
+          {Array.from({ length: totalPages }).map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => {
+                setDirection(idx > safePage ? 1 : -1);
+                setCurrentPage(idx);
+              }}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`h-1 transition-all duration-300 ${
+                idx === safePage
+                  ? 'w-8 bg-[#1575B3]'
+                  : 'w-2 bg-slate-300 hover:bg-[#1575B3]/50'
+              }`}
+            />
           ))}
         </div>
       </div>

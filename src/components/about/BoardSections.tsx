@@ -1,55 +1,106 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence, type PanInfo } from 'framer-motion';
 import { ChevronRight, ChevronDown, ChevronUp, Linkedin, X } from 'lucide-react';
 import { SectionHeader } from '../solutions/SectionHeader';
 import { Reveal } from '../main/Reveal';
 import { boardHero, boardOfDirectors, youngLeadership, type BoardMember } from '@/data/board';
 
+const slideVariants = {
+  enter: (dir: number) => ({
+    x: dir > 0 ? '100%' : '-100%',
+    opacity: 0,
+  }),
+  center: {
+    x: '0%',
+    opacity: 1,
+  },
+  exit: (dir: number) => ({
+    x: dir < 0 ? '100%' : '-100%',
+    opacity: 0,
+  }),
+};
+
 /* ── HERO ────────────────────────────────────────────── */
 export const BoardHero: React.FC = () => {
   return (
-    <div className="relative w-full  min-h-[40dvh] sm:min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
-      <div className="absolute inset-0 z-0">
-        <img
-          src="heronew.jpg"
-          alt="Kothari Group leadership"
-          referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-black/25 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/30 to-black/50 pointer-events-none" />
-      </div>
+    // <div className="relative w-full min-h-[50dvh] bg-[#061E33] text-white font-sans overflow-hidden flex flex-col justify-between">
+    //   <div className="absolute inset-0 z-0">
+    //     <img
+    //       src="heronew.jpg"
+    //       alt="Kothari Group leadership"
+    //       referrerPolicy="no-referrer"
+    //       className="w-full h-full object-cover object-center"
+    //     />
+    //     <div className="absolute inset-0 bg-black/25 pointer-events-none" />
+    //     <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/30 to-black/50 pointer-events-none" />
+    //   </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full  min-h-[40dvh] sm:min-h-[100dvh] pt-24 sm:pt-28 pb-8 sm:pb-12 flex flex-col justify-between">
-        {/* <nav className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-white/60 overflow-x-auto whitespace-nowrap shrink-0">
-          <Link href="/" className="hover:text-white transition-colors">Home</Link>
-          <ChevronRight className="w-3 h-3 shrink-0" />
-          <Link href="/about" className="hover:text-white transition-colors">About Us</Link>
-          <ChevronRight className="w-3 h-3 shrink-0" />
-          <span className="text-white/90">Our Board</span>
-        </nav> */}
+    //   <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full  min-h-[40dvh] sm:min-h-[100dvh] pt-24 sm:pt-28 pb-8 sm:pb-12 flex flex-col justify-between">
+    //     {/* <nav className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-white/60 overflow-x-auto whitespace-nowrap shrink-0">
+    //       <Link href="/" className="hover:text-white transition-colors">Home</Link>
+    //       <ChevronRight className="w-3 h-3 shrink-0" />
+    //       <Link href="/about" className="hover:text-white transition-colors">About Us</Link>
+    //       <ChevronRight className="w-3 h-3 shrink-0" />
+    //       <span className="text-white/90">Our Board</span>
+    //     </nav> */}
 
-        <div className="w-full flex flex-col gap-5 sm:gap-6 my-auto py-8">
-          <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5">
-            {boardHero.eyebrow}
-          </span>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
-            {boardHero.heading}
-          </h1>
-          <p className="text-sm sm:text-base text-white/85 font-normal leading-relaxed max-w-3xl drop-shadow-sm">
-            {boardHero.description}
-          </p>
+    //     <div className="w-full flex flex-col gap-5 sm:gap-6 my-auto py-8">
+    //       <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5">
+    //         {boardHero.eyebrow}
+    //       </span>
+    //       <h1 className="text-4xl sm:text-6xl lg:text-6xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
+    //         {boardHero.heading}
+    //       </h1>
+    //       <p className="text-sm sm:text-base text-white/85 font-normal leading-relaxed max-w-3xl drop-shadow-sm">
+    //         {boardHero.description}
+    //       </p>
+    //     </div>
+
+    //     {/* <div className="w-full border-t border-white/20 pt-6 mt-auto" /> */}
+    //   </div>
+    // </div>
+
+
+<div className="relative w-full min-h-[50dvh] bg-[#061E33] text-white font-sans overflow-hidden flex flex-col justify-between">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/heronew.jpg"
+              alt="News & press releases"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/25 to-black/70 pointer-events-none" />
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 w-full min-h-[50dvh] pt-28 sm:pt-32 pb-10 flex flex-col justify-between">
+            <div className="flex flex-col gap-5 sm:gap-6 my-auto py-8">
+              <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5">
+                Kothari Group
+              </span>
+              <h1 className="text-4xl sm:text-6xl lg:text-6xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
+                {boardHero.heading}
+              </h1>
+              <p className="text-sm sm:text-base text-white/85 font-normal leading-relaxed max-w-3xl drop-shadow-sm">
+                {boardHero.description}
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* <div className="w-full border-t border-white/20 pt-6 mt-auto" /> */}
-      </div>
-    </div>
   );
 };
 
 /* ── MEMBER CARD ─────────────────────────────────────── */
+const truncateWords = (text: string, limit: number) => {
+  const words = text.replace(/\s+/g, ' ').trim().split(' ');
+  if (words.length <= limit) return words.join(' ');
+  return words.slice(0, limit).join(' ') + '...';
+};
+
 const MemberCard: React.FC<{ member: BoardMember }> = ({ member }) => {
   const [expanded, setExpanded] = useState(false);
   const paragraphs = member.readMoreContent.split('\n').map((p) => p.trim()).filter(Boolean);
@@ -150,9 +201,9 @@ export const BoardDirectors: React.FC = () => {
           description="The founders and stewards guiding Kothari Group's vision and growth."
         />
 
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div className="grid lg:grid-cols-12 gap-4 lg:gap-5">
           {/* Name tabs */}
-          <div className="lg:col-span-5 lg:self-start lg:sticky lg:top-24">
+          <div className="lg:col-span-6">
             <Reveal className="flex flex-col border-y border-slate-200 bg-white">
               {boardOfDirectors.map((member, i) => {
                 const isActive = i === activeIndex;
@@ -211,9 +262,7 @@ export const BoardDirectors: React.FC = () => {
                     </span>
                     {isBodyOpen && (
                       <span className="fade-in block mt-4 pt-4 border-t border-slate-200/80 text-sm text-slate-600 font-normal leading-relaxed">
-                        {member.description && (
-                          <span className="block">{member.description}</span>
-                        )}
+                        <span className="block">{truncateWords(member.readMoreContent, 100)}</span>
                         <span
                           role="button"
                           tabIndex={0}
@@ -240,10 +289,10 @@ export const BoardDirectors: React.FC = () => {
             </Reveal>
           </div>
 
-          {/* Portrait preview */}
-          <div className="lg:col-span-7">
-            <Reveal delay={80} className="h-full">
-              <div className="relative aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] overflow-hidden bg-slate-100">
+{/* Portrait preview */}
+          <div className="lg:col-span-6">
+            <Reveal delay={80}>
+              <div className="relative overflow-hidden bg-slate-100 mx-auto max-w-[440px] sm:max-w-[500px] aspect-[4/5] sm:aspect-[3/4]">
                 {boardOfDirectors.map((member, i) => (
                   <img
                     key={member.name}
@@ -251,18 +300,18 @@ export const BoardDirectors: React.FC = () => {
                     alt={member.name}
                     referrerPolicy="no-referrer"
                     loading="lazy"
-                    className={`absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 ease-out ${
-                      i === activeIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+                    className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 ease-out ${
+                      i === activeIndex ? 'opacity-100' : 'opacity-0'
                     }`}
                   />
                 ))}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent pointer-events-none" />
+                {/* <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent pointer-events-none" /> */}
 
                 {/* <div className="absolute top-5 right-5 w-11 h-11 bg-white/10 backdrop-blur-md border border-white/25 text-white flex items-center justify-center font-mono text-xs">
                   {String(activeIndex + 1).padStart(2, '0')}
                 </div> */}
 
-                <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-4 p-6 sm:p-8">
+                {/* <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-4 p-6 sm:p-8">
                   <div className="transition-opacity duration-300">
                     <p className="text-[11px] font-mono tracking-[0.22em] uppercase text-sky-200">
                       {active.designation}
@@ -282,7 +331,7 @@ export const BoardDirectors: React.FC = () => {
                       <Linkedin className="w-4 h-4" />
                     </a>
                   )}
-                </div>
+                </div> */}
               </div>
             </Reveal>
           </div>
@@ -334,22 +383,69 @@ export const BoardDirectors: React.FC = () => {
 
 /* ── YOUNG LEADERSHIP ────────────────────────────────── */
 export const BoardYoungLeadership: React.FC = () => {
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const handleScroll = () => {
-    const el = scrollerRef.current;
-    const card = el?.firstElementChild as HTMLElement | null;
-    if (!el || !card) return;
-    setActiveIndex(Math.round(el.scrollLeft / card.offsetWidth));
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerPage(1);
+      } else if (window.innerWidth < 1024) {
+        setItemsPerPage(2);
+      } else {
+        setItemsPerPage(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const totalPages = Math.max(1, Math.ceil(youngLeadership.members.length / itemsPerPage));
+  const safePage = currentPage % totalPages;
+
+  const handleNext = React.useCallback(() => {
+    setDirection(1);
+    setCurrentPage((prev) => (prev + 1) % totalPages);
+  }, [totalPages]);
+
+  const handlePrev = React.useCallback(() => {
+    setDirection(-1);
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  }, [totalPages]);
+
+  useEffect(() => {
+    if (isPaused || totalPages <= 1) return;
+    const autoSlideTimer = setInterval(() => {
+      handleNext();
+    }, 4000);
+    return () => clearInterval(autoSlideTimer);
+  }, [isPaused, totalPages, handleNext]);
+
+  const handlePanEnd = (_: unknown, info: PanInfo) => {
+    const swipeThreshold = 40;
+    const velocityThreshold = 200;
+
+    if (
+      info.offset.x < -swipeThreshold ||
+      info.velocity.x < -velocityThreshold
+    ) {
+      handleNext();
+    } else if (
+      info.offset.x > swipeThreshold ||
+      info.velocity.x > velocityThreshold
+    ) {
+      handlePrev();
+    }
   };
 
-  const scrollToSlide = (idx: number) => {
-    const el = scrollerRef.current;
-    const card = el?.firstElementChild as HTMLElement | null;
-    if (!el || !card) return;
-    el.scrollTo({ left: idx * card.offsetWidth, behavior: 'smooth' });
-  };
+  const visibleMembers = youngLeadership.members.slice(
+    safePage * itemsPerPage,
+    safePage * itemsPerPage + itemsPerPage
+  );
 
   return (
     <section className="w-full bg-[#F5F6F8] py-16 sm:py-24 border-b border-slate-300/70">
@@ -358,21 +454,42 @@ export const BoardYoungLeadership: React.FC = () => {
           title={youngLeadership.heading}
           description={youngLeadership.description}
         />
-        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" ref={scrollerRef} onScroll={handleScroll}>
-          {youngLeadership.members.map((member) => (
-            <Reveal key={member.name} delay={80} className="h-full w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start">
-              <MemberCard member={member} />
-            </Reveal>
-          ))}
+
+        <div className="relative min-h-[200px] w-full overflow-hidden touch-pan-y" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+          <AnimatePresence initial={false} custom={direction} mode="wait">
+            <motion.div
+              key={safePage}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+              onPanEnd={handlePanEnd}
+              className="w-full cursor-grab active:cursor-grabbing touch-pan-y"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {visibleMembers.map((member) => (
+                  <Reveal key={member.name} delay={80} className="h-full">
+                    <MemberCard member={member} />
+                  </Reveal>
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
-        <div className="flex items-center justify-center gap-2">
-          {youngLeadership.members.map((member, idx) => (
+
+        <div className="flex items-center justify-center gap-3 pt-2">
+          {Array.from({ length: totalPages }).map((_, idx) => (
             <button
-              key={member.name}
-              onClick={() => scrollToSlide(idx)}
-              aria-label={`Go to ${member.name}`}
+              key={idx}
+              onClick={() => {
+                setDirection(idx > safePage ? 1 : -1);
+                setCurrentPage(idx);
+              }}
+              aria-label={`Go to slide ${idx + 1}`}
               className={`h-1 transition-all duration-300 ${
-                idx === activeIndex
+                idx === safePage
                   ? 'w-8 bg-[#1575B3]'
                   : 'w-2 bg-slate-300 hover:bg-[#1575B3]/50'
               }`}

@@ -10,6 +10,7 @@ import { ContactModal } from './ContactModal';
 import { CareerModal } from './CareerModal';
 import { ProductItem } from '@/lib/types';
 import { ArrowUp, Building2 } from 'lucide-react';
+import Link from 'next/link';
 
 interface AppContextValue {
   openQuoteModal: () => void;
@@ -171,13 +172,14 @@ export default function AppShell({ children }: AppShellProps) {
         />
 
         {/* Floating "Become Dealer" Button */}
-        <button
+        <Link
+        href="/become-dealer"
   style={{ writingMode: 'vertical-rl' }}
   className="fixed right-0 top-1/2 -translate-y-1/2 z-[45] bg-gradient-to-l from-[#0E588A] to-[#1575B3] hover:from-[#1575B3] hover:to-[#0E588A] text-white font-extrabold text-[10px] sm:text-xs tracking-wider sm:tracking-widest uppercase py-4 sm:py-5 px-2.5 sm:px-3 shadow-[0_8px_30px_rgb(21,117,179,0.3)] hover:shadow-[0_8px_35px_rgb(21,117,179,0.5)] border-l-1 border-y border-[#38bff8bc] hover:border-transparent transition-all duration-300 ease-out active:scale-95 cursor-pointer select-none group flex items-center justify-center gap-2"
 >
   <Building2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white group-hover:scale-110 transition-transform duration-300 rotate-90" />
   <span className="whitespace-nowrap">Become Dealer</span>
-</button>
+</Link>
 
         {/* Back to Top — sticky bottom-right, appears on scroll, all pages */}
         {showTopButton && (

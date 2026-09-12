@@ -2,17 +2,17 @@ import React, { Suspense } from 'react';
 import AppShell from '@/components/AppShell';
 import { Home2Header } from '@/components/Home2Header';
 import { Home2Footer } from '@/components/Home2Footer';
-import { VideoGallery } from '@/components/video/VideoGallery';
-import { kothariTVData } from '@/lib/video';
+import { DownloadGallery } from '@/components/download/DownloadGallery';
+import { downloadsData } from '@/lib/download';
 
 export const metadata = {
-  title: 'KothariTV: Videos & Insights | Kothari Group',
+  title: 'Downloads & Brochures | Kothari Group',
   description:
-    'Watch videos showcasing our solutions, product demos, tutorials, and success stories from Kothari Group.',
+    'Access downloadable resources from Kothari Group company profile, system brochures, agriculture guides and more to support smart irrigation and farming solutions.',
 };
 
-export default async function VideosPage() {
-  const { videos, categories } = kothariTVData;
+export default async function DownloadsPage() {
+  const { downloads, categories } = downloadsData;
 
   return (
     <AppShell>
@@ -24,7 +24,7 @@ export default async function VideosPage() {
           <div className="absolute inset-0 z-0">
             <img
               src="/heronew.jpg"
-              alt="KothariTV videos"
+              alt="Downloads & brochures"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-center"
             />
@@ -38,31 +38,33 @@ export default async function VideosPage() {
                 Kothari Group
               </span>
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
-                Kothari TV
+                Downloads &amp; Brochures
               </h1>
               <p className="text-sm sm:text-base text-white/85 font-normal leading-relaxed max-w-3xl drop-shadow-sm">
-                Watch videos showcasing our solutions, tutorials, success stories, and more — your window to
-                innovation.
+                Access company profiles, system brochures, agriculture guides and more to support smart
+                irrigation and farming solutions.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Video Gallery */}
+        {/* Downloads */}
         <section className="w-full bg-white py-16 sm:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
             <Suspense
               fallback={
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {Array.from({ length: 6 }).map((_, i) => (
-                    <div key={i} className="border border-slate-200/90 bg-white shadow-sm overflow-hidden">
-                      <div className="aspect-video bg-slate-200 animate-pulse" />
+                <div className="flex flex-col gap-3">
+                  {Array.from({ length: 4 }).map((_, i) => (
+                    <div key={i} className="border border-slate-200/90 bg-white shadow-sm p-6">
+                      <div className="h-3 w-24 bg-slate-200 animate-pulse mb-2" />
+                      <div className="h-5 w-1/2 bg-slate-200 animate-pulse mb-2" />
+                      <div className="h-4 w-3/4 bg-slate-200 animate-pulse" />
                     </div>
                   ))}
                 </div>
               }
             >
-              <VideoGallery videos={videos} categories={categories} />
+              <DownloadGallery downloads={downloads} categories={categories} />
             </Suspense>
           </div>
         </section>

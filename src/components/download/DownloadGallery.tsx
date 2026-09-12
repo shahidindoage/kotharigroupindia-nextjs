@@ -1,27 +1,28 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Download } from 'lucide-react';
 import { Reveal } from '@/components/main/Reveal';
-import type { KothariVideo } from '@/lib/video';
+import type { DownloadItem } from '@/lib/download';
 
-const PER_PAGE = 9;
-
-interface VideoGalleryProps {
-  videos: KothariVideo[];
+interface DownloadGalleryProps {
+  downloads: DownloadItem[];
   categories: string[];
 }
 
-export const VideoGallery: React.FC<VideoGalleryProps> = ({ videos, categories }) => {
+const PER_PAGE = 6;
+
+export const DownloadGallery: React.FC<DownloadGalleryProps> = ({ downloads, categories }) => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [page, setPage] = useState(0);
 
   const filtered =
     activeCategory === 'All'
-      ? videos
-      : videos.filter((v) => v.category === activeCategory);
+      ? downloads
+      : downloads.filter((item) => item.category === activeCategory);
 
   const totalPages = Math.ceil(filtered.length / PER_PAGE);
-  const pageVideos = filtered.slice(page * PER_PAGE, (page + 1) * PER_PAGE);
+  const pageItems = filtered.slice(page * PER_PAGE, (page + 1) * PER_PAGE);
 
   const handleCategory = (cat: string) => {
     setActiveCategory(cat);
@@ -52,31 +53,41 @@ export const VideoGallery: React.FC<VideoGalleryProps> = ({ videos, categories }
         </div>
       </div>
 
-      {/* Videos Grid */}
-      {pageVideos.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {pageVideos.map((video, i) => (
-            <Reveal key={video.embedId} delay={(i % 3) * 90}>
-              <div className="group border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-[#1575B3] transition-all duration-500">
-                <div className="aspect-video w-full bg-slate-900">
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    src={`https://www.youtube.com/embed/${video.embedId}`}
-                    title={video.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                    className="w-full h-full"
-                  />
+      {/* Download List */}
+      {pageItems.length > 0 ? (
+        <div className="flex flex-col gap-3">
+          {pageItems.map((item, i) => (
+            <Reveal key={item.id} delay={(i % PER_PAGE) * 60}>
+              <div className="group bg-white border border-slate-200 px-5 sm:px-6 py-5 flex items-center justify-between gap-4 shadow-sm hover:shadow-lg hover:border-[#1575B3] transition-all duration-300">
+                <div className="min-w-0">
+                  <p className="text-[10px] font-mono tracking-widest uppercase text-slate-400 font-medium mb-1">
+                    {item.category}
+                  </p>
+                  <h3 className="text-base sm:text-lg font-serif font-medium text-slate-900 leading-snug group-hover:text-[#1575B3] transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 font-normal leading-relaxed mt-1">
+                    {item.description}
+                  </p>
                 </div>
+                <a
+                  href={item.downloadLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  aria-label={`Download ${item.title}`}
+                  title={`Download ${item.title}`}
+                  className="shrink-0 w-11 h-11 bg-[#F5F6F8] border border-slate-200 flex items-center justify-center text-[#1575B3] hover:bg-[#1575B3] hover:text-white transition-colors duration-300"
+                >
+                  <Download className="w-5 h-5" />
+                </a>
               </div>
             </Reveal>
           ))}
         </div>
       ) : (
         <div className="py-24 text-center">
-          <p className="text-sm text-slate-500">No videos found in this category.</p>
+          <p className="text-sm text-slate-500">No files available in this category.</p>
         </div>
       )}
 

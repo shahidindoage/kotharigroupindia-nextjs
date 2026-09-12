@@ -41,11 +41,13 @@ function AgricultureDivisionContent() {
       'Accessories & Fittings',
     ],
     quickLinks: [
-      'Home',
-      'About Kothari Group',
-      'Resources & Knowledge Centre',
-      'Career Opportunities',
-      'Contact Us',
+      { label: 'Our Legacy', target: 'about-us' },
+  { label: 'Leadership', target: 'our-board' },
+  { label: 'Career', target: 'career' },
+  { label: 'Sustainability', target: 'sustainability' },
+  { label: 'Blogs', target: 'blogs' },
+  { label: 'News & Articles', target: 'news' },
+  {label: 'Contact Us', target: 'contact-us'},
     ],
     certifications: [
       'ISO 9001 Quality System',

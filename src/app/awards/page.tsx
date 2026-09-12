@@ -2,17 +2,17 @@ import React, { Suspense } from 'react';
 import AppShell from '@/components/AppShell';
 import { Home2Header } from '@/components/Home2Header';
 import { Home2Footer } from '@/components/Home2Footer';
-import { VideoGallery } from '@/components/video/VideoGallery';
-import { kothariTVData } from '@/lib/video';
+import { AwardsGallery } from '@/components/award/AwardsGallery';
+import { awardsData } from '@/lib/awards';
 
 export const metadata = {
-  title: 'KothariTV: Videos & Insights | Kothari Group',
+  title: 'Awards & Industry Recognition | Kothari Group',
   description:
-    'Watch videos showcasing our solutions, product demos, tutorials, and success stories from Kothari Group.',
+    'See how Kothari Group India has been recognised across plumbing, agriculture and micro-irrigation sectors with awards honouring innovation, quality and sustainability.',
 };
 
-export default async function VideosPage() {
-  const { videos, categories } = kothariTVData;
+export default async function AwardsPage() {
+  const { awards, categories } = awardsData;
 
   return (
     <AppShell>
@@ -24,7 +24,7 @@ export default async function VideosPage() {
           <div className="absolute inset-0 z-0">
             <img
               src="/heronew.jpg"
-              alt="KothariTV videos"
+              alt="Awards & Industry Recognition"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-center"
             />
@@ -38,31 +38,31 @@ export default async function VideosPage() {
                 Kothari Group
               </span>
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
-                Kothari TV
+                Awards & Recognition
               </h1>
               <p className="text-sm sm:text-base text-white/85 font-normal leading-relaxed max-w-3xl drop-shadow-sm">
-                Watch videos showcasing our solutions, tutorials, success stories, and more — your window to
-                innovation.
+                Honours that reflect our commitment to innovation, quality and sustainability across
+                plumbing, agriculture and micro-irrigation.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Video Gallery */}
+        {/* Awards Gallery */}
         <section className="w-full bg-white py-16 sm:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
             <Suspense
               fallback={
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {Array.from({ length: 6 }).map((_, i) => (
+                  {Array.from({ length: 3 }).map((_, i) => (
                     <div key={i} className="border border-slate-200/90 bg-white shadow-sm overflow-hidden">
-                      <div className="aspect-video bg-slate-200 animate-pulse" />
+                      <div className="aspect-[4/3] bg-slate-200 animate-pulse" />
                     </div>
                   ))}
                 </div>
               }
             >
-              <VideoGallery videos={videos} categories={categories} />
+              <AwardsGallery awards={awards} categories={categories} />
             </Suspense>
           </div>
         </section>

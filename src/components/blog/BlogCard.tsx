@@ -17,8 +17,8 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, index, basePath = '/bl
     <Reveal key={post.id} delay={(index % 3) * 90} className="h-full">
       <Link href={`${basePath}/${post.slug}`} className="block h-full">
         <article className="group relative bg-white border border-slate-200/90 flex flex-col justify-between h-full shadow-sm hover:shadow-xl hover:border-[#1575B3] transition-all duration-500 overflow-hidden">
-          {/* Image Header */}
-          <div className="relative aspect-[16/10] overflow-hidden bg-slate-900 border-b border-slate-200">
+          {/* Image Header - full image, not cropped */}
+          <div className="relative overflow-hidden bg-slate-900 border-b border-slate-200">
             {post.featuredImage ? (
               <img
                 src={post.featuredImage}
@@ -28,10 +28,10 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, index, basePath = '/bl
                   const target = e.target as HTMLElement;
                   target.style.opacity = '0.3';
                 }}
-                className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
+                className="w-full h-auto object-contain opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             ) : (
-              <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-950" />
+              <div className="w-full aspect-[16/10] bg-gradient-to-br from-slate-800 to-slate-950" />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-80" />
 

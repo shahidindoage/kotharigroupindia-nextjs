@@ -179,7 +179,7 @@ const resourcesMegaMenu = {
   items: [
     {
       title: 'Awards',
-      url: '/resources/awards',
+      url: '/awards',
       image: 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=600&q=80',
     },
     {
@@ -189,7 +189,7 @@ const resourcesMegaMenu = {
     },
     {
       title: 'News',
-      url: '/resources/news',
+      url: '/news',
       image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80',
     },
     {
@@ -611,7 +611,7 @@ const handleSegmentClick = (segIdx: number) => {
               >
                 <div className="flex flex-col items-center w-full">
                   {/* Image Container */}
-                  <div className="w-full h-32 flex items-center justify-center p-2 rounded mb-3">
+                  <div className="w-full h-40 flex items-center justify-center p-2 rounded mb-3">
                     <img
                       src={product.image}
                       alt={product.title}

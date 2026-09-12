@@ -10,7 +10,7 @@ export interface BoardMember {
 
 export const boardHero = {
   eyebrow: 'KOTHARI GROUP',
-  heading: 'STRONG ROOTS LEAD TO A VISIONARY FUTURE',
+  heading: 'Strong roots lead to a visionary future',
   description:
     'Team Kothari deeply understand each customer unique needs and crafts innovative solutions tailored to meet those needs.',
 };

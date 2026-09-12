@@ -367,9 +367,9 @@ export const ProductDetailPage: React.FC<{
 
       {/* PRODUCT VIDEO */}
       {displayVideoUrl && (
-        <section className="w-full bg-white py-16 sm:py-24 border-b border-slate-300/70">
-          <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-300">
+        <section className="w-full bg-white py-10 sm:py-14 border-b border-slate-300/70">
+          <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-5 border-b border-slate-300">
               <div>
                 <h2 className="text-2xl sm:text-4xl font-light tracking-tight uppercase font-serif text-slate-900">
                   Product Video
@@ -379,7 +379,7 @@ export const ProductDetailPage: React.FC<{
                 Watch Kothari CPVC in action — manufacturing precision to on-site installation.
               </p>
             </div>
-            <div className="relative aspect-video w-full bg-slate-950 overflow-hidden border border-slate-200 shadow-lg">
+            <div className="relative aspect-video w-full max-w-4xl mx-auto bg-slate-950 overflow-hidden border border-slate-200 shadow-lg">
               <iframe
                 src={displayVideoUrl}
                 title="Kothari Product Video"
