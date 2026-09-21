@@ -10,7 +10,8 @@ import {
   Calendar, 
   Grid, 
   MapPin, 
-  Box 
+  Box, 
+  Users
 } from 'lucide-react';
 
 export const WhyKothariGroup = () => {
@@ -46,11 +47,7 @@ export const WhyKothariGroup = () => {
   ];
 
   const stats = [
-    {
-      icon: Calendar,
-      value: '35+',
-      label: 'Years of Trust',
-    },
+    
     {
       icon: Grid,
       value: '2',
@@ -62,9 +59,14 @@ export const WhyKothariGroup = () => {
       label: 'Distribution Network',
     },
     {
+      icon: Users,
+      value: '7500+',
+      label: 'Channel Partners',
+    },
+      {
       icon: Box,
-      value: '1000+',
-      label: 'Products & Solutions',
+      value: '2000+',
+      label: 'Associates',
     },
   ];
 
@@ -150,10 +152,10 @@ export const WhyKothariGroup = () => {
 
               {/* BOTTOM SECTION: Directly below the stats grid */}
               <div className="pt-4">
-                <div className="text-5xl sm:text-6xl font-light text-white tracking-wide font-sans">
+                {/* <div className="text-5xl sm:text-6xl font-light text-white tracking-wide font-sans">
                   1988
-                </div>
-                <h4 className="text-xl sm:text-2xl font-semibold text-white mt-1">
+                </div> */}
+                <h4 className="text-2xl sm:text-4xl font-semibold text-white mt-1">
                   Trusted Since 1988
                 </h4>
                 <p className="text-xs sm:text-sm text-slate-300 font-normal leading-relaxed mt-1.5 max-w-md">
