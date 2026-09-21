@@ -91,6 +91,17 @@ export const ProductsBrowser: React.FC<ProductsBrowserProps> = ({
     return Number.isFinite(parsed) && parsed > 0 ? parsed : 1;
   });
 
+  // Keep local filter state in sync with the URL on client-side navigation
+  // (e.g. clicking a segment link in the header mega menu), not just full reloads.
+  useEffect(() => {
+    const nextDivision = searchParams.get('division') || '';
+    const nextSegment = searchParams.get('segment') || '';
+    const nextPage = parseInt(searchParams.get('page') || '', 10);
+    setDivision(nextDivision);
+    setSegment(nextSegment);
+    setPage(Number.isFinite(nextPage) && nextPage > 0 ? nextPage : 1);
+  }, [searchParams]);
+
   const applyFilters = (nextDivision: string, nextSegment: string) => {
     setDivision(nextDivision);
     setSegment(nextSegment);

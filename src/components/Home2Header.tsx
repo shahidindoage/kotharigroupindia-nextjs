@@ -253,7 +253,7 @@ export const Home2Header: React.FC<{ solid?: boolean }> = ({ solid = false }) =>
             aria-label="Kothari Group Home"
           >
             <img 
-              src="/logos/Kothari%20Group.png"
+              src={`/logos/${solidHeader ? 'Kothari Group.png' : 'Kothari Group_W.png'}`}
               alt="Kothari Group Logo"
               referrerPolicy="no-referrer"
               className="h-14 sm:h-16 object-contain max-w-[150px] sm:max-w-[180px] transition-all duration-300"
@@ -271,7 +271,7 @@ export const Home2Header: React.FC<{ solid?: boolean }> = ({ solid = false }) =>
               <button
                 onClick={() => handleNav('home')}
                 className={`px-3.5 py-2 text-[17px] font-medium transition-all duration-200 ${
-                  active === 'home'
+                  active === '#'
                     ? 'text-[#1575B3]'
                     : solidHeader ? 'text-[#5F6B7A] hover:text-[#1575B3] hover:bg-[#F5FAFF]/60'
                     : 'text-white/90 hover:text-white hover:bg-white/10'

@@ -10,6 +10,7 @@ import {
   getRecaptchaToken,
 } from '@/lib/recaptcha-client';
 import { pipeSolutionsMegaMenu, irrigationSolutionsMegaMenu } from '@/data/products';
+import { normalizeSlug } from '@/lib/slug';
 
 // Mega Menu Data Configurations
 const aboutMegaMenu = {
@@ -626,7 +627,10 @@ const handleSegmentClick = (segIdx: number) => {
             aria-label="Kothari Group Home"
           >
             <img
-              src={`${isIrrigation ? '/logos/Kothari Irrigation.png' : '/logos/Kothari Pipes.png'}`}
+              src={`${isIrrigation ? 
+                isSolid ? '/logos/Kothari Irrigation.png' : '/logos/Kothari Irrigation_W.png' 
+                : 
+                isSolid ? '/logos/Kothari Pipes.png' : '/logos/Kothari Pipes_W.png'}`}
               alt="Kothari Group Logo"
               referrerPolicy="no-referrer"
               className="h-14 sm:h-16 object-contain max-w-[150px] sm:max-w-[180px] transition-all duration-300"
@@ -700,10 +704,20 @@ const handleSegmentClick = (segIdx: number) => {
         {/* RIGHT - All Products Belonging to Selected Segment */}
         <div className="col-span-8 pl-2">
           {/* Segment Name Above Product Grid */}
-          <div className="mb-4 pb-2 border-b border-[#E2EBF3]">
-            <h3 className={`text-lg font-bold ${isIrrigation ? 'text-[#1E8E3E]' : 'text-[#1575B3]'}`}>
+          <div className="mb-4 pb-2 border-b border-[#E2EBF3] flex items-center justify-between">
+            <Link
+              href={`/products?segment=${
+                productsMenu.segments[safeProductSegment]?.slug ||
+                normalizeSlug(
+                  productsMenu.segments[safeProductSegment]?.name
+                )
+              }`}
+              onClick={handleNavClick}
+              className={`text-lg font-bold ${isIrrigation ? 'text-[#1E8E3E]' : 'text-[#1575B3]'} ${isIrrigation ? 'hover:text-[#1575B3]' : 'hover:text-[#0E588A]'} inline-flex items-center gap-2 transition-colors group`}
+            >
               {productsMenu.segments[safeProductSegment]?.name}
-            </h3>
+              <ChevronRight className={`w-4 h-4 text-[#94A3B8] ${isIrrigation ? 'group-hover:text-[#1E8E3E]' : 'group-hover:text-[#1575B3]'} group-hover:translate-x-0.5 transition-transform`} />
+            </Link>
           </div>
 
           <div

@@ -249,8 +249,8 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
           </AnimatePresence>
         </div>
 
-        {/* Dynamic Dash Indicators */}
-        <div className="flex items-center justify-center gap-3 pt-6">
+{/* Dynamic Dash Indicators */}
+        {/* <div className="flex items-center justify-center gap-3 pt-6">
           {Array.from({ length: totalPages }).map((_, idx) => (
             <button
               key={idx}
@@ -260,12 +260,27 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
               }}
               className={`h-1 transition-all duration-500 ${
                 idx === safePage
-                  ? `w-12 ${isGreen ? 'bg-emerald-400' : 'bg-cyan-400'}`
+                  ? 'w-12 bg-cyan-400'
                   : 'w-4 bg-white/20 hover:bg-white/50'
               }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
+        </div> */}
+
+        {/* Explore All Products */}
+        <div className="flex justify-center">
+          <Link
+            href={
+              theme === 'green'
+                ? '/products?division=irrigation-division'
+                : '/products?division=pipe-division'
+            }
+            className={`inline-flex items-center gap-2 bg-white hover:bg-transparent  ${isGreen? 'text-[#145E2A] ':'text-[#015CAA]'} hover:text-white border border-white/60 hover:border-white px-8 py-3.5 text-xs font-semibold uppercase tracking-wider transition-all duration-300 group/btn`}
+          > 
+            <span>Explore All Products</span>
+            <ArrowUpRight className={`w-4 h-4 ${isGreen ? 'text-[#145E2A] ':'text-[#015CAA]'} group-hover/btn:text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-all`} />
+          </Link>
         </div>
 
       </div>

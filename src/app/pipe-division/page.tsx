@@ -394,7 +394,7 @@ const FEATURE_PRODUCTS = [
         ]}
       />
       {/* <Category tab="pipes"/> */}
-      <FeaturedProducts products={FEATURE_PRODUCTS}/>
+      <FeaturedProducts products={FEATURE_PRODUCTS} theme="blue"/>
       {/* <WhyKothariGroup /> */}
       {/* <Impact /> */}
       <KnowledgeCentre itemData={items} />

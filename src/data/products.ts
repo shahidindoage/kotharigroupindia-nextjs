@@ -289,6 +289,7 @@ export const PipeproductsMegaMenu = {
   segments: [
  {
       name: 'Agriculture Pipes & Fittings',
+      slug: 'agriculture-pipes-and-fittings',
       desc: 'Durable PVC, HDPE and MDPE pipes, fittings and valves for agriculture.',
       categories: [
            {
@@ -331,6 +332,7 @@ export const PipeproductsMegaMenu = {
 
       {
       name: 'Flexible Hose Pipes',
+      slug: 'flexible-hose-pipes',
       desc: 'Flexible suction, garden, braided and high-pressure hose pipes for diverse applications.',
       categories: [
         {
@@ -367,6 +369,7 @@ export const PipeproductsMegaMenu = {
     },
  {
       name: 'Sewerage Drainage Pipes and Fittings',
+      slug: 'sewerage-drainage-pipes-and-fittings',
       desc: 'Durable SWR, underground and sewerage drainage pipes and fittings for efficient waste and rainwater management',
       categories: [
         {
@@ -392,6 +395,7 @@ export const PipeproductsMegaMenu = {
 
   {
       name: 'Borewell Solution',
+      slug: 'borewell-solution',
       desc: 'Reliable column, casing, ribbed and screen pipes for borewell and submersible pump applications.',
       categories: [
         {
@@ -415,6 +419,7 @@ export const PipeproductsMegaMenu = {
     },
     {
       name: 'Plumbing Pipes & Fittings',
+      slug: 'plumbing-pipes-and-fittings',
       desc: 'Complete hot & cold water piping systems for residential and commercial applications.',
       categories: [
         {
@@ -439,6 +444,7 @@ export const PipeproductsMegaMenu = {
    
     {
       name: 'Cable Protection',
+      slug: 'cable-protection',
       desc: 'Durable DWC and conduit pipes for reliable cable protection systems.',
       categories: [
         {
@@ -464,6 +470,7 @@ export const IrrigationproductsMegaMenu = {
   segments: [
     {
       name: 'Drip Irrigation System',
+      slug: 'drip-irrigation-system',
       desc: 'Complete drip irrigation solutions with driplines, drippers, polytubes, fittings, accessories and valves.',
       categories: [
          {
@@ -553,6 +560,7 @@ export const IrrigationproductsMegaMenu = {
     },
      {
       name: 'Automation System',
+      slug: 'automation-system',
       desc: 'Smart irrigation automation with fertigation machines, controllers, filters and control valves.',
       categories: [
         {
@@ -587,6 +595,7 @@ export const IrrigationproductsMegaMenu = {
     },
       {
       name: 'Sprinkler Irrigration system',
+      slug: 'sprinkler-irrigration-system',
       desc: 'Complete sprinkler irrigation solutions with sprinklers, pipes, connectors, rainguns and accessories.',
       categories: [
         {
@@ -639,6 +648,7 @@ export const IrrigationproductsMegaMenu = {
     },
     {
       name: 'Filters & Injectors',
+      slug: 'filters-and-injectors',
       desc: 'Efficient filtration and fertilizer injection solutions with filters, dosing pumps and injectors.',
       categories: [
         {
@@ -669,6 +679,7 @@ export const IrrigationproductsMegaMenu = {
    
      {
       name: 'Micro & Mini Sprinklers',
+      slug: 'micro-and-mini-sprinklers',
       desc: 'Efficient micro and mini sprinklers, sprayers, misters and foggers for irrigation applications.',
       categories: [
         {
@@ -709,6 +720,7 @@ export const IrrigationproductsMegaMenu = {
   
      {
       name: 'Turnkey Projects',
+      slug: 'turnkey-projects',
       desc: 'Complete turnkey irrigation projects including PDN and CI solutions for efficient water management.',
       categories: [
         {
