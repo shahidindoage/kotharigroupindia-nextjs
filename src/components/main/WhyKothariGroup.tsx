@@ -109,9 +109,9 @@ export const WhyKothariGroup = () => {
                 <div className="w-12 h-12 border border-sky-400/30 bg-sky-900/20 flex items-center justify-center backdrop-blur-sm">
                   <ShieldCheck className="w-6 h-6 text-sky-400 stroke-[1.5]" />
                 </div>
-                <span className="text-xs font-mono tracking-widest text-slate-300 uppercase px-3 py-1 border border-slate-600/60 bg-slate-900/40">
+                {/* <span className="text-xs font-mono tracking-widest text-slate-300 uppercase px-3 py-1 border border-slate-600/60 bg-slate-900/40">
                   EST. 1988
-                </span>
+                </span> */}
               </div>
 
               {/* HEADER STAT / TITLE */}
@@ -142,7 +142,7 @@ export const WhyKothariGroup = () => {
                       <span className="text-sm sm:text-base font-semibold text-white tracking-tight">
                         {stat.value}
                       </span>
-                      <span className="text-[10px] text-slate-400 leading-tight mt-0.5 font-light">
+                      <span className="text-[12px] text-slate-300 leading-tight mt-0.5 font-light">
                         {stat.label}
                       </span>
                     </div>

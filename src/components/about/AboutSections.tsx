@@ -342,12 +342,11 @@ export const AboutLegacy: React.FC = () => {
         }}
       />
 
-{/* Faint background image — changes with each milestone */}
+{/* Faint background image — static */}
           <div
-            key={`bg-${active}`}
             aria-hidden
             className="absolute inset-0 bg-cover bg-center opacity-[0.04] pointer-events-none"
-            style={{ backgroundImage: `url('${LEGACY_BG_IMAGES[active % LEGACY_BG_IMAGES.length]}')` }}
+            style={{ backgroundImage: `url('${LEGACY_BG_IMAGES[0]}')` }}
           />
    
 
@@ -511,8 +510,16 @@ export const AboutLegacy: React.FC = () => {
                   bottom: descBelow ? undefined : geo.h - dotY + 14,
                 }}
               >
-                <span className="block border border-cyan-200/25 bg-[#0b3d61]/95 backdrop-blur-md px-4 py-3 shadow-[0_18px_40px_rgba(0,0,0,0.35)]">
-                  {dm.description}
+                <span className="block border border-cyan-200/25 bg-[#0b3d61]/95 backdrop-blur-md shadow-[0_18px_40px_rgba(0,0,0,0.35)]">
+                  <img
+                    src={dm.image}
+                    alt={dm.title}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-28 sm:h-32 object-cover object-center"
+                  />
+                  <span className="block px-4 py-3 border-t border-white/10">
+                    {dm.description}
+                  </span>
                 </span>
               </div>
             );

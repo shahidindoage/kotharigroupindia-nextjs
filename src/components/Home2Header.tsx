@@ -253,7 +253,7 @@ export const Home2Header: React.FC<{ solid?: boolean }> = ({ solid = false }) =>
             aria-label="Kothari Group Home"
           >
             <img 
-              src={`/logos/${solidHeader ? 'Kothari Group.png' : 'Kothari Group_W.png'}`}
+              src={`/logos/${solidHeader ? 'Kothari Group.png' : 'Kothari Group_W2.png'}`}
               alt="Kothari Group Logo"
               referrerPolicy="no-referrer"
               className="h-14 sm:h-16 object-contain max-w-[150px] sm:max-w-[180px] transition-all duration-300"
@@ -268,7 +268,8 @@ export const Home2Header: React.FC<{ solid?: boolean }> = ({ solid = false }) =>
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
               {/* Home Link */}
-              <button
+              <Link
+              href="/"
                 onClick={() => handleNav('home')}
                 className={`px-3.5 py-2 text-[17px] font-medium transition-all duration-200 ${
                   active === '#'
@@ -278,7 +279,7 @@ export const Home2Header: React.FC<{ solid?: boolean }> = ({ solid = false }) =>
                 }`}
               >
                 Home
-              </button>
+              </Link>
 
               {/* About Us Dropdown */}
               <div

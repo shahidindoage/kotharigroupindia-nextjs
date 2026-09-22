@@ -287,7 +287,64 @@ export const PipeproductsMegaMenu = {
   headline: 'Our Products',
   description: 'CPVC pipes, fittings and solvent cement for hot and cold water systems.',
   segments: [
- {
+
+
+  
+
+
+ 
+    {
+      name: 'Plumbing Pipes & Fittings',
+      slug: 'plumbing-pipes-and-fittings',
+      desc: 'Complete hot & cold water piping systems for residential and commercial applications.',
+      categories: [
+        {
+          name: 'CPVC',
+          products: [
+            { title: 'CPVC Pipes & Fittings', url: '/cpvc/cpvc-hot-and-cold-water-piping-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/CPVC-PIPES-FITTINGS.webp', shortDesc: 'Hot & Cold Water Piping System' },
+            { title: 'CPVC Solvent Cement', url: '/cpvc/cpvc-solvent-cement', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/06/cpvc.webp', shortDesc: 'Strong, Leak-Proof CPVC Water Joints'},
+          
+          ],
+        },
+        {
+          name: 'UPVC',
+          products: [
+            { title: 'UPVC Pipes & Fittings', url: '/upvc/upvc-astm-plumbing-piping-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/UPVC-PIPES-FITTINGS.webp',shortDesc: 'Trusted Cold Water Plumbing Pipe' },
+            { title: 'UPVC Solvent System', url: '/upvc/upvc-solvent-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/06/UPVC-solvent-cement.webp',shortDesc: 'Strong, Leak-Proof UPVC Water Joints.'},
+           
+          ],
+        },
+       
+      ],
+    },
+
+     {
+      name: 'Sewerage Drainage Pipes and Fittings',
+      slug: 'sewerage-drainage-pipes-and-fittings',
+      desc: 'Durable SWR, underground and sewerage drainage pipes and fittings for efficient waste and rainwater management',
+      categories: [
+        {
+          name: 'Soil, Waste & Rainwater Pipes and Fittings',
+          products: [
+            { title: 'SWR (Soil, Waste & Rainwater) Piping System', url: '/soil-waste-and-rainwater-pipes-and-fittings/swr-pipes-and-fittings-for-drainage-systems', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/SWR-PIPES-FITTINGS.webp',shortDesc: 'Complete Soil, Waste & Rainwater Drainage.' },
+            { title: 'PP Low Noise Drainage System', url: '/soil-waste-and-rainwater-pipes-and-fittings/pp-low-noise-drainage-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/PP-Low-Noise-Drainage-System.webp' ,shortDesc: 'Silent-Flow Underground Drainage Pipe'},
+        ],
+        },
+        {
+          name: 'Underground Pipe and Fittings',
+          products: [
+            { title: 'UPVC Underground Drainage Piping System (solid wall UDS)', url: '/underground-pipe-and-fittings/upvc-underground-drainage-piping-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/UDS-PIPES-FITTINGS.webp',shortDesc:'Solid Wall Pipe for Underground Drainage.' },
+            { title: 'Foamcore Underground Drainage Piping System', url: '/underground-pipe-and-fittings/foamcore-underground-drainage-piping-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/UDS-Foamcore.webp',shortDesc: 'Lightweight Three Layer Drainage Solution.' },
+            { title: 'Underground Double Wall Corrugated pipes(DWC)', url: '/underground-pipe-and-fittings/underground-double-wall-corrugated-pipes', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/11/Underground-Double-Wall-Corrugated-pipesDWC.webp',shortDesc: 'Flexible, Durable Underground Drainage Pipe.' },
+            { title: 'HDPE (Sewerage IS: 14333)', url: '/underground-pipe-and-fittings/hdpe', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/PE-Sewerage-Pipes-scaled.webp',shortDesc: 'Rugged Underground Sewerage Pipe.' },
+            { title: 'Sub-Surface Drainage System', url: '/underground-pipe-and-fittings/sub-surface-drainage-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/11/Sub-Surface-Drainage-System.webp',shortDesc: 'Perforated Pipe for Smart Field Drainage.' },
+          ],
+        }
+      
+      ],
+    },
+
+     {
       name: 'Agriculture Pipes & Fittings',
       slug: 'agriculture-pipes-and-fittings',
       desc: 'Durable PVC, HDPE and MDPE pipes, fittings and valves for agriculture.',
@@ -330,7 +387,32 @@ export const PipeproductsMegaMenu = {
       ],
     },
 
-      {
+     {
+      name: 'Borewell Solution',
+      slug: 'borewell-solution',
+      desc: 'Reliable column, casing, ribbed and screen pipes for borewell and submersible pump applications.',
+      categories: [
+        {
+          name: 'Column Pipes',
+          products: [
+            { title: 'Column Pipes', url: '/column-pipes/column-pipes-with-ss', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/coloum-pipe.webp' , shortDesc: 'Locking Column Pipe for Borewells.'},
+            { title: 'PE Column Pipes For Submersible Pumps', url: '/column-pipes/pe-column-pipes-for-submersible-pumps', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/coming-soon.webp' , shortDesc: 'Flexible Column Pipe for Submersible Pumps.' },
+              ],
+        },
+        {
+          name: 'Casing Pipes',
+          products: [
+            { title: 'Casing Pipes', url: '/casing-pipes/casing-pipes-fittings', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/CASING-PIPE.webp', shortDesc: 'Trusted Borewell Protection Pipe.' },
+            { title: 'Ribbed Casing Pipe', url: '/casing-pipes/ribbed-casing-pipe', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Ribbed-Casing-Pipe.png' ,shortDesc: 'Rugged Pipe for Aggressive Groundwater.'},
+            { title: 'Screen Pipe/Slotted Pipe', url: '/casing-pipes/screen-pipe-slotted-pipe', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Screen-Pipe-Slotted-Pipe-n.webp', shortDesc: 'Clean Water, Protected Pump Systems.' },
+            { title: 'Casing SDR Agriculture Pipe', url: '/casing-pipes/casing-sdr-agriculture-pipe', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/sdr-blue-casing-pipes-scaled.webp' , shortDesc: 'Reliable Water from Every Depth.'},
+              ],
+        },
+       
+      ],
+    },
+
+        {
       name: 'Flexible Hose Pipes',
       slug: 'flexible-hose-pipes',
       desc: 'Flexible suction, garden, braided and high-pressure hose pipes for diverse applications.',
@@ -363,80 +445,6 @@ export const PipeproductsMegaMenu = {
             { title: 'Construction Hose Pipe 3 Layer', url: '/pvc-braided-hose-pipe/construction-hose-pipe-three-layer', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/CONSTRUCTION-2.webp', shortDesc:'Tough Hose Built for Job Sites' },
             { title: 'High Pressure Power Spray Hose Pipe (5 Layer)', url: '/pvc-braided-hose-pipe/high-pressure-power-spray-hose-pipe', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/07/Power-Spray.webp', shortDesc:'Reinforced Hose for Spray Applications.' },
               ],
-        },
-       
-      ],
-    },
- {
-      name: 'Sewerage Drainage Pipes and Fittings',
-      slug: 'sewerage-drainage-pipes-and-fittings',
-      desc: 'Durable SWR, underground and sewerage drainage pipes and fittings for efficient waste and rainwater management',
-      categories: [
-        {
-          name: 'Soil, Waste & Rainwater Pipes and Fittings',
-          products: [
-            { title: 'SWR (Soil, Waste & Rainwater) Piping System', url: '/soil-waste-and-rainwater-pipes-and-fittings/swr-pipes-and-fittings-for-drainage-systems', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/SWR-PIPES-FITTINGS.webp',shortDesc: 'Complete Soil, Waste & Rainwater Drainage.' },
-            { title: 'PP Low Noise Drainage System', url: '/soil-waste-and-rainwater-pipes-and-fittings/pp-low-noise-drainage-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/PP-Low-Noise-Drainage-System.webp' ,shortDesc: 'Silent-Flow Underground Drainage Pipe'},
-        ],
-        },
-        {
-          name: 'Underground Pipe and Fittings',
-          products: [
-            { title: 'UPVC Underground Drainage Piping System (solid wall UDS)', url: '/underground-pipe-and-fittings/upvc-underground-drainage-piping-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/UDS-PIPES-FITTINGS.webp',shortDesc:'Solid Wall Pipe for Underground Drainage.' },
-            { title: 'Foamcore Underground Drainage Piping System', url: '/underground-pipe-and-fittings/foamcore-underground-drainage-piping-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/UDS-Foamcore.webp',shortDesc: 'Lightweight Three Layer Drainage Solution.' },
-            { title: 'Underground Double Wall Corrugated pipes(DWC)', url: '/underground-pipe-and-fittings/underground-double-wall-corrugated-pipes', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/11/Underground-Double-Wall-Corrugated-pipesDWC.webp',shortDesc: 'Flexible, Durable Underground Drainage Pipe.' },
-            { title: 'HDPE (Sewerage IS: 14333)', url: '/underground-pipe-and-fittings/hdpe', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/PE-Sewerage-Pipes-scaled.webp',shortDesc: 'Rugged Underground Sewerage Pipe.' },
-            { title: 'Sub-Surface Drainage System', url: '/underground-pipe-and-fittings/sub-surface-drainage-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/11/Sub-Surface-Drainage-System.webp',shortDesc: 'Perforated Pipe for Smart Field Drainage.' },
-          ],
-        }
-      
-      ],
-    },
-
-  {
-      name: 'Borewell Solution',
-      slug: 'borewell-solution',
-      desc: 'Reliable column, casing, ribbed and screen pipes for borewell and submersible pump applications.',
-      categories: [
-        {
-          name: 'Column Pipes',
-          products: [
-            { title: 'Column Pipes', url: '/column-pipes/column-pipes-with-ss', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/coloum-pipe.webp' , shortDesc: 'Locking Column Pipe for Borewells.'},
-            { title: 'PE Column Pipes For Submersible Pumps', url: '/column-pipes/pe-column-pipes-for-submersible-pumps', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/coming-soon.webp' , shortDesc: 'Flexible Column Pipe for Submersible Pumps.' },
-              ],
-        },
-        {
-          name: 'Casing Pipes',
-          products: [
-            { title: 'Casing Pipes', url: '/casing-pipes/casing-pipes-fittings', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/CASING-PIPE.webp', shortDesc: 'Trusted Borewell Protection Pipe.' },
-            { title: 'Ribbed Casing Pipe', url: '/casing-pipes/ribbed-casing-pipe', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Ribbed-Casing-Pipe.png' ,shortDesc: 'Rugged Pipe for Aggressive Groundwater.'},
-            { title: 'Screen Pipe/Slotted Pipe', url: '/casing-pipes/screen-pipe-slotted-pipe', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Screen-Pipe-Slotted-Pipe-n.webp', shortDesc: 'Clean Water, Protected Pump Systems.' },
-            { title: 'Casing SDR Agriculture Pipe', url: '/casing-pipes/casing-sdr-agriculture-pipe', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/sdr-blue-casing-pipes-scaled.webp' , shortDesc: 'Reliable Water from Every Depth.'},
-              ],
-        },
-       
-      ],
-    },
-    {
-      name: 'Plumbing Pipes & Fittings',
-      slug: 'plumbing-pipes-and-fittings',
-      desc: 'Complete hot & cold water piping systems for residential and commercial applications.',
-      categories: [
-        {
-          name: 'CPVC',
-          products: [
-            { title: 'CPVC Pipes & Fittings', url: '/cpvc/cpvc-hot-and-cold-water-piping-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/CPVC-PIPES-FITTINGS.webp', shortDesc: 'Hot & Cold Water Piping System' },
-            { title: 'CPVC Solvent Cement', url: '/cpvc/cpvc-solvent-cement', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/06/cpvc.webp', shortDesc: 'Strong, Leak-Proof CPVC Water Joints'},
-          
-          ],
-        },
-        {
-          name: 'UPVC',
-          products: [
-            { title: 'UPVC Pipes & Fittings', url: '/upvc/upvc-astm-plumbing-piping-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/UPVC-PIPES-FITTINGS.webp',shortDesc: 'Trusted Cold Water Plumbing Pipe' },
-            { title: 'UPVC Solvent System', url: '/upvc/upvc-solvent-system', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/06/UPVC-solvent-cement.webp',shortDesc: 'Strong, Leak-Proof UPVC Water Joints.'},
-           
-          ],
         },
        
       ],
@@ -558,41 +566,7 @@ export const IrrigationproductsMegaMenu = {
        
       ],
     },
-     {
-      name: 'Automation System',
-      slug: 'automation-system',
-      desc: 'Smart irrigation automation with fertigation machines, controllers, filters and control valves.',
-      categories: [
-        {
-          name: 'Fertigation Machines',
-          products: [
-            { title: 'Nutrijet Fertigation Machines', url: '/fertigation-machines/nutrijet-fertigation-machines', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/NUTRIJET.webp' ,shortDesc:'Smart IoT Fertigation System.'},
-              ],
-        },
-        {
-          name: 'Controllers',
-          products: [
-            { title: 'Irribeat Controllers', url: '/controllers/irribeat-controllers', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/IRRIBEAT.webp' ,shortDesc:'Smart Automated Irrigation Controller.'},
-            { title: 'GSI (Galcon Smart Irrigation) Controller', url: '/controllers/gsi-galcon-smart-irrigation-controller', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/GSI-Galcon-Smart-Irrigation.webp',shortDesc:'Cloud-Based Smart Irrigation Controller.' },
-            { title: 'Galpro Controller (AC/DC)', url: '/controllers/galpro-controller-ac-dc', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Galpro-AC-DC.webp',shortDesc:'Affordable Smart Irrigation Automation.' },
-              ],
-        },
-        {
-          name: 'Automatic Filters & Accessories',
-          products: [
-            { title: 'Mini Sigma Filter', url: '/automatic-filters-and-accessories/mini-sigma-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Mini-Sigma-Filter.webp' ,shortDesc:'Compact Self-Cleaning Filter.'},
-            { title: 'Filtomat Filter', url: '/automatic-filters-and-accessories/filtomat-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Filtomat-Filter.webp' ,shortDesc:'Power-Free Automatic Filtration.'},
-            { title: 'Solenoid Control Valve', url: '/automatic-filters-and-accessories/solenoid-control-valve', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Solenoid-Control-Valve.webp',shortDesc:'Automated Irrigation Control Valve.' },
-            { title: 'Pressure Reducing Valve', url: '/automatic-filters-and-accessories/pressure-reducing-valve', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Pressure-Reducing-Valve.webp' ,shortDesc:'Reliable Downstream Pressure Control.'},
-            { title: 'Pressure Sustaining Valve', url: '/automatic-filters-and-accessories/pressure-sustaining-valve', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Pressure-Sustaining-Valve.webp',shortDesc:'Consistent Upstream Pressure Control.' },
-            { title: 'Quick Pressure Relief Valve', url: '/automatic-filters-and-accessories/quick-pressure-relief-valve', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/QUICK-PRESSURE.webp' ,shortDesc:'Fast-Acting Burst Protection Valve.'},
-            { title: 'Filter Auto Backwash Valve', url: '/automatic-filters-and-accessories/filter-auto-backwash-valve', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/FILTER-BACKWASH.png.webp',shortDesc:'Automated Filter Cleaning Valve.' },
-            { title: 'Water Meter', url: '/automatic-filters-and-accessories/water-meter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/WATER-METER.webp' ,shortDesc:'Volumetric Meter for Smart Irrigation. '},
-              ],
-        },
-       
-      ],
-    },
+    
       {
       name: 'Sprinkler Irrigration system',
       slug: 'sprinkler-irrigration-system',
@@ -646,36 +620,7 @@ export const IrrigationproductsMegaMenu = {
        
       ],
     },
-    {
-      name: 'Filters & Injectors',
-      slug: 'filters-and-injectors',
-      desc: 'Efficient filtration and fertilizer injection solutions with filters, dosing pumps and injectors.',
-      categories: [
-        {
-          name: 'Filters',
-          products: [
-            { title: 'Hydrocyclone Filter', url: '/filters/hydrocyclone-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Hydrocyclone-Filter.webp' ,shortDesc:'Sand Separator for Clean Irrigation.'},
-            { title: 'Sand Filter', url: '/filters/sand-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/SAND-FILTER-1.webp',shortDesc:'Fine Filtration for Drip Systems.' },
-            { title: 'Screen Filter', url: '/filters/screen-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Screen-Filter.webp' ,shortDesc:'Reliable Mesh Filter for Irrigation.'},
-            { title: 'Twin Screen Filter', url: '/filters/twin-screen-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Twin-Screen-Filter.webp' ,shortDesc:'High-Flow Dual Mesh Filter.'},
-            { title: 'Semi Automatic Screen Filter', url: '/filters/semi-automatic-screen-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Semi-Automatic-Screen-Filter-1.webp',shortDesc:'Low-Downtime Screen Filter.' },
-            { title: 'Disc Filter & Twin Disc Filter', url: '/filters/disc-filter-and-twin-disc-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Disc-Filter-Twin-Disc-Filter-1.webp' ,shortDesc: 'Precision Filter for Open Water Sources.'},
-            { title: 'Mini Sigma Filter', url: '/filters/mini-sigma-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Mini-Sigma-Filter.webp' ,shortDesc:'Compact Self-Cleaning Filter.'},
-            { title: 'Filtomat Filter', url: '/filters/filtomat-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Filtomat-Filter.webp',shortDesc:'Power-Free Automatic Filtration.' },
-        ],
-        },
-        {
-          name: 'Dosing pumps & Fertilizer Injectors',
-          products: [
-            { title: 'HDPE Header Manifold', url: '/dosing-pumps-and-fertilizer-injectors/hdpe-header-manifold', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/HDPE-Header-Manifold.webp' ,shortDesc:'Durable Manifold for Fertigation Systems.'},
-            { title: 'PP Header Assembly', url: '/dosing-pumps-and-fertilizer-injectors/pp-header-assembly', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PP-Header-Assembly.webp',shortDesc:'Reliable Assembly for Filtration Systems.' },
-            { title: 'Venturi Injector', url: '/dosing-pumps-and-fertilizer-injectors/venturi-injector', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Venturi-Injector.webp',shortDesc:'Efficient Fertilizer Injector.' },
-            { title: 'Dosing Pump', url: '/dosing-pumps-and-fertilizer-injectors/dozing-pump', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/DOZING-PUMP.webp' ,shortDesc:'Precision Fertilizer Dosing Pump.'},
-          ],
-        }
-      
-      ],
-    },
+   
    
      {
       name: 'Micro & Mini Sprinklers',
@@ -712,6 +657,73 @@ export const IrrigationproductsMegaMenu = {
           name: 'Foggers & Assemblies',
           products: [
             { title: 'K-Fogger', url: '/foggers-and-assemblies/k-fogger', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K%E2%80%93Fogger-K%E2%80%93Fogger.webp' ,shortDesc:'Fine Fogging for Climate Control.'},
+              ],
+        },
+       
+      ],
+    },
+
+
+     {
+      name: 'Filters & Injectors',
+      slug: 'filters-and-injectors',
+      desc: 'Efficient filtration and fertilizer injection solutions with filters, dosing pumps and injectors.',
+      categories: [
+        {
+          name: 'Filters',
+          products: [
+            { title: 'Hydrocyclone Filter', url: '/filters/hydrocyclone-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Hydrocyclone-Filter.webp' ,shortDesc:'Sand Separator for Clean Irrigation.'},
+            { title: 'Sand Filter', url: '/filters/sand-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/SAND-FILTER-1.webp',shortDesc:'Fine Filtration for Drip Systems.' },
+            { title: 'Screen Filter', url: '/filters/screen-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Screen-Filter.webp' ,shortDesc:'Reliable Mesh Filter for Irrigation.'},
+            { title: 'Twin Screen Filter', url: '/filters/twin-screen-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Twin-Screen-Filter.webp' ,shortDesc:'High-Flow Dual Mesh Filter.'},
+            { title: 'Semi Automatic Screen Filter', url: '/filters/semi-automatic-screen-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Semi-Automatic-Screen-Filter-1.webp',shortDesc:'Low-Downtime Screen Filter.' },
+            { title: 'Disc Filter & Twin Disc Filter', url: '/filters/disc-filter-and-twin-disc-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Disc-Filter-Twin-Disc-Filter-1.webp' ,shortDesc: 'Precision Filter for Open Water Sources.'},
+            { title: 'Mini Sigma Filter', url: '/filters/mini-sigma-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Mini-Sigma-Filter.webp' ,shortDesc:'Compact Self-Cleaning Filter.'},
+            { title: 'Filtomat Filter', url: '/filters/filtomat-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Filtomat-Filter.webp',shortDesc:'Power-Free Automatic Filtration.' },
+        ],
+        },
+        {
+          name: 'Dosing pumps & Fertilizer Injectors',
+          products: [
+            { title: 'HDPE Header Manifold', url: '/dosing-pumps-and-fertilizer-injectors/hdpe-header-manifold', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/HDPE-Header-Manifold.webp' ,shortDesc:'Durable Manifold for Fertigation Systems.'},
+            { title: 'PP Header Assembly', url: '/dosing-pumps-and-fertilizer-injectors/pp-header-assembly', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/PP-Header-Assembly.webp',shortDesc:'Reliable Assembly for Filtration Systems.' },
+            { title: 'Venturi Injector', url: '/dosing-pumps-and-fertilizer-injectors/venturi-injector', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Venturi-Injector.webp',shortDesc:'Efficient Fertilizer Injector.' },
+            { title: 'Dosing Pump', url: '/dosing-pumps-and-fertilizer-injectors/dozing-pump', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/DOZING-PUMP.webp' ,shortDesc:'Precision Fertilizer Dosing Pump.'},
+          ],
+        }
+      
+      ],
+    },
+     {
+      name: 'Automation System',
+      slug: 'automation-system',
+      desc: 'Smart irrigation automation with fertigation machines, controllers, filters and control valves.',
+      categories: [
+        {
+          name: 'Fertigation Machines',
+          products: [
+            { title: 'Nutrijet Fertigation Machines', url: '/fertigation-machines/nutrijet-fertigation-machines', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/NUTRIJET.webp' ,shortDesc:'Smart IoT Fertigation System.'},
+              ],
+        },
+        {
+          name: 'Controllers',
+          products: [
+            { title: 'Irribeat Controllers', url: '/controllers/irribeat-controllers', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/IRRIBEAT.webp' ,shortDesc:'Smart Automated Irrigation Controller.'},
+            { title: 'GSI (Galcon Smart Irrigation) Controller', url: '/controllers/gsi-galcon-smart-irrigation-controller', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/GSI-Galcon-Smart-Irrigation.webp',shortDesc:'Cloud-Based Smart Irrigation Controller.' },
+            { title: 'Galpro Controller (AC/DC)', url: '/controllers/galpro-controller-ac-dc', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Galpro-AC-DC.webp',shortDesc:'Affordable Smart Irrigation Automation.' },
+              ],
+        },
+        {
+          name: 'Automatic Filters & Accessories',
+          products: [
+            { title: 'Mini Sigma Filter', url: '/automatic-filters-and-accessories/mini-sigma-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Mini-Sigma-Filter.webp' ,shortDesc:'Compact Self-Cleaning Filter.'},
+            { title: 'Filtomat Filter', url: '/automatic-filters-and-accessories/filtomat-filter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Filtomat-Filter.webp' ,shortDesc:'Power-Free Automatic Filtration.'},
+            { title: 'Solenoid Control Valve', url: '/automatic-filters-and-accessories/solenoid-control-valve', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Solenoid-Control-Valve.webp',shortDesc:'Automated Irrigation Control Valve.' },
+            { title: 'Pressure Reducing Valve', url: '/automatic-filters-and-accessories/pressure-reducing-valve', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Pressure-Reducing-Valve.webp' ,shortDesc:'Reliable Downstream Pressure Control.'},
+            { title: 'Pressure Sustaining Valve', url: '/automatic-filters-and-accessories/pressure-sustaining-valve', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Pressure-Sustaining-Valve.webp',shortDesc:'Consistent Upstream Pressure Control.' },
+            { title: 'Quick Pressure Relief Valve', url: '/automatic-filters-and-accessories/quick-pressure-relief-valve', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/QUICK-PRESSURE.webp' ,shortDesc:'Fast-Acting Burst Protection Valve.'},
+            { title: 'Filter Auto Backwash Valve', url: '/automatic-filters-and-accessories/filter-auto-backwash-valve', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/FILTER-BACKWASH.png.webp',shortDesc:'Automated Filter Cleaning Valve.' },
+            { title: 'Water Meter', url: '/automatic-filters-and-accessories/water-meter', image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/WATER-METER.webp' ,shortDesc:'Volumetric Meter for Smart Irrigation. '},
               ],
         },
        

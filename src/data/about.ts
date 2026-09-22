@@ -25,6 +25,7 @@ export interface TimelineEntry {
   year: string;
   title: string;
   description: string;
+  image: string;
 }
 
 export interface WhyKothariItem {
@@ -152,27 +153,27 @@ export const aboutCoreValues = {
 export const aboutLegacy = {
   heading: "THE LEGACY OF KOTHARI'S",
   timeline: [
-    { year: '1980', title: 'The Beginning', description: 'Founder, Mr. Kothari, starts trading through a fertilizer shop' },
-    { year: '1985', title: 'Diversification', description: 'Diversifies into agriculture, irrigation products, trading and services' },
-    { year: '1997', title: 'PVC Manufacturing', description: 'Commenced PVC pipe and fitting manufacturing with a single machine' },
-    { year: '1999', title: 'Hose Pipe Production', description: 'Initiating the production of Hose pipes at Unit 2' },
-    { year: '2002', title: 'Agri Cables', description: 'Forays into Agri submersible cables' },
-    { year: '2003', title: 'HDPE Pipes & Fittings', description: 'Unit 3: HDPE pipes and fittings' },
-    { year: '2004', title: 'Micro-Irrigation', description: 'Enters micro-irrigation market via irrigation systems at Unit 4' },
-    { year: '2005', title: 'First Export', description: 'Exports first consignment to East Africa' },
-    { year: '2010', title: '100% Automated Plant', description: `Remodels Unit 1 into India's First 100% Automated Plant` },
-    { year: '2011', title: '100CR Turnover', description: 'Achieves 100CR turnover' },
-    { year: '2013', title: 'Column Pipes', description: 'Starts manufacturing of column pipes at the 100% Automated Unit 5' },
-    { year: '2014', title: 'Automated Irrigation', description: 'Introduced automated irrigation systems in India, in collaboration with Israel' },
-    { year: '2015', title: 'Himachal Pradesh Expansion', description: 'Himachal Pradesh expansion (ISI-certified mulching films & cables)' },
-    { year: '2016', title: 'Brand Identity', description: 'Rewamps its identity' },
-    { year: '2017', title: 'Export Wing', description: 'Establishes a dedicated export wing' },
-    { year: '2018', title: '7500CR Turnover', description: 'Achieves 750Cr turnover' },
-    { year: '2019', title: 'Gujarat Manufacturing Plant', description: 'New manufacturing plant at Kukarwada, Gujarat' },
-    { year: '2021', title: 'Mega Facility in Solapur', description: 'Mega facility in Solapur' },
-    { year: '2023', title: 'Kothari Udyam Nagar', description: '100-acre mega plant at Kothari Udyam Nagar' },
-    { year: '2024', title: '1000CR Turnover', description: 'Achieved 1000CR turnover' },
-    { year: '2025', title: 'Indore Expansion', description: 'Started factory and office in Indore' },
+    { year: '1980', title: 'The Beginning', description: 'Founder, Mr. Kothari, starts trading through a fertilizer shop', image: '/t1.jpg' },
+    { year: '1985', title: 'Diversification', description: 'Diversifies into agriculture, irrigation products, trading and services', image: '/t7.jpg' },
+    { year: '1997', title: 'PVC Manufacturing', description: 'Commenced PVC pipe and fitting manufacturing with a single machine', image: '/plant_extrusion_line_1784719717817.jpg' },
+    { year: '1999', title: 'Hose Pipe Production', description: 'Initiating the production of Hose pipes at Unit 2', image: '/plant_warehouse_storage_1784719730647.jpg' },
+    { year: '2002', title: 'Agri Cables', description: 'Forays into Agri submersible cables', image: '/t2.jpg' },
+    { year: '2003', title: 'HDPE Pipes & Fittings', description: 'Unit 3: HDPE pipes and fittings', image: '/t3.jpg' },
+    { year: '2004', title: 'Micro-Irrigation', description: 'Enters micro-irrigation market via irrigation systems at Unit 4', image: '/field.jpg' },
+    { year: '2005', title: 'First Export', description: 'Exports first consignment to East Africa', image: '/t4.jpg' },
+    { year: '2010', title: '100% Automated Plant', description: `Remodels Unit 1 into India's First 100% Automated Plant`, image: '/plant_aerial_view_1784719755067.jpg' },
+    { year: '2011', title: '100CR Turnover', description: 'Achieves 100CR turnover', image: '/plant_quality_lab_1784719742717.jpg' },
+    { year: '2013', title: 'Column Pipes', description: 'Starts manufacturing of column pipes at the 100% Automated Unit 5', image: '/t1.jpg' },
+    { year: '2014', title: 'Automated Irrigation', description: 'Introduced automated irrigation systems in India, in collaboration with Israel', image: '/field2.jpg' },
+    { year: '2015', title: 'Himachal Pradesh Expansion', description: 'Himachal Pradesh expansion (ISI-certified mulching films & cables)', image: '/plant_warehouse_storage_1784719730647.jpg' },
+    { year: '2016', title: 'Brand Identity', description: 'Rewamps its identity', image: '/heronew.jpg' },
+    { year: '2017', title: 'Export Wing', description: 'Establishes a dedicated export wing', image: '/t4.jpg' },
+    { year: '2018', title: '7500CR Turnover', description: 'Achieves 750Cr turnover', image: '/t2.jpg' },
+    { year: '2019', title: 'Gujarat Manufacturing Plant', description: 'New manufacturing plant at Kukarwada, Gujarat', image: '/plant_aerial_view_1784719755067.jpg' },
+    { year: '2021', title: 'Mega Facility in Solapur', description: 'Mega facility in Solapur', image: '/plant_extrusion_line_1784719717817.jpg' },
+    { year: '2023', title: 'Kothari Udyam Nagar', description: '100-acre mega plant at Kothari Udyam Nagar', image: '/plant_aerial_view_1784719755067.jpg' },
+    { year: '2024', title: '1000CR Turnover', description: 'Achieved 1000CR turnover', image: '/t3.jpg' },
+    { year: '2025', title: 'Indore Expansion', description: 'Started factory and office in Indore', image: '/t7.jpg' },
   ] as TimelineEntry[],
 };
 

@@ -428,7 +428,31 @@ const [divOpen, setDivOpen] = useState(false);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isIrrigation]);
-  const productsMenu = dynamicMenu || productsMegaMenu;
+
+  // Left sidebar segments always come from the static prop menu (fixed order).
+  // The right product grid is filled from the live WP menu by matching each
+  // static segment to its dynamic counterpart (by slug or normalized name);
+  // falling back to the static segment data when no live match exists.
+  const staticSegments = productsMegaMenu.segments || [];
+  const dynamicSegments = dynamicMenu?.segments || [];
+  const dynamicByKey = new Map<string, any>();
+  for (const seg of dynamicSegments) {
+    const slugKey = normalizeSlug(seg.slug);
+    const nameKey = normalizeSlug(seg.name);
+    if (slugKey) dynamicByKey.set(slugKey, seg);
+    if (nameKey && !dynamicByKey.has(nameKey)) dynamicByKey.set(nameKey, seg);
+  }
+  const mergedMenu = {
+    ...(productsMegaMenu as any),
+    segments: staticSegments.map((seg: any) => {
+      const dyn = dynamicByKey.get(normalizeSlug(seg.slug)) || dynamicByKey.get(normalizeSlug(seg.name));
+      if (dyn?.categories?.length) {
+        return { ...seg, categories: dyn.categories };
+      }
+      return seg;
+    }),
+  };
+  const productsMenu = mergedMenu;
   const safeProductSegment = Math.min(
     activeProductSegment,
     Math.max(0, (productsMenu.segments?.length || 1) - 1)
