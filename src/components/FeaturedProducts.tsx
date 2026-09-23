@@ -182,7 +182,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
         </div>
 
         {/* Product Grid Stage */}
-        <div className="relative min-h-[550px] w-full py-6 px-1 touch-pan-y overflow-hidden">
+        <div className="relative min-h-[600px] w-full py-6 px-1 touch-pan-y overflow-hidden">
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
               key={safePage}
@@ -208,7 +208,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
 
                     <div>
                       {/* Product Showcase Image Frame */}
-                      <div className="relative h-60 w-full bg-white p-8 flex items-center justify-center border-b border-white/10 overflow-hidden">
+                      <div className="relative h-72 sm:h-80 w-full bg-white p-6 flex items-center justify-center border-b border-white/10 overflow-hidden">
                         <img
                           src={product.image}
                           alt={product.title}
@@ -220,7 +220,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
                       {/* Content Area */}
                       <div className="p-7 space-y-4">
                         <div className="space-y-1">
-                          <h3 className={`text-lg font-bold text-white ${isGreen ? 'group-hover:text-emerald-200' : 'group-hover:text-cyan-200'} transition-colors leading-snug line-clamp-1`}>
+                          <h3 className={`text-lg font-bold text-white ${isGreen ? 'group-hover:text-emerald-200' : 'group-hover:text-cyan-200'} transition-colors leading-snug`}>
                             {product.title}
                           </h3>
                         </div>

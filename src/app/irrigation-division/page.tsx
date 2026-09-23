@@ -418,12 +418,12 @@ const FEATURE_PRODUCTS = [
   },
   {
     id: '2',
-    title: 'Fertigation Machines',
+    title: 'Nutrijet Fertigation Machines',
     subtitle: 'Precision Yield Technology',
     description: 'Kothari’s fertigation machines are automated systems for nutrient supply through irrigation. They are engineered for precise and uniform fertilizer application, enhancing crop growth and maximising yields.',
     image: 'https://kotharigroupindia.com/img/product-banners/nutrijet.webp',
     category: 'Micro Irrigation',
-    link: '#',
+    link: '/fertigation-machines/nutrijet-fertigation-machines',
     spec: 'Efficiency Rate: 98%',
   },
   {
