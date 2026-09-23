@@ -273,8 +273,8 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
           <Link
             href={
               theme === 'green'
-                ? '/products?division=irrigation-division'
-                : '/products?division=pipe-division'
+                ? '/irrigation-products'
+                : '/pipe-products'
             }
             className={`inline-flex items-center gap-2 bg-white hover:bg-transparent  ${isGreen? 'text-[#145E2A] ':'text-[#015CAA]'} hover:text-white border border-white/60 hover:border-white px-8 py-3.5 text-xs font-semibold uppercase tracking-wider transition-all duration-300 group/btn`}
           > 

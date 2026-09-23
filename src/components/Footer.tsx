@@ -43,21 +43,21 @@ const DEFAULT_SOCIAL_GROUPS = [
 ];
 
  const pipepProductSegments = [
-   {label:'Agriculture Pipes & Fittings',target:"/products?segment=agriculture-pipes-and-fittings"},
-{label:'Flexible Hose Pipes',target:"/products?segment=flexible-hose-pipes"},
-{label:'Sewerage Drainage Pipes and Fittings',target:"/products?segment=sewerage-drainage-pipes-and-fittings"},
-{label:'Borewell Solution',target:"/products?segment=borewell-solution"},
-{label:'Plumbing Pipes & Fittings',target:"/products?segment=plumbing-pipes-and-fittings"},
-{label:'Cable Protection',target:"/products?segment=cable-protection"}
+   {label:'Agriculture Pipes & Fittings',target:"/products/agriculture-pipes-and-fittings"},
+{label:'Flexible Hose Pipes',target:"/products/flexible-hose-pipes"},
+{label:'Sewerage Drainage Pipes and Fittings',target:"/products/sewerage-drainage-pipes-and-fittings"},
+{label:'Borewell Solution',target:"/products/borewell-solution"},
+{label:'Plumbing Pipes & Fittings',target:"/products/plumbing-pipes-and-fittings"},
+{label:'Cable Protection',target:"/products/cable-protection"}
     
     ]
  const irrigationProductSegments = [
-{label:'Drip Irrigation System',target:"/products?segment=drip-irrigation-system"},
-{label:'Automation System',target:"/products?segment=automation-system"},
-{label:'Sprinkler Irrigration system',target:"/products?segment=sprinkler-irrigration-system"},
-{label:'Filters & Injectors',target:"/products?segment=filters-and-injectors"},
-{label:'Micro & Mini Sprinklers',target:"/products?segment=micro-and-mini-sprinklers"},
-{label:'Turnkey Projects',target:"/products?segment=turnkey-projects"}
+{label:'Drip Irrigation System',target:"/products/drip-irrigation-system"},
+{label:'Automation System',target:"/products/automation-system"},
+{label:'Sprinkler Irrigration system',target:"/products/sprinkler-irrigration-system"},
+{label:'Filters & Injectors',target:"/products/filters-and-injectors"},
+{label:'Micro & Mini Sprinklers',target:"/products/micro-and-mini-sprinklers"},
+{label:'Turnkey Projects',target:"/products/turnkey-projects"}
     ]
 
 export const Footer: React.FC<FooterProps> = ({

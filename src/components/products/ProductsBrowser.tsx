@@ -67,6 +67,15 @@ export const ProductsBrowser: React.FC<ProductsBrowserProps> = ({
 
   const options = useMemo(() => getProductsFilterOptions(products), [products]);
 
+  // A `/products/{slug}` path carries the segment — e.g. /products/plumbing-pipes-and-fittings
+  const pathSegment = useMemo(() => {
+    const parts = pathname.split('/').filter(Boolean);
+    if (parts[0] === 'products' && parts.length === 2) {
+      return decodeURIComponent(parts[1]);
+    }
+    return '';
+  }, [pathname]);
+
   const [division, setDivision] = useState(initialDivision);
   const [segment, setSegment] = useState(initialSegment);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -93,25 +102,37 @@ export const ProductsBrowser: React.FC<ProductsBrowserProps> = ({
 
   // Keep local filter state in sync with the URL on client-side navigation
   // (e.g. clicking a segment link in the header mega menu), not just full reloads.
+  // A division in the URL wins; otherwise fall back to the locked division
+  // passed by the page (static division pages like /pipe-products).
   useEffect(() => {
-    const nextDivision = searchParams.get('division') || '';
-    const nextSegment = searchParams.get('segment') || '';
+    const urlDivision = searchParams.get('division') || '';
+    const urlSegment = searchParams.get('segment') || '';
     const nextPage = parseInt(searchParams.get('page') || '', 10);
-    setDivision(nextDivision);
-    setSegment(nextSegment);
+    setDivision(urlDivision || initialDivision || '');
+    setSegment(urlSegment || pathSegment || initialSegment || '');
     setPage(Number.isFinite(nextPage) && nextPage > 0 ? nextPage : 1);
-  }, [searchParams]);
+  }, [searchParams, initialDivision, initialSegment, pathSegment]);
 
   const applyFilters = (nextDivision: string, nextSegment: string) => {
     setDivision(nextDivision);
     setSegment(nextSegment);
     setPage(1);
 
+    if (nextSegment) {
+      // Segments live at /products/{slug} — the query keeps an optional division.
+      const sp = new URLSearchParams();
+      if (nextDivision) sp.set('division', nextDivision);
+      const qs = sp.toString();
+      router.push(qs ? `/products/${nextSegment}?${qs}` : `/products/${nextSegment}`, {
+        scroll: false,
+      });
+      return;
+    }
+
     const sp = new URLSearchParams(searchParams.toString());
     if (nextDivision) sp.set('division', nextDivision);
     else sp.delete('division');
-    if (nextSegment) sp.set('segment', nextSegment);
-    else sp.delete('segment');
+    sp.delete('segment');
     sp.delete('page');
 
     const qs = sp.toString();

@@ -730,7 +730,7 @@ const handleSegmentClick = (segIdx: number) => {
           {/* Segment Name Above Product Grid */}
           <div className="mb-4 pb-2 border-b border-[#E2EBF3] flex items-center justify-between">
             <Link
-              href={`/products?segment=${
+              href={`/products/${
                 productsMenu.segments[safeProductSegment]?.slug ||
                 normalizeSlug(
                   productsMenu.segments[safeProductSegment]?.name
