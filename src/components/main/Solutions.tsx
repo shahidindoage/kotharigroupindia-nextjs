@@ -55,7 +55,7 @@ export const Solutions = () => {
             <blockquote 
               className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight leading-[1.35] text-[#0F172A] select-none"
             >
-              “We are dedicated to nurturing lands and building dreams with <span className="font-semibold">innovative irrigation solutions</span> for agriculture and <span className="font-semibold">plumbing solutions</span> for farms and buildings.”
+              “Water is where every field and every home begins. <span className="font-semibold">We manage it end to end</span>, with irrigation that keeps farms thriving and plumbing that keeps buildings running. <span className="font-semibold">That is water management done right.</span>”
             </blockquote>
 
             {/* Author Attribution Block */}

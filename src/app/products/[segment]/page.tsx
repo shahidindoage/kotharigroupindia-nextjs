@@ -3,10 +3,23 @@ import { ProductsBrowser } from '@/components/products/ProductsBrowser';
 import { ProductsPageLayout } from '@/components/products/ProductsPageLayout';
 import { SegmentOverview, SegmentFaqs } from '@/components/products/SegmentSections';
 import { fetchWpProductCards } from '@/lib/wp-products';
+import { wpPageMetadata } from '@/lib/wp-seo';
 import { segmentPageContent } from '@/data/segment-pages';
 
 interface PageProps {
   params: Promise<{ segment: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps) {
+  const { segment } = await Promise.resolve(params);
+  const segmentSlug = decodeURIComponent(segment);
+  return wpPageMetadata(
+    segmentSlug,
+    {
+      title: `${slugToReadable(segmentSlug)} | Products | Kothari Group`,
+      description: `Browse the full range of ${slugToReadable(segmentSlug).toLowerCase()} from Kothari Group — engineered for performance and reliability.`,
+    }
+  );
 }
 
 function slugToReadable(slug: string): string {

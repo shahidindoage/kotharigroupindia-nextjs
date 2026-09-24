@@ -9,9 +9,9 @@ import { Pagination } from '@/components/blog/Pagination';
 import { fetchWpBlogPosts, WP_CATEGORIES } from '@/lib/wp-posts';
 
 export const metadata = {
-  title: 'Blogs & Insights | Kothari Group',
+  title: 'Insightful Blogs - Kothari Group',
   description:
-    'In-depth engineering articles, farming guides, and water management tutorials curated by Kothari Group specialists.',
+    'Explore expert Blog articles from Kothari Group India on plumbing, irrigation systems &amp; agri-pipes. Stay informed on best practices, innovations and market trends.',
 };
 
 export const revalidate = 600;

@@ -4,12 +4,13 @@ import { Home2Header } from '@/components/Home2Header';
 import { Home2Footer } from '@/components/Home2Footer';
 import { AwardsGallery } from '@/components/award/AwardsGallery';
 import { awardsData } from '@/lib/awards';
+import { wpPageMetadataFor } from '@/lib/wp-seo';
 
-export const metadata = {
+export const generateMetadata = wpPageMetadataFor('awards', {
   title: 'Awards & Industry Recognition | Kothari Group',
   description:
     'See how Kothari Group India has been recognised across plumbing, agriculture and micro-irrigation sectors with awards honouring innovation, quality and sustainability.',
-};
+});
 
 export default async function AwardsPage() {
   const { awards, categories } = awardsData;

@@ -3,12 +3,13 @@ import {
   irrigationApplications,
   pipeApplications,
 } from '@/data/applications';
+import { wpPageMetadataFor } from '@/lib/wp-seo';
 
-export const metadata = {
+export const generateMetadata = wpPageMetadataFor('applications', {
   title: 'Applications | Irrigation & Pipe Solutions | Kothari Group India',
   description:
     'Explore Kothari Group applications across irrigation and piping — crop-wise irrigation, water management, municipal infrastructure, plumbing, industrial and drainage solutions.',
-};
+});
 
 interface SearchParams {
   division?: string;

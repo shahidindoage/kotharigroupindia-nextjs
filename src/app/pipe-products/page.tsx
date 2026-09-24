@@ -1,10 +1,11 @@
 import DivisionProductsPage from '@/components/products/DivisionProductsPage';
+import { wpPageMetadataFor } from '@/lib/wp-seo';
 
-export const metadata = {
+export const generateMetadata = wpPageMetadataFor('pipe-products', {
   title: 'Pipe Products | Pipes, Fittings & Plumbing | Kothari Group',
   description:
     'Browse the complete Kothari Group pipe division catalogue — plumbing pipes and fittings, agricultural pipes, sewerage and drainage systems, borewell solutions and more.',
-};
+});
 
 export default function PipeProductsPage() {
   return (

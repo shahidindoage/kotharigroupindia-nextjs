@@ -6,12 +6,13 @@ import { Home2Header } from '@/components/Home2Header';
 import { Home2Footer } from '@/components/Home2Footer';
 import { ContactUsForm } from '@/components/contact/ContactUsForm';
 import { FacilityMap } from '@/components/contact/FacilityMap';
+import { wpPageMetadataFor } from '@/lib/wp-seo';
 
-export const metadata = {
+export const generateMetadata = wpPageMetadataFor('contact-us', {
   title: 'Contact Us | Pipes, Fittings & Irrigation Systems | Kothari Group',
   description:
     'Get in touch with Kothari Group — registered office in Solapur, corporate office in Pune. Email, call or WhatsApp our sales teams for plumbing, agri pipes & irrigation enquiries.',
-};
+});
 
 type ContactRow = { label?: string; value: string };
 

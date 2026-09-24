@@ -4,12 +4,13 @@ import { Home2Header } from '@/components/Home2Header';
 import { Home2Footer } from '@/components/Home2Footer';
 import { VideoGallery } from '@/components/video/VideoGallery';
 import { kothariTVData } from '@/lib/video';
+import { wpPageMetadataFor } from '@/lib/wp-seo';
 
-export const metadata = {
+export const generateMetadata = wpPageMetadataFor('kotharitv', {
   title: 'KothariTV: Videos & Insights | Kothari Group',
   description:
     'Watch videos showcasing our solutions, product demos, tutorials, and success stories from Kothari Group.',
-};
+});
 
 export default async function VideosPage() {
   const { videos, categories } = kothariTVData;

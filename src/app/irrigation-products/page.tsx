@@ -1,10 +1,11 @@
 import DivisionProductsPage from '@/components/products/DivisionProductsPage';
+import { wpPageMetadataFor } from '@/lib/wp-seo';
 
-export const metadata = {
+export const generateMetadata = wpPageMetadataFor('irrigation-products', {
   title: 'Irrigation Products | Micro Irrigation Systems | Kothari Group',
   description:
     'Browse the complete Kothari Group irrigation division catalogue — drip irrigation systems, sprinklers, filters, injectors, automation and turnkey projects.',
-};
+});
 
 export default function IrrigationProductsPage() {
   return (

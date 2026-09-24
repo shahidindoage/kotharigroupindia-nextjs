@@ -3,12 +3,13 @@ import AppShell from '@/components/AppShell';
 import { Home2Header } from '@/components/Home2Header';
 import { Home2Footer } from '@/components/Home2Footer';
 import { termsData } from '@/lib/term';
+import { wpPageMetadataFor } from '@/lib/wp-seo';
 
-export const metadata = {
+export const generateMetadata = wpPageMetadataFor('terms-and-conditions', {
   title: 'Terms & Conditions | Kothari Group',
   description:
     'Read the Kothari Group Terms & Conditions covering usage, licenses, payments, restrictions and liability for our website and services.',
-};
+});
 
 export default function TermsConditionsPage() {
   const { title, updatedDate, contents, sections } = termsData;

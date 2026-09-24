@@ -9,9 +9,9 @@ import { Pagination } from '@/components/blog/Pagination';
 import { fetchWpBlogPosts, WP_CATEGORIES } from '@/lib/wp-posts';
 
 export const metadata = {
-  title: 'Success Stories | Kothari Group',
+  title: 'Success Stories of Farmers & Dealers - Kothari Group',
   description:
-    'Real-world success stories of how Kothari Group piping and irrigation solutions are transforming farms, fields, and communities.',
+    'Read inspiring success stories of farmers and dealers partnering with Kothari Group how smart irrigation, quality products &amp; service drove growth and results.',
 };
 
 export const revalidate = 600;

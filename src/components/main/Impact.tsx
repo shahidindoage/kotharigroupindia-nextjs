@@ -103,7 +103,7 @@ export const Impact: React.FC = () => {
                       {item.label}
                     </h3>
 
-                    <p className="text-xs text-sky-100/70 font-light leading-relaxed pt-2 max-w-xs">
+                    <p className="text-[15px] text-sky-100/80 font-light leading-relaxed pt-2 max-w-xs">
                       {item.description}
                     </p>
                   </div>

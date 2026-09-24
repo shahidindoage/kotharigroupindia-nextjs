@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import { Menu, X, ChevronDown, ChevronRight, Phone, Mail, MapPin, Send, ArrowRight, Factory, Sprout, Users, Award, Building2, ArrowUp } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight, Phone, Mail, MapPin, Send, ArrowRight, Factory, Sprout, Users, Award, Building2, ArrowUp, Home } from 'lucide-react';
 import Link from 'next/link';
 import Script from 'next/script';
 import { useRouter } from 'next/navigation';
@@ -200,11 +200,7 @@ const resourcesMegaMenu = {
       url: '/press-release',
       image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80',
     },
-    {
-      title: 'Success Story',
-      url: '/successstories',
-      image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80',
-    },
+  
     {
       title: 'Videos',
       url: '/KothariTV',
@@ -276,61 +272,6 @@ const resourcesMegaMenu = {
 
 const solutionsMegaMenu = pipeSolutionsMegaMenu;
 
-const homeDivisionEntry = {
-  id: "home",
-  title: "Home",
-  shortDesc: "Back to the Kothari Group homepage.",
-  fullDesc: "Return to the Kothari Group homepage - explore both divisions and company updates.",
-  image: "/heronew.jpg",
-  link: "/",
-  accent: "text-[#1575B3]",
-  theme: "blue",
-  badges: [
-    { label: "Pipe Division", link: "/pipe-division" },
-    { label: "Irrigation Division", link: "/irrigation-division" },
-  ],
-};
-
-const divisionsMegaMenu = {
-  category: "OUR DIVISIONS",
-  headline: "Two engines. One purpose.",
-  description: "Piping infrastructure and precision irrigation - two specialized verticals engineered under one Kothari promise of flow, strength and scale.",
-  divisions: [
-    {
-      id: "pipes",
-      title: "Pipe Division",
-      shortDesc: "Engineered fluid conveyance and underground infrastructure.",
-      fullDesc: "Comprehensive piping for residential towers, urban drainage, cable ducting and deep borewell extraction.",
-      image: "https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=1600&q=80",
-      link: "/pipe-division",
-      accent: "text-[#1575B3]",
-      theme: "blue",
-      badges: [
-        { label: 'Residential & Commercial Plumbing Solutions', link: '/solutions/residential-commercial-plumbing' },
-      { label: 'Urban Drainage & Sewerage Networks', link: '/solutions/urban-drainage-sewerage' },
-      { label: 'Groundwater Access Solutions', link: '/solutions/groundwater-access' },
-      { label: 'Farm Infrastructure Piping Solutions', link: '/solutions/farm-infrastructure-piping' },
-      ],
-    },
-    {
-      id: "irrigation",
-      title: "Irrigation Division",
-      shortDesc: "Micro-hydration, drip networks and smart farm automation.",
-      fullDesc: "Advanced agri infra for maximum yield, zero-clog filtration and automated farm governance.",
-      image: "https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=1600&q=80",
-      link: "/irrigation-division",
-      accent: "text-emerald-700",
-      theme: "green",
-      badges: [
-          { label: 'Precision Irrigation', link: '/solutions/precision-irrigation' },
-      { label: 'Polyhouse (Greenhouse) Irrigation', link: '/solutions/polyhouse-greenhouse-irrigation' },
-      { label: 'Agricultural Field Irrigation', link: '/solutions/agricultural-field-irrigation' },
-      { label: 'Water Management', link: '/solutions/water-management' },
-      ],
-    },
-  ],
-};
-
 const scrollToId = (id: string) => {
   if (id === 'home') {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -387,6 +328,15 @@ const divisions = [
     url: '/irrigation-division'
   },
 ];
+
+const homeDivisionEntry = {
+  id: 'home',
+  name: 'Home',
+  desc: 'Back to the Kothari Group homepage.',
+  icon: Home,
+  accent: 'text-[#1575B3] bg-[#F5FAFF]',
+  url: '/'
+};
 export const HeaderDivison: React.FC<HeaderDivisionProps> = ({ productsMegaMenu = defaultProductsMegaMenu, solutionsMegaMenu: solutionsMegaMenuProp, solid = false }) => {
   
   const [active, setActive] = useState('');
@@ -398,13 +348,20 @@ export const HeaderDivison: React.FC<HeaderDivisionProps> = ({ productsMegaMenu 
  const [activeProductSegment, setActiveProductSegment] = useState(0);
 const [activeProductCategory, setActiveProductCategory] = useState(0);
 const [openSegment, setOpenSegment] = useState<number | null>(null);
-const [hoveredDivision, setHoveredDivision] = useState<string | null>(null);
 const [aboutOpen, setAboutOpen] = useState(false);
-const [divOpen, setDivOpen] = useState(false);
   const division = solutionsMegaMenu.headline.includes('Irrigation') ? 'irrigation-division' : 'pipe-division';
   const isIrrigation = division === 'irrigation-division';
   const router = useRouter();
   const defaultDivisionInterest = division === 'pipe-division' ? 'Pipe Division' : 'Irrigation Division';
+
+  // Divisions menu shows Home plus the OTHER division:
+  // on irrigation pages → Home + Pipe, on pipe pages → Home + Irrigation.
+  const visibleDivisions = [
+    homeDivisionEntry,
+    ...(isIrrigation
+      ? divisions.filter((d) => d.name === 'Pipe Division')
+      : divisions.filter((d) => d.name === 'Irrigation Division')),
+  ];
 
   // Live products mega menu from WordPress (segments + products).
   // Static prop menu renders instantly and stays as fallback.
@@ -457,16 +414,6 @@ const [divOpen, setDivOpen] = useState(false);
     activeProductSegment,
     Math.max(0, (productsMenu.segments?.length || 1) - 1)
   );
-
-  // Divisions menu shows Home (blueish) plus the OTHER division:
-  // on irrigation pages → Home + Pipe, on pipe pages → Home + Irrigation.
-  const visibleDivisions = [
-    homeDivisionEntry,
-    ...(isIrrigation
-      ? divisionsMegaMenu.divisions.filter((d: any) => d.id === 'pipes')
-      : divisionsMegaMenu.divisions.filter((d: any) => d.id === 'irrigation')),
-  ];
-  const defaultDivisionId = visibleDivisions[0]?.id;
 
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -570,7 +517,6 @@ const handleSegmentClick = (segIdx: number) => {
   const handleNavClick = () => {
     setMobileOpen(false);
     setActiveDropdown(null);
-    setDivOpen(false);
     setAboutOpen(false);
   };
 
@@ -581,7 +527,6 @@ const handleSegmentClick = (segIdx: number) => {
     setFormData((prev) => ({ ...prev, division: defaultDivisionInterest }));
     setIsModalOpen(true);
     setAboutOpen(false);
-    setDivOpen(false);
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -869,10 +814,15 @@ const handleSegmentClick = (segIdx: number) => {
   )}
 </div>
 
+
+
+
   <Link href={isIrrigation ? '/irrigation-applications' : '/pipe-applications'} className={navItemStyle}>
                 Applications
               </Link>
-    
+    <Link href={'/successstories'} className={navItemStyle}>
+                Success Stories
+              </Link>
       {/* Resources Mega Menu */}
               <div
                 className="static"
@@ -1076,186 +1026,34 @@ const handleSegmentClick = (segIdx: number) => {
                               )}
                             </div> */}
 
-            
-
-              <Link href="/contact-us" className={navItemStyle}>
+              {/* <Link href="/contact-us" className={navItemStyle}>
                 Contact Us
-              </Link>
-
+              </Link> */}
 
               <div
-  className="static"
-  onMouseEnter={() => handleMouseEnter('divisions')}
-  onMouseLeave={handleMouseLeave}
->
-  <button className={navItemStyle}>
-    Divisions
-    <ChevronDown
-      className={`w-4 h-4 transition-transform duration-300 ${
-        activeDropdown === 'divisions' ? 'rotate-180' : ''
-      }`}
-    />
-  </button>
-
-  {activeDropdown === 'divisions' && (
-    <div className="absolute left-0 top-full w-full bg-white border-b border-[#DCEAF5] shadow-2xl py-10 px-8 sm:px-12 transition-all duration-300 z-50">
-      <div className="max-w-7xl mx-auto grid grid-cols-12 gap-10 items-stretch">
-        
-     
-        <div className="col-span-5 border-r border-[#DCEAF5] pr-10 flex flex-col justify-between h-full">
-          <div>
-            <span className={`text-xs font-bold uppercase tracking-wider ${isIrrigation ? 'text-[#1E8E3E]' : 'text-[#1575b3]'} block mb-2`}>
-              {divisionsMegaMenu.category}
-            </span>
-            <h3 className="text-5xl font-normal text-[#0f172b] leading-snug mb-3">
-              {divisionsMegaMenu.headline}
-            </h3>
-            <p className="text-lg text-[#5F6B7A] leading-relaxed mb-6">
-              {divisionsMegaMenu.description}
-            </p>
-
-            <div className="space-y-3">
-              {visibleDivisions.map((div: any) => {
-                const isActive = (hoveredDivision || defaultDivisionId) === div.id;
-                return (
-                  <Link
-                    key={div.id}
-                    href={div.link}
-                    onClick={handleNavClick}
-                    onMouseEnter={() => setHoveredDivision(div.id)}
-                    className={`group flex items-center justify-between p-4 border transition-all duration-300 ${
-                      isActive
-                        ? div.theme === 'blue'
-                          ? 'border-[#1575B3] bg-[#F5F9FC] shadow-sm'
-                          : 'border-[#1E8E3E] bg-[#EFF7F0] shadow-sm'
-                        : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'
-                    }`}
-                  >
-                    <div>
-                      <h4 className={`text-base font-semibold ${isActive ? (div.theme === 'blue' ? 'text-[#1575B3]' : 'text-[#1E8E3E]') : 'text-[#111111]'}`}>
-                        {div.title}
-                      </h4>
-                      <p className="text-sm text-[#5F6B7A] line-clamp-1 mt-0.5">
-                        {div.shortDesc}
-                      </p>
-                    </div>
-                    <ChevronRight className={`w-5 h-5 transition-transform ${isActive ? `${div.theme === 'blue' ? 'text-[#1575B3]' : 'text-[#1E8E3E]'} translate-x-1` : 'text-[#5F6B7A]'}`} />
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-        
-        </div>
-
-        <div className="col-span-7">
-          {(() => {
-            const activeDiv = visibleDivisions.find(
-              (d: any) => d.id === (hoveredDivision || defaultDivisionId)
-            ) || visibleDivisions[0];
-
-            return (
-              <Link
-                href={activeDiv.link}
-                onClick={handleNavClick}
-                className="group relative h-[420px] w-full overflow-hidden border border-slate-200 bg-slate-950 flex flex-col justify-end shadow-lg block"
-              >
-         
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-                  style={{ backgroundImage: `url(${activeDiv.image})` }}
-                />
-
-            
-                <div
-                  className={`absolute inset-0 transition-opacity duration-500 ${
-                    activeDiv.theme === 'blue'
-                      ? 'bg-gradient-to-t from-[#0E588A]/95 via-[#1575B3]/75 to-slate-950/40'
-                      : 'bg-gradient-to-t from-emerald-950/95 via-teal-900/75 to-slate-950/40'
-                  }`}
-                />
-
-             
-                <div className="relative z-10 p-8 flex flex-col justify-end h-full">
-                  {/* <span className="text-xs font-bold uppercase tracking-wider text-sky-200 mb-1">
-                    Selected Division
-                  </span> */}
-                  <h4 className="text-4xl font-normal text-white leading-snug mb-3">
-                    {activeDiv.title}
-                  </h4>
-                  
-                  <p className="text-sm text-slate-100 leading-relaxed mb-4 line-clamp-3">
-                    {activeDiv.fullDesc || activeDiv.shortDesc}
-                  </p>
-
-           
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {activeDiv.badges?.map((b: { label: string; link: string }) => (
-                      <span
-                        key={b.label}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          handleNavClick();
-                          router.push(b.link);
-                        }}
-                        className="text-xs px-2.5 py-1 border bg-white/10 text-white border-white/20 backdrop-blur-sm cursor-pointer hover:bg-white hover:text-slate-900 hover:border-white transition-colors"
-                      >
-                        {b.label}
-                      </span>
-                    ))}
-                  </div>
-
-              
-                  <span
-                    className={`inline-flex items-center gap-2 text-sm font-semibold ${
-                      activeDiv.theme === 'blue' ? 'text-sky-200' : 'text-emerald-200'
-                    }`}
-                  >
-                    <span>Explore {activeDiv.title}</span>
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </div>
-              </Link>
-            );
-          })()}
-        </div>
-
-      </div>
-    </div>
-  )}
-</div>
-
- {/* <div
                 className="relative"
-                onMouseEnter={() => setDivOpen(true)}
-                onMouseLeave={() => setDivOpen(false)}
+                onMouseEnter={() => handleMouseEnter('divisions')}
+                onMouseLeave={handleMouseLeave}
               >
-                <button
-                  onClick={() => setDivOpen(!divOpen)}
-                  className={`flex items-center gap-1.5 px-3.5 py-2 text-[17px] font-medium transition-all duration-200 ${
-                    active === 'solutions'
-                      ? `${isIrrigation ? 'text-[#1E8E3E]' : 'text-[#1575B3]'}`
-                      : isScrolled
-                      ? `text-[#5F6B7A] ${isIrrigation ? 'hover:text-[#1E8E3E]' : 'hover:text-[#1575B3]'} ${isIrrigation ? 'hover:bg-[#EAF6EE]/60' : 'hover:bg-[#F5FAFF]/60'}`
-                      : 'text-white/90 hover:text-white hover:bg-white/10'
-                  }`}
-                >
+                <button className={navItemStyle}>
                   Divisions
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${divOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      activeDropdown === 'divisions' ? 'rotate-180' : ''
+                    }`}
+                  />
                 </button>
 
-                {divOpen && (
+                {activeDropdown === 'divisions' && (
                   <div className="absolute right-0 top-full pt-2 w-72">
                     <div className={`bg-white border ${isIrrigation ? 'border-[#C8E6C9]' : 'border-[#DCEAF5]'} shadow-xl p-2 space-y-1`}>
-                      {divisions.map((d, i) => {
+                      {visibleDivisions.map((d, i) => {
                         const Icon = d.icon;
                         return (
-                          <Link 
+                          <Link
                             href={d.url}
                             key={i}
-                            onClick={() => handleNav(d.id)}
+                            onClick={handleNavClick}
                             className={`w-full flex items-start gap-3 p-3 ${isIrrigation ? 'hover:bg-[#EAF6EE]' : 'hover:bg-[#F5FAFF]'} transition-colors text-left`}
                           >
                             <span className={`w-10 h-10 flex items-center justify-center shrink-0 ${d.accent}`}>
@@ -1271,8 +1069,7 @@ const handleSegmentClick = (segIdx: number) => {
                     </div>
                   </div>
                 )}
-              </div> */}
-
+              </div>
 
             </nav>
 
@@ -1427,6 +1224,14 @@ const handleSegmentClick = (segIdx: number) => {
                 Applications
               </Link>
 
+              <Link
+                href={'/successstories'}
+                onClick={handleNavClick}
+                className={`block w-full px-4 py-3 text-base font-medium text-[#111111] ${isIrrigation ? 'hover:bg-[#EAF6EE]' : 'hover:bg-[#F5FAFF]'} ${isIrrigation ? 'hover:text-[#1E8E3E]' : 'hover:text-[#1575B3]'} transition`}
+              >
+                Success Stories
+              </Link>
+
         
 
               {/* Mobile Resources Submenu */}
@@ -1554,10 +1359,7 @@ const handleSegmentClick = (segIdx: number) => {
                 </button>
                 {activeDropdown === 'divisions' && (
                   <div className="pl-2 space-y-2 pt-1">
-                    {[
-                      { name: 'Pipe Division', desc: 'Agri, plumbing & drainage pipes.', icon: Factory, accent: 'text-[#1575B3] bg-[#F5FAFF]', url: '/pipe-division' },
-                      { name: 'Irrigation Division', desc: 'Drip, sprinklers & micro irrigation.', icon: Sprout, accent: 'text-[#1E8E3E] bg-[#EAF8EF]', url: '/irrigation-division' },
-                    ].map((d, i) => {
+                    {visibleDivisions.map((d, i) => {
                       const Icon = d.icon;
                       return (
                         <Link

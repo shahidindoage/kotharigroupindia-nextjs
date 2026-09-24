@@ -5,12 +5,13 @@ import { Home2Header } from '@/components/Home2Header';
 import { Home2Footer } from '@/components/Home2Footer';
 import { DealerApplyButton } from '@/components/dealer/DealerApplyModal';
 import { dealerData } from '@/lib/dealer';
+import { wpPageMetadataFor } from '@/lib/wp-seo';
 
-export const metadata = {
+export const generateMetadata = wpPageMetadataFor('become-dealer', {
   title: 'Become a Dealer with Kothari Group | Kothari Group',
   description:
     'Join Kothari Group as a dealer and tap into exclusive product ranges, support services and growth opportunities in the irrigation & agriculture sector.',
-};
+});
 
 const benefitIcons = [Package, BadgePercent, SlidersHorizontal, ShieldCheck, GraduationCap, Headset];
 

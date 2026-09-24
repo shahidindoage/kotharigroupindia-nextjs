@@ -9,12 +9,13 @@ import {
   SustainTestimonials,
   SUSTAINABILITY_INTRO,
 } from '@/components/solutions/SustainabilitySections';
+import { wpPageMetadataFor } from '@/lib/wp-seo';
 
-export const metadata = {
+export const generateMetadata = wpPageMetadataFor('sustainability', {
   title: 'Sustainability | Leading Pipe & Irrigation Manufacturer in India | Kothari Group',
   description:
     'Kothari Group, one of India\u2019s leading pipe and irrigation manufacturers, promotes sustainability through solar-powered manufacturing, water-conscious product design, and farmer-focused CSR initiatives.',
-};
+});
 
 export default function SustainabilityPage() {
   return (

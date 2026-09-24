@@ -2,12 +2,13 @@ import { Suspense } from 'react';
 import { ProductsBrowser } from '@/components/products/ProductsBrowser';
 import { ProductsPageLayout } from '@/components/products/ProductsPageLayout';
 import { fetchWpProductCards } from '@/lib/wp-products';
+import { wpPageMetadataFor } from '@/lib/wp-seo';
 
-export const metadata = {
+export const generateMetadata = wpPageMetadataFor('products', {
   title: 'Products | Pipes, Fittings & Irrigation Systems | Kothari Group',
   description:
     'Browse the complete range of Kothari Group products — plumbing pipes and fittings, agricultural pipes, sewerage and drainage systems, borewell solutions and precision irrigation systems.',
-};
+});
 
 interface SearchParams {
   division?: string;

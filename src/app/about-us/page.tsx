@@ -11,12 +11,13 @@ import {
   AboutWhyKothari,
 } from '@/components/about/AboutSections';
 import { ManufacturingUnits } from '@/components/about/ManufacturingUnits';
+import { wpPageMetadataFor } from '@/lib/wp-seo';
 
-export const metadata = {
+export const generateMetadata = wpPageMetadataFor('about-us', {
   title: 'About Us | Kothari Group — Nurturing Lands, Building Dreams',
   description:
     'For over four decades, Kothari Group, an ISO-9001:2015 company, has empowered Indian farmers and builders with innovative irrigation and piping solutions.',
-};
+});
 
 export default function AboutPage() {
   return (

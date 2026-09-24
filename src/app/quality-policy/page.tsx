@@ -17,12 +17,13 @@ import { Home2Footer } from '@/components/Home2Footer';
 import { Reveal } from '@/components/main/Reveal';
 import { SectionHeader } from '@/components/solutions/SectionHeader';
 import { QualityDocument } from '@/components/quality-policy/QualityDocument';
+import { wpPageMetadataFor } from '@/lib/wp-seo';
 
-export const metadata = {
+export const generateMetadata = wpPageMetadataFor('quality-policy', {
   title: 'Quality Policy | Kothari Group',
   description:
     'Discover the Kothari Group\u2019s commitment to quality \u2014 our standards for materials, manufacturing, inspection and service in irrigation and agricultural solutions.',
-};
+});
 
 const HERO_STATS = [
   { value: '35+', label: 'Years of Excellence' },

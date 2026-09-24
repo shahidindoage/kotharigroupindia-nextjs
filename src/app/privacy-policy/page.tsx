@@ -3,12 +3,13 @@ import AppShell from '@/components/AppShell';
 import { Home2Header } from '@/components/Home2Header';
 import { Home2Footer } from '@/components/Home2Footer';
 import { policyData } from '@/lib/policy';
+import { wpPageMetadataFor } from '@/lib/wp-seo';
 
-export const metadata = {
+export const generateMetadata = wpPageMetadataFor('privacy-policy', {
   title: 'Privacy Policy | Kothari Group',
   description:
     'Read the Kothari Group Privacy Policy to understand what information we collect, how we use it, and how it may be disclosed to third parties.',
-};
+});
 
 export default function PrivacyPolicyPage() {
   const { title, effectiveDate, introHeadline, introParagraphs, address, contents, sections } =

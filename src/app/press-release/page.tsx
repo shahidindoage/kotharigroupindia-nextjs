@@ -11,7 +11,7 @@ import {
 } from '@/lib/wp-posts';
 
 export const metadata = {
-  title: 'News & Press Releases | Kothari Group',
+  title: 'Press Releases – Kothari Group',
   description:
     'Stay updated with the latest press releases from Kothari Group, covering our awards, launches and major announcements in the agricultural sector.',
 };

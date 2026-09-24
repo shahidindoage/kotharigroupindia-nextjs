@@ -567,10 +567,10 @@ className={`hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-me
             <div className="hidden md:flex md:w-5/12 bg-[#0E588A] text-white p-6 sm:p-8 flex-col justify-between shrink-0">
               <div>
                 <img
-                  src="/logos/Kothari Group_W.png"
+                  src="/logos/Kothari Group_W2.png"
                   alt="Kothari Group Logo"
                   referrerPolicy="no-referrer"
-                  className="h-15 w-auto object-contain mb-5"
+                  className="h-10 w-auto object-contain mb-5"
                   onError={(e) => {
                     (e.target as HTMLElement).style.display = 'none';
                   }}

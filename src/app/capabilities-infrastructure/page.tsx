@@ -7,12 +7,13 @@ import { Home2Footer } from '@/components/Home2Footer';
 import { FacilityMap } from '@/components/contact/FacilityMap';
 import { SolutionOverview } from '@/components/solutions/SolutionOverview';
 import { CertificatesSection } from '@/components/capabilities/CertificatesSection';
+import { wpPageMetadataFor } from '@/lib/wp-seo';
 
-export const metadata = {
+export const generateMetadata = wpPageMetadataFor('capabilities-infrastructure', {
   title: 'Capabilities & Infrastructure | Kothari Group India',
   description:
     '8 strategically located manufacturing units across India — advanced technology, 100% automation and quality certification driving Kothari Group\'s pipe and irrigation solutions.',
-};
+});
 
 const YouTubeIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} aria-hidden="true">

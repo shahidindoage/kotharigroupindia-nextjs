@@ -65,7 +65,7 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
           <div className="lg:col-span-2 space-y-5">
             <div className="h-18 flex items-center  px-3 py-1 w-fit">
               <img 
-                src="/logos/Kothari Group_W.png"
+                src="/logos/Kothari Group_W2.png"
                 alt="Kothari Group Logo"
                 referrerPolicy="no-referrer"
                 className="h-18 w-auto object-contain max-w-[160px]"

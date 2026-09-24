@@ -4,12 +4,13 @@ import { Home2Header } from '@/components/Home2Header';
 import { Home2Footer } from '@/components/Home2Footer';
 import { CareersGallery } from '@/components/career/CareersGallery';
 import { careerData } from '@/lib/career';
+import { wpPageMetadataFor } from '@/lib/wp-seo';
 
-export const metadata = {
+export const generateMetadata = wpPageMetadataFor('career', {
   title: 'Join Our Team - Kothari Group',
   description:
     'Discover career opportunities with Kothari Group India. Join us in delivering plumbing, irrigation & infrastructure solutions across India in a dynamic environment.',
-};
+});
 
 export default async function CareersPage() {
   const { jobs, locations } = careerData;
