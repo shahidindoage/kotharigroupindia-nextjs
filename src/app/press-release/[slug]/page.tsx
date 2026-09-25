@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { ArrowLeft, Calendar } from 'lucide-react';
 import AppShell from '@/components/AppShell';
 import { Home2Header } from '@/components/Home2Header';
@@ -20,7 +20,6 @@ export const revalidate = 600;
 export async function generateStaticParams(): Promise<Params[]> {
   return [
     { slug: 'most-trusted-brand-in-agriculture-sector' },
-    { slug: 'mascot-smart-sathi-launching-2019' },
     { slug: 'pune-award-ceremony-2019' },
   ];
 }
@@ -62,7 +61,7 @@ async function getArticle(slug: string): Promise<NewsArticle> {
   }
 
   const item = getNewsBySlug(slug);
-  if (!item) notFound();
+  if (!item) redirect('/');
   const clean = item.info
     .replace(/<[^>]*>/g, ' ')
     .replace(/\s+/g, ' ')

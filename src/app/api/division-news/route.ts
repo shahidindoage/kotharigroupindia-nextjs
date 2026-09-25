@@ -1,16 +1,31 @@
-import { NextResponse } from 'next/server';
-import { fetchWpHomeNews, mapWpPostsToDivisionCards } from '@/lib/wp-posts';
+import { NextRequest, NextResponse } from 'next/server';
+import {
+  fetchWpPostsByCategorySlugs,
+  mapWpPostsToDivisionCards,
+} from '@/lib/wp-posts';
 
 export const revalidate = 600;
 
+// Category slugs per division theme:
+//   green (irrigation) → mirco-irrigation-system + agri-pipes-fittings
+//   blue  (pipe)       → plumbing-pipes-fittings
+const BLOG_CATEGORY_SLUGS: Record<string, string[]> = {
+  green: ['mirco-irrigation-system', 'agri-pipes-fittings'],
+  blue: ['plumbing-pipes-fittings'],
+};
+
 // Live division news + blogs for client pages (division homepages).
 // Fail-soft: empty lists let the static fallbacks show.
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const theme = request.nextUrl.searchParams.get('theme') === 'green' ? 'green' : 'blue';
   try {
-    const { blogs, events } = await fetchWpHomeNews();
+    const [blogPosts, eventPosts] = await Promise.all([
+      fetchWpPostsByCategorySlugs(BLOG_CATEGORY_SLUGS[theme], 3),
+      fetchWpPostsByCategorySlugs(['events'], 3),
+    ]);
     return NextResponse.json({
-      blogs: mapWpPostsToDivisionCards(blogs, '/blogs'),
-      events: mapWpPostsToDivisionCards(events, '/press-release'),
+      blogs: mapWpPostsToDivisionCards(blogPosts, '/blogs'),
+      events: mapWpPostsToDivisionCards(eventPosts, '/press-release'),
     });
   } catch {
     return NextResponse.json({ blogs: [], events: [] });

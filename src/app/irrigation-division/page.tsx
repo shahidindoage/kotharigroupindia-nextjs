@@ -27,7 +27,7 @@ function AgricultureDivisionContent() {
 
   useEffect(() => {
     let alive = true;
-    fetch('/api/division-news')
+    fetch('/api/division-news?theme=green')
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
         if (!alive || !data) return;

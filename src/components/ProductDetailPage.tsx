@@ -194,7 +194,7 @@ export const ProductDetailPage: React.FC<{
         <div className="w-full border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
             <nav className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-slate-500 overflow-x-auto whitespace-nowrap py-4">
-              <Link href="/" className={`${tHoverText} transition-colors`}>Home</Link>
+              <Link href={isIrrigation ? '/irrigation-division' : '/pipe-division'} className={`${tHoverText} transition-colors`}>Home</Link>
               <ChevronRight className="w-3 h-3 text-slate-400 shrink-0" />
               <Link href={`/products?division=${wp?.divisionSlug || 'pipe-division'}`} className={`${tHoverText} transition-colors`}>
                 {wp?.divisionName || 'Division'}

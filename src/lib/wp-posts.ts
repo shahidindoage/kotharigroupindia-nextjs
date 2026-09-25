@@ -180,31 +180,39 @@ export const fetchWpCategoryIds = cache(async (slugs: readonly string[] | string
 // Returns a flat, date-desc list (each post carries its category name + slug).
 // Returns [] on failure — callers fall back to static news data.
 export const fetchWpNewsPosts = cache(async (perCategory = 100): Promise<WpBlogPost[]> => {
-  const ids = await fetchWpCategoryIds(NEWS_CATEGORY_SLUGS);
-  if (!ids.length) return [];
-  try {
-    const settled = await Promise.allSettled(
-      ids.map((id) =>
-        fetchWithTimeout(
-          `${WP_API}/wp/v2/posts?categories=${id}&per_page=${perCategory}&orderby=date&order=desc&_embed`,
-          {
-            next: { revalidate: 600 },
-            headers: { 'User-Agent': 'Mozilla/5.0' },
-          }
-        ).then(async (res) => {
-          if (!res.ok) return [];
-          const data = await res.json();
-          return (Array.isArray(data) ? data : []).map(mapPost) as WpBlogPost[];
-        })
-      )
-    );
-    const posts = settled.flatMap((r) => (r.status === 'fulfilled' ? r.value : []));
-    return posts.sort((a, b) => b.id - a.id);
-  } catch {
-    console.error('[wp-posts] Failed to fetch news posts');
-    return [];
-  }
+  return fetchWpPostsByCategorySlugs(NEWS_CATEGORY_SLUGS, perCategory);
 });
+
+// Fetch recent posts across a set of category slugs, merged date-desc.
+// Returns [] on failure — callers fall back to static data.
+export const fetchWpPostsByCategorySlugs = cache(
+  async (slugs: readonly string[] | string[], perCategory = 3): Promise<WpBlogPost[]> => {
+    const ids = await fetchWpCategoryIds(slugs);
+    if (!ids.length) return [];
+    try {
+      const settled = await Promise.allSettled(
+        ids.map((id) =>
+          fetchWithTimeout(
+            `${WP_API}/wp/v2/posts?categories=${id}&per_page=${perCategory}&orderby=date&order=desc&_embed`,
+            {
+              next: { revalidate: 600 },
+              headers: { 'User-Agent': 'Mozilla/5.0' },
+            }
+          ).then(async (res) => {
+            if (!res.ok) return [];
+            const data = await res.json();
+            return (Array.isArray(data) ? data : []).map(mapPost) as WpBlogPost[];
+          })
+        )
+      );
+      const posts = settled.flatMap((r) => (r.status === 'fulfilled' ? r.value : []));
+      return posts.sort((a, b) => b.id - a.id);
+    } catch {
+      console.error('[wp-posts] Failed to fetch posts by category slugs:', slugs.join(','));
+      return [];
+    }
+  }
+);
 
 // Fetch a single post by slug (full content included).
 // Returns null on failure instead of throwing.

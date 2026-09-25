@@ -26,16 +26,6 @@ const news: NewsItem[] = [
     date: '21 June 2021',
   },
   {
-    slug: 'mascot-smart-sathi-launching-2019',
-    image: 'https://kotharigroupindia.com/img/images/Mascot.webp',
-    title: 'Mascot Smart Sathi Launching 2019',
-    description:
-      'Every year 23rd December is celebrated as Farmers\u2019 Day throughout the nation.',
-    info: '<p>Every year 23rd December is celebrated as Farmers&#8217; Day throughout the nation. On the same day of 2019, Kothari group has launched a Brand Mascot in order to make the brand more attractive and successful.</p>',
-    category: 'Events',
-    date: '14 June 2021',
-  },
-  {
     slug: 'pune-award-ceremony-2019',
     image: 'https://kotharigroupindia.com/img/images/Pune-Award-Ceremony.webp',
     title: 'HT & IE - Pune Award Ceremony 2019',

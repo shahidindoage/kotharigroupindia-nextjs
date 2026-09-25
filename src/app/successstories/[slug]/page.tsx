@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { ArrowLeft, Calendar } from 'lucide-react';
 import AppShell from '@/components/AppShell';
 import { Home2Header } from '@/components/Home2Header';
@@ -15,7 +15,7 @@ interface Params {
 
 async function getPost(slug: string) {
   const post = await fetchWpBlogPostBySlug(slug);
-  if (!post) notFound();
+  if (!post) redirect('/');
   return post;
 }
 

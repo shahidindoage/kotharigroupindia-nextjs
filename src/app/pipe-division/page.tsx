@@ -26,7 +26,7 @@ function PipeDivisionContent() {
 
   useEffect(() => {
     let alive = true;
-    fetch('/api/division-news')
+    fetch('/api/division-news?theme=blue')
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
         if (!alive || !data) return;
