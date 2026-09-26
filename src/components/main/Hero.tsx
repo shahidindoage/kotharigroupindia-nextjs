@@ -20,7 +20,7 @@ const slides = [
   {
     bgImage: '/heronew.jpg',
     cardImage: '/heronew.jpg',
-    headline: <>Engineered for<br />unmatched flow</>,
+    headline: <>Trusted Water Management Solution Provider in India</>,
     subtext: 'Delivering high-durability plumbing solutions designed for leak-free precision, flawless water delivery, and modern waste management.',
     ctaText: 'Explore Plumbing Systems',
     cardTitle: 'Plumbing & Fittings',
@@ -29,7 +29,7 @@ const slides = [
   {
     bgImage: '/heronew2.jpg',
     cardImage: '/heronew2.jpg',
-    headline: <>Powering India’s<br />green revolution</>,
+   headline: <>Trusted Water Management Solution Provider in India</>,
     subtext: 'Building heavy-duty agricultural piping systems that optimize every drop, protecting crops and maximizing harvest yields nationwide.',
     ctaText: 'Discover Agri Solutions',
     cardTitle: 'Agri Piping Networks',
@@ -38,7 +38,7 @@ const slides = [
   {
     bgImage: '/heronew3.jpg',
     cardImage: '/heronew3.jpg',
-    headline: <>Four decades of<br />smart irrigation</>,
+   headline: <>Trusted Water Management Solution Provider in India</>,
     subtext: 'Empowering millions of farmers with intelligent micro-irrigation systems designed for peak crop vitality and water conservation.',
     ctaText: 'View Micro Irrigation',
     cardTitle: 'Micro Irrigation Systems',

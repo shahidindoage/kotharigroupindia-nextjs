@@ -22,7 +22,7 @@ export const Solutions = () => {
           <div className="lg:col-span-5 relative w-full">
             <div className="relative mx-auto max-w-md lg:max-w-none w-full aspect-[4/5] overflow-hidden  bg-slate-900 rounded-none">
               <Image
-                src="field3.jpeg" 
+                src="aboutnew.jpeg" 
                 alt="Kiran S. Kothari - Founder Chairman"
                 fill
                 priority

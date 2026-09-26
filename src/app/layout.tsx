@@ -3,9 +3,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title:
-    "India\u2018s leading PVC, UPVC & CPVC Pipe Manufacturers | Kothari Group",
+    "Water Management Solution Provider in India | Kothari Group",
   description:
-    "Kothari Group India - Leading PVC, UPVC & CPVC pipe manufacturers. Plumbing pipes & fittings, agri pipes & fittings and micro irrigation systems across India.",
+    "India's leading water management solution provider. Kothari Group offers pipes, fittings & irrigation systems that save water and cut costs. Explore now.",
   icons: {
     icon: "/favicon.webp",
   },

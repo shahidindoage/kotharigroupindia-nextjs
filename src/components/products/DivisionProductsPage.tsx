@@ -1,4 +1,6 @@
 import { Suspense } from 'react';
+import Link from 'next/link';
+import { ChevronRight } from 'lucide-react';
 import { ProductsBrowser } from '@/components/products/ProductsBrowser';
 import { ProductsPageLayout } from '@/components/products/ProductsPageLayout';
 import { fetchWpProductCards } from '@/lib/wp-products';
@@ -34,6 +36,18 @@ export default async function DivisionProductsPage({
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 w-full min-h-[50dvh] pt-28 sm:pt-32 pb-10 flex flex-col justify-between">
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-white/60 overflow-x-auto whitespace-nowrap shrink-0">
+            <Link
+              href={divisionSlug === 'pipe-division' ? '/pipe-division' : '/irrigation-division'}
+              className="hover:text-white transition-colors"
+            >
+              Home
+            </Link>
+            <ChevronRight className="w-3 h-3 shrink-0" />
+            <span className="text-white/90 truncate max-w-[220px] sm:max-w-[320px]">{title}</span>
+          </nav>
+
           <div className="flex flex-col gap-5 sm:gap-6 my-auto py-8">
             <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5">
               {eyebrow}

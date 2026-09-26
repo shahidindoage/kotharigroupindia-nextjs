@@ -1,4 +1,6 @@
 import { Suspense } from 'react';
+import Link from 'next/link';
+import { ChevronRight } from 'lucide-react';
 import { ProductsBrowser } from '@/components/products/ProductsBrowser';
 import { ProductsPageLayout } from '@/components/products/ProductsPageLayout';
 import { SegmentOverview, SegmentFaqs } from '@/components/products/SegmentSections';
@@ -48,6 +50,13 @@ export default async function SegmentProductsPage({ params }: PageProps) {
   const heroTitle = segmentLabel;
   const heroDescription = `Browse our range of ${segmentLabel.toLowerCase()} — engineered for performance and reliability.`;
 
+  const homeHref =
+    activeDivisionSlug === 'pipe-division'
+      ? '/pipe-division'
+      : activeDivisionSlug === 'irrigation-division'
+      ? '/irrigation-division'
+      : '/';
+
   return (
     <ProductsPageLayout divisionSlug={activeDivisionSlug}>
       {/* Page hero */}
@@ -64,6 +73,13 @@ export default async function SegmentProductsPage({ params }: PageProps) {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 w-full min-h-[50dvh] pt-28 sm:pt-32 pb-10 flex flex-col justify-between">
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-white/60 overflow-x-auto whitespace-nowrap shrink-0">
+            <Link href={homeHref} className="hover:text-white transition-colors">Home</Link>
+            <ChevronRight className="w-3 h-3 shrink-0" />
+            <span className="text-white/90 truncate max-w-[220px] sm:max-w-[320px]">{heroTitle}</span>
+          </nav>
+
           <div className="flex flex-col gap-5 sm:gap-6 my-auto py-8">
             <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5">
               Products

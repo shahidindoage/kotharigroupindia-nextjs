@@ -5,6 +5,7 @@ import type { Solution } from '@/data/solutions';
 
 export const SolutionHero: React.FC<{ solution: Solution }> = ({ solution }) => {
   const featured = solution.relatedProducts[0];
+  const homeHref = solution.division === 'pipe' ? '/pipe-division' : '/irrigation-division';
 
   return (
     <div className="relative w-full  min-h-[40dvh] sm:min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
@@ -28,18 +29,11 @@ export const SolutionHero: React.FC<{ solution: Solution }> = ({ solution }) => 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full  min-h-[40dvh] sm:min-h-[100dvh] pt-24 sm:pt-28 pb-8 sm:pb-12 flex flex-col justify-between">
 
         {/* Breadcrumb */}
-        {/* <nav aria-hidden="true" className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-white/60 overflow-x-auto whitespace-nowrap shrink-0">
-          <Link href="/" className="hover:text-white transition-colors">Home</Link>
-          <ChevronRight className="w-3 h-3 shrink-0" />
-          <Link
-            href={solution.division === 'pipe' ? '/pipe-division' : '/irrigation-division'}
-            className="hover:text-white transition-colors"
-          >
-            Solutions
-          </Link>
+        <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-white/60 overflow-x-auto whitespace-nowrap shrink-0">
+          <Link href={homeHref} className="hover:text-white transition-colors">Home</Link>
           <ChevronRight className="w-3 h-3 shrink-0" />
           <span className="text-white/90 truncate max-w-[220px] sm:max-w-[320px]">{solution.h1}</span>
-        </nav> */}
+        </nav>
 
         {/* Headline Section - Centered Vertically */}
         <div className="w-full flex flex-col gap-5 sm:gap-6 my-auto py-8">

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 import AppShell from '@/components/AppShell';
 import { HeaderDivison } from '@/components/HeaderDivision';
 import { Footer } from '@/components/Footer';
@@ -33,6 +33,13 @@ function ApplicationsContent({ data, isPipe }: { data: DivisionApplications; isP
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full min-h-[50dvh] sm:min-h-[70dvh] pt-28 sm:pt-32 pb-10 flex flex-col justify-between">
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-white/60 overflow-x-auto whitespace-nowrap shrink-0">
+            <Link href={isPipe ? '/pipe-division' : '/irrigation-division'} className="hover:text-white transition-colors">Home</Link>
+            <ChevronRight className="w-3 h-3 shrink-0" />
+            <span className="text-white/90 truncate max-w-[220px] sm:max-w-[320px]">{data.h1}</span>
+          </nav>
+
           <div className="flex flex-col gap-5 sm:gap-6 my-auto py-8">
             <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5">
               {data.heroEyebrow}

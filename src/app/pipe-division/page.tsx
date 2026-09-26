@@ -370,12 +370,12 @@ const FEATURE_PRODUCTS = [
   },
   {
     id: '6',
-    title: 'PVC Pipes',
-    subtitle: 'Climate Control Micro-Jet',
-    description: 'Our PVC pipes are manufactured using premium raw materials, adhering to strict industry standards, and conducting rigorous testing. They ensure reliable and efficient, leak-resistant water supply to every farm.',
-    image: 'https://kotharigroupindia.com/img/productsbanner/Subsection_Banner-PVCPipes.webp',
-    category: 'Micro Irrigation',
-    link: '#',
+    title: 'Casing Pipes',
+    subtitle: 'Trusted Borewell Protection Pipe',
+    description: 'Casing Pipes for Borewell – Corrosion-Resistant Casing Pipe Our Casing Pipes are built to protect one of the most important parts of any borewell system: the wellbore itself.',
+    image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/CASING-PIPE.webp',
+    category: 'Casing Pipes',
+    link: 'casing-pipes/casing-pipes-fittings',
     spec: 'Coverage: 360° Uniformity',
   },
 ];

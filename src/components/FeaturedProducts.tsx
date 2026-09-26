@@ -161,10 +161,10 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
   );
 
   return (
-    <section className={`${isGreen ? 'bg-[#145E2A]' : 'bg-[#015CAA]'} py-24 relative overflow-hidden select-none`}>
-      {/* Background Decorative Elements */}
-      <div className={`absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br ${isGreen ? 'from-emerald-300/10' : 'from-cyan-400/10'} to-transparent blur-3xl pointer-events-none`} />
-      <div className={`absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr ${isGreen ? 'from-green-950/40' : 'from-blue-900/40'} to-transparent blur-3xl pointer-events-none`} />
+    <section className="relative w-full py-24 overflow-hidden select-none">
+      {/* Background + Gradient Overlay (matches Product Detail Page tabs section) */}
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${isGreen ? 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1600&q=80' : 'https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=1600&q=80'})` }} />
+      <div className={`absolute inset-0 bg-gradient-to-br ${isGreen ? 'from-[#145E2A]/95 via-[#1E8E3E]/90 to-[#052E16]/90' : 'from-[#0E588A]/95 via-[#1575B3]/90 to-[#083251]/90'}`} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-14 relative z-10">
         
