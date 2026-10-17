@@ -153,7 +153,7 @@ export const SustainHero: React.FC = () => {
           {/* Left Side: Stats Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-10 w-full lg:w-auto border-t border-white/20 pt-6">
             {[
-              { value: '35+', label: 'Years of excellence' },
+              { value: '30+', label: 'Years of excellence' },
   { value: '9', label: 'Factories' },
   { value: '11', label: 'Warehouses' },
   { value: '10', label: `Countries products exported` },

@@ -865,7 +865,7 @@ const handleSolutionBack = () => {
 
           <div className={`mt-8 pt-6 border-t ${isIrrigation ? 'border-[#C8E6C9]' : 'border-[#DCEAF5]'} flex items-center gap-8`}>
   <div>
-    <span className={`text-3xl font-light ${isIrrigation ? 'text-[#1E8E3E]' : 'text-[#1575b3]'} tracking-tight`}>35+</span>
+    <span className={`text-3xl font-light ${isIrrigation ? 'text-[#1E8E3E]' : 'text-[#1575b3]'} tracking-tight`}>30+</span>
     <span className="block text-xs font-medium text-[#5F6B7A] uppercase tracking-wider mt-0.5">Years Legacy</span>
   </div>
   <div className={`w-px h-8 ${isIrrigation ? 'bg-[#C8E6C9]' : 'bg-[#DCEAF5]'}`} />
@@ -1082,7 +1082,7 @@ const handleSolutionBack = () => {
 
  <div className={`mt-8 pt-6 border-t ${isIrrigation ? 'border-[#C8E6C9]' : 'border-[#DCEAF5]'} flex items-center gap-8`}>
   <div>
-    <span className={`text-3xl font-light ${isIrrigation ? 'text-[#1E8E3E]' : 'text-[#1575b3]'} tracking-tight`}>35+</span>
+    <span className={`text-3xl font-light ${isIrrigation ? 'text-[#1E8E3E]' : 'text-[#1575b3]'} tracking-tight`}>30+</span>
     <span className="block text-xs font-medium text-[#5F6B7A] uppercase tracking-wider mt-0.5">Years Legacy</span>
   </div>
   <div className={`w-px h-8 ${isIrrigation ? 'bg-[#C8E6C9]' : 'bg-[#DCEAF5]'}`} />
@@ -1164,7 +1164,7 @@ const handleSolutionBack = () => {
                 
  <div className={`mt-8 pt-6 border-t ${isIrrigation ? 'border-[#C8E6C9]' : 'border-[#DCEAF5]'} flex items-center gap-8`}>
   <div>
-    <span className={`text-3xl font-light ${isIrrigation ? 'text-[#1E8E3E]' : 'text-[#1575b3]'} tracking-tight`}>35+</span>
+    <span className={`text-3xl font-light ${isIrrigation ? 'text-[#1E8E3E]' : 'text-[#1575b3]'} tracking-tight`}>30+</span>
     <span className="block text-xs font-medium text-[#5F6B7A] uppercase tracking-wider mt-0.5">Years Legacy</span>
   </div>
   <div className={`w-px h-8 ${isIrrigation ? 'bg-[#C8E6C9]' : 'bg-[#DCEAF5]'}`} />

@@ -88,7 +88,7 @@ export const WhyKothariGroup = () => {
             </h2>
           </div>
           <p className="text-sm  sm:text-[16px] text-slate-500 max-w-md font-normal leading-relaxed">
-            With 35+ years of manufacturing expertise, we deliver trusted pipes, fittings, and irrigation solutions across India.
+            With 30+ years of manufacturing expertise, we deliver trusted pipes, fittings, and irrigation solutions across India.
           </p>
         </div>
 
@@ -129,7 +129,7 @@ export const WhyKothariGroup = () => {
               {/* HEADER STAT / TITLE */}
               <div className="pl-3 border-l-2 border-sky-400">
                 <h3 className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight">
-                  35+ Years
+                  30+ Years
                 </h3>
                 <p className="text-lg sm:text-xl text-slate-300 font-light mt-0.5">
                   of Manufacturing Excellence
@@ -168,7 +168,7 @@ export const WhyKothariGroup = () => {
                   1988
                 </div> */}
                 <h4 className="text-2xl sm:text-4xl font-semibold text-white mt-1">
-                  Trusted Since 1988
+                  Trusted Since 1997
                 </h4>
                 <p className="text-xs sm:text-[16px] text-slate-300 font-normal leading-relaxed mt-1.5 max-w-md">
                   Building reliable pipe and irrigation solutions for agriculture, infrastructure and everyday living.
