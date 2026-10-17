@@ -5,7 +5,7 @@ import { ZoomIn, X } from 'lucide-react';
 import { Reveal } from '@/components/main/Reveal';
 import { SectionHeader } from '@/components/solutions/SectionHeader';
 
-const QUALITY_IMAGE = 'https://kotharigroupindia.com/img/images/quality-policy.webp';
+const QUALITY_IMAGE = '/banners/quality/doc/quality-policy.webp'; 
 
 export const QualityDocument: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
