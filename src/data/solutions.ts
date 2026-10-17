@@ -1852,7 +1852,7 @@ export const solutionsData: Solution[] = [
           icon: 'Filter',
           title: 'Water-Saving Irrigation',
           text: 'Filters, pressure valves, meters and controllers that protect every drop.',
-           image: `/solutions/irrigation/Precision-Irrigation/Water-saving-irrigation/Borewale & Water.png`,
+           image: `/solutions/irrigation/Precision-Irrigation/Water-saving-irrigation/Borewale-Water.png`,
           metaTitle: 'Water-Saving Irrigation Systems for Farms | Kothari Group',
           metaDescription:
             'Water-saving irrigation with filters, pressure valves, water meters and controllers that cut clogging, waste and pipeline damage.',
@@ -1896,7 +1896,7 @@ export const solutionsData: Solution[] = [
     title: 'Well & Borewell Water',
     description:
       'Hydrocyclone and sand filters remove sand and debris from groundwater before it reaches the emitters, preventing clogging and uneven watering.',
-      image: `/solutions/irrigation/Precision-Irrigation/Water-saving-irrigation/Borewale & Water.png`,
+      image: `/solutions/irrigation/Precision-Irrigation/Water-saving-irrigation/Borewale-Water.png`,
     },
   {
     title: 'River & Pond Water',
