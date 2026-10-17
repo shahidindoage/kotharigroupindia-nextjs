@@ -2631,7 +2631,7 @@ export const solutionsData: Solution[] = [
       image:'/solutions/pipe/residential-commercial-plumbing/applications/commercial-complex.jpg',
         },
     ],
-    relatedProducts: [
+   relatedProducts: [
       {
         name: 'CPVC Pipes & Fittings',
         slug: 'cpvc-hot-and-cold-water-piping-system',
@@ -2645,6 +2645,13 @@ export const solutionsData: Solution[] = [
         categorySlug: 'upvc',
         image: `${ADMIN}/2025/04/UPVC-PIPES-FITTINGS.webp`,
         shortDescription: 'Our UPVC Pipes & Fittings are built to handle cold water plumbing that stands the test of time. ',
+      },
+      {
+        name: 'SWR (Soil, Waste & Rainwater) Piping System',
+        slug: 'swr-pipes-and-fittings-for-drainage-systems',
+        categorySlug: 'soil-waste-and-rainwater-pipes-and-fittings',
+        image: `${ADMIN}/2025/10/SWR-Pipes-and-Fitting.webp`,
+        shortDescription: 'Our SWR (Soil, Waste & Rainwater) Piping System handles wastewater and rainwater for homes, businesses, and industrial buildings.',
       },
       // {
       //   name: 'CPVC Solvent Cement',
@@ -2744,20 +2751,27 @@ export const solutionsData: Solution[] = [
  image:'/solutions/pipe/urban-drainage-sewerage/applications/Besmets.jpg',
     },
 ],
-    relatedProducts: [
-      {
-        name: 'SWR (Soil, Waste & Rainwater) Piping System',
-        slug: 'swr-pipes-and-fittings-for-drainage-systems',
-        categorySlug: 'soil-waste-and-rainwater-pipes-and-fittings',
-        image: `${ADMIN}/2025/04/SWR-PIPES-FITTINGS.webp`,
-        shortDescription: 'Complete soil, waste and rainwater drainage for buildings.',
-      },
+   relatedProducts: [
       {
         name: 'UPVC Underground Drainage Piping System (solid wall UDS)',
         slug: 'upvc-underground-drainage-piping-system',
         categorySlug: 'underground-pipe-and-fittings',
         image: `${ADMIN}/2025/04/UDS-PIPES-FITTINGS.webp`,
         shortDescription: 'The KWIK Drain UPVC Underground Drainage Piping System takes care of the toughest part of any drainage network: those pipes buried deep underground.',
+      },
+      {
+        name: 'Foamcore Underground Drainage Piping System',
+        slug: 'foamcore-underground-drainage-piping-system',
+        categorySlug: 'underground-pipe-and-fittings',
+        image: `${ADMIN}/2025/10/UDS-Foamcore.webp`,
+        shortDescription: 'Our Foamcore Underground Drainage Piping System brings together real strength and affordability.',
+      },
+      {
+        name: 'PP Low Noise Drainage System',
+        slug: 'pp-low-noise-drainage-system',
+        categorySlug: 'soil-waste-and-rainwater-pipes-and-fittings',
+        image: `${ADMIN}/2025/10/PP-Low-Noise-Drainage-System.webp`,
+        shortDescription: 'If you need reliable, quiet drainage that lasts for years, our PP Low Noise Drainage System stands out.',
       },
       // {
       //   name: 'PP Low Noise Drainage System',
@@ -2859,6 +2873,13 @@ export const solutionsData: Solution[] = [
         image: `${ADMIN}/2025/04/CASING-PIPE.webp`,
         shortDescription: 'Our Casing Pipes are built to protect one of the most important parts of any borewell system: the wellbore itself. ',
       },
+      {
+        name: 'HDPE Piping',
+        slug: 'hdpe-piping',
+        categorySlug: 'pe-pipes-and-fittings',
+        image: `${ADMIN}/2025/10/HDPE-pipes.webp`,
+        shortDescription: 'We make our HDPE pipes and fittings in PE 63, PE 80, and PE 100 grades. That means farmers, contractors, and infrastructure developers can pick exactly what they need, balancing strength and pressure for any job. These pipes handle rough ground, curves, and changes in terrain without cracking or breaking down, so they’re built to last.',
+      },
       // {
       //   name: 'Screen Pipe/Slotted Pipe',
       //   slug: 'screen-pipe-slotted-pipe',
@@ -2938,7 +2959,7 @@ image:'/solutions/pipe/farm-infrastructure-piping/applications/Multi-Field-Opera
   image:'/solutions/pipe/farm-infrastructure-piping/applications/Source-to-Field-Water-Transport-Projects.jpg',
     },
 ],
-    relatedProducts: [
+   relatedProducts: [
       {
         name: 'HDPE Piping',
         slug: 'hdpe-piping',
@@ -2953,34 +2974,14 @@ image:'/solutions/pipe/farm-infrastructure-piping/applications/Multi-Field-Opera
         image: `${ADMIN}/2025/04/Single-Double-Union-PVC.webp`,
         shortDescription: 'Our Single & Double Union PVC Ball Valves make controlling flow in irrigation or industrial setups simple and stress-free.',
       },
-      // {
-      //   name: 'UPVC Pipes',
-      //   slug: 'upvc-pipes',
-      //   categorySlug: 'drip-agri-pvc-pipes',
-      //   image: `${ADMIN}/2025/04/PVC-Selffit-pipe.webp`,
-      //   shortDescription: 'Rigid pressure pipes for farm distribution networks.',
-      // },
-      // {
-      //   name: 'Single & Double Union PVC Ball Valve',
-      //   slug: 'single-and-double-union-pvc-ball-valve',
-      //   categorySlug: 'valves',
-      //   image: `${ADMIN}/2025/04/Single-Double-Union-PVC.webp`,
-      //   shortDescription: 'Easy-maintenance flow control for field lines.',
-      // },
-      // {
-      //   name: 'Compression Fittings',
-      //   slug: 'compression-fittings',
-      //   categorySlug: 'pe-pipes-and-fittings',
-      //   image: `${ADMIN}/2025/07/MDPE-Pipes-Fittings.webp`,
-      //   shortDescription: 'Leak-proof fittings for PE pipe networks.',
-      // },
-      // {
-      //   name: 'LD Krishi Pipe (Lay Flat Tubes)',
-      //   slug: 'ld-krishi-pipe-lay-flat-tubes',
-      //   categorySlug: 'pe-pipes-and-fittings',
-      //   image: `${ADMIN}/2025/04/LD-Krishi.webp`,
-      //   shortDescription: 'Lightweight pipe for field water delivery.',
-      // },
+      {
+        name: 'Self Fit PVC Pipe',
+        slug: 'self-fit-pvc-pipe',
+        categorySlug: 'upvc-pressure-pipes-fittings',
+        image: `${ADMIN}/2025/04/PVC-Selffit-pipe.webp`,
+        shortDescription: 'Our Self Fit PVC Pipe takes the hassle out of farm and irrigation work. ',
+      },
+     
     ],
   },
 ];

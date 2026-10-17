@@ -241,7 +241,7 @@ export const pipeApplications: DivisionApplications = {
           description:
             'MDPE pipes and compression fittings supporting Jal Jeevan Mission and rural water access projects.',
           detailSlug: 'rural-water-supply',
-          image: '/applications/pipe/section2/Rural-Water-Supply-Pipes.jpg',
+          image: '/applications/pipe/section2/rural.jpeg',
           products: [
             { name: 'MDPE Pipes', url: '/pe-pipes-and-fittings/mdpe-pipes' },
             { name: 'Compression Fittings', url: '/pe-pipes-and-fittings/compression-fittings' },
@@ -3903,7 +3903,7 @@ export const applicationDetails: ApplicationDetail[] = [
     h1: 'HDPE Pipes for Rural Water Supply Systems',
     tagline:
       'Plan the right piping network to move Rural water efficiently from its source to fields, storage points and irrigation systems.',
-    image: '/applications/pipe/section2/Rural-Water-Supply-Pipes.jpg',
+    image: '/applications/pipe/section2/rural.jpeg',
     bannerImage: '/farm.png',
     overview: {
       heading: 'Understanding Rural Water Supply Systems',
