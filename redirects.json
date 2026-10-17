@@ -450,7 +450,11 @@
   },
   {
     "source": "/micro-sprinklers-assemblies",
-    "destination": "/micro-sprinklers-and-assemblies"
+    "destination": "/products/micro-and-mini-sprinklers"
+  },
+  {
+    "source": "/micro-sprinklers-assemblies",
+    "destination": "/products/micro-and-mini-sprinklers"
   },
   {
     "source": "/products-and-services/17713",
@@ -466,7 +470,7 @@
   },
   {
     "source": "/mini-sprinklers-assemblies",
-    "destination": "/mini-sprinklers-and-assemblies"
+    "destination": "/products/micro-and-mini-sprinklers"
   },
   {
     "source": "/products-and-services/19178",
@@ -474,7 +478,7 @@
   },
   {
     "source": "/micro-jets-assemblies",
-    "destination": "/micro-jets-and-assemblies"
+    "destination": "/products/micro-and-mini-sprinklers"
   },
   {
     "source": "/products-and-services/17785",
@@ -482,7 +486,7 @@
   },
   {
     "source": "/misters-assemblies",
-    "destination": "/misters-and-assemblies"
+    "destination": "/products/micro-and-mini-sprinklers"
   },
   {
     "source": "/products-and-services/17757",
@@ -490,7 +494,7 @@
   },
   {
     "source": "/foggers-assemblies",
-    "destination": "/foggers-and-assemblies"
+    "destination": "/products/micro-and-mini-sprinklers"
   },
   {
     "source": "/products-and-services/17771",
@@ -506,7 +510,7 @@
   },
   {
     "source": "/hdpe-sprinklers-pipes-qcpe",
-    "destination": "/hdpe-sprinkler-pipes-qcpe"
+    "destination": "/products/sprinkler-irrigation-system"
   },
   {
     "source": "/products-and-services/18504",
@@ -514,7 +518,7 @@
   },
   {
     "source": "/sprinkler-connectors-accessories",
-    "destination": "/sprinkler-connectors-and-accessories"
+    "destination": "/products/sprinkler-irrigation-system"
   },
   {
     "source": "/products-and-services/17723",
@@ -522,7 +526,7 @@
   },
   {
     "source": "/raingun-accessories",
-    "destination": "/raingun-and-accessories"
+    "destination": "/products/sprinkler-irrigation-system"
   },
   {
     "source": "/products-and-services/19182",
@@ -530,7 +534,7 @@
   },
   {
     "source": "/garden-landscape-sprinklers",
-    "destination": "/garden-and-landscape-sprinklers"
+    "destination": "/products/sprinkler-irrigation-system"
   },
   {
     "source": "/products-and-services/19184",
@@ -546,7 +550,7 @@
   },
   {
     "source": "/k-eco-rain-pipes-k-flex-submain-pipes",
-    "destination": "/k-eco-rain-pipes-and-k-flex-submain-pipes"
+    "destination": "/products/sprinkler-irrigation-system"
   },
   {
     "source": "/products-and-services/17038",
@@ -558,15 +562,15 @@
   },
   {
     "source": "/products-and-services/18959",
-    "destination": "/TurnkeyPDN"
+    "destination": "/products/turnkey-projects"
   },
   {
     "source": "/products-and-services/18957",
-    "destination": "/turnkey-projects/pdn-ci"
+    "destination": "/products/turnkey-projects"
   },
    {
     "source": "/turnkey-projects",
-    "destination": "/turnkey-projects/pdn-ci"
+    "destination": "/products/turnkey-projects"
   },
   {
     "source": "/ContactUs",
@@ -574,11 +578,11 @@
   },
   {
     "source": "/PVCPipes",
-    "destination": "/pvc-pipes"
+    "destination": "/products/plumbing-pipes-and-fittings"
   },
   {
     "source": "/SprinklerIrrigationSystem",
-    "destination": "/sprinkler-irrigation-system"
+    "destination": "/products/sprinkler-irrigation-system"
   },
   {
     "source": "/products-and-services/irrigation/sprinkler-irrigation-system-manufacturers-suppliers-in-india.php",
@@ -598,7 +602,7 @@
   },
   {
     "source": "/products-and-services/irrigation/drip-irrigation-system-manufacturers-suppliers-in-india.php",
-    "destination": "/drip-irrigation"
+    "destination": "/products/drip-irrigation-system"
   },
   {
     "source": "/future-plan",
@@ -626,7 +630,7 @@
   },
   {
     "source": "/polyfittings-accessories",
-    "destination": "/polyfittings-and-accessories"
+    "destination": "/products/drip-irrigation-system"
   },
   {
     "source": "/blogs/best-plumbing-pipes-for-residential-and-commercial-buildings-in-india",
@@ -634,10 +638,78 @@
   },
   {
     "source": "/UndergroundDrainage",
-    "destination": "/underground-drainage"
+    "destination": "/products/sewerage-drainage-pipes-and-fittings"
   },
   {
     "source": "/blogs/comparing-drip-vs-sprinkler-irrigation-pros-and-cons",
     "destination": "/blogs/drip-vs-sprinkler-irrigation-pros-cons"
+  },
+  {
+    "source": "/mini-sprinklers-and-assemblies",
+    "destination": "/products/micro-and-mini-sprinklers"
+  },
+  {
+    "source": "/micro-jets-and-assemblies",
+    "destination": "/products/micro-and-mini-sprinklers"
+  },
+  {
+    "source": "/misters-and-assemblies",
+    "destination": "/products/micro-and-mini-sprinklers"
+  },
+  {
+    "source": "/foggers-and-assemblies",
+    "destination": "/products/micro-and-mini-sprinklers"
+  },
+  {
+    "source": "/hdpe-sprinkler-pipes-qcpe",
+    "destination": "/products/sprinkler-irrigation-system"
+  },
+  {
+    "source": "/sprinkler-connectors-and-accessories",
+    "destination": "/products/sprinkler-irrigation-system"
+  },
+  {
+    "source": "/raingun-and-accessories",
+    "destination": "/products/sprinkler-irrigation-system"
+  },
+  {
+    "source": "/raingun-and-accessories/raingun",
+    "destination": "/raingun-and-accessories/raingun"
+  },
+  {
+    "source": "/garden-and-landscape-sprinklers",
+    "destination": "/products/sprinkler-irrigation-system"
+  },
+  {
+    "source": "/garden-and-landscape-sprinklers/quick-coupling-valve",
+    "destination": "/garden-and-landscape-sprinklers/quick-coupling-valve"
+  },
+  {
+    "source": "/k-eco-rain-pipes-and-k-flex-submain-pipes",
+    "destination": "/products/sprinkler-irrigation-system"
+  },
+  {
+    "source": "/TurnkeyPDN",
+    "destination": "/products/turnkey-projects"
+  },
+  {
+    "source": "/pvc-pipes",
+    "destination": "/products/plumbing-pipes-and-fittings"
+  },
+  {
+    "source": "/sprinkler-irrigation-system",
+    "destination": "/products/sprinkler-irrigation-system"
+  },
+  {
+    "source": "/drip-irrigation",
+    "destination": "/products/drip-irrigation-system"
+  },
+  {
+    "source": "/polyfittings-and-accessories",
+    "destination": "/products/drip-irrigation-system"
+  },
+  {
+    "source": "/underground-drainage",
+    "destination": "/products/sewerage-drainage-pipes-and-fittings"
   }
 ]
