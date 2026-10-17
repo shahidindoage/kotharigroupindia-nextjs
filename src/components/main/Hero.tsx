@@ -171,7 +171,7 @@ export const Hero = () => {
                 {/* Dynamic Card Text */}
                 <div ref={cardContentRef} className="flex flex-col justify-center gap-1">
                   {/* <p className="font-semibold text-sm text-white leading-snug">{active.cardTitle}</p> */}
-                  <p className="text-xs sm:text-[16px] text-white/80 leading-relaxed line-clamp-2">
+                  <p className="text-xs sm:text-[16px] text-white/80 leading-relaxed">
                     {active.cardDescription}
                   </p>
                 </div>
