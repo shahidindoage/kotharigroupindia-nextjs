@@ -50,7 +50,7 @@ const slides = [
 ];
 
 const stats = [
-  { value: '35+', label: 'Years of excellence' },
+  { value: '30+', label: 'Years of excellence' },
   { value: '9', label: 'Factories' },
   { value: '11', label: 'Warehouses' },
   { value: '10', label: `Countries products exported` },

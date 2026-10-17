@@ -278,11 +278,11 @@ const FALLBACK_BLOGS: HomeNewsCard[] = [
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-80" />
 
           {/* Category Badge */}
-          <div className="absolute top-4 left-4">
+          {/* <div className="absolute top-4 left-4">
             <span className="bg-black text-white text-[10px] font-mono tracking-widest font-medium px-3 py-1 uppercase">
               {item.category}
             </span>
-          </div>
+          </div> */}
 
           {/* Date Strip */}
           <div className={`absolute bottom-0 left-0 right-0 bg-[#1575B3] text-white px-4 py-2 text-[11px] font-mono tracking-widest uppercase text-center`}>
