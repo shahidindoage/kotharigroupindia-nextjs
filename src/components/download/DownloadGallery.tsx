@@ -63,10 +63,10 @@ export const DownloadGallery: React.FC<DownloadGalleryProps> = ({ downloads, cat
                   <p className="text-[10px] font-mono tracking-widest uppercase text-slate-400 font-medium mb-1">
                     {item.category}
                   </p>
-                  <h3 className="text-base sm:text-lg font-serif font-medium text-slate-900 leading-snug group-hover:text-[#1575B3] transition-colors duration-300">
+                  <h3 className="text-base sm:text-[20px] font-serif font-medium text-slate-900 leading-snug group-hover:text-[#1575B3] transition-colors duration-300">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-slate-600 font-normal leading-relaxed mt-1">
+                  <p className="text-sm sm:text-[18px] text-slate-600 font-normal leading-relaxed mt-1">
                     {item.description}
                   </p>
                 </div>

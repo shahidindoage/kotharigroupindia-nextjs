@@ -80,7 +80,7 @@ export default async function PrivacyPolicyPage() {
                     <li key={item}>
                       <a
                         href={`#section-${item.split('.')[0]}`}
-                        className="block text-sm text-slate-600 hover:text-[#1575B3] py-1.5 pl-4 -ml-px border-l-2 border-transparent hover:border-[#1575B3] transition"
+                        className="block text-sm sm:text-base text-slate-600 hover:text-[#1575B3] py-1.5 pl-4 -ml-px border-l-2 border-transparent hover:border-[#1575B3] transition"
                       >
                         {item}
                       </a>

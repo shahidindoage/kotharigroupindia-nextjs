@@ -58,7 +58,7 @@ export const DivisionOverview: React.FC<DivisionOverviewProps> = ({
             {previewParagraphs.map((para, idx) => (
               <p
                 key={idx}
-                className="text-sm sm:text-[15px] text-slate-600 font-normal leading-relaxed"
+                className="text-sm sm:text-[18px] text-slate-600 font-normal leading-relaxed"
               >
                 {para}
               </p>

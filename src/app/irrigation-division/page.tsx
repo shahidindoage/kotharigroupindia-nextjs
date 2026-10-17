@@ -418,7 +418,7 @@ const FEATURE_PRODUCTS = [
     description: 'Our Dripline K-Gol NPC is built to deliver dependable, cost-effective drip irrigation for flat, level fields where consistent, straightforward water delivery matters more than pressure compensation.',
     image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/DRIPLINE-K-GOL-NPC.webp',
     category: 'Dripline',
-    link: '/drip-line/dripline-k-gol-npc',
+    link: '/irrigation-division/dripline-k-gol-npc',
     spec: 'Temp Tolerance: Up to 93°C',
   },
   {
@@ -428,7 +428,7 @@ const FEATURE_PRODUCTS = [
     description: 'Kothari’s fertigation machines are automated systems for nutrient supply through irrigation. They are engineered for precise and uniform fertilizer application, enhancing crop growth and maximising yields.',
     image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Nutrijet-Fertigation-system.webp',
     category: 'Micro Irrigation',
-    link: '/fertigation-machines/nutrijet-fertigation-machines',
+    link: '/irrigation-division/nutrijet-fertigation-machines',
     spec: 'Efficiency Rate: 98%',
   },
   {
@@ -438,7 +438,7 @@ const FEATURE_PRODUCTS = [
     description: 'Our K-Mic Micro Sprinkler is built to protect crops during the moments they are most vulnerable to sudden frost and extreme heat.',
     image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/K-Mic-Micro-Sprinkler-1.webp',
     category: 'Micro Sprinklers & Assemblies',
-    link: 'micro-sprinklers-and-assemblies/k-mic-micro-sprinkler',
+    link: '/irrigation-division/k-mic-micro-sprinkler',
     spec: 'Load Capacity: High PSI',
   },
   {
@@ -448,7 +448,7 @@ const FEATURE_PRODUCTS = [
     subtitle: 'Fine Filtration for Drip Systems',
     image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/Sand-Filter.webp',
     category: 'Filters',
-    link: 'filters/sand-filter',
+    link: '/irrigation-division/sand-filter',
     spec: 'UV & Chemical Resistant',
   },
   {
@@ -458,7 +458,7 @@ const FEATURE_PRODUCTS = [
     description: 'Our Single & Double Union PVC Ball Valves make controlling flow in irrigation or industrial setups simple and stress-free. Built from tough, corrosion-resistant PVC, they handle harsh chemicals, constant water, and long days in the sun without breaking a sweat.',
     image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/Single-Double-Union-PVC.webp',
     category: 'Valves',
-    link: '/valves/single-and-double-union-pvc-ball-valve',
+    link: '/irrigation-division/single-and-double-union-pvc-ball-valve',
     spec: 'Coverage: 360° Uniformity',
   },
 ];

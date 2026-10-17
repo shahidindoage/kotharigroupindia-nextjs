@@ -150,12 +150,12 @@ export default async function QualityPolicyPage() {
               description="Introduction to Who We Are and What Our Quality Commitment is All About."
             />
             <Reveal>
-              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed max-w-7xl">
+              <p className="text-sm sm:text-[18px] text-slate-600 font-normal leading-relaxed max-w-7xl">
                At Kothari Group, quality has always played an integral role in the manufacturing process of pipes, fittings and irrigation products. For many years we have been working on supplying products that can be relied upon to meet customer expectations and manage water properly in agriculture, plumbing or infrastructure.
               </p> 
             </Reveal> 
             <Reveal delay={90}>
-              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed max-w-7xl">
+              <p className="text-sm sm:text-[18px] text-slate-600 font-normal leading-relaxed max-w-7xl">
       Through the Quality Policy we ensure that every step of production, from choosing suitable materials to manufacturing and service is in accordance with quality standards. Continuous improvement and responsible attitude to work is our key to constantly providing excellent and reliable products to our customers. 
               </p>
             </Reveal>
@@ -189,7 +189,7 @@ export default async function QualityPolicyPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="text-base font-semibold text-slate-900 leading-snug">{item.title}</h3>
-                      <p className="mt-1 text-sm text-slate-600 font-normal leading-relaxed">{item.description}</p>
+                      <p className="mt-1 text-sm sm:text-[16px] text-slate-600 font-normal leading-relaxed">{item.description}</p>
                     </div>
                   </div>
                 );
@@ -223,7 +223,7 @@ export default async function QualityPolicyPage() {
                           {String(i + 1).padStart(2, '0')}
                         </span> */}
                       </div>
-                      <p className="text-sm text-slate-600 font-normal leading-relaxed">{objective.text}</p>
+                      <p className="text-sm sm:text-[16px] text-slate-600 font-normal leading-relaxed">{objective.text}</p>
                     </div>
                   </Reveal>
                 );

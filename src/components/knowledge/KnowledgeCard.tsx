@@ -45,7 +45,7 @@ export const KnowledgeCard: React.FC<KnowledgeCardProps> = ({
                 {item.title}
               </h3>
 
-              <p className="text-xs text-slate-600 font-normal leading-relaxed line-clamp-4">
+              <p className="text-xs sm:text-[16px] text-slate-600 font-normal leading-relaxed line-clamp-4">
                 {item.description}
               </p>
             </div>

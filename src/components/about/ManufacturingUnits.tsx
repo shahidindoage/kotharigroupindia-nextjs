@@ -145,7 +145,7 @@ export const ManufacturingUnits: React.FC = () => {
           <div className="max-w-5xl">
             {descriptionExpanded ? (
               <>
-                <p className="text-sm sm:text-[15px] text-slate-600 font-normal leading-relaxed m-0">
+                <p className="text-sm sm:text-[18px] text-slate-600 font-normal leading-relaxed m-0">
                   {description}
                 </p>
                 <button
@@ -157,7 +157,7 @@ export const ManufacturingUnits: React.FC = () => {
                 </button>
               </>
             ) : (
-              <p className="text-sm sm:text-[15px] text-slate-600 font-normal leading-relaxed m-0">
+              <p className="text-sm sm:text-[18px] text-slate-600 font-normal leading-relaxed m-0">
                 {preview}{' '}
                 <button
                   onClick={() => setDescriptionExpanded(true)}

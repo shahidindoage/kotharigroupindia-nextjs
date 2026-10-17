@@ -54,7 +54,7 @@ export const CertificatesSection: React.FC = () => {
               Certifications
             </h2>
           </div>
-          <p className="text-xs sm:text-sm text-slate-600 max-w-md font-normal leading-relaxed">
+          <p className="text-xs sm:text-base text-slate-600 max-w-md font-normal leading-relaxed">
 
           The more than {CERT_COUNT} certifications show the company's determination to commit to quality pipes, fittings, and irrigation solutions. 
           </p>

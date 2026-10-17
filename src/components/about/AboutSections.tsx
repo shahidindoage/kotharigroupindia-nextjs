@@ -201,7 +201,7 @@ export const AboutGrowth: React.FC = () => {
             {aboutGrowth.intro}
           </p>
           {aboutGrowth.paragraphs.map((para, idx) => (
-            <p key={idx} className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+            <p key={idx} className="text-sm sm:text-[18px] text-slate-600 font-normal leading-relaxed">
               {para}
             </p>
           ))}
@@ -224,7 +224,7 @@ export const AboutWhy: React.FC = () => {
             {aboutWhy.intro}
           </p>
           {aboutWhy.paragraphs.map((para, idx) => (
-            <p key={idx} className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+            <p key={idx} className="text-sm sm:text-[18px] text-slate-600 font-normal leading-relaxed">
               {para}
             </p>
           ))}
@@ -517,7 +517,7 @@ export const AboutLegacy: React.FC = () => {
               {aboutLegacy.heading} 
             </h2>
           </div>
-          <p className="text-xs sm:text-sm text-blue-100/80 max-w-md font-normal leading-relaxed">
+          <p className="text-xs sm:text-base text-blue-100/80 max-w-md font-normal leading-relaxed">
          Kothari Group has established a legacy of over 40 years in the domain of pipes and irrigation solutions for sustainable water management. 
           </p>
         </div>

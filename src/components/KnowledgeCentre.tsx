@@ -62,7 +62,7 @@ export const KnowledgeCentre: React.FC<{ itemData?: any[]; theme?: 'blue' | 'gre
               Knowledge Centre
             </h2>
           </div>
-          <p className="text-xs sm:text-sm text-slate-600 max-w-md font-normal leading-relaxed">
+          <p className="text-xs sm:text-base text-slate-600 max-w-md font-normal leading-relaxed">
          {isGreen ? 'Get access to useful knowledge about farming, as well as irrigation, which will help you plan the watering process, take care of crops better, and utilize the water and nutrients more efficiently. ' : 'Find technical documentation, product specifications and installation instructions to use Kothari system efficiently. '}
           </p>
         </div>
@@ -94,7 +94,7 @@ export const KnowledgeCentre: React.FC<{ itemData?: any[]; theme?: 'blue' | 'gre
                     }`}>
                       {item.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed max-w-lg">
+                    <p className="text-xs sm:text-base text-slate-600 font-normal leading-relaxed max-w-lg">
                       {item.description}
                     </p>
                   </div>

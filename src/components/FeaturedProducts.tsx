@@ -172,7 +172,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
             </h2>
           </div>
 
-          <p className={`text-xs sm:text-sm ${isGreen ? 'text-blue-100/80' : 'text-blue-100/80'} max-w-md font-light leading-relaxed`}>
+          <p className={`text-xs sm:text-base ${isGreen ? 'text-blue-100/80' : 'text-blue-100/80'} max-w-md font-light leading-relaxed`}>
           {theme==='green'? 'Explore Kothari’s irrigation products, designed for durability, efficient water use, and reliable performance across diverse farming conditions. ' : 'Explore Kothari’s durable pipes and fittings for reliable water flow across plumbing, agriculture, and infrastructure. '}
           </p>
         </div>

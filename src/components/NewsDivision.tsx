@@ -460,7 +460,7 @@ export const NewsDivision: React.FC<{ theme?: 'blue' | 'green'; newsItems?: Divi
             <h3 className={`text-lg font-serif font-normal text-slate-900 leading-snug tracking-tight ${accentGroupHoverText} transition-colors duration-300`}>
               {item.title}
             </h3>
-            <p className="text-xs text-slate-600 font-normal leading-relaxed line-clamp-3">
+            <p className="text-xs sm:text-[16px] text-slate-600 font-normal leading-relaxed line-clamp-3">
               {item.snippet}
             </p>
           </div>
@@ -511,7 +511,7 @@ export const NewsDivision: React.FC<{ theme?: 'blue' | 'green'; newsItems?: Divi
               {item.title}
             </h3>
 
-            <p className="text-xs text-slate-600 font-normal leading-relaxed line-clamp-3">
+            <p className="text-xs sm:text-base text-slate-600 font-normal leading-relaxed line-clamp-3">
               {item.snippet}
             </p>
           </div>
@@ -593,7 +593,7 @@ export const NewsDivision: React.FC<{ theme?: 'blue' | 'green'; newsItems?: Divi
                 Testimonials
               </h2>
             </div>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-md font-normal leading-relaxed">
+            <p className="text-xs sm:text-base text-slate-600 max-w-md font-normal leading-relaxed">
              {isGreen ? 'Listen to the dealers and representatives of agriculture to find out about the quality of Kothari irrigation products and customer service experience. ' : 'Learn from distributors and experts in the industry about what they think of Kothari’s products, quality, and customer service quality. '}
             </p>
           </div> 
@@ -676,7 +676,7 @@ export const NewsDivision: React.FC<{ theme?: 'blue' | 'green'; newsItems?: Divi
                 Latest Blogs
               </h2>
             </div>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-md font-normal leading-relaxed">
+            <p className="text-xs sm:text-base text-slate-600 max-w-md font-normal leading-relaxed">
              {isGreen ?  'Learn about useful farming techniques, methods of irrigation, and receive an expert opinion. ' : ' Explore expert tips on pipes, plumbing fittings, groundwater access, drainage, and efficient water management. '}
             </p>
           </div>
@@ -762,7 +762,7 @@ export const NewsDivision: React.FC<{ theme?: 'blue' | 'green'; newsItems?: Divi
                 News & Events
               </h2>
             </div>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-md font-normal leading-relaxed">
+            <p className="text-xs sm:text-base text-slate-600 max-w-md font-normal leading-relaxed">
              {isGreen ? 'Stay updated on Kothari Group’s latest milestones, innovations, and industry developments.' : 'Stay updated on Kothari Group’s latest milestones, innovations, and industry developments.'}
             </p>  
           </div>

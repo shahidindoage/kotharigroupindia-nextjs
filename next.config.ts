@@ -79,8 +79,8 @@ const nextConfig: NextConfig = {
       // ("dozing" instead of "dosing"). Keep the URL as-is for now and redirect
       // the misspelled path to the correct one so existing links survive.
       {
-        source: '/dosing-pumps-and-fertilizer-injectors/dozing-pump',
-        destination: '/dosing-pumps-and-fertilizer-injectors/dosing-pump',
+        source: '/dosing-pumps-and-fertilizer-injectors/dosing-pump',
+        destination: '/irrigation-division/dozing-pump',
         permanent: true,
       },
         ...legacy,

@@ -114,10 +114,10 @@ export default async function GSTPage() {
               <table className="w-full min-w-[640px] text-left border-collapse">
                 <thead>
                   <tr className="bg-[#0E588A] text-white">
-                    <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wider">Sr. No.</th>
-                    <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wider">GSTIN/UIN</th>
-                    <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wider">GSTIN/UIN Status</th>
-                    <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-wider">State</th>
+                    <th className="px-5 py-3.5 text-xs sm:text-[16px] font-semibold uppercase tracking-wider">Sr. No.</th>
+                    <th className="px-5 py-3.5 text-xs sm:text-[16px] font-semibold uppercase tracking-wider">GSTIN/UIN</th>
+                    <th className="px-5 py-3.5 text-xs sm:text-[16px] font-semibold uppercase tracking-wider">GSTIN/UIN Status</th>
+                    <th className="px-5 py-3.5 text-xs sm:text-[16px] font-semibold uppercase tracking-wider">State</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -128,17 +128,17 @@ export default async function GSTPage() {
                         i % 2 === 1 ? 'bg-[#FAFBFC]' : 'bg-white'
                       }`}
                     >
-                      <td className="px-5 py-3.5 text-sm text-slate-600">{entry.no}</td>
-                      <td className="px-5 py-3.5 text-sm font-mono font-medium text-slate-900">
+                      <td className="px-5 py-3.5 text-sm sm:text-[16px] text-slate-600">{entry.no}</td>
+                      <td className="px-5 py-3.5 text-sm sm:text-[16px] font-mono font-medium text-slate-900">
                         {entry.gstin}
                       </td>
-                      <td className="px-5 py-3.5 text-sm">
+                      <td className="px-5 py-3.5 text-sm sm:text-[16px]">
                         <span className="inline-flex items-center gap-1.5 text-[#1E8E3E]">
                           <span className="w-2 h-2 rounded-full bg-[#1E8E3E]" />
                           {entry.status}
                         </span>
                       </td>
-                      <td className="px-5 py-3.5 text-sm text-slate-700">{entry.state}</td>
+                      <td className="px-5 py-3.5 text-sm sm:text-[16px] text-slate-700">{entry.state}</td>
                     </tr>
                   ))}
                 </tbody>

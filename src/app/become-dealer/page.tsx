@@ -80,7 +80,7 @@ export default async function BecomeDealerPage() {
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight uppercase font-serif text-slate-900 m-0">
                 How it works
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 max-w-md font-normal leading-relaxed">
+              <p className="text-xs sm:text-base text-slate-600 max-w-md font-normal leading-relaxed">
                 A simple three-step process to become a Kothari dealer.
               </p>
             </div>
@@ -133,7 +133,7 @@ export default async function BecomeDealerPage() {
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight uppercase font-serif text-slate-900 m-0">
                 Dealer Benefits
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 max-w-md font-normal leading-relaxed">
+              <p className="text-xs sm:text-base text-slate-600 max-w-md font-normal leading-relaxed">
                 Being a dealer with us offers partnership, innovation, and profit.
               </p>
             </div>
@@ -153,7 +153,7 @@ export default async function BecomeDealerPage() {
                       <h3 className="text-base sm:text-lg font-serif font-medium text-slate-900 leading-snug group-hover:text-[#1575B3] transition-colors duration-300">
                         {benefit.title}
                       </h3>
-                      <p className="text-sm text-slate-600 font-normal leading-relaxed mt-2">
+                      <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed mt-2">
                         {benefit.description}
                       </p>
                     </div>

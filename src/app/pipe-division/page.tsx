@@ -330,7 +330,7 @@ const FEATURE_PRODUCTS = [
     description: 'A high-durability, lead-free thermoplastic engineered for safe, bacteria-resistant, and corrosion-free drinking water systems.',
     image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/UPVC-Pipes-Fittings-.webp',
     category: 'Plumbing Solutions',
-    link: '/upvc/upvc-astm-plumbing-piping-system',
+    link: '/pipe-division/upvc-astm-plumbing-piping-system',
     spec: 'Temp Tolerance: Up to 93°C',
   },
   {
@@ -340,7 +340,7 @@ const FEATURE_PRODUCTS = [
     description: 'A durable, eco-friendly virgin CPVC piping solution designed for safe hot and cold drinking water systems (0°C–93°C), featuring high UV resistance, low heat loss, and self-extinguishing safety.',
     image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/CPVC-pipes-And-Fitting-.webp',
     category: 'Micro Irrigation',
-    link: '/cpvc/cpvc-hot-and-cold-water-piping-system',
+    link: '/pipe-division/cpvc-hot-and-cold-water-piping-system',
     spec: 'Efficiency Rate: 98%',
   },
   {
@@ -350,7 +350,7 @@ const FEATURE_PRODUCTS = [
     description: 'A heavy-duty, leak-free, lead-free piping solution featuring a 10 kg/cm² push-fit rubber ring joint for maintenance-free, corrosion-resistant underground and sewer drainage.',
     image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/10/SWR-Pipes-and-Fitting.webp',
     category: 'Agri & Submersible',
-    link: '/soil-waste-and-rainwater-pipes-and-fittings/swr-pipes-and-fittings-for-drainage-systems',
+    link: '/pipe-division/swr-pipes-and-fittings-for-drainage-systems',
     spec: 'Load Capacity: High PSI',
   },
   {
@@ -360,7 +360,7 @@ const FEATURE_PRODUCTS = [
     subtitle: 'High Pressure Carrier',
     image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/11/UDS-pipes-fitting.webp',
     category: 'Agri Solutions',
-    link: '/underground-pipe-and-fittings/upvc-underground-drainage-piping-system',
+    link: '/pipe-division/upvc-underground-drainage-piping-system',
     spec: 'UV & Chemical Resistant',
   },
   {
@@ -370,7 +370,7 @@ const FEATURE_PRODUCTS = [
     description: 'A flexible, anti-twist garden hose made from 100% virgin raw material, offering superior durability, weather resistance, and easy installation for all gardening needs.',
     image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/05/KOTHARI-SPECIAL-ORANGE-COLOR-2.webp',
     category: 'Micro Irrigation',
-    link: '/pvc-tubing-garden-pipes/kothari-special',
+    link: '/pipe-division/kothari-special',
     spec: 'Coverage: 360° Uniformity',
   },
   {
@@ -380,7 +380,7 @@ const FEATURE_PRODUCTS = [
     description: 'Casing Pipes for Borewell – Corrosion-Resistant Casing Pipe Our Casing Pipes are built to protect one of the most important parts of any borewell system: the wellbore itself.',
     image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2025/04/CASING-PIPE.webp',
     category: 'Casing Pipes',
-    link: 'casing-pipes/casing-pipes-fittings',
+    link: '/pipe-division/casing-pipes-fittings',
     spec: 'Coverage: 360° Uniformity',
   },
 ];

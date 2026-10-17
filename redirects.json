@@ -17,7 +17,7 @@
   },
   {
     "source": "/products-and-services/17477",
-    "destination": "/soil-waste-and-rainwater-pipes-and-fittings/swr-soil-waste-and-rainwater-piping-system"
+    "destination": "/pipe-division/swr-pipes-and-fittings-for-drainage-systems"
   },
   {
     "source": "/products-and-services/18920",
@@ -45,8 +45,13 @@
   },
   {
     "source": "/CableProtection",
-    "destination": "/cable-protection"
+    "destination": "/products/cable-protection"
   },
+   {
+    "source": "/cable-protection",
+    "destination": "/products/cable-protection"
+  },
+  
   {
     "source": "/products-and-services/18941",
     "destination": "/cable-protection/dwc-pipe-for-cable-protection"
@@ -77,7 +82,11 @@
   },
   {
     "source": "/PEPipesFittings",
-    "destination": "/pe-pipes-and-fittings"
+    "destination": "/products/agriculture-pipes-and-fittings"
+  },
+  {
+    "source": "/pe-pipes-and-fittings",
+    "destination": "/products/agriculture-pipes-and-fittings"
   },
   {
     "source": "/products-and-services/17093",
@@ -353,8 +362,12 @@
   },
   {
     "source": "/dosing-pumps-fertilizer-injectors",
-    "destination": "/dosing-pumps-and-fertilizer-injectors"
+    "destination": "/products/filters-and-injectors"
   },
+  {
+    "source": "/dosing-pumps-and-fertilizer-injectors",
+    "destination": "/products/filters-and-injectors"
+  }, 
   {
     "source": "/products-and-services/17548",
     "destination": "/dosing-pumps-and-fertilizer-injectors/hdpe-header-manifold"
@@ -369,8 +382,16 @@
   },
   {
     "source": "/products-and-services/19098",
-    "destination": "/dosing-pumps-and-fertilizer-injectors/dozing-pump"
+    "destination": "/irrigation-division/dozing-pump"
   },
+  {
+    "source": "/dosing-pumps-and-fertilizer-injectors/dosing-pump",
+    "destination": "/irrigation-division/dozing-pump"
+  }, 
+   {
+    "source": "/dosing-pumps-and-fertilizer-injectors/dozing-pump",
+    "destination": "/irrigation-division/dozing-pump" 
+  }, 
   {
     "source": "/products-and-services/17671",
     "destination": "/fertigation-machines/nutrijet-fertigation-machines"
@@ -389,7 +410,11 @@
   },
   {
     "source": "/automatic-filters-accessories",
-    "destination": "/automatic-filters-and-accessories"
+    "destination": "/products/automation-system"
+  },
+  {
+    "source": "/automatic-filters-and-accessories", 
+    "destination": "/products/automation-system"
   },
   {
     "source": "/products-and-services/17368",
@@ -589,7 +614,11 @@
   },
   { 
     "source": "/products-and-services/pipes/swr-pipes-fittings-manufacturers-suppliers-in-india.php",
-    "destination": "/soil-waste-and-rainwater-pipes-and-fittings/swr-soil-waste-and-rainwater-piping-system"
+    "destination": "/pipe-division/swr-pipes-and-fittings-for-drainage-systems"
+  },
+  { 
+    "source": "/soil-waste-and-rainwater-pipes-and-fittings/swr-soil-waste-and-rainwater-piping-system",
+    "destination": "/pipe-division/swr-pipes-and-fittings-for-drainage-systems"
   },
   {
     "source": "/new-and-event/news-details.php",
