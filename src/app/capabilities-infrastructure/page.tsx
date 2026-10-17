@@ -47,7 +47,7 @@ const technologyCards = [
   {
   image: '/banners/capability/Capabilities_Automation.png',
     eyebrow: 'Technology & Equipment',
-    heading: '100% Automation',
+    heading: 'Advanced Automation',
     description:
       'Automation is extremely important for our production process as it helps us to improve production efficiency, product consistency, customer satisfaction and product quality. ',
   },

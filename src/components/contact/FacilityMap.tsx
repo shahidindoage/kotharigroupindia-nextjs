@@ -175,7 +175,7 @@ const facilities: Facility[] = [
     link: 'https://maps.app.goo.gl/QgAtaMj7nQGtUocj6',
   },
   {
-    name: 'Warehouse Sambhajinagar',
+    name: 'Warehouse Chhatrapati Sambhaji Nagar',
     address: 'Warehouse, Chhatrapati Sambhajinagar (Aurangabad), Maharashtra',
     lat: 19.8762,
     lng: 75.3433,
