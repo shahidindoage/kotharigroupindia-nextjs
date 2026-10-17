@@ -76,7 +76,7 @@ export const youngLeadership = {
       designation: 'Director Marketing - Pipe Division',
       linkedin: true,
       linkedinUrl: 'https://www.linkedin.com/in/gourav-kothari-8a30a714b',
-      readMoreContent: `Mr. Kothari completed his graduation in BBA and started working with Kothari Group in 2010. Since then, he has developed expertise in both sales and market development for agricultural and plumbing products. His focus on customer relationships and market knowledge helps the company become established in the industries of pipes and pipe fittings, as well as plumbing solutions. `,
+      readMoreContent: `Mr. Gaurav Kothari completed his graduation in BBA and started working with Kothari Group in 2010. Since then, he has developed expertise in both sales and market development for agricultural and plumbing products. His focus on customer relationships and market knowledge helps the company become established in the industries of pipes and pipe fittings, as well as plumbing solutions. `,
       imageUrl: 'https://kotharigroupindia.com/img/images/gaurav-kothari.webp',
     },
     {
@@ -92,7 +92,7 @@ export const youngLeadership = {
       designation: 'Director - Export Division',
       linkedin: true,
       linkedinUrl: 'https://www.linkedin.com/in/sourabh-kothari-0112561b5',
-      readMoreContent: `Mr. Kothari has been working with Kothari Group for 5 years, using his expertise gained during his previous experience in Singapore. His contribution to finance and project execution is highly important in making the company effective and satisfying its customers. `,
+      readMoreContent: `Mr. Sourabh Kothari has been working with Kothari Group for 5 years, using his expertise gained during his previous experience in Singapore. His contribution to finance and project execution is highly important in making the company effective and satisfying its customers. `,
       imageUrl: 'https://kotharigroupindia.com/img/images/sourabh-kothari.webp',
     },
   ] as BoardMember[],
