@@ -13,7 +13,7 @@ export const irrigationKnowledgeItems: KnowledgeItem[] = [
     title: 'Banana Guides',
     description:
       'Expert banana cultivation guidance on spacing, irrigation, fertigation, and pest management for better yield and fruit quality.',
-    image: 'https://images.pexels.com/photos/4399936/pexels-photo-4399936.jpeg',
+    image: '/knowledge/Banana.png',
     lang: [
       {
         English: `https://admin.kotharigroupindia.com/wp-content/uploads/2026/09/KCD_5306_K-I-CROP-BANANA-ENGLISH.pdf`,
@@ -65,7 +65,7 @@ export const irrigationKnowledgeItems: KnowledgeItem[] = [
     title: 'Sugarcane Guides',
     description:
       'Expert Sugarcane cultivation guidance on spacing, irrigation, fertigation, and pest management for better yield and cane quality.',
-    image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/09/pexels-carbellsarfo-33740520.jpg',
+    image: '/knowledge/Suger-cane.png',
     lang: [
       {
         English: `https://admin.kotharigroupindia.com/wp-content/uploads/2026/09/KCD_5309_K-I-CROP-SUGARCANE-ENGLISH-1-compressed.pdf`,
@@ -271,7 +271,7 @@ export const pipeKnowledgeItems: KnowledgeItem[] = [
     title: 'Plumbing Systems',
     description:
       'Comprehensive engineering documentation and technical specifications for CPVC and UPVC piping infrastructure. Features material thermal ratings, chemical resistance matrices, precise solvent welding joint protocols, flow rate optimization charts, and hydraulic pressure loss calculations tailored for high-performance residential, commercial, and industrial plumbing installations.',
-    image: 'https://kotharigroupindia.com/img/images/Building_pipe.webp',
+     image: '/knowledge/Plumbing-System.png',
     lang: [
       {
         English: `https://admin.kotharigroupindia.com/wp-content/uploads/2026/09/Plumbing-Pipe-Literature-English-Sept-2026.pdf`,
@@ -283,7 +283,7 @@ export const pipeKnowledgeItems: KnowledgeItem[] = [
     title: 'Agri & Borewell',
     description:
       'Extensive field deployment manuals and practical technical guides covering subterranean UPVC agricultural main lines, HDPE coil layout optimization, surge pressure protection strategies, and precise structural torque thresholds engineered for high-depth borewell column pipe systems.',
-    image: 'https://kotharigroupindia.com/img/images/Agri_Pipes.webp',
+    image: '/knowledge/Agri-&-Borewell.png',
     lang: [
       {
         English: `https://admin.kotharigroupindia.com/wp-content/uploads/2026/09/Agri-Pipe-Literature-English-Sept-2026-2.pdf`,

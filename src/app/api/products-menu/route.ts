@@ -36,7 +36,8 @@ export interface ProductsDivisionMenu {
 function buildDivisionMenu(
   cards: WpProductCard[],
   headline: string,
-  description: string
+  description: string,
+  divisionSlug: string
 ): ProductsDivisionMenu {
   const segments = new Map<
     string,
@@ -72,7 +73,10 @@ function buildDivisionMenu(
     }
     cat.products.push({
       title: card.name,
-      url: `/${catSlug}/${card.slug}`,
+      // Product URLs are grouped by division: /{division-slug}/{product-slug}.
+      // The division is supplied by the caller rather than read per product, so
+      // products without a division_name in WordPress still resolve correctly.
+      url: `/${divisionSlug}/${card.slug}`,
       image: card.image || '',
       shortDesc: card.tagline || '',
     });
@@ -106,12 +110,14 @@ export async function GET() {
       pipe: buildDivisionMenu(
         pipe,
         'Our Products',
-        'Comprehensive range of piping solutions engineered for performance.'
+        'Comprehensive range of piping solutions engineered for performance.',
+        'pipe-division'
       ),
       irrigation: buildDivisionMenu(
         irrigation,
         'Our Products',
-        'Comprehensive range of irrigation solutions engineered for performance.'
+        'Comprehensive range of irrigation solutions engineered for performance.',
+        'irrigation-division'
       ),
     });
   } catch (error) {

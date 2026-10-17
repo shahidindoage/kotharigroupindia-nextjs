@@ -68,9 +68,20 @@ export const PIPE_CATEGORY_SLUGS = [
   'agriculture-pipes-and-fittings',
 ];
 
+export const PIPE_DIVISION_PATH = 'pipe-division';
+export const IRRIGATION_DIVISION_PATH = 'irrigation-division';
+
 export function isPipeCategorySlug(catSlug?: string | null): boolean {
   if (!catSlug) return true;
-  return PIPE_CATEGORY_SLUGS.includes(normalizeSlug(catSlug));
+  const slug = normalizeSlug(catSlug);
+
+  // Product URLs are /{division-slug}/{product-slug} (e.g. /pipe-division/kothari-cpvc-...).
+  // Handle that shape first, otherwise the division allow-list below would miss
+  // it and every pipe product would be treated as irrigation.
+  if (slug === PIPE_DIVISION_PATH) return true;
+  if (slug === IRRIGATION_DIVISION_PATH) return false;
+
+  return PIPE_CATEGORY_SLUGS.includes(slug);
 }
 
 // Authoritative division check from a WP division slug

@@ -31,7 +31,7 @@ const PILLARS = [
     icon: Leaf,
     title: 'Sustainable Product Portfolio',
     text: 'Our pipes and irrigation systems will serve for a long time and do not lead to wastage of water. Thus, we create durable products with low water loss making use of water supply efficiently for agriculture and infrastructure purposes.',
-    image: 'https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=800&q=80',
+    image: '/sustain2.jpeg',
   },
   {
     num: '03',
