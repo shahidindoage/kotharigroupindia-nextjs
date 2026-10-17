@@ -26,7 +26,7 @@ export default async function DivisionProductsPage({
       <div className="relative w-full min-h-[50dvh] bg-[#061E33] text-white font-sans overflow-hidden flex flex-col justify-between">
         <div className="absolute inset-0 z-0">
           <img
-            src="/heronew.jpg"
+            src={eyebrow=='Irrigation Division' ?`https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1600&q=80`:`https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=1600&q=80`}
             alt="Kothari Group products"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center"
