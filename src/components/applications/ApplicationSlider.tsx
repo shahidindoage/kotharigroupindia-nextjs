@@ -38,7 +38,7 @@ function ApplicationCard({
             item.title
          }
         </h3>
-        <p className="text-sm sm:text-[15px] text-slate-600 font-normal leading-relaxed mt-4 mb-6">
+        <p className="text-sm sm:text-[16px] text-slate-600 font-normal leading-relaxed mt-4 mb-6">
           {item.description}
         </p>
 

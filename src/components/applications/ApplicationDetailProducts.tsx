@@ -99,7 +99,7 @@ export const ApplicationDetailProducts: React.FC<{
                         {product.name}
                       </h3>
 
-                      <p className="text-xs text-slate-600 font-normal leading-relaxed m-0">
+                      <p className="text-xs sm:text-[16px] mt-2 text-slate-600 font-normal leading-relaxed m-0">
                         <span className={isExpanded ? '' : 'line-clamp-3'}>
                           {product.paragraphs[0]}
                         </span>
@@ -181,7 +181,7 @@ export const ApplicationDetailProducts: React.FC<{
                   <th
                     key={heading}
                     scope="col"
-                    className="px-5 sm:px-6 py-4 text-[11px] font-mono tracking-[0.2em] uppercase font-normal"
+                    className="px-5 sm:px-6 py-4 text-[11px] sm:text-[16px] font-mono tracking-[0.2em] uppercase font-normal"
                   >
                     {heading}
                   </th>
@@ -194,13 +194,13 @@ export const ApplicationDetailProducts: React.FC<{
                   key={`${row.requirement}-${row.product}-${idx}`}
                   className={`bg-white border-b last:border-b-0 ${rowBorder}`}
                 >
-                  <td className="px-5 sm:px-6 py-4 text-sm text-slate-700 font-normal align-top">
+                  <td className="px-5 sm:px-6 py-4 text-sm sm:text-[16px] text-slate-700 font-normal align-top">
                     {row.requirement}
                   </td>
-                  <td className="px-5 sm:px-6 py-4 text-sm text-slate-900 font-medium align-top">
+                  <td className="px-5 sm:px-6 py-4 text-sm sm:text-[16px] text-slate-900 font-medium align-top">
                     {row.product}
                   </td>
-                  <td className="px-5 sm:px-6 py-4 text-sm text-slate-600 font-normal align-top">
+                  <td className="px-5 sm:px-6 py-4 text-sm sm:text-[16px] text-slate-600 font-normal align-top">
                     {row.role}
                   </td>
                 </tr>

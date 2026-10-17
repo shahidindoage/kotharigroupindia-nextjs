@@ -83,7 +83,7 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
             </div>
 
             <p className="text-xs font-light text-white/80 leading-relaxed max-w-sm">
-              Kothari Group is a leading piping solutions provider with a strong focus on quality, innovation and sustainability.
+            Kothari Group is dedicated to transforming water management and strengthening infrastructure to build a more resilient and sustainable India.
             </p>
 
             <div className="space-y-2 text-xs font-light text-white/80">
@@ -201,7 +201,7 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/20 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-light text-white/80">
-          <p>© 2026 Kothari Group. All Rights Reserved.</p>
+          <p>© 2026 Kothari Agritech Private Limited. All Rights Reserved.</p>
 
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             <Link href="/privacy-policy" className="hover:text-white hover:underline transition">

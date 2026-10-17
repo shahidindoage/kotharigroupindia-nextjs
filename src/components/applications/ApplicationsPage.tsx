@@ -75,7 +75,7 @@ function ApplicationsContent({ data, isPipe }: { data: DivisionApplications; isP
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight uppercase font-serif text-slate-900 m-0">
                   {group.title}
                 </h2>
-                <p className="text-sm sm:text-base text-slate-600 max-w-3xl font-normal leading-relaxed mt-4">
+                <p className="text-sm sm:text-[18px] text-slate-600 max-w-3xl font-normal leading-relaxed mt-4">
                   {group.intro}
                 </p>
               </div>

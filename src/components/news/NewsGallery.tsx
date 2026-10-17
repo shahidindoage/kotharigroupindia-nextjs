@@ -80,7 +80,7 @@ export const NewsGallery: React.FC<NewsGalleryProps> = ({ news, categories }) =>
                       <h3 className="text-lg font-serif font-medium text-slate-900 leading-snug group-hover:text-[#1575B3] transition-colors duration-300">
                         {item.title}
                       </h3>
-                      <p className="text-sm text-slate-600 font-normal leading-relaxed line-clamp-3">
+                      <p className="text-sm sm:text-[16px] text-slate-600 font-normal leading-relaxed line-clamp-3">
                         {item.description}
                       </p>
                     </div>

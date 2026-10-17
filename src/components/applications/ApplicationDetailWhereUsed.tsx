@@ -21,7 +21,7 @@ export const ApplicationDetailWhereUsed: React.FC<{
         {whereUsed.intro.map((paragraph, idx) => (
           <p
             key={idx}
-            className="text-[15px] sm:text-base text-slate-600 font-normal leading-relaxed m-0"
+            className="text-[15px] sm:text-[18px] text-slate-600 font-normal leading-relaxed m-0"
           >
             {paragraph}
           </p>
@@ -34,7 +34,7 @@ export const ApplicationDetailWhereUsed: React.FC<{
             <h3 className="text-lg sm:text-xl font-serif font-light uppercase tracking-tight text-slate-900 m-0">
               <span className={accentText}>{item.label}</span>
             </h3>
-            <p className="text-sm sm:text-[15px] text-slate-600 font-normal leading-relaxed mt-3 mb-0">
+            <p className="text-sm sm:text-[16px] text-slate-600 font-normal leading-relaxed mt-3 mb-0">
               {item.text}
             </p>
           </li>
@@ -43,7 +43,7 @@ export const ApplicationDetailWhereUsed: React.FC<{
 
       {whereUsed.note && (
         <p
-          className={`text-sm sm:text-[15px] text-slate-700 font-normal leading-relaxed mt-12 mb-0 max-w-3xl border-t ${
+          className={`text-sm sm:text-[16px] text-slate-700 font-normal leading-relaxed mt-12 mb-0 max-w-3xl border-t ${
             // isPipe ? 'border-slate-300' : 'border-[#1E8E3E]/20'
             isPipe ? 'border-slate-300' : 'border-slate-300'
           } pt-6`}

@@ -87,7 +87,7 @@ export const WhyKothariGroup = () => {
               Why Kothari Group?
             </h2>
           </div>
-          <p className="text-sm text-slate-500 max-w-md font-normal leading-relaxed">
+          <p className="text-sm  sm:text-[16px] text-slate-500 max-w-md font-normal leading-relaxed">
             With 35+ years of manufacturing expertise, we deliver trusted pipes, fittings, and irrigation solutions across India.
           </p>
         </div>
@@ -170,7 +170,7 @@ export const WhyKothariGroup = () => {
                 <h4 className="text-2xl sm:text-4xl font-semibold text-white mt-1">
                   Trusted Since 1988
                 </h4>
-                <p className="text-xs sm:text-sm text-slate-300 font-normal leading-relaxed mt-1.5 max-w-md">
+                <p className="text-xs sm:text-[16px] text-slate-300 font-normal leading-relaxed mt-1.5 max-w-md">
                   Building reliable pipe and irrigation solutions for agriculture, infrastructure and everyday living.
                 </p>
               </div>
@@ -207,9 +207,9 @@ export const WhyKothariGroup = () => {
                       </span>
                     </div>
 
-                    <p className="text-center text-xs sm:text-sm text-slate-500 leading-relaxed pt-3 border-t border-slate-100 group-hover:border-slate-200 transition-colors">
+                    <p className="text-center text-xs sm:text-[16px] text-slate-500 leading-relaxed pt-3 border-t border-slate-100 group-hover:border-slate-200 transition-colors">
                       {card.description}
-                    </p>
+                    </p> 
                   </div>
                 </div>
               );

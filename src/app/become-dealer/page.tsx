@@ -1,10 +1,11 @@
 import React from 'react';
-import { ArrowRight, Package, BadgePercent, SlidersHorizontal, ShieldCheck, GraduationCap, Headset, ClipboardList, SearchCheck, Users } from 'lucide-react';
+import { Package, BadgePercent, SlidersHorizontal, ShieldCheck, GraduationCap, Headset } from 'lucide-react';
 import AppShell from '@/components/AppShell';
 import { Home2Header } from '@/components/Home2Header';
 import { Home2Footer } from '@/components/Home2Footer';
 import { DealerApplyButton } from '@/components/dealer/DealerApplyModal';
-import { dealerData } from '@/lib/dealer';
+import { DealerProcessSteps } from '@/components/dealer/DealerProcessSteps';
+import { dealerData, dealerRecipientEmails } from '@/lib/dealer';
 import { wpPageMetadataFor, resolveSeoText } from '@/lib/wp-seo';
 import { JsonLd } from '@/components/JsonLd';
 import { ORG_ID, standardPageGraph } from '@/lib/schema';
@@ -21,15 +22,12 @@ export const generateMetadata = wpPageMetadataFor('become-dealer', SEO_FALLBACK)
 
 const benefitIcons = [Package, BadgePercent, SlidersHorizontal, ShieldCheck, GraduationCap, Headset];
 
-const stepMeta = [
-  { label: 'Step 01', title: 'Submit Application', icon: ClipboardList },
-  { label: 'Step 02', title: 'Review & Approval', icon: SearchCheck },
-  { label: 'Step 03', title: 'Onboarding & Training', icon: Users },
-];
-
 export default async function BecomeDealerPage() {
   const { steps, benefits, applyLink } = dealerData;
   const seo = await resolveSeoText('become-dealer', SEO_FALLBACK);
+  // Read here (server) and pass down, so the env vars are never pulled into the
+  // client bundle. Same mapping the /api/dealer route uses to send the email.
+  const emails = dealerRecipientEmails();
 
   return (
     <>
@@ -92,7 +90,7 @@ export default async function BecomeDealerPage() {
               <div className="lg:col-span-2 relative overflow-hidden bg-[#061E33] text-white p-10 sm:p-12 flex flex-col justify-between shadow-2xl shadow-[#061E33]/20 min-h-full h-full">
                 <div className="absolute inset-0 z-0">
                   <img
-                    src="/heronew.jpg"
+                    src="https://images.pexels.com/photos/33175650/pexels-photo-33175650.jpeg"
                     alt=""
                     aria-hidden="true"
                     referrerPolicy="no-referrer"
@@ -116,38 +114,13 @@ export default async function BecomeDealerPage() {
                   </p>
                 </div>
                 <div className="relative z-10 mt-10">
-                  <DealerApplyButton applyLink={applyLink} />
+                  <DealerApplyButton applyLink={applyLink} emails={emails} />
                 </div>
               </div>
 
               {/* Right cards */}
-              <div className="lg:col-span-3 flex flex-col gap-5 justify-center min-h-full h-full">
-                {steps.map((step, i) => {
-                  const meta = stepMeta[i];
-                  const Icon = meta.icon;
-                  return (
-                    <div
-                      key={step.number}
-                      className="group relative flex items-center gap-5 sm:gap-6 bg-white border border-slate-200 p-6 sm:p-7 shadow-sm hover:shadow-xl hover:border-[#1575B3] transition-all duration-500"
-                    >
-                      {/* <span className="hidden sm:block text-6xl font-serif font-light text-[#1575B3]/15 leading-none select-none">
-                        {String(step.number).padStart(2, '0')}.
-                      </span> */}
-                      <div className="w-16 h-16 shrink-0 bg-[#F5FAFF] border border-[#DCEAF5] flex items-center justify-center text-[#1575B3] group-hover:bg-[#1575B3] group-hover:text-white transition-colors duration-500">
-                        <Icon className="w-7 h-7" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#0E588A] font-semibold">
-                          Step {String(step.number).padStart(2, '0')}
-                        </span>
-                        <h4 className="mt-1 text-lg sm:text-xl font-serif font-medium text-slate-900 leading-snug group-hover:text-[#1575B3] transition-colors duration-300">
-                          {meta.title}
-                        </h4>
-                      </div>
-                      <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-[#1575B3] group-hover:translate-x-1 transition-all duration-300 shrink-0" />
-                    </div>
-                  );
-                })}
+              <div className="lg:col-span-3">
+                <DealerProcessSteps steps={steps} emails={emails} />
               </div>
             </div>
           </div>

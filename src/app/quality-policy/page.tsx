@@ -113,42 +113,31 @@ export default async function QualityPolicyPage() {
       <div className="text-left">
         <Home2Header />
 
-        <div className="relative w-full min-h-[40dvh] sm:min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
+       
+
+          <div className="relative w-full min-h-[50dvh] bg-[#061E33] text-white font-sans overflow-hidden flex flex-col justify-between">
           <div className="absolute inset-0 z-0">
             <img
               src="/banners/resource/Resources_Quality-Policy.png"
-              alt="Quality Policy"
+              alt="KothariTV videos"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-black/25 pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/30 to-black/50 pointer-events-none" />
+            <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/25 to-black/70 pointer-events-none" />
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full min-h-[40dvh] sm:min-h-[100dvh] pt-24 sm:pt-28 pb-8 sm:pb-12 flex flex-col justify-between">
-            <div className="w-full flex flex-col gap-5 sm:gap-6 my-auto py-8">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 w-full min-h-[50dvh] pt-28 sm:pt-32 pb-10 flex flex-col justify-between">
+            <div className="flex flex-col gap-5 sm:gap-6 my-auto py-8">
               <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5">
                 Kothari Group
               </span>
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
-                Quality Policy
+               Quality Policy
               </h1>
-              {/* <p className="text-sm sm:text-base text-white/85 font-normal leading-relaxed max-w-3xl drop-shadow-sm">
-                Our commitment to excellence in every material, process and product.
-              </p> */}
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-10 w-full border-t border-white/20 pt-6 mt-auto max-w-4xl">
-              {HERO_STATS.map((stat) => (
-                <div key={stat.label} className="flex flex-col">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white drop-shadow-md">
-                    {stat.value}
-                  </span>
-                  <span className="text-xs sm:text-sm text-white/90 leading-snug mt-1 drop-shadow-sm">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
+              <p className="text-sm sm:text-base text-white/85 font-normal leading-relaxed max-w-3xl drop-shadow-sm">
+               Our commitment to excellence in every material, process and product.
+              </p>
             </div>
           </div>
         </div>

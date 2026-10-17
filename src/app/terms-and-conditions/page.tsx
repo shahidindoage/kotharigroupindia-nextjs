@@ -79,7 +79,7 @@ export default async function TermsConditionsPage() {
                     <li key={item}>
                       <a
                         href={`#section-${i + 1}`}
-                        className="block text-sm text-slate-600 hover:text-[#1575B3] py-1.5 pl-4 -ml-px border-l-2 border-transparent hover:border-[#1575B3] transition"
+                        className="block text-sm sm:text-[16px] text-slate-600 hover:text-[#1575B3] py-1.5 pl-4 -ml-px border-l-2 border-transparent hover:border-[#1575B3] transition"
                       >
                         {item}
                       </a>

@@ -30,7 +30,7 @@ export const ApplicationSectionHeading: React.FC<{
         {title}
       </h2>
       {intro && (
-        <p className="text-sm sm:text-base text-slate-600 max-w-3xl font-normal leading-relaxed mt-4">
+        <p className="text-sm sm:text-[18px] text-slate-600 max-w-3xl font-normal leading-relaxed mt-4">
           {intro}
         </p>
       )}

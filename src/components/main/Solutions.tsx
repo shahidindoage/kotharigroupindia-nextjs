@@ -46,7 +46,7 @@ export const Solutions = () => {
             {/* Top Tagline */}
             <div className="flex items-center gap-3">
               <span className="w-8 h-[2px] bg-[#1575B3]" />
-              <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#1575B3]">
+              <span className="text-xs sm:text-[16px] font-semibold uppercase tracking-widest text-[#1575B3]">
                 About Kothari Group
               </span>
             </div>

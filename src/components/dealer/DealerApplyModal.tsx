@@ -8,13 +8,45 @@ import {
   RECAPTCHA_SITE_KEY,
   getRecaptchaToken,
 } from '@/lib/recaptcha-client';
+import {
+  IRRIGATION_DIVISION,
+  PIPE_DIVISION,
+  type DivisionEmails,
+} from '@/lib/dealer';
 
 interface DealerApplyButtonProps {
   applyLink?: string;
 }
 
-export const DealerApplyButton: React.FC<DealerApplyButtonProps> = ({ applyLink }) => {
+interface DealerApplyModalProps {
+  open: boolean;
+  onClose: () => void;
+  /** Division sales inboxes, shown on the dialog's left card. */
+  emails: DivisionEmails;
+}
+
+export const DealerApplyButton: React.FC<DealerApplyButtonProps & { emails: DivisionEmails }> = ({ applyLink, emails }) => {
   const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="inline-flex items-center gap-3 bg-[#1575B3] hover:bg-[#0E588A] text-white text-xs font-mono font-semibold tracking-[0.2em] uppercase px-8 py-4 transition-colors duration-300"
+      >
+        Apply Here
+        <ArrowRight className="w-4 h-4" />
+      </button>
+
+      <DealerApplyModal open={open} onClose={() => setOpen(false)} emails={emails} />
+    </>
+  );
+};
+
+// Exported so other surfaces (e.g. the first "How it works" step) can open the
+// same application dialog without duplicating the form.
+export const DealerApplyModal: React.FC<DealerApplyModalProps> = ({ open, onClose, emails }) => {
   const [form, setForm] = useState({
     proprietorName: '',
     mobile: '',
@@ -22,7 +54,8 @@ export const DealerApplyButton: React.FC<DealerApplyButtonProps> = ({ applyLink 
     pincode: '',
     firmName: '',
     gstNumber: '',
-    divisionInterest: '',
+    // Defaults to Irrigation so the dialog opens with a valid routing target.
+    divisionInterest: IRRIGATION_DIVISION,
     heardAbout: '',
     description: '',
   });
@@ -84,7 +117,7 @@ export const DealerApplyButton: React.FC<DealerApplyButtonProps> = ({ applyLink 
       setTimeout(() => {
         setSubmitted(false);
         resetForm();
-        onClose();
+        handleClose();
       }, 3000);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Could not send your application.');
@@ -103,17 +136,17 @@ export const DealerApplyButton: React.FC<DealerApplyButtonProps> = ({ applyLink 
       pincode: '',
       firmName: '',
       gstNumber: '',
-      divisionInterest: '',
+      divisionInterest: IRRIGATION_DIVISION,
       heardAbout: '',
       description: '',
     });
   };
 
-  const onClose = () => {
-    setOpen(false);
+  const handleClose = () => {
     setSubmitted(false);
     setError('');
     setDocName('');
+    onClose();
   };
 
   useEffect(() => {
@@ -121,7 +154,7 @@ export const DealerApplyButton: React.FC<DealerApplyButtonProps> = ({ applyLink 
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') handleClose();
     };
     window.addEventListener('keydown', handleEsc);
     return () => {
@@ -140,15 +173,6 @@ export const DealerApplyButton: React.FC<DealerApplyButtonProps> = ({ applyLink 
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-3 bg-[#1575B3] hover:bg-[#0E588A] text-white text-xs font-mono font-semibold tracking-[0.2em] uppercase px-8 py-4 transition-colors duration-300"
-      >
-        Apply Here
-        <ArrowRight className="w-4 h-4" />
-      </button>
-
       {RECAPTCHA_SITE_KEY && (
         <Script
           src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
@@ -203,8 +227,13 @@ export const DealerApplyButton: React.FC<DealerApplyButtonProps> = ({ applyLink 
                 <div className="flex items-start gap-3">
                   <Mail className="w-5 h-5 text-[#82C3EC] shrink-0 mt-0.5" />
                   <div>
-                    <span className="block text-xs text-white/60 uppercase">Email</span>
-                    <span className="text-sm font-medium text-white">enquiry@kotharigroupindia.com</span>
+                    <span className="block text-xs text-white/60 uppercase">
+                      {form.divisionInterest === PIPE_DIVISION ? 'Pipe Division' : 'Irrigation Division'}
+                    </span>
+                    {/* Shows the inbox the application will actually be sent to. */}
+                    <span className="text-sm font-medium text-white">
+                      {form.divisionInterest === PIPE_DIVISION ? emails.pipe : emails.irrigation}
+                    </span>
                   </div>
                 </div>
 
@@ -329,9 +358,9 @@ export const DealerApplyButton: React.FC<DealerApplyButtonProps> = ({ applyLink 
                         onChange={handleChange}
                         className={inputClass}
                       >
-                        <option value="">Select Division</option>
-                        <option value="Irrigation Division">Irrigation Division</option>
-                        <option value="Pipe Division">Pipe Division</option>
+                      <option value="">Select Division</option>
+                      <option value={IRRIGATION_DIVISION}>{IRRIGATION_DIVISION}</option>
+                      <option value={PIPE_DIVISION}>{PIPE_DIVISION}</option>
                       </select>
                     </div>
                   </div>

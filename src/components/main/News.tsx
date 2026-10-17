@@ -239,7 +239,7 @@ const FALLBACK_BLOGS: HomeNewsCard[] = [
                   {item.title}
                 </h3>
 
-                <p className="text-xs text-slate-600 font-normal leading-relaxed line-clamp-3">
+                <p className="text-xs sm:text-[16px] text-slate-600 font-normal leading-relaxed line-clamp-3">
                   {item.snippet}
                 </p>
               </div>
@@ -299,7 +299,7 @@ const FALLBACK_BLOGS: HomeNewsCard[] = [
                   {item.title}
                 </h3>
 
-                <p className="text-xs text-slate-600 font-normal leading-relaxed line-clamp-3">
+                <p className="text-xs sm:text-[16px] text-slate-600 font-normal leading-relaxed line-clamp-3">
                   {item.snippet}
                 </p>
               </div>
@@ -455,7 +455,7 @@ const FALLBACK_BLOGS: HomeNewsCard[] = [
                 Latest Blogs
               </h2>
             </div>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-md font-normal leading-relaxed">
+            <p className="text-xs sm:text-[16px] text-slate-600 max-w-md font-normal leading-relaxed">
               Discover expert insights, ideas, and updates on pipes, irrigation, and smarter water management.
             </p>
           </div>
@@ -536,7 +536,7 @@ const FALLBACK_BLOGS: HomeNewsCard[] = [
                 News & Events
               </h2>
             </div>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-md font-normal leading-relaxed">
+            <p className="text-xs sm:text-[16px] text-slate-600 max-w-md font-normal leading-relaxed">
               Stay updated on Kothari Group’s latest milestones, innovations, and industry developments.
             </p>
           </div>

@@ -45,7 +45,7 @@ const slides = [
     subtext: 'Empowering millions of farmers with intelligent micro-irrigation systems designed for peak crop vitality and water conservation.',
     ctaText: 'View Micro Irrigation',
     cardTitle: 'Quality-engineered pipes Manufactured for every water management.',
-    cardDescription: 'Efficient Water Management for a Stronger, More Sustainable India. ',
+    cardDescription: 'Stronger Infrastructure. Smarter Water Solutions. A Better Tomorrow.',
   },
 ];
 
@@ -146,7 +146,7 @@ export const Hero = () => {
                 <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white drop-shadow-md">
                   {stat.value}
                 </span>
-                <span className="text-xs sm:text-sm text-white/90 leading-snug mt-1 drop-shadow-sm">
+                <span className="text-xs sm:text-[16px] text-white/90 leading-snug mt-1 drop-shadow-sm">
                   {stat.label}
                 </span>
               </div>
@@ -171,7 +171,7 @@ export const Hero = () => {
                 {/* Dynamic Card Text */}
                 <div ref={cardContentRef} className="flex flex-col justify-center gap-1">
                   {/* <p className="font-semibold text-sm text-white leading-snug">{active.cardTitle}</p> */}
-                  <p className="text-xs text-white/80 leading-relaxed line-clamp-2">
+                  <p className="text-xs sm:text-[16px] text-white/80 leading-relaxed line-clamp-2">
                     {active.cardDescription}
                   </p>
                 </div>

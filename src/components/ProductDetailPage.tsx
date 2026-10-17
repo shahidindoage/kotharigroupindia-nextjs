@@ -273,11 +273,11 @@ export const ProductDetailPage: React.FC<{
                 <h1 className="text-2xl sm:text-3xl lg:text-[32px] font-serif font-light tracking-tight uppercase text-slate-900 leading-tight">
                   {displayName}
                 </h1>
-                <p className={`text-sm font-medium ${tText} mt-2 tracking-wide`}>{displayTagline}</p>
+                <p className={`text-sm sm:text-base font-medium ${tText} mt-2 tracking-wide`}>{displayTagline}</p>
               </div>
               
               <div 
-                className="text-sm text-slate-600 leading-relaxed space-y-3 border-t border-slate-200 pt-4 wp-html-content"
+                className="text-sm sm:text-base text-slate-600 leading-relaxed space-y-3 border-t border-slate-200 pt-4 wp-html-content"
                 dangerouslySetInnerHTML={{ __html: displayDescHtml }}
               />
 
@@ -460,7 +460,7 @@ export const ProductDetailPage: React.FC<{
                   Product Video
                 </h2>
               </div>
-              <p className="text-xs sm:text-sm text-slate-600 max-w-md font-normal leading-relaxed">
+              <p className="text-xs sm:text-base text-slate-600 max-w-md font-normal leading-relaxed">
                 Watch Kothari CPVC in action — manufacturing precision to on-site installation.
               </p>
             </div>
@@ -489,7 +489,7 @@ export const ProductDetailPage: React.FC<{
                   Related Products
                 </h2>
               </div>
-              <p className="text-xs sm:text-sm text-slate-600 max-w-md font-normal leading-relaxed">
+              <p className="text-xs sm:text-base text-slate-600 max-w-md font-normal leading-relaxed">
                 Complementary systems for seamless integration and lasting performance.
               </p>
             </div>
@@ -536,7 +536,7 @@ export const ProductDetailPage: React.FC<{
                             <h3 className={`text-lg font-serif font-normal text-slate-900 leading-snug tracking-tight ${tGroupHoverText} transition-colors duration-300 line-clamp-2`}>
                               {rel.name}
                             </h3>
-                            <p className="text-xs text-slate-600 font-normal leading-relaxed line-clamp-3">
+                            <p className="text-xs sm:text-base text-slate-600 font-normal leading-relaxed line-clamp-3">
                               {(rel as { tagline?: string }).tagline || rel.shortDescription}
                             </p>
                           </div>

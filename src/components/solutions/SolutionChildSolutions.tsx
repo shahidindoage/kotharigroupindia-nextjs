@@ -83,7 +83,7 @@ export const SolutionChildSolutions: React.FC<{
                       <h3 className={`text-lg font-serif font-normal text-slate-900 leading-snug tracking-tight ${accentGroupHoverText} transition-colors duration-300 line-clamp-2`}>
                         {rel.title}
                       </h3>
-                      <p className="text-xs text-slate-600 font-normal leading-relaxed line-clamp-3">
+                      <p className="text-xs sm:text-base text-slate-600 font-normal leading-relaxed line-clamp-3">
                         {rel.text}
                       </p>
                     </div>

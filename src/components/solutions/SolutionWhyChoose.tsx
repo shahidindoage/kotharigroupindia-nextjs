@@ -21,7 +21,7 @@ export const SolutionWhyChoose: React.FC<{ points: string[]; theme?: 'blue' | 'g
               <span className={`w-7 h-7 ${isGreen ? 'bg-[#1E8E3E]' : 'bg-[#1575B3]'} text-white flex items-center justify-center shrink-0`}>
                 <Check className="w-4 h-4" />
               </span>
-              <span className="text-xs sm:text-sm text-slate-700 font-normal leading-relaxed">{point}</span>
+              <span className="text-xs sm:text-base text-slate-700 font-normal leading-relaxed">{point}</span>
             </li>
           ))}
         </ul>

@@ -57,7 +57,7 @@ export const SolutionApplications: React.FC<{ applications: SolutionApplication[
             </h2>
           </div>
 
-          <p className={`text-xs sm:text-sm ${isGreen ? 'text-green-100/80' : 'text-blue-100/80'} max-w-md font-light leading-relaxed`}>
+          <p className={`text-xs sm:text-base ${isGreen ? 'text-green-100/80' : 'text-blue-100/80'} max-w-md font-light leading-relaxed`}>
             Where this solution delivers measurable efficiency and lifecycle value.
           </p>
         </div>
@@ -85,7 +85,7 @@ export const SolutionApplications: React.FC<{ applications: SolutionApplication[
               <h3 className={`text-xl sm:text-2xl font-serif font-light uppercase tracking-tight text-white leading-snug`}>
                 {activeItem.title}
               </h3>
-              <p className={`text-sm ${mutedText} font-light leading-relaxed max-w-lg`}>
+              <p className={`text-sm sm:text-[16px] ${mutedText} font-light leading-relaxed max-w-lg`}>
                 {activeTagline}
               </p>
             </div>
@@ -122,7 +122,7 @@ export const SolutionApplications: React.FC<{ applications: SolutionApplication[
                         {/* Description / tagline below the hovered title */}
                         <div className={`grid transition-all duration-500 ease-out ${isActive ? 'grid-rows-[1fr] opacity-100 mt-3' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
                           <div className="overflow-hidden">
-                            <p className={`text-sm ${mutedText} font-light leading-relaxed pr-6`}>
+                            <p className={`text-sm sm:text-[16px]  ${mutedText} font-light leading-relaxed pr-6`}>
                               {subtitle}
                             </p>
                           </div>

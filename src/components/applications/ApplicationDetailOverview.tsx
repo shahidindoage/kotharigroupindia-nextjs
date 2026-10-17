@@ -16,7 +16,7 @@ export const ApplicationDetailOverview: React.FC<{
         {overview.paragraphs.map((paragraph, idx) => (
           <p
             key={idx}
-            className="text-[15px] sm:text-base text-slate-600 font-normal leading-relaxed m-0"
+            className="text-[15px] sm:text-[18px] text-slate-600 font-normal leading-relaxed m-0"
           >
             {paragraph}
           </p>

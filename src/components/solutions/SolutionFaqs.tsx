@@ -33,7 +33,7 @@ export const SolutionFaqs: React.FC<{ faqs: SolutionFaq[]; theme?: 'blue' | 'gre
                   aria-expanded={isOpen}
                 >
                   <span
-                    className={`text-sm sm:text-base font-semibold ${
+                    className={`text-sm sm:text-[18px] font-semibold ${
                       isOpen ? accent : 'text-slate-900'
                     }`}
                   >
@@ -46,7 +46,7 @@ export const SolutionFaqs: React.FC<{ faqs: SolutionFaq[]; theme?: 'blue' | 'gre
                   )}
                 </button>
                 {isOpen && (
-                  <div className="px-5 sm:px-6 pb-5 pt-1 text-sm text-slate-600 font-normal leading-relaxed border-t border-slate-100">
+                  <div className="px-5 sm:px-6 pb-5 pt-1 text-sm sm:text-[16px] text-slate-600 font-normal leading-relaxed border-t border-slate-100">
                     {faq.answer}
                   </div>
                 )}

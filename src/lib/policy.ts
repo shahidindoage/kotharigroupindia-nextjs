@@ -22,7 +22,7 @@ const introParagraphs = [
 ];
 
 const address = [
-  'Kothari Group',
+  'Kothari Agritech Private Limited',
   '8516/11, Level 3, Sun Plaza, Subhash Chowk,',
   'Murarji Peth, Solapur \u2013 413001, Maharashtra, India.',
   'Mobile: +91 9307300390',

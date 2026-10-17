@@ -32,7 +32,7 @@ export const AwardCard: React.FC<{ award: Award }> = ({ award }) => {
             {award.title}
           </h3>
 
-          <p className={`text-[15px] text-slate-700 font-normal leading-relaxed ${expanded ? '' : 'line-clamp-3'}`}>
+          <p className={`text-[15px] sm:text-[16px] text-slate-700 font-normal leading-relaxed ${expanded ? '' : 'line-clamp-3'}`}>
             {award.description}
           </p>
         </div>

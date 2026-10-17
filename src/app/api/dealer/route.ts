@@ -6,6 +6,7 @@ import {
   verifyRecaptchaToken,
   NOT_CONFIGURED,
 } from '@/lib/mailer';
+import { dealerRecipient } from '@/lib/dealer';
 
 export const runtime = 'nodejs';
 
@@ -110,11 +111,9 @@ export async function POST(req: Request) {
     return NextResponse.json(NOT_CONFIGURED, { status: 500 });
   }
 
-  const to =
-    process.env.DEALER_TO_EMAIL ||
-    process.env.CONTACT_TO_EMAIL ||
-    process.env.GMAIL_USER ||
-    '';
+  // Route the application to the sales inbox for the chosen division
+  // (Pipe -> CONTACT_PIPE_EMAIL, otherwise -> CONTACT_IRRIGATION_EMAIL).
+  const to = dealerRecipient(divisionInterest);
   if (!to) {
     console.error('[dealer] No recipient configured.');
     return NextResponse.json(NOT_CONFIGURED, { status: 500 });

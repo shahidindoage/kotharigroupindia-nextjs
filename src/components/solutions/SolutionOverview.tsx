@@ -15,7 +15,7 @@ export const SolutionOverview: React.FC<{ overview: string[] }> = ({ overview })
                   // description="Specification-grade reasons engineers, contractors and growers standardize on Kothari."
                 />
         {overview.map((para, idx) => (
-          <p key={idx} className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed max-w-7xl">
+          <p key={idx} className="text-sm sm:text-[18px] text-slate-600 font-normal leading-relaxed max-w-7xl">
             {para}
           </p>
         ))}

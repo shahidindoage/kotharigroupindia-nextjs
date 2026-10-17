@@ -81,7 +81,7 @@ export const SolutionRelatedProducts: React.FC<{ products: SolutionRelatedProduc
                       <h3 className={`text-lg font-serif font-normal text-slate-900 leading-snug tracking-tight ${accentGroupHoverText} transition-colors duration-300 line-clamp-2`}>
                         {rel.name}
                       </h3>
-                      <p className="text-xs text-slate-600 font-normal leading-relaxed line-clamp-3">
+                      <p className="text-xs sm:text-[16px] text-slate-600 font-normal leading-relaxed line-clamp-3">
                         {rel.shortDescription}
                       </p>
                     </div>

@@ -20,8 +20,8 @@ export const boardOfDirectors: BoardMember[] = [
     name: 'Kiran S. Kothari',
     designation: 'Founder Chairman',
     description:
-      'Kothari Agritech was established in 1997 by Mr. Kiran S. Kothari to change the water management system from the core with new solutions and techniques of agricultural activities. His passion for agricultural sciences is coupled with creativity and smart use of water sources. It can be seen in the development of Kothari Group through the years.',
-    readMoreContent: `Kothari Agritech was established in 1997 by Mr. Kiran S. Kothari to change the water management system from the core with new solutions and techniques of agricultural activities. His passion for agricultural sciences is coupled with creativity and smart use of water sources. It can be seen in the development of Kothari Group through the years.`,
+      'Kothari Group was established in 1997 by Mr. Kiran S. Kothari to change the water management system from the core with new solutions and techniques of agricultural activities. His passion for agricultural sciences is coupled with creativity and smart use of water sources. It can be seen in the development of Kothari Group through the years.',
+    readMoreContent: `Kothari Group was established in 1997 by Mr. Kiran S. Kothari to change the water management system from the core with new solutions and techniques of agricultural activities. His passion for agricultural sciences is coupled with creativity and smart use of water sources. It can be seen in the development of Kothari Group through the years.`,
     imageUrl: 'https://kotharigroupindia.com/img/images/kiran-s-kothari.webp',
   },
   {
@@ -36,8 +36,8 @@ export const boardOfDirectors: BoardMember[] = [
     name: 'Ujwal S. Kothari',
     designation: 'Managing Director',
     description:
-      `Mr. Ujwal S. Kothari completed his commerce studies from Pune University and has been associated with Kothari Agritech from the very first day. His task is to supervise the everyday going on of the organization. Moreover, he is responsible for overseeing other aspects of business promotions and the company' s products. `,
-    readMoreContent: `Mr. Ujwal S. Kothari completed his commerce studies from Pune University and has been associated with Kothari Agritech from the very first day. His task is to supervise the everyday going on of the organization. Moreover, he is responsible for overseeing other aspects of business promotions and the company' s products.`,
+      `Mr. Ujwal S. Kothari completed his commerce studies from Pune University and has been associated with Kothari Group from the very first day. His task is to supervise the everyday going on of the organization. Moreover, he is responsible for overseeing other aspects of business promotions and the company' s products. `,
+    readMoreContent: `Mr. Ujwal S. Kothari completed his commerce studies from Pune University and has been associated with Kothari Group from the very first day. His task is to supervise the everyday going on of the organization. Moreover, he is responsible for overseeing other aspects of business promotions and the company' s products.`,
     imageUrl: 'https://kotharigroupindia.com/img/images/ujwal-s-kothari.webp',
   },
 ];

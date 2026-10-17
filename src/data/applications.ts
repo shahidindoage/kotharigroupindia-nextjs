@@ -189,7 +189,7 @@ export const pipeApplications: DivisionApplications = {
   heroImage: '/banners/applications/Pipe-Application-Hero Banner.png',
   groups: [
     {
-      title: 'Agriculture & Borewell Applications',
+      title: 'Borewell & Agriculture Applications',
       intro:
         'From groundwater extraction to on-farm water supply, our pipes are built for the realities of agricultural infrastructure.',
       items: [

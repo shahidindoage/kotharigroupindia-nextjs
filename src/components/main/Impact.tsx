@@ -61,7 +61,7 @@ export const Impact: React.FC = () => {
             </h2>
           </div>
 
-          <p className="text-xs sm:text-sm text-sky-100/80 max-w-sm font-light leading-relaxed">
+          <p className="text-xs sm:text-[16px] text-sky-100/80 max-w-sm font-light leading-relaxed">
             Supporting India's civil infrastructure, agriculture, and water management through reliable piping and irrigation solutions.
           </p>
         </div>
@@ -103,7 +103,7 @@ export const Impact: React.FC = () => {
                       {item.label}
                     </h3>
 
-                    <p className="text-[15px] text-sky-100/80 font-light leading-relaxed pt-2 max-w-xs">
+                    <p className="text-[15px]  text-sky-100/80 font-light leading-relaxed pt-2 max-w-xs">
                       {item.description}
                     </p>
                   </div>

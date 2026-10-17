@@ -14,7 +14,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({ title, description
         </h2>
       </div>
       {description && (
-        <p className="text-xs sm:text-sm text-slate-600 max-w-md font-normal leading-relaxed">
+        <p className="text-xs sm:text-base text-slate-600 max-w-md font-normal leading-relaxed">
           {description}
         </p>
       )}

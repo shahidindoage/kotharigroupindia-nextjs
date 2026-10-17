@@ -151,7 +151,7 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
 
             <p className="text-xs font-light text-white/80 leading-relaxed max-w-sm">
-              {footerData?.about}
+              {isIrrigation?`Kothari Group has empowered farmers across India with innovative micro irrigation systems and reliable agricultural water management solutions, promoting efficient water use and sustainable farming.`:`Kothari Group delivers trusted Plumbing Pipes & Fittings and Agri Pipes & Fittings solutions, contributing to stronger infrastructure and a more sustainable India`}
             </p>
 
             <div className="space-y-2 text-xs font-light text-white/80">
@@ -238,7 +238,8 @@ export const Footer: React.FC<FooterProps> = ({
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-white/80">
           <p>
-            {footerData?.copyright}
+            {/* {footerData?.copyright} */}
+            © 2026 Kothari Agritech Private Limited. All Rights Reserved.
           </p>
 
           <div className="flex items-center gap-6">

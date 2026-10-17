@@ -66,7 +66,7 @@ export const CareersGallery: React.FC<CareersGalleryProps> = ({ jobs, locations 
                     <span>{job.department}</span>
                     <span>{job.date}</span>
                   </div>
-                  <p className="text-sm text-slate-600 font-normal leading-relaxed mt-3">
+                  <p className="text-sm sm:text-[16px] text-slate-600 font-normal leading-relaxed mt-3">
                     {job.description}
                   </p>
                 </div>

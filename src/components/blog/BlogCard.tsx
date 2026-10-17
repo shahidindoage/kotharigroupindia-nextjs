@@ -59,7 +59,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, index, basePath = '/bl
                 {post.title}
               </h3>
 
-              <p className="text-xs text-slate-600 font-normal leading-relaxed line-clamp-3">
+              <p className="text-xs sm:text-[16px] text-slate-600 font-normal leading-relaxed line-clamp-3">
                 {post.excerpt}
               </p>
             </div>

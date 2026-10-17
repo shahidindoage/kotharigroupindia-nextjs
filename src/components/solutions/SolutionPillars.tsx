@@ -27,7 +27,7 @@ export const SolutionPillars: React.FC<{
               <h3 className="text-lg sm:text-xl font-serif font-light uppercase tracking-tight text-slate-900 m-0">
                 <span className={accentText}>{pillar.label}</span>
               </h3>
-              <p className="text-sm sm:text-[15px] text-slate-600 font-normal leading-relaxed mt-3 mb-0">
+              <p className="text-sm sm:text-[16px] text-slate-600 font-normal leading-relaxed mt-3 mb-0">
                 {pillar.text}
               </p>
             </li>

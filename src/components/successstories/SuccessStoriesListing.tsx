@@ -209,7 +209,7 @@ export const SuccessStoriesListing: React.FC<{
                     View playlist
                   </a>
                 )} */}
-                <p className="max-w-md text-sm text-slate-600 leading-relaxed sm:text-right">
+                <p className="max-w-md text-sm sm:text-[16px] text-slate-600 leading-relaxed sm:text-right">
                   {videosDescription}
                 </p>
               </div>
@@ -229,7 +229,7 @@ export const SuccessStoriesListing: React.FC<{
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight uppercase font-serif text-slate-900 m-0">
                   {storiesTitle}
                 </h2>
-                <p className="max-w-md text-sm text-slate-600 leading-relaxed sm:text-right">
+                <p className="max-w-md text-sm sm:text-[16px] text-slate-600 leading-relaxed sm:text-right">
                   {storiesDescription}
                 </p>
               </div>

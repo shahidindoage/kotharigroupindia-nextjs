@@ -48,7 +48,7 @@ export const ApplicationDetailRequirements: React.FC<{
                   {String(idx + 1).padStart(2, '0')}
                 </span>
               </span>
-              <span className="text-xs sm:text-sm text-slate-700 font-normal leading-relaxed">
+              <span className="text-xs sm:text-[16px] text-slate-700 font-normal leading-relaxed">
                 {item.label}
               </span>
             </button>

@@ -87,7 +87,7 @@ export const SustainPillars: React.FC = () => {
                       <h3 className="text-xl font-serif font-normal text-slate-900 leading-snug tracking-tight group-hover:text-[#1575B3] transition-colors duration-300">
                         {pillar.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
+                      <p className="text-xs sm:text-base text-slate-600 font-normal leading-relaxed">
                         {pillar.text}
                       </p>
                     </div>
@@ -163,7 +163,7 @@ export const SustainHero: React.FC = () => {
                 <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white drop-shadow-md">
                   {stat.value}
                 </span>
-                <span className="text-xs sm:text-sm text-white/90 leading-snug mt-1 drop-shadow-sm">
+                <span className="text-xs sm:text-base text-white/90 leading-snug mt-1 drop-shadow-sm">
                   {stat.label}
                 </span>
               </div>
@@ -219,7 +219,7 @@ export const SustainByDesign: React.FC = () => {
           {/* <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
             We don&apos;t treat sustainability as a separate checklist; it&apos;s built into the products themselves.
           </p> */}
-          <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+          <p className="text-sm sm:text-[18px] text-slate-600 font-normal leading-relaxed">
          The methods of irrigation that we provide allows farmers to save water by using drip irrigation methods and automated systems reducing water loss. Our long-lasting pipes which are resistant to leakages, play a vital role in ensuring less water waste in agriculture and infrastructure.
           </p>
           <div className="flex flex-wrap gap-3 pt-4">

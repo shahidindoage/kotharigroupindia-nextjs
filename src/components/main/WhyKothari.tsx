@@ -71,7 +71,7 @@ export const WhyKothari = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight uppercase font-serif text-slate-900">
             Divisions
           </h2>
-          <p className="text-sm text-slate-600 max-w-md md:text-left font-normal leading-relaxed">
+          <p className="text-sm sm:text-[16px] text-slate-600 max-w-md md:text-left font-normal leading-relaxed">
             Integrated pipe and irrigation solutions designed to support India's residential, commercial, agricultural, and infrastructure water management requirements. 
           </p>
         </div>
@@ -107,12 +107,12 @@ export const WhyKothari = () => {
                 </h3>
 
                 {/* Short Description (Default) */}
-                <p className="text-sm text-slate-300 font-normal leading-relaxed mb-4 group-hover:hidden transition-all">
+                <p className="text-sm sm:text-[16px] text-slate-300 font-normal leading-relaxed mb-4 group-hover:hidden transition-all">
                   {division.shortDesc}
                 </p>
 
                 {/* Full Description (Reveals on Hover) */}
-                <p className="hidden group-hover:block text-sm sm:text-base text-slate-200 font-normal leading-relaxed mb-6 transition-all">
+                <p className="hidden group-hover:block text-sm sm:text-[16px] text-slate-200 font-normal leading-relaxed mb-6 transition-all">
                   {division.fullDesc}
                 </p>
 
@@ -124,7 +124,7 @@ export const WhyKothari = () => {
                         key={idx}
                         href={sub.link}
                         onClick={(e) => e.stopPropagation()}
-                        className={`text-xs px-3 py-1.5 border backdrop-blur-md font-medium tracking-wide shadow-sm transition-colors hover:bg-white hover:text-slate-900 hover:border-white ${division.badgeStyle}`}
+                        className={`text-xs sm:text-[14px] px-3 py-1.5 border backdrop-blur-md font-medium tracking-wide shadow-sm transition-colors hover:bg-white hover:text-slate-900 hover:border-white ${division.badgeStyle}`}
                       >
                         {sub.title}
                       </Link>
@@ -135,7 +135,7 @@ export const WhyKothari = () => {
                 {/* CTA Action Bar */}
                 <div className="pt-5 border-t border-slate-700/60 flex items-center justify-between">
                   <span
-                    className={`inline-flex items-center gap-2.5 text-xs tracking-widest uppercase font-mono font-semibold transition-colors ${division.accentColor}`}
+                    className={`inline-flex items-center gap-2.5 text-xs sm:text-[14px] tracking-widest uppercase font-mono font-semibold transition-colors ${division.accentColor}`}
                   >
                     <span>Explore Division</span>
                     <ArrowRight className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300 stroke-[1.75]" />

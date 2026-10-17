@@ -143,13 +143,13 @@ const MemberCard: React.FC<{ member: BoardMember }> = ({ member }) => {
       {/* Body */}
       <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
         {!expanded ? (
-          <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
+          <p className="text-xs sm:text-[16px]  text-slate-600 font-normal leading-relaxed">
             {preview}
           </p>
         ) : (
           <div className="space-y-3">
             {paragraphs.map((para, idx) => (
-              <p key={idx} className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
+              <p key={idx} className="text-xs sm:text-[16px]  text-slate-600 font-normal leading-relaxed">
                 {para}
               </p>
             ))}
@@ -267,7 +267,7 @@ export const BoardDirectors: React.FC = () => {
                       />
                     </span>
                     {isBodyOpen && (
-                      <span className="fade-in block mt-4 pt-4 border-t border-slate-200/80 text-sm text-slate-600 font-normal leading-relaxed">
+                      <span className="fade-in block mt-4 pt-4 border-t border-slate-200/80 text-sm sm:text-[18px] text-slate-600 font-normal leading-relaxed">
                         <span className="block">{truncateWords(member.readMoreContent, 100)}</span>
                         <span
                           role="button"
