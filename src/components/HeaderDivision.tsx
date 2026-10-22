@@ -2034,7 +2034,7 @@ const handleSolutionBack = () => {
         href={
           isIrrigation
             ? 'https://wa.me/9307309582'
-            : 'https://whatsapp.com/channel/0029Vb6myeSGU3BD6QbRqN3i'
+            : 'https://wa.me/9356921365'
         }
         target="_blank"
         rel="noopener noreferrer"

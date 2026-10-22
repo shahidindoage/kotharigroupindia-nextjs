@@ -176,7 +176,7 @@ export const AboutHero2: React.FC = () => {
                            </div>
                          </div>
                          <div className="px-4 py-3 text-xs font-mono tracking-widest uppercase text-white/85 group-hover:text-sky-200 flex items-center justify-between gap-3 transition-colors">
-                           <span>Watch our capabilities</span>
+                           <span>Watch our infrastructure</span>
                            <ArrowUpRight className="w-4 h-4" />
                          </div>
                        </a>

@@ -174,14 +174,14 @@ const facilities: Facility[] = [
     category: 'WAREHOUSE',
     link: 'https://maps.app.goo.gl/QgAtaMj7nQGtUocj6',
   },
-  {
-    name: 'Warehouse Chhatrapati Sambhaji Nagar',
-    address: 'Warehouse, Chhatrapati Sambhajinagar (Aurangabad), Maharashtra',
-    lat: 19.8762,
-    lng: 75.3433,
-    category: 'WAREHOUSE',
-    link: 'https://maps.app.goo.gl/D3L8ckyhithR6ChXA',
-  },
+  // {
+  //   name: 'Warehouse Chhatrapati Sambhaji Nagar',
+  //   address: 'Warehouse, Chhatrapati Sambhajinagar (Aurangabad), Maharashtra',
+  //   lat: 19.8762,
+  //   lng: 75.3433,
+  //   category: 'WAREHOUSE',
+  //   link: 'https://maps.app.goo.gl/D3L8ckyhithR6ChXA',
+  // },
   {
     name: 'Warehouse Akola',
     address: 'Warehouse, Akola, Maharashtra',

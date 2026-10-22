@@ -73,6 +73,8 @@ export interface WpProductCard {
   categoryName: string;
   categorySlug: string;
   featuredMediaId: number;
+  /** ISO 8601 timestamp of the last edit, from the WP `modified` field. */
+  dateModified: string;
 }
 
 async function fetchWithTimeout(
@@ -137,6 +139,7 @@ function mapCard(raw: any): WpProductCard {
     categoryName: stripHtml(acf.category_name ?? ''),
     categorySlug: cleanSlug(acf.category_slug ?? ''),
     featuredMediaId: raw.featured_media ?? 0,
+    dateModified: String(raw.modified ?? ''),
   };
 }
 
@@ -180,7 +183,7 @@ export const fetchWpProductCards = cache(async (): Promise<WpProductCard[]> => {
     const results = await Promise.allSettled(
       [1, 2, 3].map(async (page) => {
         const res = await fetchWithTimeout(
-          `${WP_API}/wp/v2/product?per_page=${PER_PAGE}&page=${page}&_fields=id,slug,title,acf,featured_media`,
+          `${WP_API}/wp/v2/product?per_page=${PER_PAGE}&page=${page}&_fields=id,slug,title,acf,featured_media,modified`,
           {
             headers: { 'User-Agent': 'Mozilla/5.0' },
             next: { revalidate: 600 },

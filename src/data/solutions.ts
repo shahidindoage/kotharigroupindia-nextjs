@@ -1655,7 +1655,7 @@ export const solutionsData: Solution[] = [
        image: `/solutions/irrigation/Precision-Irrigation/Precision-Drip-Irrigation/Green House.png`,
   },
 ],
-          relatedProducts: [
+         relatedProducts: [
             {
               name: 'Dripline K-Gol NPC',
               slug: 'dripline-k-gol-npc',
@@ -1680,14 +1680,7 @@ export const solutionsData: Solution[] = [
               shortDescription:
                 'Advanced Israeli technology, special-grade LLDPE, UV resistance, and smooth flow ensure durable, efficient, and reliable drip irrigation performance.',
             },
-            {
-              name: 'Turbo Dripper',
-              slug: 'turbo-dripper',
-              categorySlug: 'emitters-drippers',
-              image: `${ADMIN}/2025/04/TURBO-DRIPPER-1.webp`,
-              shortDescription:
-                'Advanced Israeli technology, special-grade LLDPE, UV resistance, and smooth flow ensure durable, efficient, and reliable drip irrigation performance.',
-            },
+           
           ],
           faqs: [
             {
@@ -2056,23 +2049,7 @@ export const solutionsData: Solution[] = [
        image: `/solutions/irrigation/Precision-Irrigation/Automated-fertigation/Greenhouse.jpg`,
     },
 ],
-          relatedProducts: [
-            {
-              name: 'Nutrijet Fertigation Machines',
-              slug: 'nutrijet-fertigation-machines',
-              categorySlug: 'fertigation-machines',
-              image: `${ADMIN}/2025/10/NUTRIJET.webp`,
-              shortDescription:
-                'IoT-enabled fertigation system delivering precise, automated nutrient management.',
-            },
-            {
-              name: 'Nutrijet Fertigation Machines',
-              slug: 'nutrijet-fertigation-machines',
-              categorySlug: 'fertigation-machines',
-              image: `${ADMIN}/2025/10/NUTRIJET.webp`,
-              shortDescription:
-                'IoT-enabled fertigation system delivering precise, automated nutrient management.',
-            },
+         relatedProducts: [
             {
               name: 'Nutrijet Fertigation Machines',
               slug: 'nutrijet-fertigation-machines',
@@ -2328,7 +2305,7 @@ export const solutionsData: Solution[] = [
     metaTitle: 'Agricultural Field Irrigation Solutions | Kothari Group',
     metaDescription:
       ` Kothari Group's agricultural field irrigation solutions combine sprinkler systems and durable irrigation pipes for uniform coverage across large farmland. `,
-    h1: 'Agricultural Field Irrigation',
+    h1: 'Open Field Irrigation',
     tagline: ' Reliable, wide-area watering built for the scale of Indian farmland.',
     overview: [
         'For open-field crops that need broad, uniform coverage, our Agricultural Field Irrigation systems combine sprinkler irrigation, rain gun, and pivot-compatible piping engineered to withstand outdoor conditions across large landholdings. Built with UV-resistant HDPE irrigation pipes and metal/plastic sprinkler technology, this solution ensures uniform water distribution from field edge to field edge even across uneven terrain. Whether you need a full sprinkler irrigation system or a targeted mini sprinkler system for a smaller plot, our range is field-tested across diverse Indian growing conditions. ',
@@ -2365,7 +2342,7 @@ export const solutionsData: Solution[] = [
     ],
    applications: [
   {
-    title: 'Cereal & Grain Crops',
+    title: 'Horticulture',
     description:
       'Sprinkler and raingun systems give broad, uniform coverage across grain crops grown over wide areas, reducing dry patches from field edge to edge.',
     image: '/solutions/irrigation/Agriculltural-filed-Irrigation/Cereal and Grain crops.jpg',

@@ -21,6 +21,7 @@ interface MenuCategory {
 
 interface MenuSegment {
   name: string;
+  slug: string;
   desc: string;
   categories: MenuCategory[];
 }
@@ -29,6 +30,64 @@ export interface ProductsDivisionMenu {
   headline: string;
   description: string;
   segments: MenuSegment[];
+}
+
+/**
+ * Products to pin to the front of a segment, listed in the order they should
+ * appear. Everything else in that segment keeps its normal order and follows
+ * the pinned ones.
+ *
+ * Keyed by segment slug. A pinned product is hoisted by moving the category
+ * that contains it to the front of the segment, with the pinned product first
+ * inside that category.
+ */
+const SEGMENT_PRODUCT_PRIORITY: Record<string, string[]> = {
+  'sprinkler-irrigation-system': [
+    'hdpe-pipe-sprinkler-set',
+    'sprinklers-pipes-qcpe',
+  ],
+  'automation-system':[
+    'nutrijet-fertigation-machines',
+    'irribeat-controllers'
+  ],
+  'drip-irrigation-system':[
+    'kotiff'
+  ]
+};
+
+function applySegmentPriority(
+  segmentSlug: string,
+  categories: { name: string; products: MenuProduct[] }[]
+): { name: string; products: MenuProduct[] }[] {
+  const priority = SEGMENT_PRODUCT_PRIORITY[segmentSlug];
+  if (!priority?.length) return categories;
+
+  const slugOf = (url: string) => url.split('/').filter(Boolean).pop() || '';
+
+  const hoisted: { name: string; products: MenuProduct[] }[] = [];
+  const used = new Set<number>();
+
+  for (const wanted of priority) {
+    const idx = categories.findIndex(
+      (c, i) => !used.has(i) && c.products.some((p) => slugOf(p.url) === wanted)
+    );
+    if (idx === -1) continue;
+    used.add(idx);
+    const cat = categories[idx];
+    // Pinned product first inside its own category.
+    const products = [
+      ...cat.products.filter((p) => slugOf(p.url) === wanted),
+      ...cat.products.filter((p) => slugOf(p.url) !== wanted),
+    ];
+    hoisted.push({ name: cat.name, products });
+  }
+
+  if (!hoisted.length) return categories;
+
+  return [
+    ...hoisted,
+    ...categories.filter((_, i) => !used.has(i)),
+  ];
 }
 
 // Shape matches the static mega menus in src/data/products.ts so the
@@ -43,6 +102,7 @@ function buildDivisionMenu(
     string,
     {
       name: string;
+      slug: string;
       cats: Map<string, { name: string; products: MenuProduct[] }>;
       count: number;
     }
@@ -57,7 +117,7 @@ function buildDivisionMenu(
     const segName = card.segmentName || 'Other Products';
     let seg = segments.get(segSlug);
     if (!seg) {
-      seg = { name: segName, cats: new Map(), count: 0 };
+      seg = { name: segName, slug: segSlug, cats: new Map(), count: 0 };
       segments.set(segSlug, seg);
     }
     seg.count += 1;
@@ -88,12 +148,26 @@ function buildDivisionMenu(
     description,
     segments: sorted.map((seg) => ({
       name: seg.name,
+      slug: seg.slug,
       desc: `${seg.count} product${seg.count === 1 ? '' : 's'} engineered for performance and reliability.`,
-      categories: [...seg.cats.values()]
-        .sort((a, b) => b.products.length - a.products.length)
-        .map((cat) => ({ name: cat.name, products: cat.products })),
+      categories: applySegmentPriority(
+        seg.slug,
+        [...seg.cats.values()]
+          .sort((a, b) => b.products.length - a.products.length)
+          .map((cat) => ({ name: cat.name, products: cat.products }))
+      ),
     })),
   };
+}
+
+// Sorts products by their last edit, most recently updated first. Applied to the
+// irrigation menu only, so recently refreshed irrigation products surface at the
+// top of their category.
+function byDateModified(a: WpProductCard, b: WpProductCard): number {
+  const at = Date.parse(a.dateModified || '') || 0;
+  const bt = Date.parse(b.dateModified || '') || 0;
+  if (at === bt) return 0;
+  return bt - at;
 }
 
 // Live products mega-menu data for the HeaderDivision dropdown.
@@ -104,7 +178,9 @@ export async function GET() {
     if (!cards.length) return NextResponse.json({});
 
     const pipe = cards.filter((c) => isPipeDivisionSlug(c.divisionSlug));
-    const irrigation = cards.filter((c) => !isPipeDivisionSlug(c.divisionSlug));
+    const irrigation = cards
+      .filter((c) => !isPipeDivisionSlug(c.divisionSlug))
+      .sort(byDateModified);
 
     return NextResponse.json({
       pipe: buildDivisionMenu(

@@ -18,7 +18,7 @@ export const boardHero = {
 export const boardOfDirectors: BoardMember[] = [
   {
     name: 'Kiran S. Kothari',
-    designation: 'Founder Chairman',
+    designation: 'Founder',
     description:
       'Kothari Group was established in 1997 by Mr. Kiran S. Kothari to change the water management system from the core with new solutions and techniques of agricultural activities. His passion for agricultural sciences is coupled with creativity and smart use of water sources. It can be seen in the development of Kothari Group through the years.',
     readMoreContent: `Kothari Group was established in 1997 by Mr. Kiran S. Kothari to change the water management system from the core with new solutions and techniques of agricultural activities. His passion for agricultural sciences is coupled with creativity and smart use of water sources. It can be seen in the development of Kothari Group through the years.`,
@@ -48,7 +48,7 @@ export const youngLeadership = {
     'The new phase of leadership at Kothari would be characterized by fresh views on operations. ',
   members: [
     {
-      name: 'Amol S. Paliya',
+      name: 'Mr. Amol Paliya',
       designation: 'Director',
       linkedin: true,
       linkedinUrl: 'https://www.linkedin.com/in/amol-paliya-7a47a7188',
