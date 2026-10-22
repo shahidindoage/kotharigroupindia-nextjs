@@ -65,7 +65,7 @@ export const aboutWhy = {
     'Born in Solapur, Maharashtra, Kothari Group has grown with a clear purpose: to make water management more efficient, accessible, and reliable. ',
   paragraphs: [
 `For over four decades, Kothari Group has established a rich heritage in pipes, fittings, irrigation, and water management. We are committed to providing quality, durability, and reliability, which inspires us to come up with solutions tailored to the ever-changing needs of agriculture, plumbing, and infrastructure. Whether it is the ordinary supply of water or any other project, we strive to offer products that provide long-lasting value and consistent results.`,
-`Innovative spirit fuels our work. We strive to upgrade her products and manufacturing processes to provide practical and economical solutions. We produce a wide assortment of pipes, fittings and irrigation systems that help our clients, be it farmers, households, businesses or infrastructure projects.`,
+`Innovative spirit fuels our work. We strive to upgrade our products and manufacturing processes to provide practical and economical solutions. We produce a wide assortment of pipes, fittings and irrigation systems that help our clients, be it farmers, households, businesses or infrastructure projects.`,
 `Kothari Group operates an extended distribution network across India involving 23+ states, which enables our customers to receive reliable water management solutions. We believe that strong relationships with customers are created through quality products, customer service and the understanding of their needs. We successfully combine manufacturing knowledge, expertise in the field, and orientation to customer needs to achieve the level of demand for our creations that we enjoy today.`
 
      ],
