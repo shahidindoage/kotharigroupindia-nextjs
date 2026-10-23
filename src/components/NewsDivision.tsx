@@ -752,10 +752,10 @@ export const NewsDivision: React.FC<{ theme?: 'blue' | 'green'; newsItems?: Divi
 
 
       {/* ==================== 3. NEWS AND ARTICLES (WHITE BG) ==================== */}
-      <section id="news" className={`w-full py-16 sm:py-24 ${isGreen ? 'bg-[#EAF6EE]' : 'bg-[#F5F6F8]'} text-slate-900 border-b ${isGreen ? 'border-[#1E8E3E]/15' : 'border-slate-300/70'} scroll-mt-20`}>
+      {/* <section id="news" className={`w-full py-16 sm:py-24 ${isGreen ? 'bg-[#EAF6EE]' : 'bg-[#F5F6F8]'} text-slate-900 border-b ${isGreen ? 'border-[#1E8E3E]/15' : 'border-slate-300/70'} scroll-mt-20`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
-          {/* Section Header */}
+     
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-300">
             <div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight uppercase font-serif text-slate-900">
@@ -767,7 +767,6 @@ export const NewsDivision: React.FC<{ theme?: 'blue' | 'green'; newsItems?: Divi
             </p>  
           </div>
 
-          {/* News Cards Grid / Auto Slider */}
           {loading ? (
             <BlogSkeleton />
           ) : newsItems.length > newsItemsPerPage ? (
@@ -799,7 +798,7 @@ export const NewsDivision: React.FC<{ theme?: 'blue' | 'green'; newsItems?: Divi
                 </motion.div>
               </AnimatePresence>
 
-              {/* Prev / Next Arrows */}
+            
               <div className="flex items-center justify-center gap-4 pt-8">
                 <button
                   onClick={handleNewsPrev}
@@ -834,7 +833,7 @@ export const NewsDivision: React.FC<{ theme?: 'blue' | 'green'; newsItems?: Divi
           )}
 
         </div>
-      </section>
+      </section> */}
 
     </div>
   );

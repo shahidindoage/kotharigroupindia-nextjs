@@ -52,7 +52,7 @@ export const youngLeadership = {
       designation: 'Director',
       linkedin: true,
       linkedinUrl: 'https://www.linkedin.com/in/amol-paliya-7a47a7188',
-      readMoreContent: `Mr. Amol S. Paliya has been a part of Kothari Group since 1997 and has a big amount of expertise in the field of commerce. He possesses an amazing talent to implement operational efficiency and strategic planning of business. `,
+      readMoreContent: `Mr. Amol Paliya has been a part of Kothari Group since 1997 and has a big amount of expertise in the field of commerce. He possesses an amazing talent to implement operational efficiency and strategic planning of business. `,
       imageUrl: '/banners/our-board/team/amol-s-paliya.webp',
     }, 
     {

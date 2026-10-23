@@ -2302,13 +2302,13 @@ export const solutionsData: Solution[] = [
     division: 'irrigation',
     eyebrow: 'Irrigation Division',
    heroImage: '/solutions/irrigation/Agriculltural-filed-Irrigation/Large Commericial Famrland.jpg',
-    metaTitle: 'Agricultural Field Irrigation Solutions | Kothari Group',
+    metaTitle: 'Open Field Irrigation Solutions | Kothari Group',
     metaDescription:
-      ` Kothari Group's agricultural field irrigation solutions combine sprinkler systems and durable irrigation pipes for uniform coverage across large farmland. `,
+      ` Kothari Group's open field irrigation solutions combine sprinkler systems and durable irrigation pipes for uniform coverage across large farmland. `,
     h1: 'Open Field Irrigation',
     tagline: ' Reliable, wide-area watering built for the scale of Indian farmland.',
     overview: [
-        'For open-field crops that need broad, uniform coverage, our Agricultural Field Irrigation systems combine sprinkler irrigation, rain gun, and pivot-compatible piping engineered to withstand outdoor conditions across large landholdings. Built with UV-resistant HDPE irrigation pipes and metal/plastic sprinkler technology, this solution ensures uniform water distribution from field edge to field edge even across uneven terrain. Whether you need a full sprinkler irrigation system or a targeted mini sprinkler system for a smaller plot, our range is field-tested across diverse Indian growing conditions. ',
+        'For open-field crops that need broad, uniform coverage, our Open Field Irrigation combine sprinkler irrigation, rain gun, and pivot-compatible piping engineered to withstand outdoor conditions across large landholdings. Built with UV-resistant HDPE irrigation pipes and metal/plastic sprinkler technology, this solution ensures uniform water distribution from field edge to field edge even across uneven terrain. Whether you need a full sprinkler irrigation system or a targeted mini sprinkler system for a smaller plot, our range is field-tested across diverse Indian growing conditions. ',
     ],
    pillars: [
   {
