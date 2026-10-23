@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import type L from 'leaflet';
-import { Factory, Building2, Warehouse, MapPin, ExternalLink } from 'lucide-react';
+import { Factory, Building2, Warehouse, MapPin, ExternalLink, ChevronUp, ChevronDown } from 'lucide-react';
 
 async function loadLeaflet(): Promise<typeof L> {
   const mod = await import('leaflet');
@@ -278,7 +278,51 @@ export const FacilityMap: React.FC<{ bgColor?: string }> = ({ bgColor = 'white' 
   const mapRef = useRef<L.Map | null>(null);
   const markersRef = useRef<Record<string, L.Marker>>({});
   const selectedRef = useRef<Facility | null>(null);
+  const listRef = useRef<HTMLUListElement>(null);
+  const scrollAnimRef = useRef<number | null>(null);
   const [mapReady, setMapReady] = useState(false);
+
+  const scrollList = (to: 'top' | 'bottom') => {
+    const el = listRef.current;
+    if (!el) return;
+    if (scrollAnimRef.current !== null) cancelAnimationFrame(scrollAnimRef.current);
+
+    // Move only one list item per click, very slowly.
+    const item = el.querySelector('li') as HTMLElement | null;
+    const itemHeight = item?.offsetHeight ?? 64;
+    const max = el.scrollHeight - el.clientHeight;
+    const start = el.scrollTop;
+    const end =
+      to === 'top'
+        ? Math.max(0, start - itemHeight)
+        : Math.min(max, start + itemHeight);
+    const distance = end - start;
+    if (distance === 0) return;
+
+    const duration = 900;
+    const startTime = performance.now();
+    const easeInOutCubic = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const step = (now: number) => {
+      const progress = Math.min(1, (now - startTime) / duration);
+      el.scrollTop = start + distance * easeInOutCubic(progress);
+      if (progress < 1) {
+        scrollAnimRef.current = requestAnimationFrame(step);
+      } else {
+        scrollAnimRef.current = null;
+      }
+    };
+
+    scrollAnimRef.current = requestAnimationFrame(step);
+  };
+
+  useEffect(
+    () => () => {
+      if (scrollAnimRef.current !== null) cancelAnimationFrame(scrollAnimRef.current);
+    },
+    []
+  );
 
   const visibleFacilities = useMemo(
     () =>
@@ -423,9 +467,19 @@ export const FacilityMap: React.FC<{ bgColor?: string }> = ({ bgColor = 'white' 
 
       <div className="flex flex-col lg:flex-row text-left border border-slate-200 shadow-sm bg-white h-auto lg:h-[640px] overflow-hidden">
         {/* Left side — facility list for the selected tab */}
-        <div className="w-full lg:w-[26%] shrink-0 max-h-[380px] overflow-y-auto no-scrollbar lg:max-h-none lg:overflow-y-auto border-b lg:border-b-0 lg:border-r border-[#DCEAF5] bg-[#F5F6F8] flex flex-col">
+        <div className="w-full lg:w-[26%] shrink-0 max-h-[380px] lg:max-h-none border-b lg:border-b-0 lg:border-r border-[#DCEAF5] bg-[#F5F6F8] flex flex-col">
+          {/* Scroll to top */}
+          <button
+            type="button"
+            onClick={() => scrollList('top')}
+            aria-label="Scroll facility list to top"
+            className="flex items-center justify-center h-9 shrink-0 border-b border-[#DCEAF5] bg-white text-slate-400 hover:text-[#1575B3] hover:bg-[#F5FAFF] transition-colors"
+          >
+            <ChevronUp className="w-4 h-4" />
+          </button>
+
           {/* Facility list */}
-          <ul className="flex-1 list-none m-0 p-0">
+          <ul ref={listRef} className="flex-1 min-h-0 overflow-y-auto no-scrollbar list-none m-0 p-0">
             {visibleFacilities.length === 0 && (
               <li className="p-6 text-sm text-slate-500">No facilities in this category.</li>
             )}
@@ -463,6 +517,16 @@ export const FacilityMap: React.FC<{ bgColor?: string }> = ({ bgColor = 'white' 
               );
             })}
           </ul>
+
+          {/* Scroll to bottom */}
+          <button
+            type="button"
+            onClick={() => scrollList('bottom')}
+            aria-label="Scroll facility list to bottom"
+            className="flex items-center justify-center h-9 shrink-0 border-t border-[#DCEAF5] bg-white text-slate-400 hover:text-[#1575B3] hover:bg-[#F5FAFF] transition-colors"
+          >
+            <ChevronDown className="w-4 h-4" />
+          </button>
         </div>
 
         {/* Right side — map for the selected tab */}

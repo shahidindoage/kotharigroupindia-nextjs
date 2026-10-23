@@ -12,6 +12,7 @@ export const runtime = 'nodejs';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
+const MAX_FILES = 5;
 const ALLOWED_FILE_TYPES = [
   'application/pdf',
   'application/msword',
@@ -78,31 +79,38 @@ export async function POST(req: Request) {
     );
   }
 
-  // Optional supporting document (validated client-side too).
+  // Optional supporting documents (validated client-side too).
   const attachments: { filename: string; content: Buffer; contentType: string }[] = [];
-  const doc = form.get('document');
-  if (doc && typeof doc !== 'string') {
-    const file = doc as File;
-    if (file.size > 0) {
-      if (file.size > MAX_FILE_BYTES) {
-        return NextResponse.json(
-          { ok: false, error: 'File size must be less than 5MB.' },
-          { status: 400 }
-        );
-      }
-      if (file.type && !ALLOWED_FILE_TYPES.includes(file.type)) {
-        return NextResponse.json(
-          { ok: false, error: 'Only PDF, DOC or JPG documents are allowed.' },
-          { status: 400 }
-        );
-      }
-      const safeName = (file.name || 'document').replace(/[^\w.\-() ]/g, '_').slice(0, 120);
-      attachments.push({
-        filename: safeName,
-        content: Buffer.from(await file.arrayBuffer()),
-        contentType: file.type || 'application/octet-stream',
-      });
+  const docs = form
+    .getAll('document')
+    .filter((entry): entry is File => typeof entry !== 'string' && entry.size > 0);
+
+  if (docs.length > MAX_FILES) {
+    return NextResponse.json(
+      { ok: false, error: `You can attach up to ${MAX_FILES} documents.` },
+      { status: 400 }
+    );
+  }
+
+  for (const file of docs) {
+    if (file.size > MAX_FILE_BYTES) {
+      return NextResponse.json(
+        { ok: false, error: `${file.name} is larger than 5MB.` },
+        { status: 400 }
+      );
     }
+    if (file.type && !ALLOWED_FILE_TYPES.includes(file.type)) {
+      return NextResponse.json(
+        { ok: false, error: `Only PDF, DOC or JPG documents are allowed (${file.name}).` },
+        { status: 400 }
+      );
+    }
+    const safeName = (file.name || 'document').replace(/[^\w.\-() ]/g, '_').slice(0, 120);
+    attachments.push({
+      filename: safeName,
+      content: Buffer.from(await file.arrayBuffer()),
+      contentType: file.type || 'application/octet-stream',
+    });
   }
 
   const transporter = createTransporter();
@@ -135,7 +143,9 @@ export async function POST(req: Request) {
     ...rows.map(([k, v]) => `${k}: ${v}`),
     '',
     description || '(no description)',
-    ...(attachments.length ? ['', `Attachment: ${attachments[0].filename}`] : []),
+    ...(attachments.length
+      ? ['', `Attachments (${attachments.length}): ${attachments.map((a) => a.filename).join(', ')}`]
+      : []),
   ].join('\n');
   const html = `
     <h2>New dealer application</h2>

@@ -59,11 +59,15 @@ export const DealerApplyModal: React.FC<DealerApplyModalProps> = ({ open, onClos
     heardAbout: '',
     description: '',
   });
-  const [docName, setDocName] = useState('');
+  const [docs, setDocs] = useState<File[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
   const docRef = useRef<HTMLInputElement>(null);
+
+  const MAX_DOCS = 5;
+  const MAX_DOC_BYTES = 5 * 1024 * 1024;
+  const ALLOWED_DOC_EXT = /\.(pdf|doc|docx|jpe?g)$/i;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -72,19 +76,36 @@ export const DealerApplyModal: React.FC<DealerApplyModalProps> = ({ open, onClos
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleDoc = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) {
-      setDocName('');
-      return;
+  const handleDocs = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const picked = Array.from(e.target.files ?? []);
+    // Reset the input so the same file can be picked again after removing it.
+    e.target.value = '';
+    if (!picked.length) return;
+
+    const skipped: string[] = [];
+    const next = [...docs];
+    for (const file of picked) {
+      if (file.size > MAX_DOC_BYTES) {
+        skipped.push(`${file.name} (over 5MB)`);
+        continue;
+      }
+      if (!ALLOWED_DOC_EXT.test(file.name)) {
+        skipped.push(`${file.name} (unsupported type)`);
+        continue;
+      }
+      if (next.some((f) => f.name === file.name && f.size === file.size)) continue;
+      if (next.length >= MAX_DOCS) {
+        skipped.push('extra files (limit 5)');
+        break;
+      }
+      next.push(file);
     }
-    if (file.size > 5 * 1024 * 1024) {
-      alert('File size must be less than 5MB.');
-      e.target.value = '';
-      setDocName('');
-      return;
-    }
-    setDocName(file.name);
+    setDocs(next);
+    if (skipped.length) alert(`Some files were not added: ${skipped.join(', ')}`);
+  };
+
+  const removeDoc = (index: number) => {
+    setDocs((prev) => prev.filter((_, i) => i !== index));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -105,8 +126,7 @@ export const DealerApplyModal: React.FC<DealerApplyModalProps> = ({ open, onClos
       payload.append('heardAbout', form.heardAbout);
       payload.append('description', form.description);
       payload.append('recaptchaToken', recaptchaToken);
-      const file = docRef.current?.files?.[0];
-      if (file) payload.append('document', file);
+      docs.forEach((file) => payload.append('document', file));
 
       const res = await fetch('/api/dealer', { method: 'POST', body: payload });
       const data = await res.json().catch(() => null);
@@ -127,7 +147,7 @@ export const DealerApplyModal: React.FC<DealerApplyModalProps> = ({ open, onClos
   };
 
   const resetForm = () => {
-    setDocName('');
+    setDocs([]);
     if (docRef.current) docRef.current.value = '';
     setForm({
       proprietorName: '',
@@ -145,7 +165,8 @@ export const DealerApplyModal: React.FC<DealerApplyModalProps> = ({ open, onClos
   const handleClose = () => {
     setSubmitted(false);
     setError('');
-    setDocName('');
+    setDocs([]);
+    if (docRef.current) docRef.current.value = '';
     onClose();
   };
 
@@ -397,18 +418,44 @@ export const DealerApplyModal: React.FC<DealerApplyModalProps> = ({ open, onClos
                   </div>
 
                   <div className={fieldWrap}>
-                    <label className={labelClass}>Attach Document (PDF, DOC, JPG)</label>
+                    <label className={labelClass}>Attach Documents (PDF, DOC, JPG)</label>
                     <input
                       ref={docRef}
                       type="file"
                       name="document"
+                      multiple
                       accept=".pdf,.doc,.docx,.jpg,.jpeg"
-                      onChange={handleDoc}
+                      onChange={handleDocs}
                       className="w-full text-sm text-[#5F6B7A] file:mr-4 file:px-4 file:py-2.5 file:text-sm file:bg-[#F5F6F8] file:border file:border-[#DCEAF5] file:text-[#111111] file:cursor-pointer hover:file:bg-[#EDF3F9] file:transition"
                     />
-                    {docName && (
-                      <span className="block mt-1 text-xs text-[#5F6B7A]">Selected: {docName}</span>
+                    {docs.length > 0 && (
+                      <ul className="mt-2 space-y-1">
+                        {docs.map((file, i) => (
+                          <li
+                            key={`${file.name}-${file.size}-${i}`}
+                            className="flex items-center justify-between gap-2 text-xs text-[#5F6B7A] bg-[#F5F6F8] border border-[#DCEAF5] px-2.5 py-1.5"
+                          >
+                            <span className="min-w-0 truncate">
+                              {file.name}{' '}
+                              <span className="text-[#5F6B7A]/60">
+                                ({(file.size / 1024 / 1024).toFixed(1)} MB)
+                              </span>
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => removeDoc(i)}
+                              aria-label={`Remove ${file.name}`}
+                              className="shrink-0 text-[#5F6B7A] hover:text-red-600 transition-colors"
+                            >
+                              <X className="w-3.5 h-3.5" />
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
                     )}
+                    <span className="block mt-1 text-[11px] text-[#5F6B7A]/70">
+                      Up to {MAX_DOCS} files, max 5MB each.
+                    </span>
                   </div>
 
                   <button

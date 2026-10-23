@@ -90,6 +90,18 @@ export const ProductDetailPage: React.FC<{
   const [enquiryModalOpen, setEnquiryModalOpen] = useState(false);
   const [certModalOpen, setCertModalOpen] = useState(false);
 
+  // "Enquire Now" opens the division header's Get in Touch modal when it is on
+  // the page; otherwise it falls back to this page's own enquiry modal.
+  const openEnquiry = () => {
+    const handled = !window.dispatchEvent(
+      new CustomEvent('open:get-in-touch', { cancelable: true })
+    );
+    if (!handled) {
+      setEnquiryModalOpen(true);
+      setFormError('');
+    }
+  };
+
 
     // Related Products Slider State
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -283,7 +295,7 @@ export const ProductDetailPage: React.FC<{
 
               <div className="flex flex-wrap gap-3">
                 <button
-                  onClick={() => { setEnquiryModalOpen(true); setFormError(''); }}
+                  onClick={openEnquiry}
                   className={`inline-flex items-center gap-2 ${tBg} ${tBgHover} text-white text-sm font-mono tracking-widest uppercase px-6 py-4 transition-colors`}
                 >
                   Enquire Now <ArrowRight className="w-4 h-4" />
