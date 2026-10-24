@@ -23,7 +23,7 @@ export const pipeTestimonials: DivisionTestimonial[] = [
     author: '',
     role: 'Representative, Om Sakthi Traders',
     location: "Tamil Nadu",
-    image: '/testimonials/pipe/Om Sakthi Traders, Tamil Nadu.png',
+    image: '/testimonials/pipe/OmSakthiTraders.png',
     highlighted:true
   },
   {
@@ -32,7 +32,7 @@ export const pipeTestimonials: DivisionTestimonial[] = [
     author: '',
     role: 'Dealer, Bhagyavanti Traders',
     location: "Karnataka",
-    image: '/testimonials/pipe/Dealer, Bhagyavanti Traders, Karnataka.png',
+    image: '/testimonials/pipe/BhagyavantiTraders.png',
     highlighted:true
   },
   {
