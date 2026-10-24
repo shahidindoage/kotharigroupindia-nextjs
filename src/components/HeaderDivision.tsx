@@ -10,6 +10,7 @@ import {
   getRecaptchaToken,
 } from '@/lib/recaptcha-client';
 import { useOtpVerification } from '@/lib/use-otp-verification';
+import { OTP_VERIFICATION_ENABLED } from '@/lib/otp-config';
 import { pipeSolutionsMegaMenu, irrigationSolutionsMegaMenu } from '@/data/products';
 import { getChildSolutions } from '@/data/solutions';
 import { normalizeSlug } from '@/lib/slug';
@@ -599,7 +600,7 @@ const handleSolutionBack = () => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formSending) return;
-    if (otp.otpStatus !== 'verified') {
+    if (OTP_VERIFICATION_ENABLED && otp.otpStatus !== 'verified') {
       setFormError('Please verify your phone number with the WhatsApp OTP first.');
       return;
     }
@@ -1836,7 +1837,7 @@ const handleSolutionBack = () => {
                           }}
                           className={`w-full px-3.5 py-2.5 text-sm bg-[#F5F6F8] border ${isIrrigation ? 'border-[#DCEAF5]' : 'border-[#DCEAF5]'} text-[#111111] placeholder:text-[#5F6B7A]/60 focus:outline-none ${isIrrigation ? 'focus:border-[#1575B3]' : 'focus:border-[#1575B3]'} focus:bg-white transition`}
                         />
-                        {otp.otpStatus !== 'verified' && (
+                        {OTP_VERIFICATION_ENABLED && otp.otpStatus !== 'verified' && (
                           <button
                             type="button"
                             onClick={() => otp.sendOtp(formData.phone, formData.fullName || 'Website User')}
@@ -1856,7 +1857,7 @@ const handleSolutionBack = () => {
                     </div>
                   </div>
 
-                  {otp.otpStatus === 'verified' && (
+                  {OTP_VERIFICATION_ENABLED && otp.otpStatus === 'verified' && (
                     <div className="flex flex-wrap items-center justify-between gap-2 border border-[#1E8E3E]/30 bg-[#F4FBF6] px-3.5 py-2.5">
                       <span className="flex items-center gap-2 text-xs font-medium text-[#1E8E3E]">
                         <CheckCircle2 className="w-4 h-4" />
@@ -1872,7 +1873,7 @@ const handleSolutionBack = () => {
                     </div>
                   )}
 
-                  {(otp.otpStatus === 'sent' || otp.otpStatus === 'verifying') && (
+                  {OTP_VERIFICATION_ENABLED && (otp.otpStatus === 'sent' || otp.otpStatus === 'verifying') && (
                     <div className={`border p-3.5 space-y-2.5 ${isIrrigation ? 'border-[#DCEAF5] bg-[#F8FBFE]' : 'border-[#DCEAF5] bg-[#F8FBFE]'}`}>
                       <div className="flex gap-2">
                         <input
@@ -1981,13 +1982,17 @@ const handleSolutionBack = () => {
 
                   <button
                     type="submit"
-                    disabled={formSending || otp.otpStatus !== 'verified'}
+                    disabled={formSending || (OTP_VERIFICATION_ENABLED && otp.otpStatus !== 'verified')}
                     className={`w-full flex items-center justify-center gap-2 ${isIrrigation ? 'bg-[#1575B3]' : 'bg-[#1575B3]'} ${isIrrigation ? 'hover:bg-[#0E588A]' : 'hover:bg-[#0E588A]'} disabled:opacity-60 disabled:cursor-not-allowed text-white py-3.5 font-medium text-sm transition-colors shadow-sm mt-2`}
                   >
-                    {formSending ? 'Submitting…' : otp.otpStatus !== 'verified' ? 'Verify OTP to Submit' : 'Submit Inquiry'}
+                    {formSending
+                      ? 'Submitting…'
+                      : OTP_VERIFICATION_ENABLED && otp.otpStatus !== 'verified'
+                        ? 'Verify OTP to Submit'
+                        : 'Submit Inquiry'}
                     <ArrowRight className="w-4 h-4" />
                   </button>
-                  {otp.otpStatus !== 'verified' && !formError && (
+                  {OTP_VERIFICATION_ENABLED && otp.otpStatus !== 'verified' && !formError && (
                     <p className="text-[11px] text-[#5F6B7A] -mt-2">
                       Verify your WhatsApp number with the OTP to enable submission.
                     </p>

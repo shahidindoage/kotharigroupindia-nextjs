@@ -798,7 +798,7 @@ export const irrigationSolutionsMegaMenu = {
     },
     {
       title: "Open Field Irrigation",
-      url: "/solutions/agricultural-field-irrigation",
+      url: "/solutions/open-field-irrigation",
       image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80",
     },
     {

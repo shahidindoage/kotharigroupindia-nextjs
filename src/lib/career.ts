@@ -1,16 +1,16 @@
-// Static career data sourced from https://kotharigroupindia.com/career
-// Jobs fetched from https://admin.kotharigroupindia.com/wp-json/wp/v2/jobpost
+// Static career data sourced from jobs.txt (Department, Location, Job Title/Role, Division)
 export interface JobPosting {
   id: number;
   title: string;
   slug: string;
   location: string;
   department: string;
+  division: string;
   jobType: string;
   description: string;
   link: string;
   date: string;
-  place:string;
+  place: string;
 }
 
 export interface CareerData {
@@ -18,60 +18,59 @@ export interface CareerData {
   locations: string[];
 }
 
-const jobs: JobPosting[] = [
-  {
-    id: 18184,
-    title: 'Officer / Executive - Pipe Division',
-    slug: 'officer-executive-pipe-division',
-    location: 'Karnataka',
-    place:'Shimoga',
-    department: 'Pipe Division',
-    jobType: 'Officer / Executive',
-    description:
-      'Vacancy: 1 | Department: Sales & Marketing | Education: Any | Experience: 1-3 yrs | Preference: Experience in Agri PVC.',
-    link: 'https://admin.kotharigroupindia.com/jobs/officer-executive-pipe-division/',
-    date: '26 June 2025',
-  },
-  {
-    id: 18183,
-    title: 'ASM - Irrigation Division',
-    slug: 'asm-irrigation-division',
-    location: 'Uttar Pradesh',
-    place:'Agra',
-    department: 'Irrigation Division',
-    jobType: 'ASM / RM',
-    description:
-      'Vacancy: 1 | Department: Sales & Marketing | Education: Graduation in Agri | Experience: 7-10 yrs.',
-    link: 'https://admin.kotharigroupindia.com/jobs/asm-irrigation-division/',
-    date: '26 June 2025',
-  },
-  {
-    id: 18182,
-    title: 'Officer / Executive - Irrigation Division',
-    slug: 'officer-executive-irrigation-division-2',
-    location: 'Madhya Pradesh',
-    place:'Balaghat',
-    department: 'Irrigation Division',
-    jobType: 'Officer / Executive',
-    description:
-      'Vacancy: 1 | Department: Sales & Marketing | Education: Graduation in Agri | Experience: 2-5 yrs.',
-    link: 'https://admin.kotharigroupindia.com/jobs/officer-executive-irrigation-division-2/',
-    date: '26 June 2025',
-  },
-  {
-    id: 17930,
-    title: 'Officer / Executive - Irrigation Division',
-    slug: 'officer-executive-irrigation-division',
-    location: 'Madhya Pradesh',
-    place:'Khargone',
-    department: 'Irrigation Division',
-    jobType: 'Officer / Executive',
-    description:
-      'Vacancy: 1 | Department: Sales & Marketing | Education: Graduation in Agri | Experience: 2-5 yrs.',
-    link: 'https://admin.kotharigroupindia.com/jobs/officer-executive-irrigation-division/',
-    date: '16 May 2025',
-  },
+// [department, location, title, division]
+const rows: [string, string, string, string][] = [
+  ['Production', 'Solapur', 'PVC Pipe Extrusion Operator', ''],
+  ['Production', 'Solapur', 'CPVC/UPVC Pipe Extrusion Operator', ''],
+  ['Production', 'Solapur', 'Extrusion Engineer', ''],
+  ['Production', 'Solapur', 'Moulding Engineer', ''],
+  ['Production', 'Solapur', 'Compounding Operator', ''],
+  ['Production', 'Solapur', 'Compounding Engineer', ''],
+  ['Production', 'Pithampur', 'HDPE Pipe Extrusion Operator', ''],
+  ['Production', 'Pithampur', 'DWC Pipe Extrusion Operator', ''],
+  ['Sales Back Office', 'Solapur', 'Sales Back Office Executive', ''],
+  ['Warehousing & Logistics (W&L)', 'Solapur', 'Route Planning Executive', ''],
+  ['Accounts & Finance', 'Solapur', 'Accounts Executive', ''],
+  ['Information Technology (IT)', 'Solapur', 'Assistant Manager – IT', ''],
+  ['Production', 'Solapur', 'Junior Production Engineer', ''],
+  ['Operational Intelligence', 'Solapur', 'Operational Intelligence Executive', ''],
+  ['Maintenance', 'Solapur', 'Maintenance Technician', ''],
+  ['Maintenance', 'Solapur', 'Electrical Maintenance Engineer', ''],
+  ['Maintenance', 'Solapur', 'Mechanical Maintenance Engineer', ''],
+  ['Tool Room', 'Solapur', 'Tool Room Engineer', ''],
+  ['Tool Room', 'Solapur', 'Tool Room Technician', ''],
+  ['Quality Assurance (QA)', 'Solapur', 'Junior Quality Officer', ''],
+  ['Sales', 'Hubli', 'OEM Sales Engineer', 'OEM'],
+  ['Sales', 'Kalburgi', 'OEM Sales Engineer', 'OEM'],
+  ['Production', 'Solapur', 'Junior Engineer', ''],
+  ['Production', 'Kukarwada (GJ)', 'Junior Engineer', ''],
+  ['Production', 'Pithampur', 'Junior Engineer', ''],
+  ['Warehousing & Logistics (W&L)', 'Ambala', 'Senior Executive', 'Irrigation'],
 ];
+
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
+const jobs: JobPosting[] = rows.map(([department, location, title, division], index) => ({
+  id: index + 1,
+  title,
+  slug: `${slugify(title)}-${slugify(location)}`,
+  location,
+  place: location,
+  department,
+  division,
+  jobType: division || 'Full-time',
+  description: [
+    `Department: ${department}`,
+    `Location: ${location}`,
+    ...(division ? [`Division: ${division}`] : []),
+  ].join(' | '),
+  link: '#',
+  date: '',
+}));
 
 const locations = ['All', ...Array.from(new Set(jobs.map((job) => job.location)))];
 

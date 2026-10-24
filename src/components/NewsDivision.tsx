@@ -529,7 +529,16 @@ export const NewsDivision: React.FC<{ theme?: 'blue' | 'green'; newsItems?: Divi
   );
 
   const TestimonialCard: React.FC<{ item: DivisionTestimonial }> = ({ item }) => (
-    <div className="relative bg-white border border-slate-100 shadow-[0_12px_40px_rgba(2,30,53,0.10)] hover:shadow-[0_20px_55px_rgba(2,30,53,0.16)] transition-all duration-300 flex flex-col h-full px-6 sm:px-7 pt-5 pb-6 sm:pb-7">
+    <div
+      className={`relative border flex flex-col h-full px-6 sm:px-7 pt-5 pb-6 sm:pb-7 transition-all duration-300 ${
+        item.highlighted
+          ? 'featured-card-glow bg-[#F3F9FF] border-[#1575B3] ring-2 ring-[#1575B3]/25'
+          : 'bg-white border-slate-100 shadow-[0_12px_40px_rgba(2,30,53,0.10)] hover:shadow-[0_20px_55px_rgba(2,30,53,0.16)]'
+      }`}
+    >
+      {item.highlighted && (
+        <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-[#1575B3]" />
+      )}
       {/* Top-Left Overlapping Avatar */}
       <div className="absolute top-10 left-0 sm:-left-6 -translate-y-3/4 w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-[#1575B3] shadow-md bg-white p-1">
         <img

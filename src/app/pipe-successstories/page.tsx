@@ -1,5 +1,5 @@
 import { SuccessStoriesListing } from '@/components/successstories/SuccessStoriesListing';
-import { irrigationSuccessStoryPlaylistId, irrigationSuccessStoryVideos, pipeSuccessStoryPlaylistId, pipeSuccessStoryVideos } from '@/data/success-story-videos';
+import { pipeSuccessStoryVideos } from '@/data/success-story-videos';
 import { wpPageMetadataFor, resolveSeoText } from '@/lib/wp-seo';
 import { JsonLd } from '@/components/JsonLd';
 import { PIPE_DIVISION_ID, standardPageGraph } from '@/lib/schema';
@@ -45,7 +45,6 @@ export default async function PipeSuccessStoriesPage({
         detailBasePath="/pipe-successstories"
         paginationBasePath="/pipe-successstories"
         videos={pipeSuccessStoryVideos}
-        playlistId={pipeSuccessStoryPlaylistId}
         storiesTitle="Latest Success Stories"
       />
     </>

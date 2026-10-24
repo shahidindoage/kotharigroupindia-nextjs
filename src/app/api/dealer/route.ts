@@ -7,6 +7,7 @@ import {
   NOT_CONFIGURED,
 } from '@/lib/mailer';
 import { dealerRecipient } from '@/lib/dealer';
+import { dealerTemplate } from '@/lib/dealer-templates';
 
 export const runtime = 'nodejs';
 
@@ -128,36 +129,54 @@ export async function POST(req: Request) {
   }
 
   const from = process.env.GMAIL_USER as string;
-  const subject = `WEBSITE ENQUIRY - BECOME A DEALER - ${proprietorName.toUpperCase()}`;
-  const rows: [string, string][] = [
-    ['Proprietor Name', proprietorName],
-    ['Mobile', mobile],
-    ['Email', email || '-'],
-    ['Pincode', pincode],
-    ['Firm Name', firmName || '-'],
-    ['GST Number', gstNumber || '-'],
-    ['Division Interest', divisionInterest || '-'],
-    ['Heard About Us', heardAbout || '-'],
-  ];
+  // Subject + body vary by divisionInterest (templates in gettemps.txt).
+  const template = dealerTemplate(divisionInterest);
+  const subject = template.subject;
   const text = [
-    ...rows.map(([k, v]) => `${k}: ${v}`),
+    'Dear Team,',
     '',
-    description || '(no description)',
+    ...template.intro.flatMap((paragraph) => [paragraph, '']),
+    'Dealer Application Details',
+    `Name: ${proprietorName}`,
+    `Mobile Number: ${mobile}`,
+    `Email Address: ${email || '-'}`,
+    `Pin Code: ${pincode}`,
+    `Firm Name: ${firmName || '-'}`,
+    `GST No: ${gstNumber || '-'}`,
+    `Division Interest: ${divisionInterest || '-'}`,
+    `Message: ${description || '-'}`,
+    '',
+    `Lead Status: ${template.leadStatus}`,
+    '',
+    template.outro,
+    '',
+    template.thanks,
+    '',
+    'Regards,',
+    template.signature,
     ...(attachments.length
       ? ['', `Attachments (${attachments.length}): ${attachments.map((a) => a.filename).join(', ')}`]
       : []),
   ].join('\n');
+
   const html = `
-    <h2>New dealer application</h2>
-    <table cellpadding="6" cellspacing="0" border="0">
-      ${rows
-        .map(
-          ([k, v]) =>
-            `<tr><td><strong>${escapeHtml(k)}</strong></td><td>${escapeHtml(v)}</td></tr>`
-        )
-        .join('')}
-    </table>
-    <p>${escapeHtml(description || '(no description)').replace(/\n/g, '<br />')}</p>
+    <p>Dear Team,</p>
+    ${template.intro.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}
+    <p><strong>Dealer Application Details</strong></p>
+    <ul>
+      <li>Name: ${escapeHtml(proprietorName)}</li>
+      <li>Mobile Number: ${escapeHtml(mobile)}</li>
+      <li>Email Address: ${escapeHtml(email || '-')}</li>
+      <li>Pin Code: ${escapeHtml(pincode)}</li>
+      <li>Firm Name: ${escapeHtml(firmName || '-')}</li>
+      <li>GST No: ${escapeHtml(gstNumber || '-')}</li>
+      <li>Division Interest: ${escapeHtml(divisionInterest || '-')}</li>
+      <li>Message: ${escapeHtml(description || '-')}</li>
+    </ul>
+    <p><strong>Lead Status:</strong> ${escapeHtml(template.leadStatus)}</p>
+    <p>${escapeHtml(template.outro)}</p>
+    <p>${escapeHtml(template.thanks)}</p>
+    <p>Regards,<br />${escapeHtml(template.signature)}</p>
   `;
 
   try {

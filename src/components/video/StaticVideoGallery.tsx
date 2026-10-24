@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { PlayCircle } from 'lucide-react';
+import { PlayCircle, Youtube } from 'lucide-react';
 import { Reveal } from '@/components/main/Reveal';
 import type { KothariVideo } from '@/lib/video';
 
@@ -23,25 +23,46 @@ export const StaticVideoGallery: React.FC<{
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {visible.map((video, i) => (
-          <Reveal key={video.embedId} delay={(i % 3) * 90}>
-            <div className="group border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-[#1E8E3E] transition-all duration-500">
-              <div className="aspect-video w-full bg-slate-900">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src={`https://www.youtube.com/embed/${video.embedId}`}
-                  title={video.title}
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
-              </div>
-            </div>
-          </Reveal>
-        ))}
+        {visible.map((video, i) => {
+          const href =
+            video.url ||
+            (video.embedId ? `https://www.youtube.com/watch?v=${video.embedId}` : '#');
+          const image =
+            video.img ||
+            (video.embedId ? `https://img.youtube.com/vi/${video.embedId}/hqdefault.jpg` : '');
+
+          return (
+            <Reveal key={video.url || video.embedId || i} delay={(i % 3) * 90}>
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Watch ${video.title} on YouTube`}
+                className="group block border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-[#1E8E3E] transition-all duration-500 bg-white"
+              >
+                <div className="relative aspect-video w-full bg-slate-900 overflow-hidden">
+                  {image ? (
+                    <img
+                      src={image}
+                      alt={video.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-slate-600">
+                      <PlayCircle className="w-10 h-10" />
+                    </div>
+                  )}
+                </div>
+
+                <span className="flex items-center justify-center gap-2 w-full bg-[#1575B3] text-white text-xs font-mono font-semibold tracking-wider uppercase px-4 py-3 group-hover:bg-[#0E588A] transition-colors">
+                  <Youtube className="w-4 h-4" />
+                  Watch on YouTube
+                </span>
+              </a>
+            </Reveal>
+          );
+        })}
       </div>
 
       <div className="pt-10 flex flex-col items-center gap-4">

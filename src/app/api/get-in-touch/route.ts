@@ -8,6 +8,8 @@ import {
 } from '@/lib/mailer';
 import { aisensyConfigured } from '@/lib/aisensy';
 import { isVerified, normalizePhone } from '@/lib/otp-store';
+import { enquiryTemplate } from '@/lib/get-in-touch-templates';
+import { OTP_VERIFICATION_ENABLED } from '@/lib/otp-config';
 
 export const runtime = 'nodejs';
 
@@ -32,6 +34,7 @@ function resolveRecipient(division: string): string {
 // OTP_REQUIRED=true|false overrides; otherwise the gate is on whenever AiSensy is
 // configured (and during development), so a missing config never hard-blocks prod.
 function otpRequired(): boolean {
+  if (!OTP_VERIFICATION_ENABLED) return false;
   const flag = process.env.OTP_REQUIRED;
   if (flag) return flag === 'true';
   return aisensyConfigured() || process.env.NODE_ENV !== 'production';
@@ -120,25 +123,43 @@ export async function POST(req: Request) {
   }
 
   const from = process.env.GMAIL_USER as string;
-  const subject = `WEBSITE ENQUIRY - ${division.toUpperCase()} - ${fullName.toUpperCase()}`;
+  // Subject + body vary by division and "I am" (templates in gettemps.txt).
+  const template = enquiryTemplate(division, iam);
+  const showOther = requirement === 'Other' && Boolean(otherRequirement);
+
+  const subject = template.subject;
   const text = [
-    `Name: ${fullName}`,
-    `Email: ${email || '-'}`,
-    `Phone: ${phone}`,
-    `Division Interest: ${division || '-'}`,
-    `I am: ${iam || '-'}`,
-    `Requirement: ${requirement}${requirement === 'Other' && otherRequirement ? ` - ${otherRequirement}` : ''}`,
+    'Dear Team,',
+    '',
+    ...template.intro.flatMap((paragraph) => [paragraph, '']),
+    'Enquiry Details',
+    `- Name: ${fullName}`,
+    `- Mobile Number: ${phone}`,
+    `- Email Address: ${email || '-'}`,
+    `- Requirement: ${requirement}`,
+    ...(showOther ? [`- Other Requirement: ${otherRequirement}`] : []),
+    '',
+    template.outro,
+    '',
+    template.thanks,
+    '',
+    'Regards,',
+    template.signature,
   ].join('\n');
+
   const html = `
-    <h2>New get-in-touch enquiry</h2>
-    <table cellpadding="6" cellspacing="0" border="0">
-      <tr><td><strong>Name</strong></td><td>${escapeHtml(fullName)}</td></tr>
-      <tr><td><strong>Email</strong></td><td>${escapeHtml(email || '-')}</td></tr>
-      <tr><td><strong>Phone</strong></td><td>${escapeHtml(phone)}</td></tr>
-      <tr><td><strong>Division Interest</strong></td><td>${escapeHtml(division || '-')}</td></tr>
-      <tr><td><strong>I am</strong></td><td>${escapeHtml(iam || '-')}</td></tr>
-      <tr><td><strong>Requirement</strong></td><td>${escapeHtml(requirement)}${requirement === 'Other' && otherRequirement ? ` &mdash; <em>${escapeHtml(otherRequirement)}</em>` : ''}</td></tr>
-    </table>
+    ${template.intro.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}
+    <p><strong>Enquiry Details</strong></p>
+    <ul>
+      <li>Name: ${escapeHtml(fullName)}</li>
+      <li>Mobile Number: ${escapeHtml(phone)}</li>
+      <li>Email Address: ${escapeHtml(email || '-')}</li>
+      <li>Requirement: ${escapeHtml(requirement)}</li>
+      ${showOther ? `<li>Other Requirement: ${escapeHtml(otherRequirement)}</li>` : ''}
+    </ul>
+    <p>${escapeHtml(template.outro)}</p>
+    <p>${escapeHtml(template.thanks)}</p>
+    <p>Regards,<br />${escapeHtml(template.signature)}</p>
   `;
 
   try {

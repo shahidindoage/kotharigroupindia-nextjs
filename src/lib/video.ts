@@ -2,7 +2,9 @@
 export interface KothariVideo {
   title: string;
   category: string;
-  embedId: string;
+  embedId?: string;
+  url?: string;
+  img?: string;
 }
 
 export interface KothariTVData {

@@ -2298,7 +2298,7 @@ export const solutionsData: Solution[] = [
     ],
   },
   {
-    slug: 'agricultural-field-irrigation',
+    slug: 'open-field-irrigation',
     division: 'irrigation',
     eyebrow: 'Irrigation Division',
    heroImage: '/solutions/irrigation/Agriculltural-filed-Irrigation/Large Commericial Famrland.jpg',

@@ -711,5 +711,13 @@
   {
     "source": "/underground-drainage",
     "destination": "/products/sewerage-drainage-pipes-and-fittings"
+  },
+  {
+    "source": "/irrigation-division/pc-dripper",
+    "destination":  "/irrigation-division/uniflow-dripper"
+  },
+  {
+    "source": "/solutions/agricultural-field-irrigation",
+    "destination":  "/solutions/open-field-irrigation"
   }
 ]

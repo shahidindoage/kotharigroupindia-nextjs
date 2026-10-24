@@ -10,10 +10,19 @@ import {
 
 interface ApplyModalProps {
   jobTitle: string;
+  /** Locations this role is open in (one per location of the same job title). */
+  locations?: string[];
+  /** Location of the card the user clicked, preselected in the dropdown. */
+  defaultLocation?: string;
   onClose: () => void;
 }
 
-export const ApplyModal: React.FC<ApplyModalProps> = ({ jobTitle, onClose }) => {
+export const ApplyModal: React.FC<ApplyModalProps> = ({
+  jobTitle,
+  locations = [],
+  defaultLocation,
+  onClose,
+}) => {
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -24,7 +33,8 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ jobTitle, onClose }) => 
     expectedCTC: '',
     noticePeriod: '',
     position: jobTitle,
-    location: '',
+    location:
+      defaultLocation || (locations.length === 1 ? locations[0] : ''),
     qualification: '',
     linkdin: '',
   });
@@ -320,18 +330,32 @@ export const ApplyModal: React.FC<ApplyModalProps> = ({ jobTitle, onClose }) => 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className={fieldWrap}>
                   <label className={labelClass}>Select Location *</label>
-                  <select
-                    name="location"
-                    required
-                    value={form.location}
-                    onChange={handleChange}
-                    className={inputClass}
-                  >
-                    <option value="">Select Location</option>
-                    <option value="Pune">Pune</option>
-                    <option value="Delhi">Delhi</option>
-                    <option value="Mumbai">Mumbai</option>
-                  </select>
+                  {locations.length > 0 ? (
+                    <select
+                      name="location"
+                      required
+                      value={form.location}
+                      onChange={handleChange}
+                      className={inputClass}
+                    >
+                      {locations.length > 1 && <option value="">Select Location</option>}
+                      {locations.map((loc) => (
+                        <option key={loc} value={loc}>
+                          {loc}
+                        </option>
+                      ))}
+                    </select>
+                  ) : (
+                    <input
+                      type="text"
+                      name="location"
+                      required
+                      placeholder="e.g. Solapur"
+                      value={form.location}
+                      onChange={handleChange}
+                      className={inputClass}
+                    />
+                  )}
                 </div>
                 <div className={fieldWrap}>
                   <label className={labelClass}>Qualification *</label>

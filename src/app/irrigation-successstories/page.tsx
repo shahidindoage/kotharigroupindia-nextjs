@@ -1,6 +1,5 @@
 import { SuccessStoriesListing } from '@/components/successstories/SuccessStoriesListing';
 import {
-  irrigationSuccessStoryPlaylistId,
   irrigationSuccessStoryVideos,
 } from '@/data/success-story-videos';
 import { wpPageMetadataFor, resolveSeoText } from '@/lib/wp-seo';
@@ -48,7 +47,6 @@ export default async function IrrigationSuccessStoriesPage({
         detailBasePath="/irrigation-successstories"
         paginationBasePath="/irrigation-successstories"
         videos={irrigationSuccessStoryVideos}
-        playlistId={irrigationSuccessStoryPlaylistId}
         storiesTitle="Latest Success Stories"
       />
     </>

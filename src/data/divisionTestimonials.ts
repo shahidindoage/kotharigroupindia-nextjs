@@ -4,9 +4,37 @@ export interface DivisionTestimonial {
   role: string;
   location?: string;
   image?: string;
+  highlighted?:boolean;
 }
 
 export const pipeTestimonials: DivisionTestimonial[] = [
+   {
+    quote:
+      'We have been a Kothari distributor since 1997. The pipes are of excellent quality, and we have completed many pipeline projects using 7-inch, 8-inch and 9-inch pipes. We have supplied material to whole villages, the products sell fast with no complaints from farmers, and we offer a wide range of pipes and fabricated fittings.',
+    author: 'Venkanna Annigeri',
+    role: 'Distributor, Bhageshwari Traders',
+    location: "Karnataka",
+    image: '/testimonials/pipe/Venkanna Annigeri.png',
+    highlighted:true
+  },
+   {
+    quote:
+      'We have dealt in Kothari products for one and a half years, supplying to sub-dealers and selling retail, and we have not received a single product complaint. The Kothari team gives us excellent support, and all their products, including column pipes, PVC fittings, UPVC and CPVC, keep strong quality standards across the range.',
+    author: '',
+    role: 'Representative, Om Sakthi Traders',
+    location: "Tamil Nadu",
+    image: '/testimonials/pipe/Om Sakthi Traders, Tamil Nadu.png',
+    highlighted:true
+  },
+  {
+    quote:
+      'We have held a Kothari dealership for ten years, and local farmers consistently rely on Kothari pipes, with many of them switching to Kothari over the last decade. Kothari’s management and sales executives give us a lot of technical help, and the HDPE, column pipes, PVC pipes, fittings and RJ collars work perfectly without any issues.',
+    author: '',
+    role: 'Dealer, Bhagyavanti Traders',
+    location: "Karnataka",
+    image: '/testimonials/pipe/Dealer, Bhagyavanti Traders, Karnataka.png',
+    highlighted:true
+  },
   {
     quote:
       'I have been a plumber for 10 years and have used Kothari pipes and fittings for the last 3 years, and the quality is excellent. The joining is very easy, I have done many sites and had no leakage problem so far, and my customers and I are both satisfied.',
@@ -74,6 +102,24 @@ export const pipeTestimonials: DivisionTestimonial[] = [
 ];
 
 export const irrigationTestimonials: DivisionTestimonial[] = [
+  {
+    quote:
+      'I am a farmer myself and have been a Kothari Irrigation dealer for five years, so I can give farmers quality irrigation tools to grow more crops and earn more.We survey each field with GPS before the company’s engineers complete the design and installation, and we also train farmers on how to maintain their system.',
+    author: 'Amit Patel',
+    role: 'Dealer, Umiya Irrigation',
+    location: "Gujarat",
+    image: '/testimonials/irrigation/Amit Patel.jpeg',
+    highlighted:true
+  },
+  {
+    quote:
+      'I have worked with Kothari Irrigation for five years on ISI and non-ISI drip systems, and we first collect crop, soil, water source and fencing details from the farmer.The company’s engineers then prepare a proper design, which benefits and satisfies the farmers, and we get a wide range of quality irrigation and plumbing products under one roof.',
+    author: 'Lokesh Khandait',
+    role: 'Dealer, Avatar Agro Agency',
+    location: "Madhya Pradesh",
+    image: '/testimonials/irrigation/Lokesh Khandait.png',
+    highlighted:true
+  },
   {
     quote:
       'With limited water on my farm, I chose dragon fruit and set it up with Kothari drip irrigation. The even watering gives an even crop, and I am fully satisfied with the results.',
