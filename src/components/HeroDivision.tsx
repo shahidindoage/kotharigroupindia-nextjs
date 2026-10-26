@@ -60,7 +60,7 @@ export const HeroDivision = ({heroData}: {heroData: any}) => {
   }, [bannerImages.length]);
 
   return (
-    <div className="relative w-full min-h-[440px] sm:min-h-[100dvh] bg-black text-white font-sans overflow-hidden">
+    <div className="relative w-full min-h-[440px] sm:min-h-0 lg:min-h-[100dvh] bg-black text-white font-sans overflow-hidden">
       {/* Height driver: each banner gets its own height so cover never crops it */}
       <div className="w-full aspect-[1080/1740] sm:hidden" aria-hidden />
       <div className="hidden sm:block w-full aspect-[1376/768]" aria-hidden />
