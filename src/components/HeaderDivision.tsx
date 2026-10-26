@@ -1644,7 +1644,7 @@ const handleSolutionBack = () => {
                             </div>
 
               <Link
-                href="/contact"
+                href="/contact-us"
                 onClick={handleNavClick}
                 className={`block w-full px-4 py-3 text-base font-medium text-[#111111] ${isIrrigation ? 'hover:bg-[#EAF6EE]' : 'hover:bg-[#F5FAFF]'} ${isIrrigation ? 'hover:text-[#1E8E3E]' : 'hover:text-[#1575B3]'} transition`}
               >

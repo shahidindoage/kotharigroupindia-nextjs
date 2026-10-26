@@ -491,6 +491,32 @@
   color: #0f172a;
   font-weight: 700;
 }
+
+/* Keep embedded videos and wide tables inside the article (mobile overflow). */
+.wp-blog-content iframe,
+.wp-blog-content video,
+.wp-blog-content embed,
+.wp-blog-content object {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border: 0;
+}
+.wp-blog-content iframe {
+  aspect-ratio: 16 / 9;
+}
+.wp-blog-content figure,
+.wp-blog-content .wp-block-embed,
+.wp-blog-content .wp-block-embed__wrapper {
+  max-width: 100%;
+}
+.wp-blog-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 /* Breathing map pin */
 @keyframes breathe {
   0% { transform: translateX(-50%) scale(0.5); opacity: 0.8; }
