@@ -39,7 +39,7 @@ export default async function AwardsPage() {
         <Home2Header />
 
         {/* Hero */}
-        <div className="relative w-full min-h-[50dvh] bg-[#061E33] text-white font-sans overflow-hidden flex flex-col justify-between">
+        <div className="relative w-full min-h-[50dvh] sm:min-h-0 sm:aspect-[1373/630] lg:aspect-auto lg:min-h-[50dvh] bg-[#061E33] text-white font-sans overflow-hidden flex flex-col justify-between">
           <div className="absolute inset-0 z-0">
             <img
               src="https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Awards.jpg"
@@ -49,17 +49,17 @@ export default async function AwardsPage() {
             />
             <div className="absolute inset-0 bg-black/40 pointer-events-none" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/25 to-black/70 pointer-events-none" />
-          </div>
+          </div> 
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 w-full min-h-[50dvh] pt-28 sm:pt-32 pb-10 flex flex-col justify-between">
-            <div className="flex flex-col gap-5 sm:gap-6 my-auto py-8">
-              <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 w-full min-h-[50dvh] sm:h-full sm:min-h-0 lg:h-auto lg:min-h-[50dvh] pt-28 sm:pt-20 lg:pt-32 pb-10 sm:pb-5 lg:pb-10 flex flex-col justify-between">
+            <div className="flex flex-col gap-5 sm:gap-3 lg:gap-6 my-auto py-8 sm:py-3 lg:py-8">
+              <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5 sm:px-2.5 sm:py-1 lg:px-3 lg:py-1.5">
                 Kothari Group
               </span>
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
+              <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
                 Awards & Recognition
               </h1>
-              <p className="text-sm sm:text-base text-white/85 font-normal leading-relaxed max-w-3xl drop-shadow-sm">
+              <p className="text-sm sm:text-xs md:text-sm lg:text-base text-white/85 font-normal leading-relaxed max-w-3xl drop-shadow-sm">
                 Honours that reflect our commitment to innovation, quality and sustainability across
                 plumbing, agriculture and micro-irrigation.
               </p>

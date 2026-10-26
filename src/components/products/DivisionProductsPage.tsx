@@ -23,7 +23,14 @@ export default async function DivisionProductsPage({
   return (
     <ProductsPageLayout divisionSlug={divisionSlug}>
       {/* Page hero */}
-      <div className="relative w-full min-h-[50dvh] bg-[#061E33] text-white font-sans overflow-hidden flex flex-col justify-between">
+      <div className="relative w-full min-h-[50dvh] sm:min-h-0 lg:min-h-[50dvh] bg-[#061E33] text-white font-sans overflow-hidden flex flex-col justify-between">
+        {/* Tablet height driver: keeps the whole image visible (no crop) */}
+        <img
+          src={eyebrow=='Irrigation Division' ?`https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1600&q=80`:`https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=1600&q=80`}
+          alt=""
+          aria-hidden
+          className="hidden sm:block lg:hidden w-full h-auto invisible"
+        />
         <div className="absolute inset-0 z-0">
           <img
             src={eyebrow=='Irrigation Division' ?`https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1600&q=80`:`https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=1600&q=80`}
@@ -35,7 +42,7 @@ export default async function DivisionProductsPage({
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/25 to-black/70 pointer-events-none" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 w-full min-h-[50dvh] pt-28 sm:pt-32 pb-10 flex flex-col justify-between">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 w-full min-h-[50dvh] sm:absolute sm:inset-0 sm:min-h-0 lg:relative lg:inset-auto lg:min-h-[50dvh] pt-28 sm:pt-20 lg:pt-32 pb-10 sm:pb-5 lg:pb-10 flex flex-col justify-between">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-white/60 overflow-x-auto whitespace-nowrap shrink-0">
             <Link
@@ -48,14 +55,14 @@ export default async function DivisionProductsPage({
             <span className="text-white/90 truncate max-w-[220px] sm:max-w-[320px]">{title}</span>
           </nav>
 
-          <div className="flex flex-col gap-5 sm:gap-6 my-auto py-8">
-            <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5">
+          <div className="flex flex-col gap-5 sm:gap-3 lg:gap-6 my-auto py-8 sm:py-3 lg:py-8">
+            <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5 sm:px-2.5 sm:py-1 lg:px-3 lg:py-1.5">
               {eyebrow}
             </span>
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
+            <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
               {title}
             </h1>
-            <p className="text-sm sm:text-base text-white/85 font-normal leading-relaxed max-w-3xl drop-shadow-sm">
+            <p className="text-sm sm:text-xs md:text-sm lg:text-base text-white/85 font-normal leading-relaxed max-w-3xl drop-shadow-sm">
               {description}
             </p>
           </div>

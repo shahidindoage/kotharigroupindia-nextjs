@@ -8,7 +8,14 @@ export const SolutionHero: React.FC<{ solution: Solution }> = ({ solution }) => 
   const homeHref = solution.division === 'pipe' ? '/pipe-division' : '/irrigation-division';
 
   return (
-    <div className="relative w-full  min-h-[40dvh] sm:min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
+    <div className="relative w-full  min-h-[40dvh] sm:min-h-0 lg:min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
+      {/* Tablet height driver: keeps the whole image visible (no crop) */}
+      <img
+        src={solution.heroImage}
+        alt=""
+        aria-hidden
+        className="hidden sm:block lg:hidden w-full h-auto invisible"
+      />
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <img
@@ -26,7 +33,7 @@ export const SolutionHero: React.FC<{ solution: Solution }> = ({ solution }) => 
       </div>
 
       {/* Main Container - Full Height Layout */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full  min-h-[40dvh] sm:min-h-[100dvh] pt-24 sm:pt-28 pb-8 sm:pb-12 flex flex-col justify-between">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full  min-h-[40dvh] sm:absolute sm:inset-0 sm:min-h-0 lg:relative lg:inset-auto lg:min-h-[100dvh] pt-24 sm:pt-12 lg:pt-28 pb-8 sm:pb-3 lg:pb-12 flex flex-col justify-between">
 
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-white/60 overflow-x-auto whitespace-nowrap shrink-0">
@@ -36,23 +43,23 @@ export const SolutionHero: React.FC<{ solution: Solution }> = ({ solution }) => 
         </nav>
 
         {/* Headline Section - Centered Vertically */}
-        <div className="w-full flex flex-col gap-5 sm:gap-6 my-auto py-8">
-          <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5">
+        <div className="w-full flex flex-col gap-5 sm:gap-2 lg:gap-6 my-auto py-8 sm:py-1 lg:py-8">
+          <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5 sm:px-2 sm:py-1 lg:px-3 lg:py-1.5">
             {solution.eyebrow}
           </span>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
+          <h1 className="text-4xl sm:text-3xl md:text-4xl lg:text-7xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
             {solution.h1}
           </h1>
-          <p className="text-base sm:text-xl font-semibold text-white leading-snug max-w-3xl drop-shadow-md">
+          <p className="text-base sm:text-xs md:text-sm lg:text-xl font-semibold text-white leading-snug max-w-3xl drop-shadow-md">
             {solution.tagline}
           </p>
         </div>
 
         {/* Stats Grid & Callout Card - Anchored at Bottom */}
-        <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-end gap-6 sm:gap-8 lg:gap-12 w-full mt-auto">
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-end gap-6 sm:gap-3 lg:gap-12 w-full mt-auto">
 
           {/* Left Side: Stats Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-10 w-full lg:w-auto border-t border-white/20 pt-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-3 lg:gap-10 w-full lg:w-auto border-t border-white/20 pt-6 sm:pt-2 lg:pt-6">
             {[
              { value: '30+', label: 'Years of excellence' },
   { value: '9', label: 'Factories' },
@@ -61,10 +68,10 @@ export const SolutionHero: React.FC<{ solution: Solution }> = ({ solution }) => 
 
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col">
-                <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white drop-shadow-md">
+                <span className="text-2xl sm:text-lg md:text-xl lg:text-4xl font-semibold tracking-tight text-white drop-shadow-md">
                   {stat.value}
                 </span>
-                <span className="text-xs sm:text-sm text-white/90 leading-snug mt-1 drop-shadow-sm">
+                <span className="text-xs sm:text-[10px] md:text-xs lg:text-sm text-white/90 leading-snug mt-1 drop-shadow-sm">
                   {stat.label}
                 </span>
               </div>
@@ -76,8 +83,8 @@ export const SolutionHero: React.FC<{ solution: Solution }> = ({ solution }) => 
               href={`/${featured.categorySlug}/${featured.slug}`}
               className="group w-full lg:w-auto lg:max-w-[340px] shrink-0"
             >
-              <div className="bg-black/50 backdrop-blur-md border border-white/20 p-3.5 sm:p-4 rounded-sm shadow-2xl group-hover:border-white/40 transition-colors">
-                <div className="grid grid-cols-[64px_1fr] sm:grid-cols-[72px_1fr] gap-3.5 items-center">
+              <div className="bg-black/50 backdrop-blur-md border border-white/20 p-3.5 sm:p-2 lg:p-4 rounded-sm shadow-2xl group-hover:border-white/40 transition-colors">
+                <div className="grid grid-cols-[64px_1fr] sm:grid-cols-[40px_1fr] lg:grid-cols-[72px_1fr] gap-3.5 items-center">
                   <div className="relative aspect-square w-full overflow-hidden">
                     <img
                       src={featured.image}
@@ -88,8 +95,8 @@ export const SolutionHero: React.FC<{ solution: Solution }> = ({ solution }) => 
                     />
                   </div>
                   <div className="flex flex-col justify-center gap-1">
-                    <p className="font-semibold text-sm text-white leading-snug line-clamp-1">{featured.name}</p>
-                    <p className="text-xs text-white/80 leading-relaxed line-clamp-2">
+                    <p className="font-semibold text-sm sm:text-[11px] lg:text-sm text-white leading-snug line-clamp-1">{featured.name}</p>
+                    <p className="text-xs sm:text-[10px] lg:text-xs text-white/80 leading-relaxed line-clamp-2">
                       {featured.shortDescription}
                     </p>
                   </div>

@@ -97,7 +97,7 @@ export const Hero = () => {
   const active = slides[currentSlide];
 
   return (
-    <div className="relative w-full  min-h-[80dvh] sm:min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
+    <div className="relative w-full  min-h-[80dvh] sm:min-h-0 sm:aspect-[1672/941] lg:aspect-auto lg:min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <div ref={bgRef} className="relative w-full h-full">
@@ -119,7 +119,7 @@ export const Hero = () => {
       </div>
 
       {/* Main Container - Full Height Layout */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full  min-h-[80dvh] sm:min-h-[100dvh] pt-20 pb-8 sm:pb-12 flex flex-col justify-between">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full  min-h-[80dvh] sm:min-h-0 lg:min-h-[100dvh] pt-20 sm:pt-14 lg:pt-20 pb-8 sm:pb-5 lg:pb-12 flex flex-col justify-between">
         
         {/* Top spacer to ensure vertical balance */}
         <div aria-hidden="true" className="w-full shrink-0 h-4" />
@@ -129,7 +129,7 @@ export const Hero = () => {
           <div className="w-full lg:w-3/4">
             <h1 
               ref={headlineRef} 
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0"
+              className="text-5xl sm:text-4xl md:text-5xl lg:text-8xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0"
             >
               {active.headline}
             </h1>
@@ -137,16 +137,16 @@ export const Hero = () => {
         </div>
 
         {/* Stats Grid & Dynamic Callout Card - Anchored at Bottom */}
-        <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-end gap-6 sm:gap-8 lg:gap-12 w-full mt-auto">
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-end gap-6 sm:gap-6 lg:gap-12 w-full mt-auto">
           
           {/* Left Side: Stats Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-6 w-full lg:w-auto border-t border-white/20 pt-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-4 lg:gap-6 w-full lg:w-auto border-t border-white/20 pt-6 sm:pt-4 lg:pt-6">
             {stats.map((stat, idx) => (
               <div key={idx} className="flex flex-col">
-                <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white drop-shadow-md">
+                <span className="text-2xl sm:text-2xl lg:text-4xl font-semibold tracking-tight text-white drop-shadow-md">
                   {stat.value}
                 </span>
-                <span className="text-xs sm:text-[16px] text-white/90 leading-snug mt-1 drop-shadow-sm">
+                <span className="text-xs sm:text-xs md:text-sm lg:text-[16px] text-white/90 leading-snug mt-1 drop-shadow-sm">
                   {stat.label}
                 </span>
               </div>
@@ -155,8 +155,8 @@ export const Hero = () => {
 
           {/* Right Side: Compact Callout Card */}
           <div className="w-full lg:w-auto lg:max-w-[340px] shrink-0">
-            <div className="bg-black/50 backdrop-blur-md border border-white/20 p-3.5 sm:p-4 rounded-sm shadow-2xl">
-              <div className="grid grid-cols-[64px_1fr] sm:grid-cols-[72px_1fr] gap-3.5 items-center">
+            <div className="bg-black/50 backdrop-blur-md border border-white/20 p-3.5 sm:p-3 lg:p-4 rounded-sm shadow-2xl">
+              <div className="grid grid-cols-[64px_1fr] sm:grid-cols-[56px_1fr] lg:grid-cols-[72px_1fr] gap-3.5 items-center">
                 
                 {/* Dynamic Card Thumbnail */}
                 <div ref={cardImageRef} className="relative aspect-square w-full">
@@ -171,7 +171,7 @@ export const Hero = () => {
                 {/* Dynamic Card Text */}
                 <div ref={cardContentRef} className="flex flex-col justify-center gap-1">
                   {/* <p className="font-semibold text-sm text-white leading-snug">{active.cardTitle}</p> */}
-                  <p className="text-xs sm:text-[16px] text-white/80 leading-relaxed">
+                  <p className="text-xs sm:text-xs md:text-sm lg:text-[16px] text-white/80 leading-relaxed">
                     {active.cardDescription}
                   </p>
                 </div>

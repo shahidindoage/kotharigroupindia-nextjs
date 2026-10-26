@@ -107,7 +107,7 @@ export const SUSTAINABILITY_INTRO =
 
 export const SustainHero: React.FC = () => {
   return (
-    <div className="relative w-full  min-h-[40dvh] sm:min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
+    <div className="relative w-full min-h-[40dvh] lg:min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <img
@@ -125,7 +125,7 @@ export const SustainHero: React.FC = () => {
       </div>
 
       {/* Main Container - Full Height Layout */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full  min-h-[40dvh] sm:min-h-[100dvh] pt-24 sm:pt-28 pb-8 sm:pb-12 flex flex-col justify-between">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full min-h-[40dvh] lg:min-h-[100dvh] pt-24 sm:pt-12 lg:pt-28 pb-8 sm:pb-3 lg:pb-12 flex flex-col justify-between">
 
         {/* Breadcrumb */}
         {/* <nav className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-white/60 overflow-x-auto whitespace-nowrap shrink-0">
@@ -135,11 +135,11 @@ export const SustainHero: React.FC = () => {
         </nav> */}
 
         {/* Headline Section - Centered Vertically */}
-        <div className="w-full flex flex-col gap-5 sm:gap-6 my-auto py-8">
-          <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5">
+        <div className="w-full flex flex-col gap-5 sm:gap-2 lg:gap-6 my-auto py-8 sm:py-1 lg:py-8">
+          <span className="inline-block self-start text-[11px] font-mono tracking-[0.25em] uppercase text-white border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1.5 sm:px-2.5 sm:py-1 lg:px-3 lg:py-1.5">
             Our Responsibility
           </span>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
+          <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0 max-w-5xl">
             Sustainability at Kothari Group
           </h1>
           {/* <p className="text-base sm:text-xl font-semibold text-white leading-snug max-w-3xl drop-shadow-md">
@@ -148,10 +148,10 @@ export const SustainHero: React.FC = () => {
         </div>
 
         {/* Stats Grid & Video - Anchored at Bottom */}
-        <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-end gap-6 sm:gap-8 lg:gap-12 w-full mt-auto">
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-stretch lg:items-end gap-6 sm:gap-3 lg:gap-12 w-full mt-auto">
 
           {/* Left Side: Stats Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-10 w-full lg:w-auto border-t border-white/20 pt-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-3 lg:gap-10 w-full lg:w-auto border-t border-white/20 pt-6 sm:pt-3 lg:pt-6">
             {[
               { value: '30+', label: 'Years of excellence' },
   { value: '9', label: 'Factories' },
@@ -160,10 +160,10 @@ export const SustainHero: React.FC = () => {
 
             ].map((stat, idx) => (
               <div key={idx} className="flex flex-col">
-                <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white drop-shadow-md">
+                <span className="text-2xl sm:text-2xl lg:text-4xl font-semibold tracking-tight text-white drop-shadow-md">
                   {stat.value}
                 </span>
-                <span className="text-xs sm:text-base text-white/90 leading-snug mt-1 drop-shadow-sm">
+                <span className="text-xs sm:text-[10px] md:text-xs lg:text-sm text-white/90 leading-snug mt-1 drop-shadow-sm">
                   {stat.label}
                 </span>
               </div>
