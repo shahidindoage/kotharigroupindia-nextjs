@@ -105,7 +105,7 @@ export const AboutHero2: React.FC = () => {
         <picture className="absolute inset-0">
           <source media="(max-width: 639px)" srcSet={'/banners/capability/Capabilities-&-Infrastructure_banner-mobile.jpg'} />
           <img
-            src={'/banners/capability/Capabilities-&-Infrastructure_banner.jpg'}
+            src={'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Capabilities_banner.jpg'}
             alt="About Kothari Group"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center"

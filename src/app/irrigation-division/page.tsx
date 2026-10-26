@@ -469,7 +469,7 @@ const FEATURE_PRODUCTS = [
       <DivisionOverview
         heading="Irrigation Solution: Complete Farm Water Solutions"
         accent="blue"
-        image="/banners/irrigation/About-Kothari-Irrigation.png"
+        image="https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/About_kothari-Irrigation.jpg"
         paragraphs={[
         "Water conservation through effective irrigation allows farmers to use available water resources optimally while ensuring the crops get enough water. Kothari Group provides farmers with drip irrigation systems that deliver water exactly to the root zones of the plants in addition to offering sprinkler irrigation systems that ensure uniform coverage in larger fields.",
         "The micro and mini sprinklers we offer can provide gentle and uniform irrigation to the orchards, nurseries, and sensitive crops. Our sand, screen and automatic filters are available for purifying the irrigation water and preventing build-up of sediments and debris.",

@@ -220,7 +220,7 @@ export default async function CapabilitiesInfrastructurePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
             <div className="relative min-h-[320px] overflow-hidden">
               <img
-                src="/banners/capability/About_Capabilities_Get-in-touch.png"
+                src="https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/About_Capabilities_Get-in-touch-1.jpg"
                 alt="Kothari Group production facility"
                 referrerPolicy="no-referrer"
                 className="absolute inset-0 w-full h-full object-cover object-center"

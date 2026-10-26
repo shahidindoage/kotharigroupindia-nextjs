@@ -766,12 +766,12 @@ export const pipeSolutionsMegaMenu = {
     {
       title: "Urban Drainage & Sewerage Networks",
       url: "/solutions/urban-drainage-sewerage",
-      image: "/solutions/pipe/urban-drainage-sewerage/hero.jpg",
+      image: "https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Urban-Drainage.jpg",
     },
     {
       title: "Groundwater Access Solutions",
       url: "/solutions/groundwater-access",
-      image: "/solutions/pipe/groundwater-access/hero.jpg",
+      image: "https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Groundwater-Solution.jpg",
     },
     {
       title: "Farm Infrastructure Piping Solutions",

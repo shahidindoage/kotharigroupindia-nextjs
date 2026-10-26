@@ -170,7 +170,7 @@ export const SuccessStoriesListing: React.FC<{
               aria-label="Breadcrumb"
               className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-white/60 overflow-x-auto whitespace-nowrap shrink-0"
             >
-              <Link href={`/${chromeDivision}-division`} className="hover:text-white transition-colors">
+              <Link href={chromeDivision ? `/${chromeDivision}-division` : '/'} className="hover:text-white transition-colors">
                 Home
               </Link>
               <ChevronRight className="w-3.5 h-3.5 shrink-0" />
@@ -221,9 +221,11 @@ export const SuccessStoriesListing: React.FC<{
         {/* Stories Grid */}
         <section className="w-full bg-white py-16 pb-0 sm:py-24 sm:pb-2">
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
+            <div className='hidden'>
             {showFilter && (
               <BlogFilter division={division} basePath={pageBasePath} />
             )}
+            </div>
             {storiesTitle && (
               <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8 pb-6 border-b border-slate-300">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight uppercase font-serif text-slate-900 m-0">

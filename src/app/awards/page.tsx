@@ -42,7 +42,7 @@ export default async function AwardsPage() {
         <div className="relative w-full min-h-[50dvh] bg-[#061E33] text-white font-sans overflow-hidden flex flex-col justify-between">
           <div className="absolute inset-0 z-0">
             <img
-              src="/banners/resource/Resources_Awards.png"
+              src="https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Awards.jpg"
               alt="Awards & Industry Recognition"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-center"

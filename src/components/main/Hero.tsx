@@ -18,8 +18,8 @@ const ArrowIcon = () => (
 
 const slides = [
   {
-    bgImage: '/banners/home/Home-banner-1.jpg',
-    mobileBg: '/banners/home/mobile/Home-banner-1_mobile.jpg',
+    bgImage: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Home-banner-1.jpg',
+    mobileBg: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Home-banner-1_mobile.jpg',
     cardImage: '/banners/home/Home-banner-1.jpg',
     headline: <>India's trusted water management solution provider</>,
     subtext: 'Delivering high-durability plumbing solutions designed for leak-free precision, flawless water delivery, and modern waste management.',
@@ -28,8 +28,8 @@ const slides = [
     cardDescription: 'Conservation in every drop of water for the growing nation.  ',
   },
   {
-    bgImage:  '/banners/home/Home-banner-2.jpg',
-    mobileBg: '/banners/home/mobile/Home-banner-2-Mobile.jpg',
+    bgImage:  'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Home-banner-2.jpg',
+    mobileBg: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Home-banner-2-Mobile.jpg',
     cardImage:  '/banners/home/Home-banner-2.jpg',
    headline: <>Making water management reliable, from the first fitting.</>,
     subtext: 'Building heavy-duty agricultural piping systems that optimize every drop, protecting crops and maximizing harvest yields nationwide.',
@@ -38,10 +38,10 @@ const slides = [
     cardDescription: 'Quality-engineered pipes Manufactured for every water management.',
   },
   {
-    bgImage:'/banners/home/Home-banner-3.jpg',
-    mobileBg: '/banners/home/mobile/Home-banner-3_Mobile.jpg',
+    bgImage:'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Home-banner-3.jpg',
+    mobileBg: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Home-banner-3_Mobile.jpg',
     cardImage:'/banners/home/Home-banner-3.jpg',
-   headline: <>Strong infrastructure. Reliable water management.</>,
+   headline: <>Strong infrastructure. Reliable water management.</>, 
     subtext: 'Empowering millions of farmers with intelligent micro-irrigation systems designed for peak crop vitality and water conservation.',
     ctaText: 'View Micro Irrigation',
     cardTitle: 'Quality-engineered pipes Manufactured for every water management.',

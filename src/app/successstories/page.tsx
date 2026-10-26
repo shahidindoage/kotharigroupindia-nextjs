@@ -2,6 +2,7 @@ import { SuccessStoriesListing } from '@/components/successstories/SuccessStorie
 import { resolveSeoText } from '@/lib/wp-seo';
 import { JsonLd } from '@/components/JsonLd';
 import { ORG_ID, standardPageGraph } from '@/lib/schema';
+import { irrigationSuccessStoryVideos, pipeSuccessStoryVideos } from '@/data/success-story-videos';
 
 export const revalidate = 600;
 
@@ -33,6 +34,8 @@ export default async function SuccessStoriesPage({
       : null;
   const seo = await resolveSeoText(undefined, SEO_FALLBACK);
 
+
+const SuccessStoryVideos = [...irrigationSuccessStoryVideos, ...pipeSuccessStoryVideos]
   return (
     <>
       <JsonLd
@@ -51,6 +54,10 @@ export default async function SuccessStoriesPage({
         showFilter
         title="Success Stories"
         subtitle="Real-world outcomes from Kothari Group piping and irrigation projects — farms transformed, water saved, communities strengthened."
+       detailBasePath="/successstories"
+      paginationBasePath="/successstories"
+       videos={SuccessStoryVideos}
+        storiesTitle="Latest Success Stories"
       />
     </>
   );

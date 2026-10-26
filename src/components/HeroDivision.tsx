@@ -32,14 +32,14 @@ const BANNER_IMAGES: Record<
   { src: string; mobile?: string }[]
 > = {
   irrigation: [
-    { src: '/banners/irrigation/irrigation_1.png', mobile: '/banners/irrigation/mobile/irrigation_1M.jpg' },
-    { src: '/banners/irrigation/irrigation_2.png', mobile: '/banners/irrigation/mobile/irrigation_2M.jpg' },
-      { src: '/banners/irrigation/irrigation_3.png' , mobile: '/banners/irrigation/mobile/irrigation_3M.jpg' }, 
+    { src: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/irrigation_1.png', mobile: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/irrigation_1_Mobile.jpg' },
+    { src: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/irrigation_2.png', mobile: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/irrigation_2_Mobile.jpg' },
+      { src: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/irrigation_3.png' , mobile: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/irrigation_3_Mobile.jpg' }, 
   ], 
   pipe: [
-    { src: '/banners/pipe/pipe_1.png' , mobile: '/banners/pipe/mobile/pipe_1M.jpg' },
-    { src: '/banners/pipe/pipe_2.png', mobile: '/banners/pipe/mobile/pipe_2M.jpg' },
-    { src: '/banners/pipe/pipe_3.png', mobile: '/banners/pipe/mobile/pipe_3M.jpg' }, 
+    { src: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Pipe_1.png' , mobile: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Pipe_1_mobile.jpg' },
+    { src: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Pipe_2.png', mobile: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Pipe_2_Mobile.jpg' },
+    { src: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Pipe_3.png', mobile: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Pipe_3_Mobile.jpg' }, 
   ], 
 };
 

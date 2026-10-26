@@ -34,7 +34,7 @@ const aboutMegaMenu = {
     {
       title: 'Capabilities & More',
       url: '/capabilities-infrastructure',
-      image: "/banners/capability/Capabilities-&-Infrastructure_banner.jpg",
+      image: "https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Capabilities_banner.jpg",
     },
     // {
     //   title: 'Sustainability',
@@ -191,17 +191,17 @@ const resourcesMegaMenu = {
     {
       title: 'Awards',
       url: '/awards',
-      image: "/banners/resource/Resources_Awards.png",
+      image: "https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Awards.jpg",
     },
     {
       title: 'Blogs',
       url: '/blogs',
-      image: "/banners/resource/Resources_Blogs.png",
+      image: "https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Blogs.jpg",
     },
     {
       title: 'News',
       url: '/press-release',
-      image:"/banners/resource/Resources_News.png",
+      image:"https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/News.jpg",
     },
   
     {
@@ -212,7 +212,7 @@ const resourcesMegaMenu = {
     {
       title: 'Quality Policy',
       url: '/quality-policy',
-      image: "/banners/resource/Resources_Quality-Policy.png",
+      image: "https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Quality-Policy.jpg",
     },
     {
       title: 'Knowledge Centre',

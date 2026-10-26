@@ -118,7 +118,7 @@ export default async function QualityPolicyPage() {
           <div className="relative w-full min-h-[50dvh] bg-[#061E33] text-white font-sans overflow-hidden flex flex-col justify-between">
           <div className="absolute inset-0 z-0">
             <img
-              src="/banners/resource/Resources_Quality-Policy.png"
+              src="https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Quality-Policy.jpg"
               alt="KothariTV videos"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-center"
