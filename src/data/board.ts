@@ -22,7 +22,7 @@ export const boardOfDirectors: BoardMember[] = [
     description:
       'Kothari Group was established in 1997 by Mr. Kiran S. Kothari to change the water management system from the core with new solutions and techniques of agricultural activities. His passion for agricultural sciences is coupled with creativity and smart use of water sources. It can be seen in the development of Kothari Group through the years.',
     readMoreContent: `Kothari Group was established in 1997 by Mr. Kiran S. Kothari to change the water management system from the core with new solutions and techniques of agricultural activities. His passion for agricultural sciences is coupled with creativity and smart use of water sources. It can be seen in the development of Kothari Group through the years.`,
-    imageUrl: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Kiran-Sir.jpg',
+    imageUrl: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Arvind-Sir.jpg',
   },
   { 
     name: 'Arvind S. Kothari',
@@ -30,7 +30,7 @@ export const boardOfDirectors: BoardMember[] = [
     description:
       'Mr. Arvind S. Kothari is an alumnus of Pune University who studied mathematics. Now that he has joined the Kothari Group, he has also brought analytical and strategic skills to the company. ',
     readMoreContent: `Mr. Arvind S. Kothari is an alumnus of Pune University who studied mathematics. Now that he has joined the Kothari Group, he has also brought analytical and strategic skills to the company. `,
-    imageUrl: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Arvind-Sir.jpg',
+    imageUrl: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Kiran-Sir.jpg',
   },
   {
     name: 'Ujwal S. Kothari',
