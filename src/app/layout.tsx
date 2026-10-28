@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL, globalGraph } from "@/lib/schema";
@@ -26,6 +27,16 @@ export default function RootLayout({
           "min-h-full bg-[#F5FAFF] text-[#111111] font-['Outfit',sans-serif] selection:bg-[#1575B3] selection:text-white"
         }
       >
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-695384698"
+          strategy="afterInteractive"
+        />
+        <Script id="google-tag" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-695384698');`}
+        </Script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
