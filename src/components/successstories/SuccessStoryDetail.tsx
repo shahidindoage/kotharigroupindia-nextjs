@@ -34,12 +34,16 @@ const STORY_PARENT: Record<string, { name: string; aboutId: string }> = {
   },
 };
 
-export async function successStoryDetailMetadata(slug: string): Promise<Metadata> {
+export async function successStoryDetailMetadata(
+  slug: string,
+  basePath = '/successstories'
+): Promise<Metadata> {
   const post = await fetchWpBlogPostBySlug(slug).catch(() => null);
   if (!post) return { title: 'Success Story | Kothari Group' };
   return {
     title: `${post.title} | Kothari Group`,
     description: post.excerpt.slice(0, 160),
+    alternates: { canonical: abs(`${basePath}/${slug}`) },
   };
 }
 

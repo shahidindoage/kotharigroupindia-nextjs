@@ -9,7 +9,7 @@ import {
   NEWS_CATEGORY_SLUGS,
   NEWS_CATEGORY_LABELS,
 } from '@/lib/wp-posts';
-import { resolveSeoText } from '@/lib/wp-seo';
+import { resolveSeoText, withCanonical } from '@/lib/wp-seo';
 import { JsonLd } from '@/components/JsonLd';
 import { ORG_ID, standardPageGraph } from '@/lib/schema';
 
@@ -21,10 +21,13 @@ const SEO_FALLBACK = {
     'Stay updated with the latest press releases from Kothari Group, covering our awards, launches and major announcements in the agricultural sector.',
 };
 
-export const metadata = {
-  title: SEO_FALLBACK.title,
-  description: SEO_FALLBACK.description,
-};
+export const metadata = withCanonical(
+  {
+    title: SEO_FALLBACK.title,
+    description: SEO_FALLBACK.description,
+  },
+  '/press-release'
+);
 
 export const revalidate = 600;
 

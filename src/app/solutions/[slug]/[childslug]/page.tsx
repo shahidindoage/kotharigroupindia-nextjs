@@ -13,6 +13,7 @@ import { JsonLd } from '@/components/JsonLd';
 import {
   IRRIGATION_DIVISION_ID,
   PIPE_DIVISION_ID,
+  abs,
   childPageGraph,
 } from '@/lib/schema';
 
@@ -32,6 +33,7 @@ export async function generateMetadata({ params }: { params: Params | Promise<Pa
   return {
     title: child.metaTitle,
     description: child.metaDescription,
+    alternates: { canonical: abs(`/solutions/${slug}/${childslug}`) },
     openGraph: {
       title: child.metaTitle,
       description: child.metaDescription,

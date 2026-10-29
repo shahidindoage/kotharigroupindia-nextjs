@@ -1,6 +1,7 @@
 // src/lib/wp-seo.ts
 import { cache } from 'react';
 import type { Metadata } from 'next';
+import { abs } from './schema';
 
 const WP_API =
   process.env.NEXT_PUBLIC_WP_API_URL || 'https://admin.kotharigroupindia.com/wp-json';
@@ -57,6 +58,21 @@ export const fetchWpSeoBySlug = cache(
   }
 );
 
+/**
+ * Attaches a self-referencing canonical (absolute production URL) to a page's
+ * metadata. Kept here so every page — static or WP-driven — builds the tag the
+ * same way from SITE_URL.
+ */
+export function withCanonical(meta: Metadata, path: string): Metadata {
+  return {
+    ...meta,
+    alternates: {
+      ...(meta.alternates ?? {}),
+      canonical: abs(path),
+    },
+  };
+}
+
 function overlayWpSeo(seo: WpSeoData | null, fallback: Metadata): Metadata {
   if (!seo) return fallback;
   return {
@@ -71,15 +87,25 @@ function overlayWpSeo(seo: WpSeoData | null, fallback: Metadata): Metadata {
   };
 }
 
-export async function wpPageMetadata(slug: string, fallback: Metadata): Promise<Metadata> {
+export async function wpPageMetadata(
+  slug: string,
+  fallback: Metadata,
+  canonicalPath?: string
+): Promise<Metadata> {
   const seo = await fetchWpSeoBySlug(slug);
-  return overlayWpSeo(seo, fallback);
+  return overlayWpSeo(seo, withCanonical(fallback, canonicalPath ?? `/${slug}`));
 }
 
 // Convenience factory so pages can do:
 //   export const generateMetadata = wpPageMetadataFor('about-us', { title: '...', description: '...' });
-export function wpPageMetadataFor(slug: string, fallback: Metadata): () => Promise<Metadata> {
-  return () => wpPageMetadata(slug, fallback);
+// The canonical defaults to /{slug}; pass a third argument when the public path
+// differs in case (e.g. GST, KothariTV) or sits under a folder.
+export function wpPageMetadataFor(
+  slug: string,
+  fallback: Metadata,
+  canonicalPath?: string
+): () => Promise<Metadata> {
+  return () => wpPageMetadata(slug, fallback, canonicalPath);
 }
 
 export interface SeoText {

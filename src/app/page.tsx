@@ -8,8 +8,13 @@ import { Impact } from '@/components/main/Impact';
 import { News, type HomeNewsCard } from '@/components/main/News';
 import { WhyKothariGroup } from '@/components/main/WhyKothariGroup';
 import { fetchWpHomeNews } from '@/lib/wp-posts';
+import { abs } from '@/lib/schema';
 
 export const revalidate = 600;
+
+export const metadata = {
+  alternates: { canonical: abs('/') },
+};
 
 const FALLBACK_IMAGE =
   'https://kotharigroupindia.com/img/images/Irrigation_products.webp';

@@ -62,6 +62,7 @@ export async function generateMetadata({ params }: { params: Params | Promise<Pa
       return {
         title,
         description,
+        alternates: { canonical: abs(`/${catSlug}/${prodSlug}`) },
         openGraph: {
           title,
           description,
@@ -80,6 +81,7 @@ export async function generateMetadata({ params }: { params: Params | Promise<Pa
   return {
     title: `${product.name} | Kothari Group`,
     description,
+    alternates: { canonical: abs(`/${catSlug}/${prodSlug}`) },
     openGraph: {
       title: product.name,
       description,

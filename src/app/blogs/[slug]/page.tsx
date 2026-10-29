@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
   return {
     title: `${post.title} | Kothari Group`,
     description: post.excerpt.slice(0, 160),
+    alternates: { canonical: abs(`/blogs/${slug}`) },
   };
 }
 

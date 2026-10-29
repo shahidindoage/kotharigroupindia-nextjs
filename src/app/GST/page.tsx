@@ -15,7 +15,7 @@ const SEO_FALLBACK = {
     'View GST-related information for Kothari Group’s irrigation and agricultural solutions — tax registration details, compliance practices and invoice guidelines.',
 };
 
-export const generateMetadata = wpPageMetadataFor('gst', SEO_FALLBACK);
+export const generateMetadata = wpPageMetadataFor('gst', SEO_FALLBACK, '/GST');
 
 const GST_ENTRIES = [
   { no: 1, gstin: '37AADCK8017H2ZG', status: 'Active', state: 'Andhra Pradesh' },

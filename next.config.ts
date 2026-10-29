@@ -13,6 +13,17 @@ process.on('unhandledRejection', (reason) => {
 });
 
 const nextConfig: NextConfig = {
+  // Keep the Vercel staging/preview host out of search results. The canonical
+  // tags already point at kotharigroupindia.com; this adds a hard noindex too.
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'kotharigroupindia.vercel.app' }],
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+    ];
+  },
   async redirects() {
     return [
       {

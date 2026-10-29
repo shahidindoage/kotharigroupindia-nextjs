@@ -11,7 +11,7 @@ interface Params {
 
 export async function generateMetadata({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  return successStoryDetailMetadata(slug);
+  return successStoryDetailMetadata(slug, '/irrigation-successstories');
 }
 
 export default async function IrrigationSuccessStoryPage({

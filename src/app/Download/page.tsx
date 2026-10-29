@@ -4,7 +4,7 @@ import { Home2Header } from '@/components/Home2Header';
 import { Home2Footer } from '@/components/Home2Footer';
 import { DownloadGallery } from '@/components/download/DownloadGallery';
 import { downloadsData } from '@/lib/download';
-import { resolveSeoText } from '@/lib/wp-seo';
+import { resolveSeoText, withCanonical } from '@/lib/wp-seo';
 import { JsonLd } from '@/components/JsonLd';
 import { ORG_ID, standardPageGraph } from '@/lib/schema';
 
@@ -16,10 +16,13 @@ const SEO_FALLBACK = {
     'Access downloadable resources from Kothari Group company profile, system brochures, agriculture guides and more to support smart irrigation and farming solutions.',
 };
 
-export const metadata = {
-  title: SEO_FALLBACK.title,
-  description: SEO_FALLBACK.description,
-};
+export const metadata = withCanonical(
+  {
+    title: SEO_FALLBACK.title,
+    description: SEO_FALLBACK.description,
+  },
+  '/Download'
+);
 
 export default async function DownloadsPage() {
   const { downloads, categories } = downloadsData;

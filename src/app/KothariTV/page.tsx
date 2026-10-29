@@ -16,7 +16,7 @@ const SEO_FALLBACK = {
     'Watch videos showcasing our solutions, product demos, tutorials, and success stories from Kothari Group.',
 };
 
-export const generateMetadata = wpPageMetadataFor('kotharitv', SEO_FALLBACK);
+export const generateMetadata = wpPageMetadataFor('kotharitv', SEO_FALLBACK, '/KothariTV');
 
 export default async function VideosPage() {
   const { videos, categories } = kothariTVData;

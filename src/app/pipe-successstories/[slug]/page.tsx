@@ -11,7 +11,7 @@ interface Params {
 
 export async function generateMetadata({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  return successStoryDetailMetadata(slug);
+  return successStoryDetailMetadata(slug, '/pipe-successstories');
 }
 
 export default async function PipeSuccessStoryPage({ params }: { params: Promise<Params> }) {

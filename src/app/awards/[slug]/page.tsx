@@ -6,6 +6,7 @@ import AppShell from '@/components/AppShell';
 import { Home2Header } from '@/components/Home2Header';
 import { Home2Footer } from '@/components/Home2Footer';
 import { awardsData } from '@/lib/awards';
+import { abs } from '@/lib/schema';
 
 interface Params {
   slug: string;
@@ -28,6 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
   return {
     title: `${award.title} | Kothari Group`,
     description: award.description.slice(0, 160),
+    alternates: { canonical: abs(`/awards/${slug}`) },
   };
 }
 

@@ -15,7 +15,7 @@ import {
   pipeSolutionsMegaMenu,
 } from '@/data/products';
 import { JsonLd } from '@/components/JsonLd';
-import { IRRIGATION_DIVISION_ID, childPageGraph } from '@/lib/schema';
+import { IRRIGATION_DIVISION_ID, abs, childPageGraph } from '@/lib/schema';
 
 type Params = { slug: string };
 
@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: { params: Params | Promise<Pa
   return {
     title: detail.metaTitle,
     description: detail.metaDescription,
+    alternates: { canonical: abs(`${PARENT_HREF}/${slug}`) },
     openGraph: {
       title: detail.metaTitle,
       description: detail.metaDescription,

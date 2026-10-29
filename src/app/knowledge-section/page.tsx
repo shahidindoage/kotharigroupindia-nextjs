@@ -3,7 +3,7 @@ import AppShell from '@/components/AppShell';
 import { Home2Header } from '@/components/Home2Header';
 import { Home2Footer } from '@/components/Home2Footer';
 import { KnowledgeGrid } from '@/components/knowledge/KnowledgeGrid';
-import { resolveSeoText } from '@/lib/wp-seo';
+import { resolveSeoText, withCanonical } from '@/lib/wp-seo';
 import { JsonLd } from '@/components/JsonLd';
 import { ORG_ID, standardPageGraph } from '@/lib/schema';
 
@@ -15,10 +15,13 @@ const SEO_FALLBACK = {
     'Explore Kothari Group India’s Knowledge Section for expert insights on plumbing pipes, agri‐fittings & micro-irrigation systems. Learn best practices & product tech.',
 };
 
-export const metadata = {
-  title: SEO_FALLBACK.title,
-  description: SEO_FALLBACK.description,
-};
+export const metadata = withCanonical(
+  {
+    title: SEO_FALLBACK.title,
+    description: SEO_FALLBACK.description,
+  },
+  '/knowledge-section'
+);
 
 // fully static server component
 export const revalidate = 86400;

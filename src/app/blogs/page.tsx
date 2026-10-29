@@ -12,7 +12,7 @@ import {
   fetchWpPostsByCategorySlugs,
   WP_CATEGORIES,
 } from '@/lib/wp-posts';
-import { resolveSeoText } from '@/lib/wp-seo';
+import { resolveSeoText, withCanonical } from '@/lib/wp-seo';
 import { JsonLd } from '@/components/JsonLd';
 import { ORG_ID, standardPageGraph } from '@/lib/schema';
 
@@ -24,10 +24,13 @@ const SEO_FALLBACK = {
     'Explore expert Blog articles from Kothari Group India on plumbing, irrigation systems & agri-pipes. Stay informed on best practices, innovations and market trends.',
 };
 
-export const metadata = {
-  title: SEO_FALLBACK.title,
-  description: SEO_FALLBACK.description,
-};
+export const metadata = withCanonical(
+  {
+    title: SEO_FALLBACK.title,
+    description: SEO_FALLBACK.description,
+  },
+  '/blogs'
+);
 
 export const revalidate = 600;
 

@@ -1,5 +1,5 @@
 import { SuccessStoriesListing } from '@/components/successstories/SuccessStoriesListing';
-import { resolveSeoText } from '@/lib/wp-seo';
+import { resolveSeoText, withCanonical } from '@/lib/wp-seo';
 import { JsonLd } from '@/components/JsonLd';
 import { ORG_ID, standardPageGraph } from '@/lib/schema';
 import { irrigationSuccessStoryVideos, pipeSuccessStoryVideos } from '@/data/success-story-videos';
@@ -14,10 +14,13 @@ const SEO_FALLBACK = {
     'Read inspiring success stories of farmers and dealers partnering with Kothari Group how smart irrigation, quality products & service drove growth and results.',
 };
 
-export const metadata = {
-  title: SEO_FALLBACK.title,
-  description: SEO_FALLBACK.description,
-};
+export const metadata = withCanonical(
+  {
+    title: SEO_FALLBACK.title,
+    description: SEO_FALLBACK.description,
+  },
+  '/successstories'
+);
 
 type DivisionFilter = 'pipe' | 'irrigation' | null;
 

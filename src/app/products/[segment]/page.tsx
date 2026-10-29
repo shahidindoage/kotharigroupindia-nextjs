@@ -31,7 +31,7 @@ function segmentFallback(segmentSlug: string) {
 export async function generateMetadata({ params }: PageProps) {
   const { segment } = await Promise.resolve(params);
   const segmentSlug = decodeURIComponent(segment);
-  return wpPageMetadata(segmentSlug, segmentFallback(segmentSlug));
+  return wpPageMetadata(segmentSlug, segmentFallback(segmentSlug), `/products/${segmentSlug}`);
 }
 
 function slugToReadable(slug: string): string {

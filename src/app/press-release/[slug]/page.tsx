@@ -92,6 +92,7 @@ export async function generateMetadata({
     return {
       title: `${article.title} | Kothari Group`,
       description: article.description,
+      alternates: { canonical: abs(`/press-release/${slug}`) },
     };
   } catch {
     return { title: 'News | Kothari Group' };
