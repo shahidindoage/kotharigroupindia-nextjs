@@ -33,13 +33,15 @@ export interface ProductsDivisionMenu {
 }
 
 /**
- * Products to pin to the front of a segment, listed in the order they should
- * appear. Everything else in that segment keeps its normal order and follows
- * the pinned ones.
+ * Products to pin to the front of a segment, listed in the exact order they
+ * should appear. Everything else in that segment follows afterwards in its
+ * normal order.
  *
- * Keyed by segment slug. A pinned product is hoisted by moving the category
- * that contains it to the front of the segment, with the pinned product first
- * inside that category.
+ * Keyed by segment slug. The pinned products are pulled out of whatever
+ * category they belong to (so products from the same category still respect
+ * this order) and emitted first as a leading "Featured" group; the client
+ * flattens categories into one grid, so the visible order matches the list.
+ * Slugs may be given bare ("kotiff") or as a path ("/kotiff").
  */
 const SEGMENT_PRODUCT_PRIORITY: Record<string, string[]> = {
   'sprinkler-irrigation-system': [
@@ -120,30 +122,38 @@ function applySegmentPriority(
 
   const slugOf = (url: string) => url.split('/').filter(Boolean).pop() || '';
 
-  const hoisted: { name: string; products: MenuProduct[] }[] = [];
-  const used = new Set<number>();
+  // Pull the pinned products out in the exact listed order. A slug missing from
+  // the segment is skipped; a product already claimed is never pinned twice.
+  const pinned: MenuProduct[] = [];
+  const claimed = new Set<string>();
 
   for (const wanted of priority) {
-    const idx = categories.findIndex(
-      (c, i) => !used.has(i) && c.products.some((p) => slugOf(p.url) === wanted)
-    );
-    if (idx === -1) continue;
-    used.add(idx);
-    const cat = categories[idx];
-    // Pinned product first inside its own category.
-    const products = [
-      ...cat.products.filter((p) => slugOf(p.url) === wanted),
-      ...cat.products.filter((p) => slugOf(p.url) !== wanted),
-    ];
-    hoisted.push({ name: cat.name, products });
+    const wantedSlug = slugOf(wanted);
+    if (!wantedSlug) continue;
+    for (const cat of categories) {
+      const match = cat.products.find(
+        (p) => !claimed.has(p.url) && slugOf(p.url) === wantedSlug
+      );
+      if (match) {
+        pinned.push(match);
+        claimed.add(match.url);
+        break;
+      }
+    }
   }
 
-  if (!hoisted.length) return categories;
+  if (!pinned.length) return categories;
 
-  return [
-    ...hoisted,
-    ...categories.filter((_, i) => !used.has(i)),
-  ];
+  // Everything not pinned keeps its original category order; empty categories
+  // are dropped so the pinned group is genuinely first.
+  const rest = categories
+    .map((cat) => ({
+      name: cat.name,
+      products: cat.products.filter((p) => !claimed.has(p.url)),
+    }))
+    .filter((cat) => cat.products.length > 0);
+
+  return [{ name: 'Featured', products: pinned }, ...rest];
 }
 
 // Shape matches the static mega menus in src/data/products.ts so the

@@ -405,8 +405,10 @@ const [aboutOpen, setAboutOpen] = useState(false);
   // Live products mega menu from WordPress (segments + products).
   // Static prop menu renders instantly and stays as fallback.
   const [dynamicMenu, setDynamicMenu] = useState<any>(null);
+  const [menuLoading, setMenuLoading] = useState(true);
   useEffect(() => {
     let alive = true;
+    setMenuLoading(true);
     fetch('/api/products-menu')
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
@@ -418,7 +420,10 @@ const [aboutOpen, setAboutOpen] = useState(false);
           setActiveProductCategory(0);
         }
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => {
+        if (alive) setMenuLoading(false);
+      });
     return () => {
       alive = false;
     };
@@ -785,44 +790,58 @@ const handleSolutionBack = () => {
             className="grid grid-cols-3 gap-5 max-h-[440px] overflow-y-auto pr-2 custom-scrollbar"
             style={{ animation: 'fadeSlideIn 0.25s ease-out' }}
           >
-            {productsMenu.segments[safeProductSegment]?.categories.flatMap(
-              (category: any) => category.products
-            ).map((product: any, idx: number) => (
-              <Link
-                key={idx}
-                href={product.url}
-                onClick={handleNavClick}
-                className={`group flex flex-col justify-between items-center p-3.5 border border-[#E2EBF3]  ${isIrrigation ? 'hover:border-[#1E8E3E]/40' : 'hover:border-[#1575B3]/40'} hover:shadow-md bg-white  transition-all`}
-              >
-                <div className="flex flex-col items-center w-full">
-                  {/* Image Container */}
-                  <div className="w-full h-40 flex items-center justify-center p-2 rounded mb-3">
-                    <img
-                      src={product.image}
-                      alt={product.title}
-                      className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300 ease-out"
-                    />
+            {menuLoading ? (
+              Array.from({ length: 12 }).map((_, i) => (
+                <div
+                  key={`product-skeleton-${i}`}
+                  className="flex flex-col items-center p-3.5 border border-[#E2EBF3] bg-white"
+                >
+                  <div className="w-full h-40 rounded bg-slate-100 animate-pulse mb-3" />
+                  <div className="w-4/5 h-3.5 rounded bg-slate-100 animate-pulse mb-2" />
+                  <div className="w-3/5 h-3 rounded bg-slate-100 animate-pulse" />
+                  <div className="w-full h-7 rounded bg-slate-100 animate-pulse mt-4" />
+                </div>
+              ))
+            ) : (
+              productsMenu.segments[safeProductSegment]?.categories.flatMap(
+                (category: any) => category.products
+              ).map((product: any, idx: number) => (
+                <Link
+                  key={idx}
+                  href={product.url}
+                  onClick={handleNavClick}
+                  className={`group flex flex-col justify-between items-center p-3.5 border border-[#E2EBF3]  ${isIrrigation ? 'hover:border-[#1E8E3E]/40' : 'hover:border-[#1575B3]/40'} hover:shadow-md bg-white  transition-all`}
+                >
+                  <div className="flex flex-col items-center w-full">
+                    {/* Image Container */}
+                    <div className="w-full h-40 flex items-center justify-center p-2 rounded mb-3">
+                      <img
+                        src={product.image}
+                        alt={product.title}
+                        className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300 ease-out"
+                      />
+                    </div>
+
+                    {/* Product Title */}
+                    <span className={`text-sm font-semibold text-[#111111] ${isIrrigation ? 'group-hover:text-[#1E8E3E]' : 'group-hover:text-[#1575B3]'} transition-colors text-center leading-snug mb-1`}>
+                      {product.title}
+                    </span>
+
+                    {/* Product Short Description */}
+                    {product.shortDesc && (
+                      <p className="text-xs text-[#5F6B7A] text-center line-clamp-2 leading-relaxed mb-3">
+                        {product.shortDesc}
+                      </p>
+                    )}
                   </div>
 
-                  {/* Product Title */}
-                  <span className={`text-sm font-semibold text-[#111111] ${isIrrigation ? 'group-hover:text-[#1E8E3E]' : 'group-hover:text-[#1575B3]'} transition-colors text-center leading-snug mb-1`}>
-                    {product.title}
+                  {/* View Product Button */}
+                  <span className={`w-full text-center py-1.5 px-3 mt-2 text-xs font-semibold ${isIrrigation ? 'text-[#1E8E3E]' : 'text-[#1575B3]'} ${isIrrigation ? 'bg-[#EFF7F0]' : 'bg-[#F0F7FC]'} border ${isIrrigation ? 'border-[#1E8E3E]/20' : 'border-[#1575B3]/20'}  ${isIrrigation ? 'group-hover:bg-[#1E8E3E]' : 'group-hover:bg-[#1575B3]'} group-hover:text-white transition-all`}>
+                    View Product
                   </span>
-
-                  {/* Product Short Description */}
-                  {product.shortDesc && (
-                    <p className="text-xs text-[#5F6B7A] text-center line-clamp-2 leading-relaxed mb-3">
-                      {product.shortDesc}
-                    </p>
-                  )}
-                </div>
-
-                {/* View Product Button */}
-                <span className={`w-full text-center py-1.5 px-3 mt-2 text-xs font-semibold ${isIrrigation ? 'text-[#1E8E3E]' : 'text-[#1575B3]'} ${isIrrigation ? 'bg-[#EFF7F0]' : 'bg-[#F0F7FC]'} border ${isIrrigation ? 'border-[#1E8E3E]/20' : 'border-[#1575B3]/20'}  ${isIrrigation ? 'group-hover:bg-[#1E8E3E]' : 'group-hover:bg-[#1575B3]'} group-hover:text-white transition-all`}>
-                  View Product
-                </span>
-              </Link>
-            ))}
+                </Link>
+              ))
+            )}
           </div>
         </div>
 
@@ -1392,7 +1411,14 @@ const handleSolutionBack = () => {
   </button>
   {activeDropdown === 'products' && (
     <div className="pl-4 space-y-3 pt-1 pb-2">
-      {productsMenu.segments.map((segment: any, segIdx: number) => (
+      {menuLoading ? (
+        Array.from({ length: 6 }).map((_, i) => (
+          <div key={`mobile-product-skeleton-${i}`} className="px-2.5 py-1">
+            <div className="h-4 w-3/4 rounded bg-slate-100 animate-pulse" />
+          </div>
+        ))
+      ) : (
+      productsMenu.segments.map((segment: any, segIdx: number) => (
         <div key={segIdx}>
           <button
             onClick={() => {
@@ -1436,7 +1462,7 @@ const handleSolutionBack = () => {
             </div>
           )}
         </div>
-      ))}
+      )))}
     </div>
   )}
 </div>
