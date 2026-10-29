@@ -198,6 +198,6 @@ export const irrigationTestimonials: DivisionTestimonial[] = [
     author: 'Kesaram Choudhary',
     role: 'Farmer and Authorised Dealer',
     location: "Rajasthan",
-    image: '/testimonials/irrigation/Kesaram Choudhary.png',
+    image: '/testimonials/irrigation/Kesaram Choudhary.jpg',
   },
 ]; 
