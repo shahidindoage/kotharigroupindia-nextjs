@@ -79,7 +79,7 @@ export const ProductDetailPage: React.FC<{
   const displayVideoUrl = wp?.productVideoUrl || '';
   const displayInstallationGuideUrl = wp?.installationGuideVideoUrl || '';
   
-  const displayRelated = wp?.relatedProducts || [];
+  const displayRelated = prodSlug === 'pdn-ci' ? [] : wp?.relatedProducts || [];
 
   const [heroTab, setHeroTab] = useState<HeroTab>('FEATURES');
   const [brochureOpen, setBrochureOpen] = useState(false);
