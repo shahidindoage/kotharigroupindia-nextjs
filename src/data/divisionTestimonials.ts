@@ -192,4 +192,12 @@ export const irrigationTestimonials: DivisionTestimonial[] = [
     location: "Maharashtra",
     image: '/testimonials/irrigation/Santhosh Barbole.png',
   },
+   {
+    quote:
+    'I installed the Kothari drip system on my pomegranate farm in 2022, and Kothari’s engineer explained the design while their agronomist guided me on caring for the plants. Water, fertiliser, and medicine now reach the plants properly; I save on labour. I have had no problem till today, and I advise every farmer to use Kothari Irrigation.',
+    author: 'Kesaram Choudhary',
+    role: 'Farmer and Authorised Dealer',
+    location: "Rajasthan",
+    image: '/testimonials/irrigation/Kesaram Choudhary.png',
+  },
 ]; 

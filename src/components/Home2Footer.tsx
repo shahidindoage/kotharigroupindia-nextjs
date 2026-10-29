@@ -65,8 +65,8 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
     <footer id="home2-footer" className="bg-[#1575B3] pt-16 pb-8 text-left text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
 
-        {/* Main Sitemap Columns (5 columns layout) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+        {/* Main Sitemap Columns (6 columns layout) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8">
 
           {/* Brand Info (Spans 2 columns) */}
           <div className="lg:col-span-2 space-y-5">
@@ -157,7 +157,7 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
             </div>
           </div>
 
-          {/* Support Column + Connect with us below */}
+          {/* Support Column + Download our app below */}
           <div className="space-y-6">
             <div className="space-y-3 text-xs">
               <h4 className="font-medium text-white text-sm">Support</h4>
@@ -172,29 +172,53 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
               </ul>
             </div>
 
-            {/* Connect with us placed right inside Support Column */}
-            <div className="space-y-2.5 text-xs pt-2 border-t border-white/20">
-              <h4 className="font-medium text-white text-sm">Connect with us</h4>
-              {socialGroups.map((group, groupIdx) => (
-                <div key={groupIdx} className="flex items-center gap-2.5">
-                  {group.links.map((s) => {
-                    const Icon = s.icon;
-                    return (
-                      <a
-                        key={s.label}
-                        href={s.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={s.label}
-                        className={`w-9 h-9 bg-white/10 border border-white/20 text-white flex items-center justify-center transition-all hover:text-white hover:shadow-md ${s.hover}`}
-                      >
-                        <Icon className="w-4 h-4" />
-                      </a>
-                    );
-                  })}
-                </div>
-              ))}
+            {/* Download our app placed right inside Support Column */}
+            <div className="space-y-3 text-xs pt-2 border-t border-white/20">
+              <h4 className="font-medium text-white text-sm">Download our app</h4>
+              <a
+                href="https://play.google.com/store/apps/details?id=in.kotharione.sma"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Get Kothari One on Google Play"
+                className="inline-flex w-fit items-center gap-2 rounded-md border border-white/10 bg-[#0B1523] px-2.5 py-2 transition-colors hover:bg-[#14233A]"
+              >
+                <svg viewBox="0 0 24 24" className="h-6 w-6 shrink-0" aria-hidden="true">
+                  <path d="M3.61 1.81 13.79 12 3.61 22.19A1.5 1.5 0 0 1 3 21V3a1.5 1.5 0 0 1 .61-1.19Z" fill="#00D7FE" />
+                  <path d="M13.79 12 3.61 1.81A1.5 1.5 0 0 1 5.6.91l12.19 7.09-4 4Z" fill="#00E676" />
+                  <path d="M13.79 12l4 4-12.19 7.09a1.5 1.5 0 0 1-1.99-.9L13.79 12Z" fill="#FF3A44" />
+                  <path d="M17.79 8l5.57 3.22a1.03 1.03 0 0 1 0 1.78L17.79 16l-4-4 4-4Z" fill="#FFCE00" />
+                </svg>
+                <span className="flex flex-col text-left leading-none">
+                  <span className="whitespace-nowrap text-[10px] font-light text-white/70">Download on the</span>
+                  <span className="mt-1 whitespace-nowrap text-[15px] font-medium text-white">Google Play</span>
+                </span>
+              </a>
             </div>
+          </div>
+
+          {/* Connect with us (last column) */}
+          <div className="space-y-3 text-xs">
+            <h4 className="font-medium text-white text-sm">Connect with us</h4>
+            <ul className="space-y-2.5 font-light text-white/80">
+              {socialGroups[0].links.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <li key={s.label}>
+                    <a
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2.5 transition-colors hover:text-white"
+                    >
+                      <span className={`flex h-7 w-7 shrink-0 items-center justify-center border border-white/20 bg-white/10 transition-colors ${s.hover}`}>
+                        <Icon className="h-3.5 w-3.5" />
+                      </span>
+                      <span>{s.label}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
 
         </div>

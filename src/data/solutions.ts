@@ -192,7 +192,7 @@ export const solutionsData: Solution[] = [
        image: `/solutions/irrigation/Precision-Irrigation/Precision-Drip-Irrigation/Green House.png`,
   },
 ],
-         relatedProducts: [
+        relatedProducts: [
             {
               name: 'Dripline K-Gol NPC',
               slug: 'dripline-k-gol-npc',
@@ -205,7 +205,7 @@ export const solutionsData: Solution[] = [
               name: 'Thin Wall Dripline K-Super',
               slug: 'thin-wall-dripline-k-super',
               categorySlug: 'thinwall-drip-line',
-              image: `${ADMIN}/2025/04/DRIPLINE-K-SUPER.webp`,
+              image: `${ADMIN}/2025/10/K-Super-Emitting-Pipe.webp`,
               shortDescription:
                 'Our Thin Wall Dripline K-Super is designed for growers running short-duration crops that need reliable, season-length irrigation without the higher cost of thicker driplines.',
             },
@@ -213,7 +213,7 @@ export const solutionsData: Solution[] = [
               name: 'Turbo Dripper',
               slug: 'turbo-dripper',
               categorySlug: 'emitters-drippers',
-              image: `${ADMIN}/2025/04/TURBO-DRIPPER-1.webp`,
+              image: `${ADMIN}/2025/10/Turbo-Dripper.webp`,
               shortDescription:
                 'Advanced Israeli technology, special-grade LLDPE, UV resistance, and smooth flow ensure durable, efficient, and reliable drip irrigation performance.',
             },
@@ -319,12 +319,12 @@ export const solutionsData: Solution[] = [
   //  image: `/solutions/irrigation/Precision-Irrigation/Precision-Sprinkler-Irrigation/Greenhouse.png`,
   //   },
 ],
-          relatedProducts: [
+        relatedProducts: [
             {
               name: 'Mini Sprinkler',
               slug: 'mini-sprinkler',
               categorySlug: 'mini-sprinklers-and-assemblies',
-              image: `${ADMIN}/2025/04/MINI-SPRINKLER.png`,
+              image: `${ADMIN}/2025/11/Mini-Sprinkler.webp`,
               shortDescription:
                 'Adjustable mini sprinklers delivering uniform, flexible, weather-resistant irrigation.',
             },
@@ -340,18 +340,11 @@ export const solutionsData: Solution[] = [
               name: 'K-Mic Micro Sprinkler',
               slug: 'k-mic-micro-sprinkler',
               categorySlug: 'micro-sprinklers-and-assemblies',
-              image: `${ADMIN}/2025/10/K-Mic-Micro-Sprinkler.webp`,
+              image: `${ADMIN}/2025/10/K-Mic-Micro-Sprinkler-1.webp`,
               shortDescription:
                 'High-pressure bayonet nozzle delivers fine mist spray, adjustable discharge rates, and reliable crop protection across varying operating conditions.',
             },
-            {
-              name: 'K-Mic Micro Sprinkler',
-              slug: 'k-mic-micro-sprinkler',
-              categorySlug: 'micro-sprinklers-and-assemblies',
-              image: `${ADMIN}/2025/10/K-Mic-Micro-Sprinkler.webp`,
-              shortDescription:
-                'High-pressure bayonet nozzle delivers fine mist spray, adjustable discharge rates, and reliable crop protection across varying operating conditions.',
-            },
+            
           ],
           faqs: [
             {
@@ -453,28 +446,21 @@ export const solutionsData: Solution[] = [
  image: `/solutions/irrigation/Precision-Irrigation/Water-saving-irrigation/Commercial Farms.png`,
     },
 ],
-          relatedProducts: [
+         relatedProducts: [
             {
               name: 'Hydrocyclone Filter',
               slug: 'hydrocyclone-filter',
               categorySlug: 'filters',
-              image: `${ADMIN}/2025/10/Hydrocyclone-Filter.webp`,
+              image: `${ADMIN}//2025/10/Hydrocyclone-Filter-1.webp`,
               shortDescription:
                 'Hydrodynamic filter providing efficient particle separation and extended filtration.',
             },
-            {
-              name: 'Hydrocyclone Filter',
-              slug: 'hydrocyclone-filter',
-              categorySlug: 'filters',
-              image: `${ADMIN}/2025/10/Hydrocyclone-Filter.webp`,
-              shortDescription:
-                'Hydrodynamic filter providing efficient particle separation and extended filtration.',
-            },
+            
             {
               name: 'Dosing Pump',
               slug: 'dozing-pump',
               categorySlug: 'dosing-pumps-and-fertilizer-injectors',
-              image: `${ADMIN}/2025/10/DOZING-PUMP.webp`,
+              image: `${ADMIN}/2025/10/Dozing-Pump-1.webp`,
               shortDescription:
                 'Adjustable fertilizer injector delivering precise, efficient nutrient application.',
             },
@@ -482,7 +468,7 @@ export const solutionsData: Solution[] = [
               name: 'PP Header Assembly',
               slug: 'pp-header-assembly',
               categorySlug: 'dosing-pumps-and-fertilizer-injectors',
-              image: `${ADMIN}/2025/04/PP-Header-Assembly.webp`,
+              image: `${ADMIN}/2025/10/PP-Header-Assembly.webp`,
               shortDescription: 'Reliable Assembly for Filtration Systems.',
             },
           ],
@@ -586,12 +572,12 @@ export const solutionsData: Solution[] = [
        image: `/solutions/irrigation/Precision-Irrigation/Automated-fertigation/Greenhouse.jpg`,
     },
 ],
-         relatedProducts: [
+        relatedProducts: [
             {
               name: 'Nutrijet Fertigation Machines',
               slug: 'nutrijet-fertigation-machines',
               categorySlug: 'fertigation-machines',
-              image: `${ADMIN}/2025/10/NUTRIJET.webp`,
+              image: `${ADMIN}/2025/10/Nutrijet-Fertigation-system.webp`,
               shortDescription:
                 'IoT-enabled fertigation system delivering precise, automated nutrient management.',
             },
@@ -789,19 +775,19 @@ export const solutionsData: Solution[] = [
     image: '/solutions/irrigation/Polyhouse-(Green house)-Irrigation/seedling propagtion.jpg',
   },
 ],
-    relatedProducts: [
+   relatedProducts: [
       {
         name: 'K-Mic Micro Sprinkler',
         slug: 'k-mic-micro-sprinkler',
         categorySlug: 'micro-sprinklers-and-assemblies',
-        image: `${ADMIN}/2025/10/K-Mic-Micro-Sprinkler.webp`,
+        image: `${ADMIN}/2025/10/K-Mic-Micro-Sprinkler-1.webp`,
         shortDescription: 'High-pressure bayonet nozzle delivers fine mist spray, adjustable discharge rates, and reliable crop protection across varying operating conditions.',
       },
       {
         name: 'Micro Sprayer',
         slug: 'micro-sprayer',
         categorySlug: 'micro-jets-and-assemblies',
-        image: `${ADMIN}/2025/10/MICRO-SPRAYER.webp`,
+        image: `${ADMIN}/2025/10/Micro-Sprayers.webp`,
         shortDescription: 'Unique top design with multiple spray patterns ensures uniform water distribution, easy installation, and effective horticultural irrigation with trunk protection.',
       },
       {
@@ -811,27 +797,7 @@ export const solutionsData: Solution[] = [
         image: `${ADMIN}/2025/04/Mini-Sigma-Filter.webp`,
         shortDescription: 'Compact self-cleaning filter with advanced suction scan technology delivers efficient filtration, corrosion resistance, automatic flushing, and reliable low-pressure performance.',
       },
-      // {
-      //   name: 'Screen Filter',
-      //   slug: 'screen-filter',
-      //   categorySlug: 'filters',
-      //   image: `${ADMIN}/2025/10/Screen-Filter.webp`,
-      //   shortDescription: 'Durable 130-micron filters providing cost-effective irrigation water filtration.',
-      // },
-      // {
-      //   name: 'Gravity Drip Kit',
-      //   slug: 'gravity-drip-kit',
-      //   categorySlug: 'drip-gravity-kits',
-      //   image: `${ADMIN}/2025/10/KOTHARI-GRAVITY-DRIP-KIT.webp`,
-      //   shortDescription: 'Pump-free drip irrigation kits enabling easy, efficient low-pressure watering.',
-      // },
-      // {
-      //   name: 'Drip Winder',
-      //   slug: 'drip-winder',
-      //   categorySlug: 'polyfittings-and-accessories',
-      //   image: `${ADMIN}/2025/07/Drip-Winder.webp`,
-      //   shortDescription: 'Portable reel enabling quick, efficient dripline handling between seasons.',
-      // },
+      
     ],
   },
   {
@@ -909,12 +875,12 @@ export const solutionsData: Solution[] = [
       image: '/solutions/irrigation/Agriculltural-filed-Irrigation/Large Commericial Famrland.jpg',
   },
 ],
-    relatedProducts: [
+   relatedProducts: [
       {
         name: 'Metal Sprinkler',
         slug: 'metal-sprinkler',
         categorySlug: 'metal-sprinkler',
-        image: `${ADMIN}/2025/06/METAL-SPRINKLER.webp`,
+        image: `${ADMIN}/2025/10/Metal-Sprinkler.webp`,
         shortDescription: 'ISI-certified full-circle impact sprinkler provides uniform coverage, durable performance, wide spray radius, and efficient field irrigation with fewer units required.',
       },
       {
@@ -926,32 +892,12 @@ export const solutionsData: Solution[] = [
       },
       {
         name: 'Raingun and Accessories',
-        slug: 'raingun',
+        slug: 'raingun-and-accessories',
         categorySlug: 'raingun-and-accessories',
-        image: `${ADMIN}/2025/04/Rainguns.webp`,
+        image: `${ADMIN}/2025/11/Raingun.webp`,
         shortDescription: 'Wide-coverage raingun ensures efficient irrigation, pest control, adjustable droplet size, and easy portability across different fields.',
       },
-      // {
-      //   name: 'Pop-up Spray Heads and Rotors',
-      //   slug: 'pop-up-spray-heads-and-rotors',
-      //   categorySlug: 'garden-and-landscape-sprinklers',
-      //   image: `${ADMIN}/2025/04/Pop-up-spray-heads-rotors.png`,
-      //   shortDescription: 'Gear-driven rotor sprinkler delivering uniform, gentle, long-lasting coverage.',
-      // },
-      // {
-      //   name: 'HDPE Piping',
-      //   slug: 'hdpe-piping',
-      //   categorySlug: 'pe-pipes-and-fittings',
-      //   image: `${ADMIN}/2025/04/HDPE-PIPE-111.webp`,
-      //   shortDescription: 'Flexible PE pipes delivering durable, leak-free water flow performance.',
-      // },
-      // {
-      //   name: 'Mini Sprinkler',
-      //   slug: 'mini-sprinkler',
-      //   categorySlug: 'mini-sprinklers-and-assemblies',
-      //   image: `${ADMIN}/2025/04/MINI-SPRINKLER.png`,
-      //   shortDescription: 'Adjustable mini sprinklers delivering uniform, flexible, weather-resistant irrigation.',
-      // },
+    
     ],
   },
   {
@@ -1024,49 +970,29 @@ export const solutionsData: Solution[] = [
       image: '/solutions/irrigation/Water-Management/Multi Crop opertation.jpg',
   },
 ],
-    relatedProducts: [
+  relatedProducts: [
       {
         name: 'Dosing Pump',
         slug: 'dozing-pump',
         categorySlug: 'dosing-pumps-and-fertilizer-injectors',
-        image: `${ADMIN}/2025/10/DOZING-PUMP.webp`,
+        image: `${ADMIN}/2025/10/Dozing-Pump-1.webp`,
         shortDescription: 'Precision fertigation injector delivers adjustable nutrient dosing, higher injection rates, and seamless automation for efficient micro-irrigation systems.',
       },
       {
         name: 'Nutrijet Fertigation Machines',
         slug: 'nutrijet-fertigation-machines',
         categorySlug: 'fertigation-machines',
-        image: `${ADMIN}/2025/10/NUTRIJET.webp`,
+        image: `${ADMIN}/2025/10/Nutrijet-Fertigation-system.webp`,
         shortDescription: 'IoT-enabled fertigation system offers precise nutrient dosing, remote control, automated reporting, and accurate EC-pH management for precision agriculture.',
       },
       {
         name: 'Filter Auto Backwash Valve',
         slug: 'filter-auto-backwash-valve',
         categorySlug: 'automatic-filters-and-accessories',
-        image: `${ADMIN}/2025/10/FILTER-BACKWASH.png.webp`,
+        image: `${ADMIN}/2025/10/Filter-Auto-Backwash-Valve.webp`,
         shortDescription: 'IoT-enabled fertigation system delivering precise, automated nutrient management.',
       },
-      // {
-      //   name: 'Irribeat Controllers',
-      //   slug: 'irribeat-controllers',
-      //   categorySlug: 'controllers',
-      //   image: `${ADMIN}/2025/10/IRRIBEAT.webp`,
-      //   shortDescription: 'Smart IoT irrigation controller enabling remote, expandable multi-zone management.',
-      // },
-      // {
-      //   name: 'Dosing Pump',
-      //   slug: 'dozing-pump',
-      //   categorySlug: 'dosing-pumps-and-fertilizer-injectors',
-      //   image: `${ADMIN}/2025/10/DOZING-PUMP.webp`,
-      //   shortDescription: 'Adjustable fertilizer injector delivering precise, efficient nutrient application.',
-      // },
-      // {
-      //   name: 'GSI (Galcon Smart Irrigation) Controller',
-      //   slug: 'gsi-galcon-smart-irrigation-controller',
-      //   categorySlug: 'controllers',
-      //   image: `${ADMIN}/2025/04/GSI-Galcon-Smart-Irrigation.webp`,
-      //   shortDescription: 'Compact IoT controller enabling remote, customizable irrigation and fertigation.',
-      // },
+   
     ],
   },
   // ── PIPE ────────────────────────────────────────────────────
@@ -1145,42 +1071,29 @@ export const solutionsData: Solution[] = [
       image:'/solutions/pipe/residential-commercial-plumbing/applications/commercial-complex.jpg',
         },
     ],
-   relatedProducts: [
+  relatedProducts: [
       {
         name: 'CPVC Pipes & Fittings',
         slug: 'cpvc-hot-and-cold-water-piping-system',
         categorySlug: 'cpvc',
-        image: `${ADMIN}/2025/04/CPVC-PIPES-FITTINGS.webp`,
+        image: `${ADMIN}/2025/10/CPVC-pipes-And-Fitting-1-1.webp`,
         shortDescription: 'Our CPVC hot and cold water pipes are made for Indian homes, tough water, brutal summers, daily wear and tear. Metal pipes? Those tend to rust and clog up after a while. ',
       },
       {
         name: 'UPVC Pipes & Fittings',
         slug: 'upvc-astm-plumbing-piping-system',
         categorySlug: 'upvc',
-        image: `${ADMIN}/2025/04/UPVC-PIPES-FITTINGS.webp`,
+        image: `${ADMIN}/2025/10/UPVC-Pipes-Fittings-.webp`,
         shortDescription: 'Our UPVC Pipes & Fittings are built to handle cold water plumbing that stands the test of time. ',
       },
       {
         name: 'SWR (Soil, Waste & Rainwater) Piping System',
         slug: 'swr-pipes-and-fittings-for-drainage-systems',
         categorySlug: 'soil-waste-and-rainwater-pipes-and-fittings',
-        image: `${ADMIN}/2025/10/SWR-Pipes-and-Fitting.webp`,
+        image: `${ADMIN}/2025/10/SWR-Pipes-and-Fitting-1.webp`,
         shortDescription: 'Our SWR (Soil, Waste & Rainwater) Piping System handles wastewater and rainwater for homes, businesses, and industrial buildings.',
       },
-      // {
-      //   name: 'CPVC Solvent Cement',
-      //   slug: 'cpvc-solvent-cement',
-      //   categorySlug: 'cpvc',
-      //   image: `${ADMIN}/2025/06/cpvc.webp`,
-      //   shortDescription: 'High-strength cement for strong, leak-proof CPVC joints.',
-      // },
-      // {
-      //   name: 'Single & Double Union PVC Ball Valve',
-      //   slug: 'single-and-double-union-pvc-ball-valve',
-      //   categorySlug: 'valves',
-      //   image: `${ADMIN}/2025/04/Single-Double-Union-PVC.webp`,
-      //   shortDescription: 'Easy-maintenance flow control for building plumbing lines.',
-      // },
+     
     ],
   },
   {
@@ -1265,12 +1178,12 @@ export const solutionsData: Solution[] = [
  image:'/solutions/pipe/urban-drainage-sewerage/applications/Besmets.jpg',
     },
 ],
-   relatedProducts: [
+  relatedProducts: [
       {
         name: 'UPVC Underground Drainage Piping System (solid wall UDS)',
         slug: 'upvc-underground-drainage-piping-system',
         categorySlug: 'underground-pipe-and-fittings',
-        image: `${ADMIN}/2025/04/UDS-PIPES-FITTINGS.webp`,
+        image: `${ADMIN}/2025/11/UDS-pipes-fitting-1.webp`,
         shortDescription: 'The KWIK Drain UPVC Underground Drainage Piping System takes care of the toughest part of any drainage network: those pipes buried deep underground.',
       },
       {
@@ -1287,20 +1200,7 @@ export const solutionsData: Solution[] = [
         image: `${ADMIN}/2025/10/PP-Low-Noise-Drainage-System.webp`,
         shortDescription: 'If you need reliable, quiet drainage that lasts for years, our PP Low Noise Drainage System stands out.',
       },
-      // {
-      //   name: 'PP Low Noise Drainage System',
-      //   slug: 'pp-low-noise-drainage-system',
-      //   categorySlug: 'soil-waste-and-rainwater-pipes-and-fittings',
-      //   image: `${ADMIN}/2025/10/PP-Low-Noise-Drainage-System.webp`,
-      //   shortDescription: 'Silent-flow drainage for noise-sensitive buildings.',
-      // },
-      // {
-      //   name: 'Sub-Surface Drainage System',
-      //   slug: 'sub-surface-drainage-system',
-      //   categorySlug: 'underground-pipe-and-fittings',
-      //   image: `${ADMIN}/2025/11/Sub-Surface-Drainage-System.webp`,
-      //   shortDescription: 'Perforated pipe for smart field and site drainage.',
-      // },
+    
     ],
   },
   {
@@ -1377,7 +1277,7 @@ export const solutionsData: Solution[] = [
         name: 'Column Pipes',
         slug: 'column-pipes-with-ss',
         categorySlug: 'column-pipes',
-        image: `${ADMIN}/2025/04/coloum-pipe.webp`,
+        image: `${ADMIN}/2025/10/Coloum-Pipes.webp`,
         shortDescription: `Our Column Pipe for Borewell is engineered around India's first Impact Sustaining Lock System (ISLS), a locking mechanism that absorbs torque during pump startup and shutdown, preventing the pipe from slipping out of the coupler under stress. `,
       },
       {
@@ -1394,20 +1294,7 @@ export const solutionsData: Solution[] = [
         image: `${ADMIN}/2025/10/HDPE-pipes.webp`,
         shortDescription: 'We make our HDPE pipes and fittings in PE 63, PE 80, and PE 100 grades. That means farmers, contractors, and infrastructure developers can pick exactly what they need, balancing strength and pressure for any job. These pipes handle rough ground, curves, and changes in terrain without cracking or breaking down, so they’re built to last.',
       },
-      // {
-      //   name: 'Screen Pipe/Slotted Pipe',
-      //   slug: 'screen-pipe-slotted-pipe',
-      //   categorySlug: 'casing-pipes',
-      //   image: `${ADMIN}/2025/10/Screen-Pipe-Slotted-Pipe-n.webp`,
-      //   shortDescription: 'Clean water entry with protected pump systems.',
-      // },
-      // {
-      //   name: 'Ribbed Casing Pipe',
-      //   slug: 'ribbed-casing-pipe',
-      //   categorySlug: 'casing-pipes',
-      //   image: `${ADMIN}/2025/10/Ribbed-Casing-Pipe.png`,
-      //   shortDescription: 'Rugged pipe for aggressive groundwater conditions.',
-      // },
+ 
     ],
   },
   {
@@ -1478,7 +1365,7 @@ image:'/solutions/pipe/farm-infrastructure-piping/applications/Multi-Field-Opera
         name: 'HDPE Piping',
         slug: 'hdpe-piping',
         categorySlug: 'pe-pipes-and-fittings',
-        image: `${ADMIN}/2025/04/HDPE-PIPE-111.webp`,
+        image: `${ADMIN}/2025/10/HDPE-pipes.webp`,
         shortDescription: 'We make our HDPE pipes and fittings in PE 63, PE 80, and PE 100 grades.',
       },
       {
