@@ -200,4 +200,20 @@ export const irrigationTestimonials: DivisionTestimonial[] = [
     location: "Rajasthan",
     image: '/testimonials/irrigation/Kesaram Choudhary.jpg',
   },
+  {
+    quote:
+    'Four years ago, I became a Kothari Irrigation dealer because of their service and product quality, and demand for their PVC pipes, lateral pipes and eco sprinklers has been high ever since. The company gives dealers good discounts to keep us profitable, and their field team helps with surveys and teaches farmers how to install and maintain their irrigation systems.',
+    author: 'Jeevan Reddy',
+    role: 'Dealer, Sri Sai Balaji Drip Irrigations',
+    location: "Telangana",
+    image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Jeevan-Reddy.jpg',
+  },
+  {
+    quote:
+    'I am very satisfied with the quality of the Kothari mini sprinklers installed on my farm, and I am equally happy with the service the company has given me. Whenever we call, a Kothari representative comes to help us. We have had no problems so far, and I am sure I can call the company for support any time.',
+    author: 'Sevaram Aanjana',
+    role: 'Farmer',
+    location: "Madhya Pradesh",
+    image: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/Sevaram-Aanjana.jpg',
+  },
 ]; 
