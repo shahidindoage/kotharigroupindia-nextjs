@@ -281,6 +281,10 @@ export interface ProductArgs {
   divisionPath: string;
   /** {{DIVISION_ID}} */
   divisionId: string;
+  /** Segment crumb between the division and the product, e.g. `Drip Irrigation System`. */
+  segmentName?: string;
+  /** Segment listing path, e.g. `/products/drip-irrigation-system`. */
+  segmentPath?: string;
   /**
    * Visible FAQs only. Schema.txt section 6, item 5: the FAQPage block is
    * omitted entirely when a product has no FAQs on the page (irrigation FAQs
@@ -291,8 +295,8 @@ export interface ProductArgs {
 
 /**
  * Template 6: Product page (Product + Breadcrumb + FAQPage).
- * The category folder in the URL is intentionally not a crumb — Schema.txt
- * section 5.6: the visible breadcrumb is always Home > Division > Product name.
+ * The category folder in the URL is intentionally not a crumb — the visible
+ * breadcrumb is Home > Division > Segment > Product name.
  */
 export function productGraph(args: ProductArgs): SchemaGraph {
   const {
@@ -303,6 +307,8 @@ export function productGraph(args: ProductArgs): SchemaGraph {
     divisionName,
     divisionPath,
     divisionId,
+    segmentName,
+    segmentPath,
     faqs = [],
   } = args;
 
@@ -320,6 +326,7 @@ export function productGraph(args: ProductArgs): SchemaGraph {
     breadcrumbListNode(path, [
       { name: 'Home', path: '/' },
       { name: divisionName, path: divisionPath },
+      ...(segmentName && segmentPath ? [{ name: segmentName, path: segmentPath }] : []),
       { name, path },
     ]),
   ];

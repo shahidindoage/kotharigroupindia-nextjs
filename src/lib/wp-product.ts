@@ -194,9 +194,9 @@ export const fetchWpProductBySlug = cache(async (slug: string): Promise<WpProduc
     const meta = raw.meta_data || [];
 
     // Extract new ACF fields
-    const divisionName = getMetaString(meta, 'division_name');
+    const divisionName = getMetaString(meta, 'division_name').trim();
     const divisionSlug = cleanSlug(getMetaString(meta, 'division_slug'));
-    const segmentName = getMetaString(meta, 'segment_name');
+    const segmentName = getMetaString(meta, 'segment_name').trim();
     const segmentSlug = cleanSlug(getMetaString(meta, 'segment_slug'));
 
     const tagline = getMetaString(meta, 'tagline');

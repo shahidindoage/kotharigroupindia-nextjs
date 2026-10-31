@@ -45,13 +45,14 @@ export interface ProductsDivisionMenu {
  */
 const SEGMENT_PRODUCT_PRIORITY: Record<string, string[]> = {
   'sprinkler-irrigation-system': [
+    'sprinklers-pipes-qcpe',
+    'raingun-and-accessories',
     'metal-sprinkler',
     'hdpe-pipe-sprinkler-set',
-    'sprinklers-pipes-qcpe',
     'pop-up-spray-heads-and-rotors',
     'quick-coupling-valve-qcv',
     'swing-joint',
-    'raingun-and-accessories',
+    
   ],
   'micro-and-mini-sprinklers':[
     'k-mic-micro-sprinkler',
@@ -110,7 +111,8 @@ const SEGMENT_PRODUCT_PRIORITY: Record<string, string[]> = {
     '/k-flex-submain-pipes',
     'upvc-pipes',
     'gravity-drip-kit',
-  ]
+  ],
+  'borewell-solution':['column-pipes-with-ss']
 };
 
 function applySegmentPriority(

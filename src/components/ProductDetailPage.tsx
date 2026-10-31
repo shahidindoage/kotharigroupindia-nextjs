@@ -81,6 +81,14 @@ export const ProductDetailPage: React.FC<{
   
   const displayRelated = prodSlug === 'pdn-ci' ? [] : wp?.relatedProducts || [];
 
+  // Breadcrumb parent between the division and the product: the WP segment.
+  const displaySegmentSlug = wp?.segmentSlug || '';
+  const displaySegmentName = displaySegmentSlug
+    ? wp?.segmentName || displaySegmentSlug.replace(/-/g, ' ')
+    : '';
+  const segmentHref = displaySegmentSlug ? `/products/${displaySegmentSlug}` : '';
+  const displayDivisionName = wp?.divisionName || (isIrrigation ? 'Irrigation Division' : 'Pipe Division');
+
   const [heroTab, setHeroTab] = useState<HeroTab>('FEATURES');
   const [brochureOpen, setBrochureOpen] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(0);
@@ -239,17 +247,29 @@ export const ProductDetailPage: React.FC<{
       <section className="w-full bg-white border-b border-slate-200 pt-[88px]">
         <div className="w-full border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
-            <nav className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-slate-500 overflow-x-auto whitespace-nowrap py-4">
-              {/* Matches Schema.txt Template 6: Home > Division > Product name.
-                  "Home" points at "/" and the division crumb points at the
-                  division landing page, not the products listing. */}
+            <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-slate-500 overflow-x-auto whitespace-nowrap py-4">
+              {/* Matches Schema.txt Template 6: Home > Division > Segment > Product name.
+                  "Home" points at "/", the division crumb points at the division
+                  landing page and the segment crumb at the segment listing. */}
               <Link href="/" className={`${tHoverText} transition-colors`}>Home</Link>
               <ChevronRight className="w-3 h-3 text-slate-400 shrink-0" />
               <Link href={isIrrigation ? '/irrigation-division' : '/pipe-division'} className={`${tHoverText} transition-colors`}>
-                {wp?.divisionName || 'Division'}
+                {displayDivisionName}
               </Link>
+              {displaySegmentName && (
+                <>
+                  <ChevronRight className="w-3 h-3 text-slate-400 shrink-0" />
+                  {segmentHref ? (
+                    <Link href={segmentHref} className={`${tHoverText} transition-colors truncate max-w-[110px] sm:max-w-[220px]`} title={displaySegmentName}>
+                      {displaySegmentName}
+                    </Link>
+                  ) : (
+                    <span className="truncate max-w-[110px] sm:max-w-[220px]" title={displaySegmentName}>{displaySegmentName}</span>
+                  )}
+                </>
+              )}
               <ChevronRight className="w-3 h-3 text-slate-400 shrink-0" />
-              <span className="text-slate-900 font-semibold truncate max-w-[220px] sm:max-w-[320px]" title={displayName}>{displayName}</span>
+              <span className="text-slate-900 font-semibold shrink-0 truncate max-w-[200px] sm:max-w-[320px]" title={displayName}>{displayName}</span>
             </nav>
           </div>
         </div>

@@ -109,7 +109,7 @@ async function ProductDetailLoader({ catSlug, prodSlug, staticProduct }: { catSl
     <>
       {/* Schema.txt Template 6: Product + BreadcrumbList (+ FAQPage when the
           product actually shows FAQs). The category folder is deliberately not
-          a crumb — the visible breadcrumb is Home > Division > Product. */}
+          a crumb — the visible breadcrumb is Home > Division > Segment > Product. */}
       <JsonLd
         data={productGraph({
           path: `/${catSlug}/${prodSlug}`,
@@ -119,6 +119,8 @@ async function ProductDetailLoader({ catSlug, prodSlug, staticProduct }: { catSl
           divisionName: isPipe ? 'Pipe Division' : 'Irrigation Division',
           divisionPath: isPipe ? '/pipe-division' : '/irrigation-division',
           divisionId: isPipe ? PIPE_DIVISION_ID : IRRIGATION_DIVISION_ID,
+          segmentName: wpProduct?.segmentSlug ? wpProduct.segmentName : undefined,
+          segmentPath: wpProduct?.segmentSlug ? `/products/${wpProduct.segmentSlug}` : undefined,
           faqs: wpProduct?.faqs ?? [],
         })}
       />
