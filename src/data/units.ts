@@ -15,28 +15,37 @@ export const manufacturingUnitsData: ManufacturingUnitsData = {
   description:
     "The foundation of strong products lies in effective manufacturing processes. Kothari Group has 8 manufacturing units where various kinds of pipes such as PVC, UPVC, HDPE and CPVC along with irrigation systems are manufactured. Thanks to our manufacturing capabilities, we are able to cater to the requirements of agriculture, residential, commercial and infrastructure projects. We use our manufacturing experience, strive to produce the best products available in India and deliver quality services at an affordable cost.",
   units: [
-    { img: '/units/unit-1.jpg', name: 'PVC Pipes & Fittings (Mohol, Solapur-MH)' },
-    { img: '/units/unit-2.jpg', name: 'Hose Pipes (Mohol, Solapur-MH)' },
-    { img: '/units/unit-3.jpg', name: 'HDPE Pipes & Fittings (Mohol, Solapur-MH)' },
-    { img: '/units/unit-4.jpg', name: 'Irrigation Systems (Mohol, Solapur-MH)' },
+    { 
+        img: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/11/1997.jpg', 
+        name: 'PVC Pipes & Fittings (Mohol, Solapur-MH)' 
+    },
+    { img: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/11/1999.png', 
+      name: 'Hose Pipes (Mohol, Solapur-MH)' 
+    },
+    { img: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/11/2003.png', 
+      name: 'HDPE Pipes & Fittings (Mohol, Solapur-MH)' 
+    },
+    { img: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/11/2004.png',
+      name: 'Irrigation Systems (Mohol, Solapur-MH)' 
+    },
     {
-      img: '/units/unit-5.jpg',
+      img: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/11/2015.png',
       name: 'Submersible Cables & Wires (Chincholi, Solapur-MH)',
     },
     {
-      img: '/units/unit-6.jpg',
+      img: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/11/2019.png',
       name: 'PVC Pipes & Irrigation Systems (Kukarwada, Mehsana-GJ)',
     },
     {
-      img: '/units/unit-7.jpg',
+      img: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/11/2023.png',
       name: 'Plumbing Pipes & Fittings (Yawali, Solapur-MH)',
     },
     {
-      img: '/units/unit-8.jpg',
+      img: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/11/2025.png',
       name: 'PVC, DWC & HDPE (Pithampur, Dhar-MP)',
     },
     {
-      img: '/units/unit-9.jpg',
+      img: 'https://admin.kotharigroupindia.com/wp-content/uploads/2026/11/Under-Development.png',
       name: 'PVC, HDPE, DWC Pipes & Fittings (Gandrajupalle, Chittoor-AP)',
     },
   ],
