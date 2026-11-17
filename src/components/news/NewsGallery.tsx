@@ -64,17 +64,20 @@ export const NewsGallery: React.FC<NewsGalleryProps> = ({ news, categories }) =>
                       }}
                       className="w-full h-auto object-contain opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
-                    <div className="absolute top-4 left-4">
+                    {/* <div className="absolute top-4 left-4">
                       <span className="bg-black/60 backdrop-blur-md text-white text-[10px] font-mono tracking-widest font-medium px-3 py-1 uppercase">
                         {item.category}
                       </span>
-                    </div>
+                    </div> */}
                   </div>
 
                   {/* Content Body */}
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-5">
                     <div className="space-y-3">
-                      <div className="flex items-center gap-3 text-[11px] font-mono tracking-widest text-slate-500 uppercase font-medium">
+                      <div className="flex items-center gap-4 text-[11px] font-mono tracking-widest text-slate-500 uppercase font-medium">
+                            <span className="bg-black/60 backdrop-blur-md text-white text-[10px] font-mono tracking-widest font-medium px-3 py-1 uppercase">
+                        {item.category}
+                      </span>
                         <span>{item.date}</span>
                       </div>
                       <h3 className="text-lg font-serif font-medium text-slate-900 leading-snug group-hover:text-[#1575B3] transition-colors duration-300">

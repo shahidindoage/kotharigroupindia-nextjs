@@ -219,6 +219,7 @@ export const SuccessStoriesListing: React.FC<{
         )}
 
         {/* Stories Grid */}
+     {isIrrigationDivision && (
         <section className="w-full bg-white py-16 pb-0 sm:py-24 sm:pb-2">
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
             <div className='hidden'>
@@ -249,6 +250,7 @@ export const SuccessStoriesListing: React.FC<{
             </Suspense>
           </div>
         </section>
+     )}
 
         <SuccessStoriesFooter division={chromeDivision} />
       </div>

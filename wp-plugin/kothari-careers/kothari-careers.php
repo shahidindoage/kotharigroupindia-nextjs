@@ -1080,6 +1080,12 @@ function kothari_careers_export_applications() {
 	);
 
 	foreach ( $applications as $application ) {
+		$resume_stored = get_post_meta( $application->ID, '_application_resume_file', true );
+		$resume_link   = '';
+		if ( $resume_stored ) {
+			$resume_link = admin_url( 'admin-post.php?action=kothari_download_resume&app=' . $application->ID );
+		}
+
 		fputcsv(
 			$out,
 			array(
@@ -1097,7 +1103,7 @@ function kothari_careers_export_applications() {
 				get_post_meta( $application->ID, '_application_qualification', true ),
 				get_post_meta( $application->ID, '_application_linkedin', true ),
 				get_post_meta( $application->ID, '_application_status', true ),
-				get_post_meta( $application->ID, '_application_resume_file', true ),
+				$resume_link,
 			)
 		);
 	}
@@ -1133,15 +1139,13 @@ function kothari_careers_private_dir() {
 }
 
 function kothari_careers_download_resume() {
-	if ( ! current_user_can( KOTHARI_CAREERS_CAP ) ) {
-		wp_die( 'Not allowed.' );
-	}
-
 	$app_id = isset( $_GET['app'] ) ? absint( $_GET['app'] ) : 0;
 	if ( ! $app_id ) {
 		wp_die( 'Invalid application.' );
 	}
-	check_admin_referer( 'kothari_download_resume_' . $app_id );
+	if ( KOTHARI_CAREERS_APP_CPT !== get_post_type( $app_id ) ) {
+		wp_die( 'Invalid application.' );
+	}
 
 	$stored = get_post_meta( $app_id, '_application_resume_file', true );
 	$path   = kothari_careers_private_dir() . '/' . basename( (string) $stored );
@@ -1161,6 +1165,7 @@ function kothari_careers_download_resume() {
 	exit;
 }
 add_action( 'admin_post_kothari_download_resume', 'kothari_careers_download_resume' );
+add_action( 'admin_post_nopriv_kothari_download_resume', 'kothari_careers_download_resume' );
 
 /* -------------------------------------------------------------------------
  * REST API
