@@ -262,7 +262,7 @@ const FALLBACK_BLOGS: HomeNewsCard[] = [
         <Link href={item.href} className="block h-full" draggable={false} onClick={(e) => { e.preventDefault(); navigate(item.href); }}>
           <article className="group relative bg-white border border-slate-200/90 flex flex-col justify-between h-full shadow-sm hover:shadow-xl hover:border-[#1575B3] transition-all duration-500 overflow-hidden">
 
-            {/* Image Header - full image, not cropped */}
+            {/* Image Header - full image, not cropped (same as NewsGallery) */}
             <div className="relative overflow-hidden bg-slate-900 border-b border-slate-200">
           <img
             src={item.image}
@@ -273,9 +273,8 @@ const FALLBACK_BLOGS: HomeNewsCard[] = [
               const target = e.target as HTMLElement;
               target.style.opacity = '0.3';
             }}
-            className="w-full h-52 object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out pointer-events-none"
+            className="w-full h-auto object-contain opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out pointer-events-none"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-80" />
 
           {/* Category Badge */}
           {/* <div className="absolute top-4 left-4">
@@ -283,11 +282,11 @@ const FALLBACK_BLOGS: HomeNewsCard[] = [
               {item.category}
             </span>
           </div> */}
+        </div>
 
-          {/* Date Strip */}
-          <div className={`absolute bottom-0 left-0 right-0 bg-[#1575B3] text-white px-4 py-2 text-[11px] font-mono tracking-widest uppercase text-center`}>
-            {item.date}
-          </div>
+        {/* Date Strip */}
+        <div className="bg-[#1575B3] text-white px-4 py-2 text-[11px] font-mono tracking-widest uppercase text-center">
+          {item.date}
         </div>
 
             {/* Content Body */}

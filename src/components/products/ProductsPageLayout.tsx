@@ -57,7 +57,7 @@ const PIPE_FOOTER_DATA = {
   termsOfUse: 'Terms of Use',
   socialgroup: [
     {
-      heading: 'Kothari Pipes',
+      heading: 'Kothari Pipes Agri',
       links: [
         { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/KothariPipesAgri' },
         { label: 'YouTube', icon: Youtube, hover: 'hover:bg-[#FF0000]', url: 'https://www.youtube.com/@kotharipipesagri' },
@@ -65,7 +65,7 @@ const PIPE_FOOTER_DATA = {
       ],
     },
     {
-      heading: 'Kothari Plumbing',
+      heading: 'Kothari Pipes Plumbing',
       links: [
         { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/kotharipipesplumbing/' },
         { label: 'YouTube', icon: Youtube, hover: 'hover:bg-[#FF0000]', url: 'https://www.youtube.com/@kotharipipesplumbing' },

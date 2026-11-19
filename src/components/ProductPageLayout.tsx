@@ -36,12 +36,12 @@ export const PipefooterData = {
   privacyPolicy: 'Privacy Policy',
   termsOfUse: 'Terms of Use',
   socialgroup:[
-    { heading: 'Kothari Pipes', links: [
+    { heading: 'Kothari Pipes Agri', links: [
       { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/KothariPipesAgri' },
       { label: 'YouTube', icon: Youtube, hover: 'hover:bg-[#FF0000]', url: 'https://www.youtube.com/@kotharipipesagri' },
       { label: 'Instagram', icon: Instagram, hover: 'hover:bg-[#DD2A7B]', url: 'https://www.instagram.com/kotharipipesagri/' },
     ]},
-    { heading: 'Kothari Plumbing', links: [
+    { heading: 'Kothari Pipes Plumbing', links: [
       { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/kotharipipesplumbing/' },
       { label: 'YouTube', icon: Youtube, hover: 'hover:bg-[#FF0000]', url: 'https://www.youtube.com/@kotharipipesplumbing' },
       { label: 'Instagram', icon: Instagram, hover: 'hover:bg-[#DD2A7B]', url: 'https://www.instagram.com/kotharipipesplumbing/' },

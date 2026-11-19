@@ -114,7 +114,7 @@ function PipeDivisionContent() {
     termsOfUse: 'Terms of Use',
     socialgroup:[
       {
-        heading: 'Kothari Pipes',
+        heading: 'Kothari Pipes Agri',
         links: [
       { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/KothariPipesAgri' },
       // { label: 'WhatsApp', icon: FaWhatsapp, hover: 'hover:bg-[#25D366]', url: 'https://whatsapp.com/channel/0029Vb6myeSGU3BD6QbRqN3i' },
@@ -123,7 +123,7 @@ function PipeDivisionContent() {
     ]
       },
        {
-        heading: 'Kothari Plumbing',
+        heading: 'Kothari Pipes Plumbing',
         links: [
       { label: 'Facebook', icon: Facebook, hover: 'hover:bg-[#1877F2]', url: 'https://www.facebook.com/kotharipipesplumbing/' },
 
