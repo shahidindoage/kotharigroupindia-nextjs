@@ -13,9 +13,18 @@ export interface WpBlogPost {
   authorAvatar: string | null;
   category: string;
   categorySlug: string;
+  categorySlugs: string[];
   featuredImage: string | null;
   readMinutes: number;
   content?: string;
+  /** ACF author block — only rendered for the Expert Voices category. */
+  authorDescription: string;
+  authorTag: string;
+  authorFacebook: string;
+  authorInstagram: string;
+  authorLinkedin: string;
+  authorX: string;
+  isExpertVoice: boolean;
 }
 
 export interface WpBlogList {
@@ -131,9 +140,21 @@ function mapPost(raw: any, mediaById?: Map<number, string>): WpBlogPost {
   const embed = raw._embedded || {};
   const media = embed['wp:featuredmedia'];
   const term = embed['wp:term'];
+  const authorAcf = embed?.author?.[0]?.acf ?? {};
   const categoryTerm = term?.[0]?.find((t: any) => t.taxonomy === 'category');
+  const categorySlugs: string[] = (term?.[0] ?? [])
+    .filter((t: any) => t.taxonomy === 'category')
+    .map((t: any) => String(t.slug || '').toLowerCase());
   const category = categoryTerm?.name ?? 'Kothari Group';
   const categorySlug = (categoryTerm?.slug ?? '').toLowerCase();
+  const isExpertVoice =
+    (Array.isArray(raw.categories) && raw.categories.includes(EXPERT_VOICES_ID)) ||
+    categorySlugs.includes(EXPERT_VOICES_SLUG);
+  const acf = raw.acf ?? {};
+  const acfText = (key: string): string => {
+    const value = acf[key] ?? authorAcf[key];
+    return typeof value === 'string' ? value.trim() : '';
+  };
   const author =
     raw.acf?.author_name ??
     embed?.author?.[0]?.name ??
@@ -160,9 +181,17 @@ function mapPost(raw: any, mediaById?: Map<number, string>): WpBlogPost {
     authorAvatar: authorImageOverride || authorAvatar,
     category,
     categorySlug,
+    categorySlugs,
     featuredImage: media?.[0]?.source_url ?? null,
     readMinutes: estimateReadMinutes(content),
     content,
+    authorDescription: acfText('author_description'),
+    authorTag: acfText('author_tag'),
+    authorFacebook: acfText('author_facebook'),
+    authorInstagram: acfText('author_instagram'),
+    authorLinkedin: acfText('author_linkedin'),
+    authorX: acfText('author_x'),
+    isExpertVoice,
   };
 }
 
@@ -195,7 +224,12 @@ export const fetchWpBlogPosts = cache(async (page = 1, perPage = 9, categoryId?:
 export const WP_CATEGORIES = {
   blogs: 1,
   successStory: 180,
+  expertVoices: 187,
 } as const;
+
+// Expert Voices category — posts here get the author card on the detail page.
+export const EXPERT_VOICES_ID = 187;
+export const EXPERT_VOICES_SLUG = 'expert-voices';
 
 // News tabs served on /press-release — resolved by slug so no hardcoded IDs are needed.
 export const NEWS_CATEGORY_SLUGS = ['events', 'announcements', 'updates'] as const;

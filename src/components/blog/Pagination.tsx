@@ -6,7 +6,7 @@ interface PaginationProps {
   page: number;
   totalPages: number;
   basePath?: string;
-  division?: 'pipe' | 'irrigation' | null;
+  division?: 'pipe' | 'irrigation' | 'expert' | null;
 }
 
 function buildPageList(current: number, total: number): (number | '…')[] {

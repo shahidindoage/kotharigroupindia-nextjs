@@ -3,19 +3,23 @@ import Link from 'next/link';
 
 export type DivisionFilter = 'pipe' | 'irrigation' | null;
 
-const TABS: { key: 'all' | 'pipe' | 'irrigation'; label: string }[] = [
+/** Blogs page adds the Expert Voices tab on top of the division filters. */
+export type BlogDivisionFilter = DivisionFilter | 'expert';
+
+const TABS: { key: 'all' | 'pipe' | 'irrigation' | 'expert'; label: string }[] = [
   { key: 'all', label: 'All' },
   { key: 'pipe', label: 'Pipe Division' },
   { key: 'irrigation', label: 'Irrigation Division' },
+  { key: 'expert', label: 'Expert Voices' },
 ];
 
 export const BlogFilter: React.FC<{
-  division: DivisionFilter;
+  division: BlogDivisionFilter;
   basePath?: string;
 }> = ({ division, basePath = '/blogs' }) => {
-  const active: 'all' | 'pipe' | 'irrigation' = division ?? 'all';
+  const active: 'all' | 'pipe' | 'irrigation' | 'expert' = division ?? 'all';
 
-  const buildHref = (key: 'all' | 'pipe' | 'irrigation') =>
+  const buildHref = (key: 'all' | 'pipe' | 'irrigation' | 'expert') =>
     basePath + (key === 'all' ? '' : `?division=${key}`);
 
   return (

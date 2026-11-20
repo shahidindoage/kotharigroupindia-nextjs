@@ -36,7 +36,7 @@ export const revalidate = 600;
 
 const POSTS_PER_PAGE = 9;
 
-type DivisionFilter = 'pipe' | 'irrigation' | null;
+type DivisionFilter = 'pipe' | 'irrigation' | 'expert' | null;
 
 const DIVISION_CATEGORY_SLUGS: Record<'pipe' | 'irrigation', string[]> = {
   pipe: ['agri-pipes-fittings', 'plumbing-pipes-fittings'],
@@ -59,6 +59,12 @@ async function BlogsContent({ page, division }: { page: number; division: Divisi
     const currentPage = Math.min(Math.max(1, page), totalPages);
     safePage = currentPage;
     posts = all.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
+  } else if (division === 'expert') {
+    const res = await fetchWpBlogPosts(page, POSTS_PER_PAGE, WP_CATEGORIES.expertVoices);
+    posts = res.posts;
+    total = res.total;
+    totalPages = res.totalPages;
+    safePage = page;
   } else {
     const res = await fetchWpBlogPosts(page, POSTS_PER_PAGE, WP_CATEGORIES.blogs);
     posts = res.posts;
@@ -107,7 +113,9 @@ export default async function BlogsPage({
   const params = await searchParams;
   const page = Math.max(1, parseInt(params.page ?? '1', 10) || 1);
   const division: DivisionFilter =
-    params.division === 'pipe' || params.division === 'irrigation'
+    params.division === 'pipe' ||
+    params.division === 'irrigation' ||
+    params.division === 'expert'
       ? params.division
       : null;
   const seo = await resolveSeoText(undefined, SEO_FALLBACK);

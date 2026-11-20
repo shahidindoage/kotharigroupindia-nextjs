@@ -6,6 +6,7 @@ import AppShell from '@/components/AppShell';
 import { Home2Header } from '@/components/Home2Header';
 import { Home2Footer } from '@/components/Home2Footer';
 import { fetchWpBlogPostBySlug } from '@/lib/wp-posts';
+import { ExpertAuthorCard } from '@/components/blog/ExpertAuthorCard';
 import { JsonLd } from '@/components/JsonLd';
 import { articleGraph, abs } from '@/lib/schema';
 
@@ -139,6 +140,10 @@ async function Article({ slug }: { slug: string }) {
             className="wp-blog-content"
             dangerouslySetInnerHTML={{ __html: post.content ?? '' }}
           />
+
+          {/* Expert Voices posts only: author profile card below the article. */}
+          {post.isExpertVoice && <ExpertAuthorCard post={post} />}
+
           <div className="mt-12 pt-8 border-t border-slate-200 flex justify-between items-center gap-4">
             <Link
               href="/blogs"
