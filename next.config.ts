@@ -13,6 +13,23 @@ process.on('unhandledRejection', (reason) => {
 });
 
 const nextConfig: NextConfig = {
+  // next/image optimization for every image host referenced in content/data.
+  // WP media is the big one: admin uploads are full-resolution originals, so
+  // they must go through the optimizer (AVIF/WebP + per-viewport srcset).
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'admin.kotharigroupindia.com' },
+      { protocol: 'https', hostname: 'kotharigroupindia.com' },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'images.pexels.com' },
+      { protocol: 'https', hostname: 'img.youtube.com' },
+      { protocol: 'https', hostname: 'api.dicebear.com' },
+    ],
+    formats: ['image/avif', 'image/webp'],
+    // WP uploads don't send long Cache-Control, so keep the optimized
+    // renditions cached at the edge/CDN for a month instead of the 60s default.
+    minimumCacheTTL: 60 * 60 * 24 * 31,
+  },
   // Keep the Vercel staging/preview host out of search results. The canonical
   // tags already point at kotharigroupindia.com; this adds a hard noindex too.
   async headers() {

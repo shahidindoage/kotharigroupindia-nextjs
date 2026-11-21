@@ -58,7 +58,7 @@ const stats = [
 
 export const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+
   const bgRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subtextRef = useRef<HTMLParagraphElement>(null);
@@ -98,6 +98,15 @@ export const Hero = () => {
 
   return (
     <div className="relative w-full  min-h-[80dvh] sm:min-h-0 sm:aspect-[1672/941] lg:aspect-auto lg:min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
+      {/*
+        LCP element is the first banner. React 19 hoists these preload links
+        into <head> at SSR time; the media attribute keeps each device from
+        fetching both files, so the correct banner starts downloading before
+        CSS/JS are even parsed.
+      */}
+      <link rel="preload" as="image" href={slides[0].mobileBg} media="(max-width: 639px)" fetchPriority="high" />
+      <link rel="preload" as="image" href={slides[0].bgImage} media="(min-width: 640px)" fetchPriority="high" />
+
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <div ref={bgRef} className="relative w-full h-full">
@@ -106,6 +115,8 @@ export const Hero = () => {
             <img
               src={active.bgImage}
               alt="Hero Background"
+              fetchPriority="high"
+              decoding="async"
               className="w-full h-full object-cover object-center"
             />
           </picture>
@@ -164,6 +175,7 @@ export const Hero = () => {
                     src={active.cardImage}
                     alt={active.cardTitle}
                     fill
+                    sizes="(max-width: 640px) 64px, (max-width: 1024px) 56px, 72px"
                     className="object-cover rounded-xs"
                   />
                 </div>

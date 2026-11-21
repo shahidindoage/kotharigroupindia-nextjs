@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface FooterProps {
   onOpenQuoteModal?: () => void;
@@ -139,9 +140,12 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Brand Info Column: ALWAYS expanded to lg:col-span-2 */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-start">
-                <img
+                <Image
                   src={`${isIrrigation ? '/logos/Kothari Irrigation_W.png' : '/logos/Kothari Pipes_W.png'}`}
                   alt="Kothari Group Logo"
+                  width={1673}
+                  height={428}
+                  sizes="140px"
                   referrerPolicy="no-referrer"
                   className="w-[140px] max-w-full h-auto block"
                   onError={(e) => {

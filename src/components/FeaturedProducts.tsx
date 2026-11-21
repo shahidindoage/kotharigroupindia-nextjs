@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -159,7 +160,15 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
   return (
     <section className="relative w-full py-16 overflow-hidden select-none">
       {/* Background + Gradient Overlay (matches Product Detail Page tabs section) */}
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${isGreen ? 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1600&q=80' : 'https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=1600&q=80'})` }} />
+      <div className="absolute inset-0">
+        <Image
+          src={isGreen ? 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1600&q=80' : 'https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=1600&q=80'}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
       <div className={`absolute inset-0 bg-gradient-to-br ${isGreen ? 'from-[#0E588A]/95 via-[#1575B3]/90 to-[#083251]/90' : 'from-[#0E588A]/95 via-[#1575B3]/90 to-[#083251]/90'}`} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10 relative z-10">
@@ -201,11 +210,13 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
               >
                 <Link href={product.link} className="group relative flex flex-col h-full w-full cursor-pointer">
                   <div className="relative flex-1 min-h-0 overflow-hidden">
-                    <img
+                    <Image
                       src={product.image}
                       alt={product.title}
+                      fill
+                      sizes="(max-width: 768px) 58vw, 560px"
                       draggable={false}
-                      className="absolute inset-0 w-full h-full object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-105 pointer-events-none"
+                      className="object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-105 pointer-events-none"
                     />
                   </div>
                   <div className="shrink-0 bg-white  py-3.5 sm:py-4 px-4">

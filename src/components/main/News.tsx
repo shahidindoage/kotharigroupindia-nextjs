@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -200,11 +201,14 @@ const FALLBACK_BLOGS: HomeNewsCard[] = [
         <Link href={item.href} className="block h-full" draggable={false} onClick={(e) => { e.preventDefault(); navigate(item.href); }}>
           <article className="group relative bg-white border border-slate-200/90 flex flex-col justify-between h-full shadow-sm hover:shadow-xl hover:border-[#1575B3] transition-all duration-500 overflow-hidden">
 
-            {/* Image Header - full image, not cropped */}
+            {/* Image Header - full image at natural height (no crop, no letterbox) */}
             <div className="relative overflow-hidden bg-slate-900 border-b border-slate-200">
-              <img
+              <Image
                 src={item.image}
                 alt={item.title}
+                width={0}
+                height={0}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 referrerPolicy="no-referrer"
                 draggable={false}
                 onError={(e) => {
@@ -262,11 +266,14 @@ const FALLBACK_BLOGS: HomeNewsCard[] = [
         <Link href={item.href} className="block h-full" draggable={false} onClick={(e) => { e.preventDefault(); navigate(item.href); }}>
           <article className="group relative bg-white border border-slate-200/90 flex flex-col justify-between h-full shadow-sm hover:shadow-xl hover:border-[#1575B3] transition-all duration-500 overflow-hidden">
 
-            {/* Image Header - full image, not cropped (same as NewsGallery) */}
+            {/* Image Header - full image at natural height (same as NewsGallery) */}
             <div className="relative overflow-hidden bg-slate-900 border-b border-slate-200">
-          <img
+          <Image
             src={item.image}
             alt={item.title}
+            width={0}
+            height={0}
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             referrerPolicy="no-referrer"
             draggable={false}
             onError={(e) => {

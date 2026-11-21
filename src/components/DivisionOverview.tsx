@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronRight, X } from 'lucide-react';
@@ -99,11 +100,13 @@ export const DivisionOverview: React.FC<DivisionOverviewProps> = ({
           </div>
 
           {image && (
-            <div className="relative">
-              <img
+            <div className="relative h-72 sm:h-80 lg:h-[460px]">
+              <Image
                 src={image}
                 alt={heading}
-                className="w-full h-72 sm:h-80 lg:h-[460px] object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, 90vw"
+                className="object-cover"
               />
             </div>
           )}

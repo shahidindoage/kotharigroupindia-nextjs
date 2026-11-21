@@ -3,6 +3,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight, Factory } from 'lucide-react';
 import type { WpProductCard } from '@/lib/wp-products';
 import { Reveal } from '@/components/main/Reveal';
@@ -29,18 +30,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0, th
       >
         <article className={`group relative bg-white border border-slate-200/90 flex flex-col justify-between h-full shadow-sm hover:shadow-xl ${accentHoverBorder} transition-all duration-500 overflow-hidden`}>
           {/* Image Header */}
-          <div className="relative overflow-hidden  border-b border-slate-200">
+          <div className="relative overflow-hidden h-80 border-b border-slate-200">
             {product.image ? (
-              <img
+              <Image
                 src={product.image}
                 alt={product.name}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                 referrerPolicy="no-referrer"
-                loading="lazy"
                 onError={(e) => {
                   const target = e.target as HTMLElement;
                   target.style.opacity = '0.3';
                 }}
-                className="w-full h-80 object-contain p-2 opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
+                className="object-contain p-2 opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             ) : (
               <div className="w-full h-80 flex items-center justify-center bg-gradient-to-br from-slate-800 to-slate-950">

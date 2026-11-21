@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight, Clock, Star, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -430,11 +431,14 @@ export const NewsDivision: React.FC<{ theme?: 'blue' | 'green'; newsItems?: Divi
   const BlogCard: React.FC<{ item: DivisionNewsCard }> = ({ item }) => (
     <Link href={item.href} draggable={false} className="block h-full" onClick={(e) => { e.preventDefault(); navigate(item.href); }}>
       <article className={`group relative ${isGreen ? 'bg-[#EAF6EE]' : 'bg-[#F5F6F8]'} border border-slate-200/90 flex flex-col justify-between h-full shadow-sm hover:shadow-xl ${accentHoverBorder} transition-all duration-500 overflow-hidden`}>
-        {/* Image Header */}
+        {/* Image Header - full image at natural height (no crop, no letterbox) */}
         <div className="relative overflow-hidden bg-slate-900 border-b border-slate-200">
-          <img
+          <Image
             src={item.image}
             alt={item.title}
+            width={0}
+            height={0}
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             referrerPolicy="no-referrer"
             draggable={false}
             onError={(e) => {
@@ -477,17 +481,19 @@ export const NewsDivision: React.FC<{ theme?: 'blue' | 'green'; newsItems?: Divi
     <Link href={item.href} draggable={false} className="block h-full" onClick={(e) => { e.preventDefault(); navigate(item.href); }}>
       <article className={`group relative bg-white border border-slate-200/90 flex flex-col justify-between h-full shadow-sm hover:shadow-xl ${accentHoverBorder} transition-all duration-500 overflow-hidden`}>
         {/* Image Header */}
-        <div className="relative overflow-hidden bg-slate-900 border-b border-slate-200">
-          <img
+        <div className="relative overflow-hidden h-52 bg-slate-900 border-b border-slate-200">
+          <Image
             src={item.image}
             alt={item.title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             referrerPolicy="no-referrer"
             draggable={false}
             onError={(e) => {
               const target = e.target as HTMLElement;
               target.style.opacity = '0.3';
             }}
-            className="w-full h-52 object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out pointer-events-none"
+            className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out pointer-events-none"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-80" />
 
@@ -541,16 +547,18 @@ export const NewsDivision: React.FC<{ theme?: 'blue' | 'green'; newsItems?: Divi
       )}
       {/* Top-Left Overlapping Avatar */}
       <div className="absolute top-10 left-0 sm:-left-6 -translate-y-3/4 w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-[#1575B3] shadow-md bg-white p-1">
-        <img
-          src={item.image} 
+        <Image
+          src={item.image || testimonialAvatarUrl(item.author)}
           alt={item.author}
+          fill
+          sizes="(max-width: 640px) 112px, 128px"
           draggable={false}
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             target.onerror = null;
             target.src = testimonialAvatarUrl(item.author);
           }}
-          className="w-full h-full object-cover object-top pointer-events-none rounded-full"
+          className="object-cover object-top pointer-events-none rounded-full p-1"
         />
       </div>
 
