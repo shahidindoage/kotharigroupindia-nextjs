@@ -98,28 +98,29 @@ export const Hero = () => {
 
   return (
     <div className="relative w-full  min-h-[80dvh] sm:min-h-0 sm:aspect-[1672/941] lg:aspect-auto lg:min-h-[100dvh] bg-black text-white font-sans overflow-hidden flex flex-col justify-between">
-      {/*
-        LCP element is the first banner. React 19 hoists these preload links
-        into <head> at SSR time; the media attribute keeps each device from
-        fetching both files, so the correct banner starts downloading before
-        CSS/JS are even parsed.
-      */}
-      <link rel="preload" as="image" href={slides[0].mobileBg} media="(max-width: 639px)" fetchPriority="high" />
-      <link rel="preload" as="image" href={slides[0].bgImage} media="(min-width: 640px)" fetchPriority="high" />
-
-      {/* Background Image Container */}
+      {/* Background Image Container.
+          LCP element: slide 0 is `priority`, so Next emits <head> preloads
+          with imageSrcSet/imageSizes — each breakpoint fetches only its own
+          banner at the right size. The `sizes` media queries make the hidden
+          variant resolve to the smallest candidate on the other device. */}
       <div className="absolute inset-0 z-0">
         <div ref={bgRef} className="relative w-full h-full">
-          <picture className="absolute inset-0">
-            <source media="(max-width: 639px)" srcSet={active.mobileBg} />
-            <img
-              src={active.bgImage}
-              alt="Hero Background"
-              fetchPriority="high"
-              decoding="async"
-              className="w-full h-full object-cover object-center"
-            />
-          </picture>
+          <Image
+            src={active.mobileBg}
+            alt="Hero Background"
+            fill
+            sizes="(max-width: 639px) 100vw, 0px"
+            priority={currentSlide === 0}
+            className="object-cover object-center sm:hidden"
+          />
+          <Image
+            src={active.bgImage}
+            alt="Hero Background"
+            fill
+            sizes="(min-width: 640px) 100vw, 0px"
+            priority={currentSlide === 0}
+            className="object-cover object-center hidden sm:block"
+          />
         </div>
         
         {/* Base Dark Overlay */}

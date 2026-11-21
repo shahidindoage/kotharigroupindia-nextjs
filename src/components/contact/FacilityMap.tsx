@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useMemo, useEffect, useRef } from 'react';
+import 'leaflet/dist/leaflet.css';
 import type L from 'leaflet';
 import { Factory, Building2, Warehouse, MapPin, ExternalLink, ChevronUp, ChevronDown } from 'lucide-react';
 
