@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -85,10 +86,15 @@ export const WhyKothari = () => {
               className="group relative w-full h-[500px] lg:h-full overflow-hidden border border-slate-300/80 shadow-lg bg-slate-950 flex flex-col justify-end transition-all duration-500 hover:shadow-2xl hover:border-slate-400 cursor-pointer"
             >
               {/* Background Image with Zoom on Hover */}
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{ backgroundImage: `url(${division.bgImage})` }}
-              />
+              <div className="absolute inset-0">
+                <Image
+                  src={division.bgImage}
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </div>
 
               {/* Default Dark Overlay - Concentrated at Bottom */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent transition-opacity duration-500 group-hover:opacity-0 z-10" />

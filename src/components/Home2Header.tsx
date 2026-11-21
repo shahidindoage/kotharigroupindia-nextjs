@@ -20,6 +20,7 @@ import {
   Loader2
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import Script from 'next/script';
 import {
@@ -299,11 +300,14 @@ export const Home2Header: React.FC<{ solid?: boolean }> = ({ solid = false }) =>
             }`}
             aria-label="Kothari Group Home"
           >
-            <img 
+            <Image
               src={`/logos/${solidHeader ? 'Kothari Group.png' : 'Kothari Group_W2.png'}`}
               alt="Kothari Group Logo"
+              width={1375}
+              height={353}
+              sizes="(max-width: 640px) 150px, 180px"
               referrerPolicy="no-referrer"
-              className="h-14 sm:h-16 object-contain max-w-[150px] sm:max-w-[180px] transition-all duration-300"
+              className="h-14 sm:h-16 w-auto object-contain max-w-[150px] sm:max-w-[180px] transition-all duration-300"
               onError={(e) => {
                 (e.target as HTMLElement).style.display = 'none';
               }}

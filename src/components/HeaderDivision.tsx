@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Menu, X, ChevronDown, ChevronRight, ChevronLeft, Phone, Mail, MapPin, Send, ArrowRight, Factory, Sprout, Users, Award, Building2, ArrowUp, Home, CheckCircle2, Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Script from 'next/script';
 import { useRouter } from 'next/navigation';
 import {
@@ -691,14 +692,17 @@ const handleSolutionBack = () => {
             }`}
             aria-label="Kothari Group Home"
           >
-            <img
-              src={`${isIrrigation ? 
-                isSolid ? '/logos/Kothari Irrigation.png' : '/logos/Kothari Irrigation_W.png' 
-                : 
+            <Image
+              src={`${isIrrigation ?
+                isSolid ? '/logos/Kothari Irrigation.png' : '/logos/Kothari Irrigation_W.png'
+                :
                 isSolid ? '/logos/Kothari Pipes.png' : '/logos/Kothari Pipes_W.png'}`}
               alt="Kothari Group Logo"
+              width={1673}
+              height={428}
+              sizes="(max-width: 640px) 150px, 180px"
               referrerPolicy="no-referrer"
-              className="h-14 sm:h-16 object-contain max-w-[150px] sm:max-w-[180px] transition-all duration-300"
+              className="h-14 sm:h-16 w-auto object-contain max-w-[150px] sm:max-w-[180px] transition-all duration-300"
               onError={(e) => {
                 (e.target as HTMLElement).style.display = 'none';
               }}
@@ -814,11 +818,13 @@ const handleSolutionBack = () => {
                 >
                   <div className="flex flex-col items-center w-full">
                     {/* Image Container */}
-                    <div className="w-full h-40 flex items-center justify-center p-2 rounded mb-3">
-                      <img
+                    <div className="relative w-full h-40 flex items-center justify-center p-2 rounded mb-3">
+                      <Image
                         src={product.image}
                         alt={product.title}
-                        className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300 ease-out"
+                        fill
+                        sizes="300px"
+                        className="object-contain group-hover:scale-105 transition-transform duration-300 ease-out"
                       />
                     </div>
 
@@ -953,11 +959,13 @@ const handleSolutionBack = () => {
                     onClick={handleNavClick}
                     className="group flex flex-col space-y-2.5"
                   >
-                    <div className="overflow-hidden aspect-[16/9] bg-slate-100">
-                      <img
+                    <div className="relative overflow-hidden aspect-[16/9] bg-slate-100">
+                      <Image
                         src={c.image}
                         alt={c.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        fill
+                        sizes="320px"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                       />
                     </div>
                     <div className="flex items-center gap-1.5 text-sm font-medium text-[#111111] group-hover:text-[#1E8E3E] transition-colors">
@@ -999,11 +1007,13 @@ const handleSolutionBack = () => {
                     onClick={handleNavClick}
                     className="group flex flex-col space-y-2.5"
                   >
-                    <div className="overflow-hidden aspect-[16/9] bg-slate-100">
-                      <img
+                    <div className="relative overflow-hidden aspect-[16/9] bg-slate-100">
+                      <Image
                         src={c.image}
                         alt={c.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        fill
+                        sizes="320px"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                       />
                     </div>
                     <div className={`flex items-center gap-1.5 text-sm font-medium text-[#111111] ${isIrrigation ? 'group-hover:text-[#1E8E3E]' : 'group-hover:text-[#1575B3]'} transition-colors`}>
@@ -1034,11 +1044,13 @@ const handleSolutionBack = () => {
                   }}
                   className="group flex flex-col space-y-2.5 relative"
                 >
-                  <div className="overflow-hidden aspect-[16/9] bg-slate-100">
-                    <img
+                  <div className="relative overflow-hidden aspect-[16/9] bg-slate-100">
+                    <Image
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                      fill
+                      sizes="320px"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
                   </div>
                   <div className={`flex items-center justify-between text-sm font-medium text-[#111111] ${isIrrigation ? 'group-hover:text-[#1E8E3E]' : 'group-hover:text-[#1575B3]'} transition-colors`}>
@@ -1142,11 +1154,13 @@ const handleSolutionBack = () => {
                             onClick={handleNavClick}
                             className="group flex flex-col space-y-2.5"
                           >
-                            <div className="overflow-hidden aspect-[12/9] bg-slate-100 ">
-                              <img
+                            <div className="relative overflow-hidden aspect-[12/9] bg-slate-100 ">
+                              <Image
                                 src={item.image}
                                 alt={item.title}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                                fill
+                                sizes="220px"
+                                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                               />
                             </div>
                             <div className={`flex items-center gap-1.5 text-sm font-medium text-[#111111] ${isIrrigation ? 'group-hover:text-[#1E8E3E]' : 'group-hover:text-[#1575B3]'} transition-colors`}>
@@ -1224,11 +1238,13 @@ const handleSolutionBack = () => {
                             onClick={handleNavClick}
                             className="group flex flex-col space-y-2.5"
                           >
-                            <div className="overflow-hidden aspect-[16/9] bg-slate-100 ">
-                              <img
+                            <div className="relative overflow-hidden aspect-[16/9] bg-slate-100 ">
+                              <Image
                                 src={item.image}
                                 alt={item.title}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                                fill
+                                sizes="320px"
+                                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                               />
                             </div>
                             <div className={`flex items-center gap-1.5 text-sm font-medium text-[#111111] ${isIrrigation ? 'group-hover:text-[#1E8E3E]' : 'group-hover:text-[#1575B3]'} transition-colors`}>

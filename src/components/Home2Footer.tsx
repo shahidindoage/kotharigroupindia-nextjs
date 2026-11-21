@@ -11,6 +11,7 @@ import {
   Factory
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const scrollToId = (id: string) => {
   const el = document.getElementById(id);
@@ -71,9 +72,12 @@ export const Home2Footer: React.FC<{ variant?: 'blue' | 'green' }> = ({ variant 
           {/* Brand Info (Spans 2 columns) */}
           <div className="lg:col-span-2 space-y-5">
             <div className="flex items-start">
-              <img 
+              <Image
                 src="/logos/Kothari Group_W2.png"
                 alt="Kothari Group Logo"
+                width={1375}
+                height={353}
+                sizes="160px"
                 referrerPolicy="no-referrer"
                 className="w-[160px] max-w-full h-auto block"
                 onError={(e) => {

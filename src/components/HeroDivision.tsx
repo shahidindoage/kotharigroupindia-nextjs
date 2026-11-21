@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 
@@ -65,21 +66,36 @@ export const HeroDivision = ({heroData}: {heroData: any}) => {
       <div className="w-full aspect-[1080/1740] sm:hidden" aria-hidden />
       <div className="hidden sm:block w-full aspect-[1376/768]" aria-hidden />
 
-      {/* Background: auto-sliding banner images */}
+      {/* Background: auto-sliding banner images.
+          Each slide renders its mobile + desktop art-directed variants through
+          next/image; the `sizes` media query makes the hidden variant fetch
+          only the smallest candidate, so nothing is wasted cross-device. */}
       <div className="absolute inset-0 z-0">
         {bannerImages.map((banner, idx) => (
-          <picture key={banner.src}>
-            {banner.mobile && <source media="(max-width: 639px)" srcSet={banner.mobile} />}
-            <img
-              src={banner.src}
+          <Fragment key={banner.src}>
+            <Image
+              src={banner.mobile || banner.src}
               alt=""
+              fill
+              sizes="(max-width: 639px) 100vw, 0px"
+              priority={idx === 0}
               aria-hidden={idx !== slide}
-              referrerPolicy="no-referrer"
-              className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ease-in-out ${
+              className={`absolute inset-0 object-cover object-center transition-opacity duration-1000 ease-in-out sm:hidden ${
                 idx === slide ? 'opacity-100' : 'opacity-0'
               }`}
             />
-          </picture>
+            <Image
+              src={banner.src}
+              alt=""
+              fill
+              sizes="(min-width: 640px) 100vw, 0px"
+              priority={idx === 0}
+              aria-hidden={idx !== slide}
+              className={`absolute inset-0 object-cover object-center transition-opacity duration-1000 ease-in-out hidden sm:block ${
+                idx === slide ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+          </Fragment>
         ))}
         {/* Base Dark Overlay */}
         {/* <div className="absolute inset-0 bg-black/20 pointer-events-none" /> */}

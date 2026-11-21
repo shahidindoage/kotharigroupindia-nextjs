@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { 
+import Image from 'next/image';
+import {
   ShieldCheck, 
   Award, 
   Lightbulb, 
@@ -101,13 +102,14 @@ export const WhyKothariGroup = () => {
             {/* Background Image Container */}
             <div className="absolute inset-0 z-0">
               {featureCards.map((card) => (
-                <div
+                <Image
                   key={card.id}
-                  className="absolute inset-0 bg-cover bg-center mix-blend-overlay transition-opacity duration-500 ease-out"
-                  style={{
-                    backgroundImage: `url('${card.image}')`,
-                    opacity: activeImage === card.image ? 1 : 0,
-                  }}
+                  src={card.image}
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="object-cover object-center mix-blend-overlay transition-opacity duration-500 ease-out"
+                  style={{ opacity: activeImage === card.image ? 1 : 0 }}
                 />
               ))}
               {/* Overlay clear in center */}

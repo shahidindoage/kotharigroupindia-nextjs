@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { KnowledgeRequestModal } from '@/components/knowledge/KnowledgeRequestModal';
 import {
@@ -124,12 +125,14 @@ export const KnowledgeCentre: React.FC<{ itemData?: any[]; theme?: 'blue' | 'gre
           {/* Right Column: Clean Image Panel */}
           <div className="lg:col-span-6 min-h-[380px] lg:min-h-full  relative overflow-hidden">
             {itemData?.map((item:any, idx:any) => (
-              <img
+              <Image
                 key={idx}
                 src={item.image}
                 alt={item.title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 referrerPolicy="no-referrer"
-                className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
+                className={`object-cover transition-all duration-700 ease-in-out ${
                   activeIndex === idx ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
                 }`}
               />
