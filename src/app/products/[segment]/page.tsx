@@ -19,6 +19,25 @@ interface PageProps {
   params: Promise<{ segment: string }>;
 }
 
+// Hero banner per segment slug; any segment not listed falls back to the
+// default hero image.
+const SEGMENT_HERO_IMAGES: Record<string, string> = {
+  'agriculture-pipes-and-fittings':
+    'https://admin.kotharigroupindia.com/wp-content/uploads/2026/11/Agriculture-Pipes-Fittings.webp',
+  'borewell-solution':
+    'https://admin.kotharigroupindia.com/wp-content/uploads/2026/11/Borewell-Solution.webp',
+  'cable-protection':
+    'https://admin.kotharigroupindia.com/wp-content/uploads/2026/11/Cable-Protection.webp',
+  'flexible-hose-pipes':
+    'https://admin.kotharigroupindia.com/wp-content/uploads/2026/11/Flexible-Hose-Pipes.webp',
+  'plumbing-pipes-and-fittings':
+    'https://admin.kotharigroupindia.com/wp-content/uploads/2026/11/Plumbing-Pipes-Fittings.webp',
+  'sewerage-drainage-pipes-and-fittings':
+    'https://admin.kotharigroupindia.com/wp-content/uploads/2026/11/Sewerage-Drainage-Pipes-and-Fittings.webp',
+};
+
+const DEFAULT_HERO_IMAGE = '/heronew.jpg';
+
 // Single source of truth for both the title tag and the JSON-LD {{PAGE_TITLE}},
 // so the two can never drift. Yoast overrides this at runtime when set.
 function segmentFallback(segmentSlug: string) {
@@ -59,6 +78,7 @@ export default async function SegmentProductsPage({ params }: PageProps) {
 
   const heroTitle = segmentLabel;
   const heroDescription = `Browse our range of ${segmentLabel.toLowerCase()} — engineered for performance and reliability.`;
+  const heroImage = SEGMENT_HERO_IMAGES[segmentSlug] || DEFAULT_HERO_IMAGE;
 
   const homeHref =
     activeDivisionSlug === 'pipe-division'
@@ -94,8 +114,8 @@ export default async function SegmentProductsPage({ params }: PageProps) {
       <div className="relative w-full min-h-[50dvh] sm:min-h-0 sm:aspect-[1376/768] lg:aspect-auto lg:min-h-[50dvh] bg-[#061E33] text-white font-sans overflow-hidden flex flex-col justify-between">
         <div className="absolute inset-0 z-0">
           <img
-            src="/heronew.jpg"
-            alt="Kothari Group products"
+            src={heroImage}
+            alt={`${heroTitle} — Kothari Group products`}
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center"
           />
