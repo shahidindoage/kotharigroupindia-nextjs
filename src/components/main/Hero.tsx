@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import gsap from 'gsap';
 
 const ArrowIcon = () => (
   <svg 
@@ -58,41 +57,29 @@ const stats = [
 
 export const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  const bgRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const subtextRef = useRef<HTMLParagraphElement>(null);
-  const cardImageRef = useRef<HTMLDivElement>(null);
-  const cardContentRef = useRef<HTMLDivElement>(null);
+  const [fading, setFading] = useState(false);
 
   useEffect(() => {
+    let swap: ReturnType<typeof setTimeout> | undefined;
     const timer = setInterval(() => {
-      const nextSlide = (currentSlide + 1) % slides.length;
-
-      gsap.timeline()
-        .to(
-          [bgRef.current, headlineRef.current, subtextRef.current, cardImageRef.current, cardContentRef.current], 
-          {
-            opacity: 0.2,
-            duration: 0.4,
-            ease: 'power1.out',
-            onComplete: () => {
-              setCurrentSlide(nextSlide);
-            },
-          }
-        )
-        .to(
-          [bgRef.current, headlineRef.current, subtextRef.current, cardImageRef.current, cardContentRef.current], 
-          {
-            opacity: 1,
-            duration: 0.6,
-            ease: 'power1.in',
-          }
-        );
+      setFading(true);
+      swap = setTimeout(() => {
+        setCurrentSlide((slide) => (slide + 1) % slides.length);
+        setFading(false);
+      }, 400);
     }, 6000);
 
-    return () => clearInterval(timer);
-  }, [currentSlide]);
+    return () => {
+      clearInterval(timer);
+      if (swap) clearTimeout(swap);
+    };
+  }, []);
+
+  // CSS-only fade keeps GSAP (~28 KB gz) out of the homepage bundle.
+  const fadeStyle = {
+    opacity: fading ? 0.2 : 1,
+    transition: `opacity ${fading ? 400 : 600}ms ease`,
+  };
 
   const active = slides[currentSlide];
 
@@ -104,7 +91,7 @@ export const Hero = () => {
           banner at the right size. The `sizes` media queries make the hidden
           variant resolve to the smallest candidate on the other device. */}
       <div className="absolute inset-0 z-0">
-        <div ref={bgRef} className="relative w-full h-full">
+        <div className="relative w-full h-full" style={fadeStyle}>
           <Image
             src={active.mobileBg}
             alt="Hero Background"
@@ -140,7 +127,7 @@ export const Hero = () => {
         <div className="w-full flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 lg:gap-0 my-auto">
           <div className="w-full lg:w-3/4">
             <h1 
-              ref={headlineRef} 
+              style={fadeStyle}
               className="text-5xl sm:text-4xl md:text-5xl lg:text-8xl font-medium tracking-tighter leading-[1.05] sm:leading-[1.02] lg:leading-[0.98] drop-shadow-xl m-0 p-0"
             >
               {active.headline}
@@ -171,7 +158,7 @@ export const Hero = () => {
               <div className="grid grid-cols-[64px_1fr] sm:grid-cols-[56px_1fr] lg:grid-cols-[72px_1fr] gap-3.5 items-center">
                 
                 {/* Dynamic Card Thumbnail */}
-                <div ref={cardImageRef} className="relative aspect-square w-full">
+                <div className="relative aspect-square w-full" style={fadeStyle}>
                   <Image
                     src={active.cardImage}
                     alt={active.cardTitle}
@@ -182,7 +169,7 @@ export const Hero = () => {
                 </div>
                 
                 {/* Dynamic Card Text */}
-                <div ref={cardContentRef} className="flex flex-col justify-center gap-1">
+                <div className="flex flex-col justify-center gap-1" style={fadeStyle}>
                   {/* <p className="font-semibold text-sm text-white leading-snug">{active.cardTitle}</p> */}
                   <p className="text-xs sm:text-xs md:text-sm lg:text-[16px] text-white/80 leading-relaxed">
                     {active.cardDescription}

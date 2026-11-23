@@ -61,7 +61,8 @@ export default function AppShell({ children }: AppShellProps) {
   useEffect(() => {
     if (!loaderPlayedOnce) {
       loaderPlayedOnce = true;
-      const timeout = setTimeout(() => setLoading(false), 1400);
+      // Keep the splash brief so it doesn't delay FCP/LCP/Speed Index.
+      const timeout = setTimeout(() => setLoading(false), 450);
       return () => clearTimeout(timeout);
     }
     setLoading(false);

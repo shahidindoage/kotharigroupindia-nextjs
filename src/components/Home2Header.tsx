@@ -22,10 +22,10 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import Script from 'next/script';
 import {
   RECAPTCHA_SITE_KEY,
   getRecaptchaToken,
+  loadRecaptcha,
 } from '@/lib/recaptcha-client';
 import { useOtpVerification } from '@/lib/use-otp-verification';
 
@@ -227,6 +227,7 @@ export const Home2Header: React.FC<{ solid?: boolean }> = ({ solid = false }) =>
     setAboutOpen(false);
     setFormSubmitted(false);
     otp.resetOtp();
+    void loadRecaptcha();
     setIsModalOpen(true);
   };
 
@@ -592,13 +593,6 @@ className={`hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-me
         )}
       </header>
 
-      {RECAPTCHA_SITE_KEY && (
-        <Script
-          src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
-          strategy="afterInteractive"
-        />
-      )}
-
       {/* Get in Touch Popup Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4 sm:p-6 lg:p-8">
@@ -938,6 +932,7 @@ className={`hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-me
 
        <Link
               href="/become-dealer"
+        prefetch={false}
         style={{ writingMode: 'vertical-rl' }}
         className="bg-[#1575B3] hover:bg-[#0E588A] text-white font-extrabold text-[10px] sm:text-xs tracking-wider sm:tracking-widest uppercase py-4 sm:py-5 px-2.5 sm:px-3 shadow-[0_8px_30px_rgb(21,117,179,0.3)] hover:shadow-[0_8px_35px_rgb(21,117,179,0.5)] border-l-1 border-y border-[#fff] hover:border-[#fff] transition-all duration-300 ease-out active:scale-95 cursor-pointer select-none group flex items-center justify-center gap-2"
       >
