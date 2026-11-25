@@ -14,6 +14,21 @@ interface DivisionOverviewProps {
   accent?: 'blue' | 'green';
 }
 
+const SITE_ORIGIN = /^https?:\/\/(www\.)?kotharigroupindia\.com/i;
+const ANCHOR_PATTERN = /<a\s+[^>]*?href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+
+const normalizeHref = (href: string): { href: string; external: boolean } => {
+  const trimmed = href.trim();
+  if (SITE_ORIGIN.test(trimmed)) {
+    const path = trimmed.replace(SITE_ORIGIN, '');
+    return { href: path === '' ? '/' : path, external: false };
+  }
+  if (trimmed.startsWith('/') || trimmed.startsWith('#')) {
+    return { href: trimmed, external: false };
+  }
+  return { href: trimmed, external: true };
+};
+
 export const DivisionOverview: React.FC<DivisionOverviewProps> = ({
   heading,
   paragraphs,
@@ -22,6 +37,10 @@ export const DivisionOverview: React.FC<DivisionOverviewProps> = ({
 }) => {
   const headingColor = accent === 'green' ? 'text-[#1E8E3E]' : 'text-[#1575B3]';
   const buttonColor = accent === 'green' ? '#1E8E3E' : '#1575B3';
+  const linkClass =
+    accent === 'green'
+      ? 'font-medium text-[#1E8E3E] underline decoration-[#1E8E3E]/40 underline-offset-2 transition-colors hover:text-[#176E31] hover:decoration-[#1E8E3E]'
+      : 'font-medium text-[#1575B3] underline decoration-[#1575B3]/40 underline-offset-2 transition-colors hover:text-[#0E588A] hover:decoration-[#1575B3]';
   const [isOpen, setIsOpen] = useState(false);
   const isirrigation = heading.includes('Irrigation');
 
@@ -44,6 +63,52 @@ export const DivisionOverview: React.FC<DivisionOverviewProps> = ({
   }, [isOpen, handleKeyDown]);
 
   const previewParagraphs = paragraphs.slice(0, 2);
+
+  // Paragraph copy may contain inline <a href="..."> links. Split them out so
+  // internal links render through next/link and external ones open safely.
+  const renderParagraph = (text: string, keyPrefix: string) => {
+    const nodes: React.ReactNode[] = [];
+    let lastIndex = 0;
+    let linkCount = 0;
+    let match: RegExpExecArray | null;
+
+    ANCHOR_PATTERN.lastIndex = 0;
+    while ((match = ANCHOR_PATTERN.exec(text)) !== null) {
+      const [fullMatch, rawHref, label] = match;
+      if (match.index > lastIndex) {
+        nodes.push(text.slice(lastIndex, match.index));
+      }
+
+      const { href, external } = normalizeHref(rawHref);
+      const key = `${keyPrefix}-link-${linkCount++}`;
+
+      nodes.push(
+        external ? (
+          <a
+            key={key}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkClass}
+          >
+            {label}
+          </a>
+        ) : (
+          <Link key={key} href={href} className={linkClass}>
+            {label}
+          </Link>
+        )
+      );
+
+      lastIndex = match.index + fullMatch.length;
+    }
+
+    if (lastIndex < text.length) {
+      nodes.push(text.slice(lastIndex));
+    }
+
+    return nodes.length > 0 ? nodes : text;
+  };
 
   return (
     <section className="w-full bg-white py-14 sm:py-20 border-b border-slate-200">
@@ -77,7 +142,7 @@ export const DivisionOverview: React.FC<DivisionOverviewProps> = ({
                 key={idx}
                 className="text-sm sm:text-[18px] text-slate-600 font-normal leading-relaxed"
               >
-                {para}
+                {renderParagraph(para, `preview-${idx}`)}
               </p>
             ))}
 
@@ -160,7 +225,7 @@ export const DivisionOverview: React.FC<DivisionOverviewProps> = ({
                       key={idx}
                       className="text-sm sm:text-[15px] text-slate-600 font-normal leading-relaxed"
                     >
-                      {para}
+                      {renderParagraph(para, `modal-${idx}`)}
                     </p>
                   ))}
                 </div>

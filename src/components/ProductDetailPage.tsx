@@ -534,8 +534,12 @@ export const ProductDetailPage: React.FC<{
                 transition={{ type: 'spring', stiffness: 100, damping: 20 }}
               >
                 {displayRelated.map((rel) => {
-                  const isWpRel = !!rel.slug && !!rel.categorySlug;
-                  const href = isWpRel ? `/${rel.categorySlug}/${rel.slug}` : getProductHref(rel);
+                  const isWpRel = !!rel.slug && !!(rel.categorySlug || rel.divisionSlug);
+                  // Product URLs are /{division-slug}/{product-slug}; fall back to
+                  // the category slug only when WP has no division_slug meta.
+                  const href = isWpRel
+                    ? `/${rel.divisionSlug || rel.categorySlug}/${rel.slug}`
+                    : getProductHref(rel);
                   const Wrapper: any = isWpRel ? Link : 'button';
                   const wrapperProps = isWpRel ? { href } : { onClick: () => router.push(href) };
                   

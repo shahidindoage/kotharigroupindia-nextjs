@@ -73,7 +73,7 @@ export const WhyKothari = () => {
             Divisions
           </h2>
           <p className="text-sm sm:text-[16px] text-slate-600 max-w-md md:text-left font-normal leading-relaxed">
-            Integrated pipe and irrigation solutions designed to support India's residential, commercial, agricultural, and infrastructure water management requirements. 
+            Kothari Group is a water management solution provider in India, offering integrated pipe and irrigation solutions for residential, commercial, agricultural and infrastructure needs.
           </p>
         </div>
 

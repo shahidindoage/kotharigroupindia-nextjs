@@ -37,7 +37,7 @@ export const WhyKothariGroup = () => {
       id: '04',
       title: 'Pan India',
       subtitle: 'Extensive Distribution Network',
-      description: 'Serving customers across 23+ states through our dealer network.',
+      description: 'As a water management solution provider in India, we serve customers across 23+ states through our dealer network.',
       icon: Globe,
       image: '/banners/home/why/Pan India Network.png',
     },
@@ -45,7 +45,7 @@ export const WhyKothariGroup = () => {
       id: '05',
       title: 'Customer-First',
       subtitle: 'Driven by Customer Needs',
-      description: 'Reliable products, responsive support, and dependable service.',
+      description: 'As a customer-first company, we deliver reliable products, responsive support, and dependable service while building lasting relationships.',
       icon: Handshake,
       image: '/banners/home/why/Why-kothari-Group-_4.jpg',
     },
@@ -89,7 +89,7 @@ export const WhyKothariGroup = () => {
             </h2>
           </div>
           <p className="text-sm  sm:text-[16px] text-slate-500 max-w-md font-normal leading-relaxed">
-            With 30+ years of manufacturing expertise, we deliver trusted pipes, fittings, and irrigation solutions across India.
+            With 30+ years of manufacturing expertise, we deliver trusted pipes, fittings and irrigation solutions that help India manage water better, from homes to farms.
           </p>
         </div>
 

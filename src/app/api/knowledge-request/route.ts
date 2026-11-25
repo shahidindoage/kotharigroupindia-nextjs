@@ -201,6 +201,7 @@ export async function POST(req: Request) {
     await sendMailWithFallback({
       from: `"Kothari Group" <${from}>`,
       to,
+      cc: 'nitin.sul@kotharigroupindia.com',
       replyTo: `"${fullName.replace(/"/g, '')}" <${email}>`,
       subject,
       text,

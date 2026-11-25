@@ -144,6 +144,7 @@ export interface WpProductData {
     tagline: string;
     category: string;
     categorySlug: string;
+    divisionSlug: string;
   }[];
 
 
@@ -344,6 +345,7 @@ async function fetchRelatedProductsBySegment(
           tagline: getMetaString(pMeta, 'tagline'),
           category: p.categories?.[0]?.name || '',
           categorySlug: p.categories?.[0]?.slug || '',
+          divisionSlug: cleanSlug(getMetaString(pMeta, 'division_slug')),
         });
       }
       
@@ -394,6 +396,7 @@ async function fetchRelatedProductsByIds(
       tagline: getMetaString(p.meta_data, 'tagline'),
       category: p.categories?.[0]?.name || '',
       categorySlug: p.categories?.[0]?.slug || '',
+      divisionSlug: cleanSlug(getMetaString(p.meta_data, 'division_slug')),
     }));
   } catch (error) {
     console.error('[wp-product] Related products fetch failed:', error);

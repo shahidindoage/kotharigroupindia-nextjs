@@ -471,10 +471,10 @@ const FEATURE_PRODUCTS = [
         accent="blue"
         image="https://admin.kotharigroupindia.com/wp-content/uploads/2026/10/About_kothari-Irrigation.jpg"
         paragraphs={[
-        "Water conservation through effective irrigation allows farmers to use available water resources optimally while ensuring the crops get enough water. Kothari Group provides farmers with drip irrigation systems that deliver water exactly to the root zones of the plants in addition to offering sprinkler irrigation systems that ensure uniform coverage in larger fields.",
-        "The micro and mini sprinklers we offer can provide gentle and uniform irrigation to the orchards, nurseries, and sensitive crops. Our sand, screen and automatic filters are available for purifying the irrigation water and preventing build-up of sediments and debris.",
-        "Our fertigation systems, which combine water and nutrients, enable farmers to apply fertilizing solutions more effectively and reduce wastage. Using dosing pumps, Venturi injectors, IoT-enabled fertigation machines, and automated controllers, farmers can control their irrigation processes and processes of applying fertilizers.",
-        "Our irrigation systems designed for harsh field conditions are a great combination of high-tech equipment and efficient water management."
+        `Water conservation through effective irrigation allows farmers to use available water resources optimally while ensuring the crops get enough water. Kothari Group provides farmers with <a href="https://kotharigroupindia.com/products/drip-irrigation-system">drip irrigation systems</a> that deliver water exactly to the root zones of the plants in addition to offering <a href="https://kotharigroupindia.com/products/sprinkler-irrigation-system">sprinkler irrigation systems</a> that ensure uniform coverage in larger fields.`,
+        `The micro and mini sprinklers we offer can provide gentle and uniform irrigation to the orchards, nurseries, and sensitive crops. Our sand, screen and automatic filters are available for purifying the irrigation water and preventing build-up of sediments and debris.`,
+        `Our fertigation systems, which combine water and nutrients, enable farmers to apply fertilizing solutions more effectively and reduce wastage. Using dosing pumps, <a href="https://kotharigroupindia.com/irrigation-division/nutrijet-fertigation-machines">Venturi injectors</a>, IoT-enabled fertigation machines, and automated controllers, farmers can control their irrigation processes and processes of applying fertilizers.`,
+        `Our irrigation systems designed for harsh field conditions are a great combination of high-tech equipment and efficient water management.`
         ]}
       />
       {/* <Category tab="agriculture"/> */}
