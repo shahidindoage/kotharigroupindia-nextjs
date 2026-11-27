@@ -62,10 +62,15 @@ const appLinks = [
 // Google Play (opens the app picker) + App Store buttons, shared by both
 // division variants of the footer. `iconOnlyOnDesktop` hides the text labels
 // from lg up, for the narrow irrigation column.
-const DownloadAppButtons: React.FC<{ iconOnlyOnDesktop?: boolean }> = ({
+const DownloadAppButtons: React.FC<{ iconOnlyOnDesktop?: boolean; isIrrigation?: boolean }> = ({
   iconOnlyOnDesktop = false,
+  isIrrigation = false,
 }) => {
   const [appsModalOpen, setAppsModalOpen] = useState(false);
+
+  const visibleApps = isIrrigation
+    ? appLinks.filter((app) => app.name !== 'Kothari Rise')
+    : appLinks;
 
   useEffect(() => {
     if (!appsModalOpen) return;
@@ -152,8 +157,8 @@ const DownloadAppButtons: React.FC<{ iconOnlyOnDesktop?: boolean }> = ({
                 Choose the Kothari app that fits your needs.
               </p>
 
-              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {appLinks.map((app) => (
+              <div className={`mt-6 grid grid-cols-1 ${visibleApps.length > 1 ? 'sm:grid-cols-2' : 'sm:max-w-xs'} gap-4`}>
+                {visibleApps.map((app) => (
                   <a
                     key={app.name}
                     href={app.url}
@@ -397,7 +402,7 @@ export const Footer: React.FC<FooterProps> = ({
               {renderSocialGroups()}
               <div className="space-y-3 text-xs pt-2 border-t border-white/20">
                 <h4 className="font-medium text-white text-sm">Download our app</h4>
-                <DownloadAppButtons iconOnlyOnDesktop />
+                <DownloadAppButtons iconOnlyOnDesktop isIrrigation />
               </div>
             </div>
           )}
