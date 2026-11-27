@@ -112,7 +112,36 @@ const SEGMENT_PRODUCT_PRIORITY: Record<string, string[]> = {
     'upvc-pipes',
     'gravity-drip-kit',
   ],
-  'borewell-solution':['column-pipes-with-ss']
+  'borewell-solution':['column-pipes-with-ss'],
+  'sewerage-drainage-pipes-and-fittings':[
+'swr-pipes-and-fittings-for-drainage-systems',
+'upvc-underground-drainage-piping-system',
+'foamcore-underground-drainage-piping-system',
+'underground-double-wall-corrugated-pipes',
+'pp-low-noise-drainage-system',
+'hdpe',
+'sub-surface-drainage-system'
+  ],
+  'agriculture-pipes-and-fittings':[
+'self-fit-pvc-pipe',
+'ring-fit-pvc-pipe',
+'fabricated-fittings-and-repair-coupler',
+'agri-pvc-moulded-fittings',
+'hdpe-piping',
+'hdpe-coils',
+'hdpe-fittings',
+'mdpe-pipes',
+'compression-fittings',
+'pe-power-spray-hose-pipe',
+'ld-krishi-pipe-lay-flat-tubes',
+'check-valve-non-return-valve',
+'single-and-double-union-pvc-ball-valve',
+'double-union-pp-ball-valve',
+'plain-white-blue-ball-valve',
+'butterfly-valve',
+'air-cum-vacuum-relief-valve',
+'pvc-solvent-cement'
+  ]
 };
 
 function applySegmentPriority(
