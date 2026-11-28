@@ -2023,6 +2023,7 @@ const handleSolutionBack = () => {
                   )}
 
                   <button
+                    id='inquiry-submit-btn'
                     type="submit"
                     disabled={formSending || (OTP_VERIFICATION_ENABLED && otp.otpStatus !== 'verified')}
                     className={`w-full flex items-center justify-center gap-2 ${isIrrigation ? 'bg-[#1575B3]' : 'bg-[#1575B3]'} ${isIrrigation ? 'hover:bg-[#0E588A]' : 'hover:bg-[#0E588A]'} disabled:opacity-60 disabled:cursor-not-allowed text-white py-3.5 font-medium text-sm transition-colors shadow-sm mt-2`}

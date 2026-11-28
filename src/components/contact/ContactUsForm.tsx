@@ -398,6 +398,7 @@ export const ContactUsForm: React.FC = () => {
       )}
 
       <button
+        id='contact-submit-btn'
         type="submit"
         disabled={sending || otpStatus !== 'verified'}
         className="w-full flex items-center justify-center gap-2 bg-[#1575B3] hover:bg-[#0E588A] disabled:opacity-60 disabled:cursor-not-allowed text-white py-3.5 font-medium text-sm transition-colors shadow-sm"
